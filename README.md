@@ -5,4 +5,7 @@ research project. It was first written in Swift and rewritten in Java. It was th
 rewritten again in an object-oriented programming style. It was a quick
 hack, and it needs a lot of cleanup and refactoring. A perfect code base to teach
 the value of software developement fundamentals!
+- remember that you need to go to run configerations and add [-i NAMEOFTEXTFILE -o OutputFiles -sch priority -v --all -gui] to arguments to see your paths 
+- remember that if you are adding --all to run config you probably have to have -sch priority before that because many directories have a lot of files or change Warp to not run every scheduler option when using --all
+- to open a txt file in excel, all you need to do is right click the txt file and select open with, other, and then external programs ( find excel) 
 <br>

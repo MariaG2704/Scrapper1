@@ -1,0 +1,25 @@
+strict digraph StressTest4 {
+    B  -> C  -> D; 
+    A  -> B  -> C  -> D  -> E; 
+    C  -> D  -> E  -> F  -> G  -> H  -> I; 
+    A  -> B  -> C  -> D  -> E  -> J  -> K  -> L; 
+    C  -> D  -> E  -> J  -> K  -> L; 
+    B  -> C  -> D; 
+    A  -> B  -> C  -> D  -> E; 
+    C  -> D  -> E  -> F  -> G  -> H  -> I; 
+    A  -> B  -> C  -> D  -> E  -> J  -> K  -> L; 
+    C  -> D  -> E  -> J  -> K  -> L; 
+labelloc  =  "t" 
+label = <Graph StressTest4 <br/>
+Flow F1: B -&#62; C -&#62; D<br/>
+Flow F5: A -&#62; B -&#62; C -&#62; D -&#62; E<br/>
+Flow F2: C -&#62; D -&#62; E -&#62; F -&#62; G -&#62; H -&#62; I<br/>
+Flow F4: A -&#62; B -&#62; C -&#62; D -&#62; E -&#62; J -&#62; K -&#62; L<br/>
+Flow F3: C -&#62; D -&#62; E -&#62; J -&#62; K -&#62; L<br/>
+Flow F6: B -&#62; C -&#62; D<br/>
+Flow F7: A -&#62; B -&#62; C -&#62; D -&#62; E<br/>
+Flow F8: C -&#62; D -&#62; E -&#62; F -&#62; G -&#62; H -&#62; I<br/>
+Flow F9: A -&#62; B -&#62; C -&#62; D -&#62; E -&#62; J -&#62; K -&#62; L<br/>
+Flow F10: C -&#62; D -&#62; E -&#62; J -&#62; K -&#62; L<br/>
+>
+} 
