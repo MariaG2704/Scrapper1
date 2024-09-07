@@ -60,26 +60,34 @@ public class WorkLoadDescription extends VisualizationObject {
    * @param args no intended input
    */
   public static void main(String[] args) {
-    // Open and read file using FM and Scanner
-    InputGraphFile graphFile = new InputGraphFile(new FileManager());
-    String currObj = graphFile.readGraphFile("StressTest.txt");
+    // Get filename from call, default to StressTest if not given
+    WorkLoadDescription file;
+    if (args.length > 0) {
+      String fileName = args[0];
+      file = new WorkLoadDescription(fileName);
+    } else {
+      file = new WorkLoadDescription("StressTest.txt");;
+    }
+    // Open and read file using existing methods and Scanner
+    String currObj = file.toString();
     Scanner reader = new Scanner(currObj);
-    ArrayList<String> flowArr = new ArrayList<String>();
-    // Get filename from first line, remove {
+    ArrayList<String> flowArray = new ArrayList<String>();
+    // Print filename, cut off extension
+    String inputFileName = file.getInputFileName();
+    System.out.println(inputFileName.substring(0, inputFileName.length() - 4));
+    // Gather all flows into flowArr, data initialized such that first line (name) is omitted
     String data = reader.nextLine();
-    System.out.println(data.substring(0, data.length() - 2));
-    // Gather all flows into flowArr
     while (reader.hasNextLine()) {
       data = reader.nextLine();
       // End of flow data
       if (data.equals("}")) {
-        continue;
+        break;
       }
-      flowArr.add(data);
+      flowArray.add(data);
     }
     reader.close();
     // Sort array alphabetically, only considering the names and not the data portion
-    String[] sortedArray = flowArr.toArray(new String[0]);
+    String[] sortedArray = flowArray.toArray(new String[0]);
     Arrays.sort(sortedArray, (s1, s2) -> {
       String prefix1 = s1.split(" ")[0];
       String prefix2 = s2.split(" ")[0];
