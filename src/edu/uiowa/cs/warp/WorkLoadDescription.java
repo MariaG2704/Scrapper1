@@ -57,7 +57,7 @@ public class WorkLoadDescription extends VisualizationObject {
    * Reads a graph txt file and outputs flows in alphabetical order.
    * Leverages existing file manager structure
 
-   * @param args no intended input
+   * @param args Input file name
    */
   public static void main(String[] args) {
     // Get filename from call, default to StressTest if not given
