@@ -93,7 +93,7 @@ public class WorkLoadDescription extends VisualizationObject {
       String prefix2 = s2.split(" ")[0];
       return prefix1.compareTo(prefix2);
     });
-    // Print all flows in a format
+    // Print all formatted flows
     int count = 1;
     for (String flow : sortedArray) {
       System.out.print("Flow " + count + ": ");
