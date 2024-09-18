@@ -3,70 +3,72 @@ package edu.uiowa.cs.warp;
 import java.util.ArrayList;
 
 /**
+ * @version 2.0
  * @author sgoddard
  *
  */
-public class Flow extends SchedulableObject implements Comparable<Flow>{
+// Fixed trivial Coding Style errors such as indentation, spacing, grammar
+public class Flow extends SchedulableObject implements Comparable<Flow> {
 
-	private static final Integer UNDEFINED = -1;
-	private static final Integer DEFAULT_FAULTS_TOLERATED = 0; 
-	private static final Integer DEFAULT_INDEX = 0;
-	private static final Integer DEFAULT_PERIOD = 100; 
-	private static final Integer DEFAULT_DEADLINE = 100;
-	private static final Integer DEFAULT_PHASE = 0;
+  private static final Integer UNDEFINED = -1;
+  private static final Integer DEFAULT_FAULTS_TOLERATED = 0; 
+  private static final Integer DEFAULT_INDEX = 0;
+  private static final Integer DEFAULT_PERIOD = 100; 
+  private static final Integer DEFAULT_DEADLINE = 100;
+  private static final Integer DEFAULT_PHASE = 0;
 	
 
-    Integer initialPriority = UNDEFINED;
-    Integer index;  // order in which the node was read from the Graph file
-    Integer numTxPerLink; //  determined by fault model
-    ArrayList<Node> nodes; // Flow src is 1st element and flow snk is last element in array
-    /*
-     *  nTx needed for each link to reach E2E reliability target. Indexed by src node of the link. 
-     *  Last entry is total worst-case E2E Tx cost for schedulability analysis
-     */
-    ArrayList<Integer> linkTxAndTotalCost; 
-    ArrayList<Edge> edges; //used in Partition and scheduling
-    Node nodePredecessor;
-    Edge edgePredecessor;
+  Integer initialPriority = UNDEFINED;
+  Integer index;  // order in which the node was read from the Graph file
+  Integer numTxPerLink; //  determined by fault model
+  ArrayList<Node> nodes; // Flow src is 1st element and flow snk is last element in array
+  /*
+   *  nTx needed for each link to reach E2E reliability target. Indexed by src node of the link. 
+   *  Last entry is total worst-case E2E Tx cost for schedulability analysis
+   */
+  ArrayList<Integer> linkTxAndTotalCost; 
+  ArrayList<Edge> edges; //used in Partition and scheduling
+  Node nodePredecessor;
+  Edge edgePredecessor;
     
+  /*
+   * Constructor that sets name, priority, and index
+   */
+  Flow(String name, Integer priority, Integer index) {
+    super(name, priority, DEFAULT_PERIOD, DEFAULT_DEADLINE, DEFAULT_PHASE);
+    this.index = index;
     /*
-     * Constructor that sets name, priority, and index
+     *  Default numTxPerLink is 1 transmission per link. Will be updated based
+     *  on flow updated based on flow length and reliability parameters
      */
-    Flow (String name, Integer priority, Integer index){
-    	super(name, priority, DEFAULT_PERIOD, DEFAULT_DEADLINE, DEFAULT_PHASE);
-    	this.index = index;
-        /*
-         *  Default numTxPerLink is 1 transmission per link. Will be updated based
-         *  on flow updated based on flow length and reliability parameters
-         */
-        this.numTxPerLink = DEFAULT_FAULTS_TOLERATED + 1; 
-        this.nodes = new ArrayList<>();
-        this.edges  = new ArrayList<>();
-        this.linkTxAndTotalCost = new ArrayList<>();
-        this.edges = new ArrayList<>();	
-        this.nodePredecessor = null;
-        this.edgePredecessor = null;
-    }
+    this.numTxPerLink = DEFAULT_FAULTS_TOLERATED + 1; 
+    this.nodes = new ArrayList<>();
+    this.edges  = new ArrayList<>();
+    this.linkTxAndTotalCost = new ArrayList<>();
+    this.edges = new ArrayList<>();	
+    this.nodePredecessor = null;
+    this.edgePredecessor = null;
+  }
     
+  /*
+   * Constructor
+   */
+  Flow() {
+    super();
+    this.index = DEFAULT_INDEX;
     /*
-     * Constructor
+     *  Default numTxPerLink is 1 transmission per link. Will be updated based
+     *  on flow updated based on flow length and reliability parameters
      */
-    Flow () {
-    	super();
-    	this.index = DEFAULT_INDEX;
-    	/*
-    	 *  Default numTxPerLink is 1 transmission per link. Will be updated based
-    	 *  on flow updated based on flow length and reliability parameters
-    	 */
-    	this.numTxPerLink = DEFAULT_FAULTS_TOLERATED + 1; 
-    	this.nodes = new ArrayList<>();
-    	this.linkTxAndTotalCost = new ArrayList<>();
-    	this.edges = new ArrayList<>();
-    	this.nodePredecessor = null;
-        this.edgePredecessor = null;
-    }
+    this.numTxPerLink = DEFAULT_FAULTS_TOLERATED + 1; 
+    this.nodes = new ArrayList<>();
+    this.linkTxAndTotalCost = new ArrayList<>();
+    this.edges = new ArrayList<>();
+    this.nodePredecessor = null;
+    this.edgePredecessor = null;
+  }
 
-	/**
+    /**
 	 * @return the initialPriority
 	 */
 	public Integer getInitialPriority() {
