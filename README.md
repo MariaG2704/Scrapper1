@@ -4,4 +4,6 @@ Development course by ccolin. The code was developed by Steve Goddard for the WA
 research project. It was first written in Swift and rewritten in Java. It was then 
 rewritten again in an object-oriented programming style. This will serve as the play-and-testing ground for Software Development.
 Either omit the --all argument or use in conjunction with the "-sch priority" scheduler argument.
+
+HW2 Tasks: ccolin - Completed tasks (3) Flow.java and (6) Workload.java
 <br>
