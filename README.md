@@ -5,5 +5,5 @@ research project. It was first written in Swift and rewritten in Java. It was th
 rewritten again in an object-oriented programming style. This will serve as the play-and-testing ground for Software Development.
 Either omit the --all argument or use in conjunction with the "-sch priority" scheduler argument.
 
-HW2 Tasks: ccolin - Completed tasks (3) Flow.java and (6) Workload.java
-<br>
+HW2 Tasks: ccolin - Completed tasks (3) Flow.java and (6) Workload.java <br>
+yongycheng - Completed tasks (4) ProgramVisualization.java and (7) Program.java <br>

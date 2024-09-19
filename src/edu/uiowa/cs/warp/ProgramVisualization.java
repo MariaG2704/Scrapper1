@@ -9,7 +9,7 @@ package edu.uiowa.cs.warp;
  * 
  * @version 1.5
  * @author sgoddard
- * @author williamcheng - Develop JavaDoc comments for the missing summary comment 
+ * @author yongycheng - Develop JavaDoc comments for the missing summary comment 
  * 						  and all methods in in Flow.java
  * 
  */
@@ -34,7 +34,7 @@ public class ProgramVisualization extends VisualizationObject {
   }
 
   /**
-   * Function creates and returns a GuiVisualization object.
+   * Function creates and returns a GuiVisualization object. 
    */
   @Override
   public GuiVisualization displayVisualization() {
