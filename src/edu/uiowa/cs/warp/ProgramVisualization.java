@@ -1,20 +1,31 @@
-/**
- * 
- */
 package edu.uiowa.cs.warp;
 
 /**
- * @author sgoddard
+ * Class takes in a WarpInterface object, and includes tools to 
+ * visualize the data, such as a table/matrix representation of the schedule,
+ * header, footer, and title generator with relevant information about the program.
+ * Also supports the use of a graphical user interface visualization
+ * with the GuiVisualization class.
+ * 
  * @version 1.5
+ * @author sgoddard
+ * @author williamcheng - Develop JavaDoc comments for the missing summary comment 
+ * 						  and all methods in in Flow.java
  * 
  */
 public class ProgramVisualization extends VisualizationObject {
 
-  private static final String SOURCE_SUFFIX = ".dsl";
-  private ProgramSchedule sourceCode;
-  private Program program;
-  private Boolean deadlinesMet;
-
+  private static final String SOURCE_SUFFIX = ".dsl"; //file type of warp file
+  private ProgramSchedule sourceCode; //source code of program
+  private Program program; //the warp program
+  private Boolean deadlinesMet; //whether deadlines were met
+  
+  /**
+   * Constructor for ProgramVisualization that sets program, sourceCode,
+   * and deadlinesMet variables from a warp program.
+   * 
+   * @param warp	warp program to visualize
+   */
   ProgramVisualization(WarpInterface warp) {
     super(new FileManager(), warp, SOURCE_SUFFIX);
     this.program = warp.toProgram();
@@ -22,11 +33,19 @@ public class ProgramVisualization extends VisualizationObject {
     this.deadlinesMet = warp.deadlinesMet();
   }
 
+  /**
+   * Function creates and returns a GuiVisualization object.
+   */
   @Override
   public GuiVisualization displayVisualization() {
     return new GuiVisualization(createTitle(), createColumnHeader(), createVisualizationData());
   }
 
+  /**
+   * Function creates and returns a header description for the warp program that includes the title, 
+   * scheduler name, number of faults, minimum packet reception rate, E2E, 
+   * and number of channels the schedule has.
+   */
   @Override
   protected Description createHeader() {
     Description header = new Description();
@@ -44,6 +63,10 @@ public class ProgramVisualization extends VisualizationObject {
     return header;
   }
 
+  /**
+   * Function creates and returns a footer description for the warp program that indicates
+   * whether flow deadlines were met.
+   */
   @Override
   protected Description createFooter() {
     Description footer = new Description();
@@ -59,6 +82,10 @@ public class ProgramVisualization extends VisualizationObject {
   }
 
 
+  /**
+   * Function that gets the names of the nodes ordered alphabetically, then stores and returns the 
+   * names of the nodes in an array of Strings, used for column headers of table when visualizing data.
+   */
   @Override
   protected String[] createColumnHeader() {
     var orderedNodes = program.toWorkLoad().getNodeNamesOrderedAlphabetically();
@@ -71,6 +98,9 @@ public class ProgramVisualization extends VisualizationObject {
     return columnNames;
   }
 
+  /**
+   * Function creates and returns a 2D array of Strings filled with the schedule data.
+   */
   @Override
   protected String[][] createVisualizationData() {
     if (visualizationData == null) {
@@ -88,6 +118,9 @@ public class ProgramVisualization extends VisualizationObject {
     return visualizationData;
   }
 
+  /**
+   * Function creates and returns a String as the name of the warp program visualization.
+   */
   private String createTitle() {
     return String.format("WARP program for graph %s\n", program.getName());
   }
