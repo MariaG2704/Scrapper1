@@ -7,3 +7,4 @@ Either omit the --all argument or use in conjunction with the "-sch priority" sc
 
 HW2 Tasks: ccolin - Completed tasks (3) Flow.java and (6) Workload.java <br>
 yongycheng - Completed tasks (4) ProgramVisualization.java and (7) Program.java <br>
+msgauna - Completed tasks (2) Warp.java and (5) VisualizationImplementation.java 
