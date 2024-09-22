@@ -7,7 +7,8 @@ import java.util.HashMap;
 
 
 /**
- * @author sgoddard
+ * @author sgoddard <br>
+ * @author yongycheng - added comments for 3 functions as per HW2 part 7 instructions. <br>
  *
  */
 // Old Scheduler Worked as class Scheduler{} on Feb 17
@@ -63,6 +64,10 @@ public class Program implements SystemAttributes {
     this.deadlineMisses = new Description();
   }
 
+  /**
+   * Function returns the Workload of the program <br>
+   * @return WorkLoad object <br>
+   */
   public WorkLoad toWorkLoad() {
     return workLoad;
   }
@@ -1142,6 +1147,10 @@ public class Program implements SystemAttributes {
     scheduleBuilt = schedule;
   }
 
+  /**
+   * Function returns the schedule built as a ProgramSchedule object. <br>
+   * @return scheduleBuilt <br>
+   */
   public ProgramSchedule getSchedule() {
     return scheduleBuilt;
   }
@@ -1202,6 +1211,11 @@ public class Program implements SystemAttributes {
     return workLoad.getNumFaults();
   }
 
+  /**
+   * Function creates and returns a HashMap with the nodes
+   * and their indexes when sorted alphabetically. <br>
+   * @return HashMap of (node name, index) <br>
+   */
   public HashMap<String, Integer> getNodeMapIndex() {
     var orderedNodes = workLoad.getNodeNamesOrderedAlphabetically(); // create an array of node
                                                                      // names
