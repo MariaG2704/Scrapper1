@@ -1,15 +1,11 @@
 package edu.uiowa.cs.warp;
 
-<<<<<<< HEAD
+
 import java.util.*;
 import java.io.File;
 import java.util.Scanner;
 
-=======
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
->>>>>>> 08b9e3dda3b3f2e26a1ba2d617c19c4e5a3e6fe1
+
 /**
  * Reads the input file, whose name is passed as input parameter to the constructor, and builds a
  * Description object based on the contents. Each line of the file is an entry (string) in the
@@ -89,7 +85,6 @@ public class WorkLoadDescription extends VisualizationObject {
     this.inputFileName = gf.getGraphFileName();
     description = new Description(inputGraphString);
   }
-<<<<<<< HEAD
   
   
   /* main method that sorts and prints the flows of text file alphabetically 
@@ -103,58 +98,4 @@ public class WorkLoadDescription extends VisualizationObject {
 	  
   }
 	  
-=======
-  /**
-   * Reads a graph txt file and outputs flows in alphabetical order.
-   * Leverages existing file manager structure
-
-   * @param args Input file name
-   */
-  public static void main(String[] args) {
-    // Get filename from call, default to StressTest if not given
-    WorkLoadDescription file;
-    if (args.length > 0) {
-      String fileName = args[0];
-      file = new WorkLoadDescription(fileName);
-    } else {
-      file = new WorkLoadDescription("StressTest.txt");;
-    }
-    // Open and read file using existing methods and Scanner
-    String currObj = file.toString();
-    Scanner reader = new Scanner(currObj);
-    ArrayList<String> flowArray = new ArrayList<String>();
-    // Print filename, cut off extension
-    String inputFileName = file.getInputFileName();
-    System.out.println(inputFileName.substring(0, inputFileName.length() - 4));
-    // Gather all flows into flowArr, data initialized such that first line (name) is omitted
-    String data = reader.nextLine();
-    while (reader.hasNextLine()) {
-      data = reader.nextLine();
-      // End of flow data
-      if (data.equals("}")) {
-        break;
-      }
-      flowArray.add(data);
-    }
-    reader.close();
-    // Sort array alphabetically, only considering the names and not the data portion
-    String[] sortedArray = flowArray.toArray(new String[0]);
-    Arrays.sort(sortedArray, (s1, s2) -> {
-      String prefix1 = s1.split(" ")[0];
-      String prefix2 = s2.split(" ")[0];
-      return prefix1.compareTo(prefix2);
-    });
-    // Print all formatted flows
-    int count = 1;
-    for (String flow : sortedArray) {
-      System.out.print("Flow " + count + ": ");
-      System.out.println(flow);
-      count++;
-    }
-  }
->>>>>>> 08b9e3dda3b3f2e26a1ba2d617c19c4e5a3e6fe1
 }
-	  
-	  
-	  
- 
