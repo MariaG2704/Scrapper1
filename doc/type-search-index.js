@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"edu.uiowa.cs.warp","l":"VisualizationImplementation"},{"p":"edu.uiowa.cs.warp","l":"Warp"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"edu.uiowa.cs.warp","l":"Program"},{"p":"edu.uiowa.cs.warp","l":"ProgramVisualization"}];updateSearchResults();
