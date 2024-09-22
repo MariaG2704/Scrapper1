@@ -39,53 +39,72 @@ import edu.uiowa.cs.warp.Visualization.WorkLoadChoices;
  *
  */
 public class Warp {
-
-  private static final Integer NUM_CHANNELS = 16; // default number of wireless channels available
-                                                  // for scheduling (command line option)
-  private static final Double MIN_LQ = 0.9; // default minimum Link Quality in system (command line
-                                            // option)
-  private static final Double E2E = 0.99; // default end-to-end reliability for all flows (command
-                                          // line option)
+  /** 
+   * default number of wireless channels available for scheduling (command line option) 
+   * */
+  private static final Integer NUM_CHANNELS = 16; 
+  /** 
+   * default minimum Link Quality in system (command line option) 
+   * */
+  private static final Double MIN_LQ = 0.9; 
+  /** default end-to-end reliability for all flows (command line option) */
+  private static final Double E2E = 0.99; 
+  /** default output sub directory */
   private static final String DEFAULT_OUTPUT_SUB_DIRECTORY = "OutputFiles/";
+  /** default scheduler */
   private static final ScheduleChoices DEFAULT_SCHEDULER = ScheduleChoices.PRIORITY;
-  /* default number of faults to be tolerated per transmission (command-line option */
+  /** default number of faults to be tolerated per transmission (command-line option */
   private static final Integer DEFAULT_FAULTS_TOLERATED = 0;
-
-  private static Integer nChannels; // number of wireless channels available for scheduling
-  private static Integer numFaults; // number of faults tolerated per edge
-  private static Double minLQ; // global variable for minimum Link Quality in system, later we can
-                               // add local minLQ for each link
-  private static Double e2e; // global variable for minimum Link Quality in system, later we can add
-                             // local minLQ for each link
-  private static String outputSubDirectory; // default output subdirectory (from working directory)
-                                            // where output files will be placed (e.g., gv, wf, ra)
-  private static Boolean guiRequested; // Gui Visualization selected
-  private static Boolean gvRequested; // GraphVis file requested flag
-  private static Boolean wfRequested; // WARP file requested flag
-  private static Boolean raRequested; // Reliability Analysis file requested flag
-  private static Boolean laRequested; // Latency Analysis file requested flag
-  private static Boolean caRequested; // Channel Analysis file requested flag
-  private static Boolean simRequested; // Simulation file requested flag
-  private static Boolean allRequested; // all out files requested flag
-  private static Boolean latencyRequested; // latency report requested flag
+  /** number of wireless channels available for scheduling */
+  private static Integer nChannels;
+  /** number of faults tolerated per edge */
+  private static Integer numFaults; 
+  /** global variable for minimum Link Quality in system, later we can add local minLQ for each link */
+  private static Double minLQ; 
+  /** global variable for minimum Link Quality in system, later we can add local minLQ for each link */
+  private static Double e2e; 
+  /** default output sub-directory (from working directory) where output files will be placed (e.g., gv, wf, ra) */
+  private static String outputSubDirectory; 
+  /** Gui Visualization selected */
+  private static Boolean guiRequested;
+  /** GraphVis file requested flag */
+  private static Boolean gvRequested; 
+  /** WARP file requested flag */
+  private static Boolean wfRequested; 
+  /** Reliability Analysis file requested flag */
+  private static Boolean raRequested; 
+  /** Latency Analysis file requested flag */
+  private static Boolean laRequested; 
+  /** Channel Analysis file requested flag */
+  private static Boolean caRequested; 
+  /** Simulation file requested flag */
+  private static Boolean simRequested; 
+  /** all out files requested flag */
+  private static Boolean allRequested; 
+  /** latency report requested flag */
+  private static Boolean latencyRequested; 
+  /** scheduler request flag */
   private static Boolean schedulerRequested = false;
-  private static Boolean verboseMode; // verbose mode flag (mainly for running in IDE)
-  private static String inputFile; // inputFile from which the graph workload is read
-  private static ScheduleChoices schedulerSelected; // Scheduler requested
+  /** verbose mode flag (mainly for running in IDE) */
+  private static Boolean verboseMode; 
+  /** inputFile from which the graph workload is read */
+  private static String inputFile; 
+  /** Scheduler requested */
+  private static ScheduleChoices schedulerSelected; 
 
 
   public static void main(String[] args) {
-    // parse command-line options and set WARP system parameters
+    /** parse command-line options and set WARP system parameters */
     setWarpParameters(args);
 
-    // and print out the values if in verbose mode
+    /** and print out the values if in verbose mode */
     if (verboseMode) {
       printWarpParameters();
     }
 
-    // Create and visualize the workload
-    // inputFile string, which may be null,
+    /** Create and visualize the workload, inputFile string, which may be null. */
     WorkLoad workLoad = new WorkLoad(numFaults, minLQ, e2e, inputFile);
+    
     if (allRequested) {
       for (WorkLoadChoices choice : WorkLoadChoices.values()) {
         visualize(workLoad, choice); // visualize all Program choices
@@ -133,7 +152,14 @@ public class Warp {
     }
 
   }
-
+  /**
+   * Creates a visualize for workload based on specific choices sent to command line. 
+   * And prints that visualization to the consule or to a GUI,  
+   * depending on if either the verboseMode or the GUI is enabled
+   * Also places the visualization into a file 
+   * @param workLoad 
+   * @param choice 
+   */
   private static void visualize(WorkLoad workLoad, WorkLoadChoices choice) {
     var viz =
         VisualizationFactory.createVisualization(workLoad, outputSubDirectory, choice);
@@ -147,7 +173,13 @@ public class Warp {
       }
     }
   }
-
+  /**
+   * Creates a visualization of a warp based on specific choices sent to command line.
+   * If that visualization exists, send to to a file,
+   * and if GUI and scheduler equals true then display the visualization 
+   * @param warp
+   * @param choice
+   */
   private static void visualize(WarpInterface warp, SystemChoices choice) {
     var viz = VisualizationFactory.createVisualization(warp, outputSubDirectory, choice);
     if (viz != null) {
@@ -158,13 +190,22 @@ public class Warp {
       }
     }
   }
-
+  /**
+   * Verifies each of the performance requirements for a warp
+   * @param warp
+   */
   private static void verifyPerformanceRequirements(WarpInterface warp) {
     verifyDeadlines(warp);
     verifyReliabilities(warp);
     verifyNoChannelConflicts(warp);
   }
-
+  /**
+   * As long as the schedule selected is not RTHART, then this method:
+   * Verifies if all reliabilities have been met. 
+   * Prints an error if they don't  
+   * Or prints a confirmation of reliability if they are and verboseMode is on  
+   * @param warp
+   */
   private static void verifyReliabilities(WarpInterface warp) {
     if (schedulerSelected != ScheduleChoices.RTHART) {
       /* RealTime HART doesn't adhere to reliability targets */
@@ -180,7 +221,13 @@ public class Warp {
       }
     }
   }
-
+  /**
+   * Checks if deadlines of a warp have been met. 
+   * If they haven't been met, an error is printed,
+   * and a visualization of the deadline report is prompted
+   * Else if verboseMode is on deadline confirmation is printed to console 
+   * @param warp
+   */
   private static void verifyDeadlines(WarpInterface warp) {
     if (!warp.deadlinesMet()) {
       System.err.printf("\n\tERROR: Not all flows meet their deadlines under %s scheduling.\n",
@@ -191,7 +238,13 @@ public class Warp {
           schedulerSelected.toString());
     }
   }
-
+  /**
+   * Checks if there is no channel conflicts for a warp. 
+   * If there is a channel conflict then an error is printed, 
+   * and if a visualization is not requested yet then prompt a visualization of the channel 
+   * Else if verbose mode is on, an no channel conflicts confirmation is printed to console
+   * @param warp
+   */
   private static void verifyNoChannelConflicts(WarpInterface warp) {
     if (warp.toChannelAnalysis().isChannelConflict()) {
       System.err
@@ -203,7 +256,12 @@ public class Warp {
       System.out.printf("\n\tNo channel conflicts detected.\n");
     }
   }
-
+  /** 
+   * Parses command line arguments and adds various parameters for the system 
+   * The Holders store parsed variables from the command line arguments 
+   * 
+   * @param args which is an input of arguments from a command line 
+   */
   private static void setWarpParameters(String[] args) { // move command line parsing into this
                                                          // function--need to set up globals?
 
@@ -292,19 +350,30 @@ public class Warp {
     } else {
       outputSubDirectory = DEFAULT_OUTPUT_SUB_DIRECTORY; // set to default
     }
-
-    guiRequested = gui.value; // GraphVis file requested flag
-    gvRequested = gv.value; // GraphVis file requested flag
-    wfRequested = wf.value; // WARP file requested flag
-    raRequested = ra.value; // Reliability Analysis file requested flag
-    laRequested = la.value; // Latency Analysis file requested flag
-    caRequested = ca.value; // Latency Analysis file requested flag
-    simRequested = s.value; // Simulation file requested flag
-    allRequested = all.value; // all out files requested flag
-    latencyRequested = latency.value; // latency report requested flag
-    verboseMode = verbose.value; // verbose mode flag (mainly for running in IDE)
+    /** GraphVis file requested flag */
+    guiRequested = gui.value; 
+    /** GraphVis file requested flag */
+    gvRequested = gv.value; 
+    /** WARP file requested flag */
+    wfRequested = wf.value; 
+    /** Reliability Analysis file requested flag */
+    raRequested = ra.value; 
+    /** Latency Analysis file requested flag */
+    laRequested = la.value; 
+    /** Latency Analysis file requested flag */
+    caRequested = ca.value; 
+    /** Simulation file requested flag */
+    simRequested = s.value; 
+    /** all out files requested flag */
+    allRequested = all.value; 
+    /** latency report requested flag */
+    latencyRequested = latency.value; 
+    /** verbose mode flag (mainly for running in IDE) */
+    verboseMode = verbose.value; 
     // debugMode = debug.value; // debug mode flag (mainly for running in IDE)
-    inputFile = input.value; // input file specified
+    /** input file specified */
+    inputFile = input.value; 
+    
     if (schedulerSelected.value != null) { // can't switch on a null value so check then switch
       schedulerRequested = true;
       switch (schedulerSelected.value) {
