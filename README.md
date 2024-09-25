@@ -5,6 +5,10 @@ research project. It was first written in Swift and rewritten in Java. It was th
 rewritten again in an object-oriented programming style. This will serve as the play-and-testing ground for Software Development.
 Either omit the --all argument or use in conjunction with the "-sch priority" scheduler argument.
 
-HW3 Tasks: ccolin - Completed tests (to testSetFlowDeadline) <br>
+HW2 Tasks: ccolin - Completed tasks (3) Flow.java and (6) Workload.java <br>
+yongycheng - Completed tasks (4) ProgramVisualization.java and (7) Program.java <br> 
+msgauna - Completed tasks (2) Warp.java and (5) VisualizationImplementation.java
+
+HW3 Tasks: ccolin - Completed tests (from testAddValidFlow to testSetFlowDeadlineOfNonExistingFlow) <br>
 yongycheng - Completed tests (to getNodeIndex) <br>
 msgauna - Completed tests (testMaxFlowLength)

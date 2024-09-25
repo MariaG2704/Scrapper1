@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
  * Fixed a handful of indentation and grammar problems
  * Fixed incorrect usage of multi-line comments
  * Comments will be above line with asterisk, unneeded code will be double-slash
+ * Couple formatted prints contained missing object for %s or newline before period, fixed.
  */
 
 /**
@@ -346,7 +347,7 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
      */
     if (flows.containsKey(flowName)) {
       System.out.printf("\n\tWarning! A flow with name %s already exists. "
-          + "It has been replaced with a new flow\n.");
+          + "It has been replaced with a new flow.\n", flowName);
     }
     var index = flows.size();
     var flowNode = new Flow(flowName, index, index);
@@ -621,7 +622,7 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
       /* should never happen... */
     } else {
       System.out.printf("\n\tWarning! Bad situation: Flow %s doesn't exist but "
-          + "trying to get its numTxPerLink property\n.", flowName);
+          + "trying to get its numTxPerLink property.\n", flowName);
     }
   }
 
@@ -638,7 +639,7 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
       /* should never happen... */
     } else {
       System.out.printf("\n\tWarning! Bad situation: Flow %s doesn't exist but "
-          + "trying to get its numTxPerLink property\n.", flowName);
+          + "trying to get its numTxPerLink property.\n", flowName);
     }
   }
 
@@ -837,7 +838,7 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
     /* Return empty node if not found */
     if (flow == null) {
       flow = new Flow();
-      System.out.printf(FLOW_WARNING + "retrieve it\n.", flowName);
+      System.out.printf(FLOW_WARNING + "retrieve it.\n", flowName);
     }
     return flow;
   }
