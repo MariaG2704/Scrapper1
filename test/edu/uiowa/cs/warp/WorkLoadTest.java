@@ -33,7 +33,7 @@ class WorkLoadTest {
 	 */
 	@Test
 	void testAddNodeToFlow() {
-		fail("Not yet implemented");
+		fail("testAddNodeToFlow test");
 	}
 
 	/**
