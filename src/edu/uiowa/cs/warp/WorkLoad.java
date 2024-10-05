@@ -18,6 +18,8 @@ import java.util.stream.Collectors;
  * Fixed incorrect usage of multi-line comments
  * Comments will be above line with asterisk, unneeded code will be double-slash
  * Couple formatted prints contained missing object for %s or newline before period, fixed.
+ * msgauna - fixed getNumTxAttemptsPerLink and getTotalTxAttemptsInFlow methods to check if the inputed flowName is valid.
+ * Added a default if its not. 
  */
 
 /**
@@ -28,6 +30,7 @@ import java.util.stream.Collectors;
  * @author sgoddard
  * @author ccolin - modified as per HW2 instructions
  * @version 1.4
+ * @author msgauna- motified  getNumTxAttemptsPerLink and getTotalTxAttemptsInFlow methods 
  *
  */
 public class WorkLoad extends WorkLoadDescription implements ReliabilityParameters {
@@ -913,31 +916,45 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
 
   /**
    * Get the total cost of all transmission attempts in flow.
-
+   * returns -1 if the flowName doesn't exists in the workLoad 
+   * 
    * @param flowName Name of the flow
    * @return Cost of all transmissions
    */
   public Integer getTotalTxAttemptsInFlow(String flowName) {
-    var flow = getFlow(flowName);
-    var linkTxAndTotalCost = flow.getLinkTxAndTotalCost();
-    var totalCostIndex = linkTxAndTotalCost.size() - 1;
-    var totalCost = linkTxAndTotalCost.get(totalCostIndex);
+	  Integer totalCost =-1;
+	  String[] flowNames= this.getFlowNames();
+		for(int i=0; i<flowNames.length;i++) {
+			if(flowNames[i].equals(flowName)) {
+				var flow = getFlow(flowName);
+				var linkTxAndTotalCost = flow.getLinkTxAndTotalCost();
+				var totalCostIndex = linkTxAndTotalCost.size() - 1;
+				totalCost = linkTxAndTotalCost.get(totalCostIndex);
+			}
+		}
     return totalCost;
   }
 
   /**
    * Get the number of transmissions needed per link to meet E2E reliability target.
+   * returns an empty array of integers if the flowName doesn't exists in the workLoad
 
    * @param flowName Name of flow
    * @return Array of number of transmissions needed per link
    */
   public Integer[] getNumTxAttemptsPerLink(String flowName) {
-    var flow = getFlow(flowName);
-    var linkTxAndTotalCost = new ArrayList<Integer>(flow.getLinkTxAndTotalCost());
-    var lastElement = linkTxAndTotalCost.size() - 1;
-    /* Remove last element since that is the sum of the others */
-    linkTxAndTotalCost.remove(lastElement);
-    return linkTxAndTotalCost.toArray(new Integer[0]);
+	ArrayList<Integer> linkTxAndTotalCost = new ArrayList<Integer>();
+	String[] flowNames= this.getFlowNames();
+	for(int i=0; i<flowNames.length;i++) {
+		if(flowNames[i].equals(flowName)) {
+			var flow = getFlow(flowName);
+			linkTxAndTotalCost = new ArrayList<Integer>(flow.getLinkTxAndTotalCost());
+			var lastElement = linkTxAndTotalCost.size() - 1;
+			/* Remove last element since that is the sum of the others */
+			linkTxAndTotalCost.remove(lastElement);
+		}
+	}
+	return linkTxAndTotalCost.toArray(new Integer[0]);
   }
 
   /**
@@ -964,4 +981,5 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
     }
     return maxLength;
   }
-}
+ }
+
