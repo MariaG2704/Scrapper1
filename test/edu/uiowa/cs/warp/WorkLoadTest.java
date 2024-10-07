@@ -275,19 +275,44 @@ class WorkLoadTest {
 	}
 
 	/**
+	 * Test getFlowTxAttemptsPerLink with a default flow
+	 * Default number of transmissions per link is the default number of 
+	 * faults tolerated (0) plus 1. 
 	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getFlowTxAttemptsPerLink(java.lang.String)}.
 	 */
 	@Test
-	void testGetFlowTxAttemptsPerLink() {
-		fail("Not yet implemented");
+	void testGetFlowTxAttemptsPerLinkDefault() {
+		/* default flow should return value of 1 */
+		workLoad.addFlow("Flow1");
+		assertEquals(1, workLoad.getFlowTxAttemptsPerLink("Flow1"));
+	}
+	
+	/**
+	 * Test getFlowTxAttempsPerLinkNonExisting with a non-existent flow
+	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getFlowTxAttemptsPerLink(java.lang.String)}.
+	 */
+	@Test
+	void testGetFlowTxAttemptsPerLinkNonExisting() {
+		assertEquals(1, workLoad.getFlowTxAttemptsPerLink("Flow1"));
 	}
 
 	/**
+	 * Test for 
 	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#setFlowsInRMorder()}.
 	 */
 	@Test
 	void testSetFlowsInRMorder() {
-		fail("Not yet implemented");
+		workLoad.addFlow("Flow1");
+		workLoad.setFlowPeriod("Flow1", 1);
+		workLoad.setFlowPriority("Flow1", 1);
+		workLoad.addFlow("Flow2");
+		workLoad.setFlowPeriod("Flow2", 2);
+		workLoad.setFlowPriority("Flow2", 2);
+		workLoad.addFlow("Flow3");
+		workLoad.setFlowPeriod("Flow3", 3);
+		workLoad.setFlowPriority("Flow2", 3);
+		workLoad.setFlowsInRMorder();
+		fail(workLoad.getFlowNamesInPriorityOrder().toString());
 	}
 
 	/**
