@@ -92,7 +92,27 @@ This project has been modified and extended by **ccolin**, **msgauna**, and **yo
       - `testSetFlowDeadlineOfExistingFlowToZero()`
       - `testSetFlowDeadlineOfExistingFlowToNegative()`
       - `testSetFlowDeadlineOfNonExistingFlow()`
-- **msgauna & yongycheng**:
+ - **msgauna**: <br>
+  	- Edited 'workload.java' file by modifying 'getNumTxAttemptsPerLink' and 'getTotalTxAttemptsInFlow' methods to check if the inputed 			flowName is valid, added a default if its not. 
+    - Test cases for `getNodesInFlow()`:
+      - `testGetNodeInFlowOrder()`
+      - `testGetNodesInFlowDefault()`
+    - Test cases for `getHyperPeriod()`:
+      - `testGetHyperPeriodMutipleFlows()`
+      - `testGetHyperPeriodOneFlow()`
+      - `testDefaultHyperPeriod()`
+    - Test cases for `getTotalTxAttemptsInFlow()`:
+      - `testValidFlowNameForGetTotalTxAttemptInFlow()`
+      - `testUnValidFlowNameForGetTotalTxAttemptInFlow()`
+    - Test cases for `getNumTxAttemptsPerLink()`:
+      - `testGetNumTxAttemptsPerLink()`
+      - `testGetNumTxAttemptsPerLinkNonValidFlowName()`
+      - `testSetFlowPriorityOfNonExistingFlow()`
+    - Test cases for `maxFlowLength()`:
+      - `testMaxFlowLengthMutipleFlowsWithDifferentLengths()`
+      - `testMaxFlowLengthMutipleFlowsWithSameLengths()`
+      - `testMaxFlowLengthOneFlow()`
+- yongycheng**:
   - Contributions pending. Placeholder section added for their work.
 
 ---

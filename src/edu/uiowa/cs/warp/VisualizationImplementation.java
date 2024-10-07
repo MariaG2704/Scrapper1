@@ -14,8 +14,8 @@ import java.io.File;
  * Has a method that creates a visualization based on a systems choice <br>
  * Has a method that creates a filename template <br>
  * 
- * @author sgoddard <br>
- * @version 1.5 <br>
+ * @author sgoddard 
+ * @version 1.5 
  * @version 1.5.1 - Maria Gauna- added JavaDoc Comments 09/21/24 <br>
  */
 public class VisualizationImplementation implements Visualization {

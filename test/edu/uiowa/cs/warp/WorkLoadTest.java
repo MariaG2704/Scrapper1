@@ -340,43 +340,123 @@ class WorkLoadTest {
 	}
 
 	/**
+	 * Tests if the outputed flows are in order 
 	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getNodesInFlow(java.lang.String)}.
 	 */
 	@Test
-	void testGetNodesInFlow() {
-		fail("Not yet implemented");
+	void testGetNodeInFlowOrder() {
+		String[] flows = workLoad.getNodesInFlow("F1");
+		String order = flows[0]+" " + flows[1]+" "+flows[2];
+		assertEquals("B C D", order);
 	}
-
+	
 	/**
+	 * Tests if an empty string array is returned for a non valid flow name input 
+	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getNodesInFlow(java.lang.String)}.
+	 */
+	@Test
+	void testGetNodesInFlowDefault(){
+		String[] flows = workLoad.getNodesInFlow("A2"); 
+		assertEquals(0,flows.length);
+	}
+	
+	/**
+	 * Tests the hyper period of a workload with multiple flows 
 	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getHyperPeriod()}.
 	 */
 	@Test
-	void testGetHyperPeriod() {
-		fail("Not yet implemented");
+	void testGetHyperPeriodMutipleFlows() {
+		assertEquals(300,workLoad.getHyperPeriod());
 	}
-
+	
 	/**
-	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getTotalTxAttemptsInFlow(java.lang.String)}.
+	 * Tests the hyper period of a workload with one flows
+	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getHyperPeriod()}.
 	 */
 	@Test
-	void testGetTotalTxAttemptsInFlow() {
-		fail("Not yet implemented");
+	void testGetHyperPeriodOneFlow() {
+		WorkLoad workLoadOneFlow = new WorkLoad(0.9, 0.99, "LongChain.txt");
+		assertEquals(150,workLoadOneFlow.getHyperPeriod());
 	}
-
+	
 	/**
+	 * Tests if the defaulted 1 is printed out for a workLoad with no flowPeriods
+	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getHyperPeriod()}.
+	 */
+	@Test 
+	void testDefaultHyperPeriod() {
+		WorkLoad workLoadNoFlow = new WorkLoad(0.9, 0.99, "Example3.txt");
+		assertEquals(1,workLoadNoFlow.getHyperPeriod());
+	}
+	
+	/**
+	 * Test if the number of transmission attempts if correctly outputted 
+	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getTotalTxAttemptsInFlow(java.lang.String)}.
+	 */
+	@Test 
+	void testValidFlowNameForGetTotalTxAttemptInFlow() {
+		assertEquals(4,workLoad.getTotalTxAttemptsInFlow("F1"));
+	}
+	
+	/**
+	 * Tests if the default is printed out if an un-valid flow name is used as a argument 
+	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getTotalTxAttemptsInFlow(java.lang.String)}.
+	 */
+	@Test 
+	void testUnValidFlowNameForGetTotalTxAttemptInFlow() {
+		assertEquals(-1,workLoad.getTotalTxAttemptsInFlow("A12"));
+	}
+	
+	/**
+	 * Tests if the outputted integer array is correct by testing one index
 	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getNumTxAttemptsPerLink(java.lang.String)}.
 	 */
 	@Test
 	void testGetNumTxAttemptsPerLink() {
-		fail("Not yet implemented");
+		Integer[] output = workLoad.getNumTxAttemptsPerLink("F1");
+		assertEquals(3,output[0]);
 	}
-
+	
 	/**
+	 * Tests if the method getNumTxAttemptsPerLink correctly returns an empty array of integers for a non valid flow name 
+	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getNumTxAttemptsPerLink(java.lang.String)}.
+	 */
+	@Test
+	void testGetNumTxAttemptsPerLinkNonValidFlowName() {
+		Integer[] output = workLoad.getNumTxAttemptsPerLink("A12");
+		assertTrue(output.length==0);
+	}
+	
+	/**
+	 * Tests if the largest flow length is correctly outputted for a workload with multiple flows of the different lengths
 	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#maxFlowLength()}.
 	 */
 	@Test
-	void testMaxFlowLength() {
-		fail("Not yet implemented");
+	void testMaxFlowLengthMutipleFlowsWithDifferentLengths() {
+		WorkLoad workLoadWithFlowsOfDiffLengths= new WorkLoad(0.9, 0.99, "Example4.txt");
+		Integer output= workLoadWithFlowsOfDiffLengths.maxFlowLength();
+		assertEquals(4,output);
 	}
 
+	/**
+	 * Tests if the largest flow length is correctly outputted for a workload with multiple flows of the same length 
+	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#maxFlowLength()}.
+	 */
+	@Test
+	void testMaxFlowLengthMutipleFlowsWithSameLengths() {
+		Integer output= workLoad.maxFlowLength();
+		assertEquals(8,output);
+	}
+	
+	/**
+	 * Tests if the largest flow length is correctly outputted for a workload with one flows 
+	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#maxFlowLength()}.
+	 */
+	@Test
+	void testMaxFlowLengthOneFlow() {
+		 WorkLoad workLoadOneFlow = new WorkLoad(0.9, 0.99, "LongChain.txt");
+		Integer output= workLoadOneFlow.maxFlowLength();
+		assertEquals(26,output);
+	}
+	
 }
