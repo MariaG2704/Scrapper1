@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
  * Couple formatted prints contained missing object for %s or newline before period, fixed.
  * msgauna - fixed getNumTxAttemptsPerLink and getTotalTxAttemptsInFlow methods to check if the inputed flowName is valid.
  * Added a default if its not. 
+ * yongycheng - made getFlowTxAttemptsPerLink return -1 if flowName is not valid.
  */
 
 /**
@@ -30,7 +31,8 @@ import java.util.stream.Collectors;
  * @author sgoddard
  * @author ccolin - modified as per HW2 instructions
  * @version 1.4
- * @author msgauna- motified  getNumTxAttemptsPerLink and getTotalTxAttemptsInFlow methods 
+ * @author msgauna- modified  getNumTxAttemptsPerLink and getTotalTxAttemptsInFlow methods 
+ * @author yongycheng - modified getFlowTxAttemptsPerLink method
  *
  */
 public class WorkLoad extends WorkLoadDescription implements ReliabilityParameters {
@@ -496,13 +498,20 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
 
   /**
    * Get the number of transmissions per link for a given flow.
+   * 
+   * Returns -1 if invalid flowName
 
    * @param flowName Name of the flow
    * @return numTxPerLink of the flow
    */
   public Integer getFlowTxAttemptsPerLink(String flowName) {
-    var flowNode = getFlow(flowName);
-    return flowNode.numTxPerLink;
+	for(String name : this.getFlowNames()) {
+		if(name == flowName) {
+			var flowNode = getFlow(flowName);
+			return flowNode.numTxPerLink;
+		}
+	}
+    return -1;
   }
 
   /**

@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.junit.jupiter.api.AfterEach;
@@ -292,11 +291,12 @@ class WorkLoadTest {
 	
 	/**
 	 * Test getFlowTxAttempsPerLinkNonExisting with a non-existent flow
+	 * Should return -1 since Flow1 doesn't exist
 	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getFlowTxAttemptsPerLink(java.lang.String)}.
 	 */
 	@Test
 	void testGetFlowTxAttemptsPerLinkNonExisting() {
-		assertEquals(1, workLoad.getFlowTxAttemptsPerLink("Flow1"));
+		assertEquals(-1, workLoad.getFlowTxAttemptsPerLink("Flow1"));
 	}
 
 	/**
