@@ -4,10 +4,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.Map;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -307,17 +310,7 @@ class WorkLoadTest {
 	void testSetFlowsInRMorderDefault(){
 		workLoad.setFlowsInRMorder();
 		Iterator<String> iter = workLoad.getFlowNamesInPriorityOrder().iterator();
-		int prevPeriod = 0;
-		int prevPriority = 0;
-		while(iter.hasNext()) { //iterate through and assert results
-			String currentFlowName = iter.next();
-			int currentPeriod = workLoad.getFlowPeriod(currentFlowName);
-			int currentPriority = workLoad.getFlowPriority(currentFlowName);
-			assertTrue(currentPeriod >= prevPeriod, "flows not sorted by period");
-			assertTrue(currentPriority >= prevPriority, "flows not sorted by priority");
-			prevPeriod = currentPeriod;
-			prevPriority = currentPriority;
-		}
+		assertWorkloadFlows(iter); //assert results
 	}
 	
 	/**
@@ -326,25 +319,13 @@ class WorkLoadTest {
 	 * and random periods and priorities for flows.
 	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#setFlowsInRMorder()}.
 	 */
-	@Test
+	@RepeatedTest(500)
 	void testSetFlowsInRMorderStressTest() {
-		for(int i = 0; i < 1000; i++) { //repeat 500 times
-			generateRandomWorkloadFlows(); //generates random workload flows
-			workLoad.setFlowsInRMorder(); 
-			Iterator<String> iter = workLoad.getFlowNamesInPriorityOrder().iterator();
-			int prevPeriod = 0;
-			int prevPriority = 0;
-			while(iter.hasNext()) { //iterate through and assert results
-				String currentFlowName = iter.next();
-				int currentPeriod = workLoad.getFlowPeriod(currentFlowName);
-				int currentPriority = workLoad.getFlowPriority(currentFlowName);
-				assertTrue(currentPeriod >= prevPeriod, "flows not sorted by period");
-				assertTrue(currentPriority >= prevPriority, "flows not sorted by priority");
-				prevPeriod = currentPeriod;
-				prevPriority = currentPriority;
-			}
-			workLoad = new WorkLoad(0.9, 0.99, "StressTest.txt"); //reset workLoad after each iteration
-		}
+		generateRandomWorkloadFlows(); //generates random workload flows
+		workLoad.setFlowsInRMorder(); 
+		Iterator<String> iter = workLoad.getFlowNamesInPriorityOrder().iterator();
+		assertWorkloadFlows(iter); //assert resulting list
+		workLoad = new WorkLoad(0.9, 0.99, "StressTest.txt"); //reset workLoad after each iteration
 	}
 	
 	/**
@@ -361,14 +342,82 @@ class WorkLoadTest {
 		}
 	}
 	
+	/**
+	 * Helper method for all tests for setFlowsInRMorder, goes through and checks
+	 * order of all the flows and their periods and priorities.
+	 * 
+	 * @param iter - Iterator<String> for sorted flow names
+	 */
+	private void assertWorkloadFlows(Iterator<String> iter) {
+		int prevPeriod = 0;
+		int prevPriority = 0;
+		while(iter.hasNext()) { //iterate through and assert results
+			String currentFlowName = iter.next();
+			int currentPeriod = workLoad.getFlowPeriod(currentFlowName);
+			int currentPriority = workLoad.getFlowPriority(currentFlowName);
+			assertTrue(currentPeriod >= prevPeriod, "flows not sorted by period, " + "Flows: " + Arrays.toString(workLoad.getFlowNames()));
+			assertTrue(currentPriority >= prevPriority, "flows not sorted by priority, " + "Flows: " + Arrays.toString(workLoad.getFlowNames()));
+			prevPeriod = currentPeriod;
+			prevPriority = currentPriority;
+		}
+	}
 	
 
 	/**
+	 * Test method for getNodeNamesOrderedAlphabetically, uses the default workload object
 	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getNodeNamesOrderedAlphabetically()}.
 	 */
 	@Test
-	void testGetNodeNamesOrderedAlphabetically() {
-		fail("Not yet implemented");
+	void testGetNodeNamesOrderedAlphabeticallyDefault() {
+		String[] sortedNodes = workLoad.getNodeNamesOrderedAlphabetically();
+		assertWorkloadNodes(sortedNodes); //assert results
+	}
+	
+	/**
+	 * Test method for getNodeNamesOrderedAlphabetically, randomly generates nodes
+	 * in random order and numbers and asserts the result.
+	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getNodeNamesOrderedAlphabetically()}.
+	 */
+	@RepeatedTest(1000)
+	void testGetNodeNamesOrderedAlphabeticallyStressTest() {
+		generateRandomNodes();
+		String[] sortedNodes = workLoad.getNodeNamesOrderedAlphabetically();
+		assertWorkloadNodes(sortedNodes);
+		workLoad = new WorkLoad(0.9, 0.99, "StressTest.txt"); //reset workLoad after each iteration
+	}
+	
+	/**
+	 * Helper method for getNodeNamesOrderedAlphabeticallyStressTest, 
+	 * generates random length nodes in flow with random names out of 
+	 * 26 alphabet letters
+	 */
+	private void generateRandomNodes() {
+		String[] nodeNames = new String[]{"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+		workLoad.addFlow("Flow1");
+		for(int i = 0; i < Math.random()*100; i++) {
+			String nodeName = nodeNames[(int) (Math.random() * 25.99)]; //random alphabet as name
+			workLoad.addNodeToFlow("Flow1",  nodeName);
+		}
+		System.setOut(originalOut);
+		System.out.println(Arrays.toString(workLoad.getNodesInFlow("Flow1")));
+	}
+	
+	/**
+	 * Helper method for tests for getNodeNamesOrderedAlphabetically, 
+	 * loops through array and checks alphabetical order
+	 * 
+	 * @param nodes - array of node names
+	 */
+	private void assertWorkloadNodes(String[] nodes) {
+		char previousLetter = 0; //null value for char
+		
+		for(String node : nodes) {
+			char currentLetter = node.charAt(0); //get first char of nodeName
+			assertTrue(currentLetter >= previousLetter, 
+					"nodes not sorted alphabetically, "
+					+ "Displaying nodes: " + Arrays.toString(nodes));
+			previousLetter = currentLetter; //set previousLetter to current
+		}
 	}
 
 	/**
