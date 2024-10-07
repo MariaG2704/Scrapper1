@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -297,23 +300,68 @@ class WorkLoadTest {
 	}
 
 	/**
-	 * Test for 
+	 * Test for setFlowsInRMorder, tests the default workFlow object
 	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#setFlowsInRMorder()}.
 	 */
 	@Test
-	void testSetFlowsInRMorder() {
-		workLoad.addFlow("Flow1");
-		workLoad.setFlowPeriod("Flow1", 1);
-		workLoad.setFlowPriority("Flow1", 1);
-		workLoad.addFlow("Flow2");
-		workLoad.setFlowPeriod("Flow2", 2);
-		workLoad.setFlowPriority("Flow2", 2);
-		workLoad.addFlow("Flow3");
-		workLoad.setFlowPeriod("Flow3", 3);
-		workLoad.setFlowPriority("Flow2", 3);
+	void testSetFlowsInRMorderDefault(){
 		workLoad.setFlowsInRMorder();
-		fail(workLoad.getFlowNamesInPriorityOrder().toString());
+		Iterator<String> iter = workLoad.getFlowNamesInPriorityOrder().iterator();
+		int prevPeriod = 0;
+		int prevPriority = 0;
+		while(iter.hasNext()) { //iterate through and assert results
+			String currentFlowName = iter.next();
+			int currentPeriod = workLoad.getFlowPeriod(currentFlowName);
+			int currentPriority = workLoad.getFlowPriority(currentFlowName);
+			assertTrue(currentPeriod >= prevPeriod, "flows not sorted by period");
+			assertTrue(currentPriority >= prevPriority, "flows not sorted by priority");
+			prevPeriod = currentPeriod;
+			prevPriority = currentPriority;
+		}
 	}
+	
+	/**
+	 * Test for setFlowsInRMorder
+	 * Stress test that runs the function 500 times, with workLoads with random flow counts, 
+	 * and random periods and priorities for flows.
+	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#setFlowsInRMorder()}.
+	 */
+	@Test
+	void testSetFlowsInRMorderStressTest() {
+		for(int i = 0; i < 1000; i++) { //repeat 500 times
+			generateRandomWorkloadFlows(); //generates random workload flows
+			workLoad.setFlowsInRMorder(); 
+			Iterator<String> iter = workLoad.getFlowNamesInPriorityOrder().iterator();
+			int prevPeriod = 0;
+			int prevPriority = 0;
+			while(iter.hasNext()) { //iterate through and assert results
+				String currentFlowName = iter.next();
+				int currentPeriod = workLoad.getFlowPeriod(currentFlowName);
+				int currentPriority = workLoad.getFlowPriority(currentFlowName);
+				assertTrue(currentPeriod >= prevPeriod, "flows not sorted by period");
+				assertTrue(currentPriority >= prevPriority, "flows not sorted by priority");
+				prevPeriod = currentPeriod;
+				prevPriority = currentPriority;
+			}
+			workLoad = new WorkLoad(0.9, 0.99, "StressTest.txt"); //reset workLoad after each iteration
+		}
+	}
+	
+	/**
+	 * Helper method for testSetFlowsInRMorder stress test, generates random workload flows
+	 */
+	private void generateRandomWorkloadFlows() {
+		int count = 1;
+		for(int length = 0; length < Math.random()*100; length++) { //length varies 0-100 flows
+			String flowName = "Flow" + Integer.toString(count);
+			workLoad.addFlow(flowName);
+			workLoad.setFlowPeriod(flowName, (int) Math.random()*1000); //set period 0-1000 randomly
+			workLoad.setFlowPriority(flowName, (int) Math.random()*1000); //set priority 0-1000 randomly
+			count++;
+		}
+	}
+	
+	
 
 	/**
 	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getNodeNamesOrderedAlphabetically()}.
