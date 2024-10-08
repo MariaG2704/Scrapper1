@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
@@ -273,34 +273,109 @@ class WorkLoadTest {
   }
 
 	/**
+	 * Tests getFlowDeadline for all flows in StressTest.txt
 	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getFlowDeadline(java.lang.String)}.
 	 */
 	@Test
-	void testGetFlowDeadline() {
-		fail("Not yet implemented");
+	void testGetFlowDeadlineDefault() {
+		
+		int deadlineF1 = workLoad.getFlowDeadline("F1");
+		assertEquals(20, deadlineF1, "get deadline for F1 failed");
+		
+		int deadlineF2 = workLoad.getFlowDeadline("F2");
+		assertEquals(50, deadlineF2, "get deadline for F2 failed");
+		
+		int deadlineF3 = workLoad.getFlowDeadline("F3");
+		assertEquals(50, deadlineF3, "get deadline for F3 failed");
+		
+		int deadlineF4 = workLoad.getFlowDeadline("F4");
+		assertEquals(75, deadlineF4, "get deadline for F4 failed");
+		
+		int deadlineF5 = workLoad.getFlowDeadline("F5");
+		assertEquals(75, deadlineF5, "get deadline for F5 failed");
+		
+		int deadlineF6 = workLoad.getFlowDeadline("F6");
+		assertEquals(75, deadlineF6, "get deadline for F6 failed");
+		
+		int deadlineF7 = workLoad.getFlowDeadline("F7");
+		assertEquals(100, deadlineF7, "get deadline for F7 failed");
+		
+		int deadlineF8 = workLoad.getFlowDeadline("F8");
+		assertEquals(100, deadlineF8, "get deadline for F8 failed");
+		
+		int deadlineF9 = workLoad.getFlowDeadline("F9");
+		assertEquals(100, deadlineF9, "get deadline for F9 failed");
+		
+		int deadlineF10 = workLoad.getFlowDeadline("F10");
+		assertEquals(100, deadlineF10, "get deadline for F10 failed");
+		
+		int deadlineAF1 = workLoad.getFlowDeadline("AF1");
+		assertEquals(20, deadlineAF1, "get deadline for AF1 failed");
+		
+		int deadlineAF2 = workLoad.getFlowDeadline("AF2");
+		assertEquals(50, deadlineAF2, "get deadline for AF2 failed");
+		
+		int deadlineAF4 = workLoad.getFlowDeadline("AF4");
+		assertEquals(75, deadlineAF4, "get deadline for AF4 failed");
+		
+		int deadlineAF5 = workLoad.getFlowDeadline("AF5");
+		assertEquals(75, deadlineAF5, "get deadline for AF5 failed");
+		
+		int deadlineAF10 = workLoad.getFlowDeadline("AF10");
+		assertEquals(100, deadlineAF10, "get deadline for AF10 failed");
+		
 	}
 
 	/**
-	 * Test getFlowTxAttemptsPerLink with a default flow
+	 * Tests getting a deadline of a flow that does not exist, 
+	 * should return default value of 100
+	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getFlowDeadline(java.lang.String)}.
+	 */
+	@Test
+	void testGetFlowDeadlineNonExistent() {
+		
+		int deadlineNonExistent =workLoad.getFlowDeadline("not a flow");
+		assertEquals(100, deadlineNonExistent);
+	}
+	
+	/**
+	 * Test getFlowTxAttemptsPerLink with the StressTest.txt
+	 * Should all have a value of 3
+	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getFlowTxAttemptsPerLink(java.lang.String)}.
+	 */
+	@Test
+	void testGetFlowTxAttemptsPerLinkDefault() {
+		
+		assertEquals(3, workLoad.getFlowTxAttemptsPerLink("F1"), "flow F1 fail");
+		assertEquals(3, workLoad.getFlowTxAttemptsPerLink("F2"), "flow F2 fail");
+		assertEquals(3, workLoad.getFlowTxAttemptsPerLink("F3"), "flow F3 fail");
+		assertEquals(3, workLoad.getFlowTxAttemptsPerLink("F4"), "flow F4 fail");
+		assertEquals(3, workLoad.getFlowTxAttemptsPerLink("F5"), "flow F5 fail");
+		assertEquals(3, workLoad.getFlowTxAttemptsPerLink("F6"), "flow F6 fail");
+		assertEquals(3, workLoad.getFlowTxAttemptsPerLink("F7"), "flow F7 fail");
+		assertEquals(3, workLoad.getFlowTxAttemptsPerLink("F8"), "flow F8 fail");
+		assertEquals(3, workLoad.getFlowTxAttemptsPerLink("F9"), "flow F9 fail");
+		assertEquals(3, workLoad.getFlowTxAttemptsPerLink("F10"), "flow F10 fail");
+		assertEquals(3, workLoad.getFlowTxAttemptsPerLink("AF1"), "flow AF1 fail");
+		assertEquals(3, workLoad.getFlowTxAttemptsPerLink("AF2"), "flow AF2 fail");
+		assertEquals(3, workLoad.getFlowTxAttemptsPerLink("AF4"), "flow AF4 fail");
+		assertEquals(3, workLoad.getFlowTxAttemptsPerLink("AF5"), "flow AF5 fail");
+		assertEquals(3, workLoad.getFlowTxAttemptsPerLink("AF10"), "flow AF10 fail");
+		
+	}
+	
+	/**
+	 * Test getFlowTxAttempsPerLinkNonExisting with a non-existent flow
 	 * Default number of transmissions per link is the default number of 
 	 * faults tolerated (0) plus 1. 
 	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getFlowTxAttemptsPerLink(java.lang.String)}.
 	 */
 	@Test
-	void testGetFlowTxAttemptsPerLinkDefault() {
-		/* default flow should return value of 1 */
-		workLoad.addFlow("Flow1");
-		assertEquals(1, workLoad.getFlowTxAttemptsPerLink("Flow1"));
-	}
-	
-	/**
-	 * Test getFlowTxAttempsPerLinkNonExisting with a non-existent flow
-	 * Should return -1 since Flow1 doesn't exist
-	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getFlowTxAttemptsPerLink(java.lang.String)}.
-	 */
-	@Test
 	void testGetFlowTxAttemptsPerLinkNonExisting() {
-		assertEquals(-1, workLoad.getFlowTxAttemptsPerLink("Flow1"));
+		
+		/* default flow should return value of 1 */
+		workLoad = new WorkLoad(0.9, 0.99, "EmptyTest.txt");
+		assertEquals(1, workLoad.getFlowTxAttemptsPerLink("Flow1"));
 	}
 
 	/**
@@ -309,9 +384,26 @@ class WorkLoadTest {
 	 */
 	@Test
 	void testSetFlowsInRMorderDefault(){
+		
 		workLoad.setFlowsInRMorder();
 		Iterator<String> iter = workLoad.getFlowNamesInPriorityOrder().iterator();
 		assertWorkloadFlows(iter); //assert results
+		
+	}
+	
+	/**
+	 * Test for setFlowsInRMorder, tests sorting an empty WorkLoad.
+	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#setFlowsInRMorder()}.
+	 */
+	@Test
+	void testSetFlowsInRMorderEmpty(){
+		
+		workLoad = new WorkLoad(0.9, 0.99, "EmptyTest.txt");
+		ArrayList<String> expected = new ArrayList<String>();
+		workLoad.setFlowsInRMorder();
+		ArrayList<String> sortedFlows = workLoad.getFlowNamesInPriorityOrder();
+		assertTrue(expected.equals(sortedFlows), "expected empty ArrayList, result not empty.");
+		
 	}
 	
 	/**
@@ -350,6 +442,7 @@ class WorkLoadTest {
 	 * @param iter - Iterator<String> for sorted flow names
 	 */
 	private void assertWorkloadFlows(Iterator<String> iter) {
+		
 		int prevPeriod = 0;
 		int prevPriority = 0;
 		while(iter.hasNext()) { //iterate through and assert results
@@ -361,6 +454,7 @@ class WorkLoadTest {
 			prevPeriod = currentPeriod;
 			prevPriority = currentPriority;
 		}
+		
 	}
 	
 
@@ -370,8 +464,25 @@ class WorkLoadTest {
 	 */
 	@Test
 	void testGetNodeNamesOrderedAlphabeticallyDefault() {
+		
 		String[] sortedNodes = workLoad.getNodeNamesOrderedAlphabetically();
 		assertWorkloadNodes(sortedNodes); //assert results
+		
+	}
+	
+	/**
+	 * Test method for getNodeNamesOrderedAlphabetically, tests
+	 * sorting a workload with no nodes.
+	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getNodeNamesOrderedAlphabetically()}.
+	 */
+	@Test
+	void testGetNodeNamesOrderedAlphabeticallyEmpty() {
+		
+		String[] expected = new String[0];
+		workLoad = new WorkLoad(0.9,0.99,"EmptyTest.txt");
+		String[] sortedNodes = workLoad.getNodeNamesOrderedAlphabetically();
+		assertArrayEquals(expected, sortedNodes, "expected empty array");
+		
 	}
 	
 	/**
@@ -381,10 +492,12 @@ class WorkLoadTest {
 	 */
 	@RepeatedTest(500)
 	void testGetNodeNamesOrderedAlphabeticallyStressTest() {
+		
 		generateRandomNodes();
 		String[] sortedNodes = workLoad.getNodeNamesOrderedAlphabetically();
 		assertWorkloadNodes(sortedNodes);
 		workLoad = new WorkLoad(0.9, 0.99, "StressTest.txt"); //reset workLoad after each iteration
+		
 	}
 	
 	/**
@@ -400,8 +513,6 @@ class WorkLoadTest {
 			String nodeName = nodeNames[(int) (Math.random() * 25.99)]; //random alphabet as name
 			workLoad.addNodeToFlow("Flow1",  nodeName);
 		}
-		System.setOut(originalOut);
-		System.out.println(Arrays.toString(workLoad.getNodesInFlow("Flow1")));
 	}
 	
 	/**
@@ -445,6 +556,21 @@ class WorkLoadTest {
 		String[] actual = workLoad.getFlowNames();
 		Assert.assertArrayEquals(expected, actual);
 	}
+	
+	/**
+	 * Tests getFlowNames of an empty workload. Should return
+	 * an empty array
+	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getFlowNames()}.
+	 */
+	@Test
+	void testGetFlowNamesEmpty() {
+		
+		workLoad = new WorkLoad(0.9, 0.99, "EmptyTest.txt");
+		String[] expected = new String[0];
+		String[] sortedNodes = workLoad.getFlowNames();
+		Assert.assertArrayEquals(expected, sortedNodes);
+		
+	}
 
 	/**
 	 * Tests getNodeIndex with StressTest.txt nodes
@@ -452,6 +578,7 @@ class WorkLoadTest {
 	 */
 	@Test
 	void testGetNodeIndexDefault() {
+		
 		int aNode = workLoad.getNodeIndex("A");
 		int bNode = workLoad.getNodeIndex("B");
 		int cNode = workLoad.getNodeIndex("C");
@@ -482,6 +609,20 @@ class WorkLoadTest {
 		assertEquals(11, lNode, "node L fail");
 		assertEquals(15, mNode, "node M fail");
 		assertEquals(12, nNode, "node N fail");
+		
+	}
+	
+	/**
+	 * Tests getNodeIndex on a flow that does not exist, 
+	 * should return the null value 0.
+	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getNodeIndex(java.lang.String)}.
+	 */
+	@Test
+	void testGetNodeIndexNonExistent() {
+		
+		int indexNonExistent = workLoad.getNodeIndex("not a node");
+		assertEquals(0, indexNonExistent);
+		
 	}
 
 	/**
