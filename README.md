@@ -92,53 +92,52 @@ This project has been modified and extended by **ccolin**, **msgauna**, and **yo
       - `testSetFlowDeadlineOfExistingFlowToZero()`
       - `testSetFlowDeadlineOfExistingFlowToNegative()`
       - `testSetFlowDeadlineOfNonExistingFlow()`
- - **msgauna**: <br>
-  	- Edited 'workload.java' file by modifying 'getNumTxAttemptsPerLink' and 'getTotalTxAttemptsInFlow' methods to check if the inputed flowName is valid, added a default if its not. 
-    - Test cases for `getNodesInFlow()`:
-      - `testGetNodeInFlowOrder()`
-      - `testGetNodesInFlowDefault()`
-    - Test cases for `getHyperPeriod()`:
-      - `testGetHyperPeriodMutipleFlows()`
-      - `testGetHyperPeriodOneFlow()`
-      - `testDefaultHyperPeriod()`
-    - Test cases for `getTotalTxAttemptsInFlow()`:
-      - `testValidFlowNameForGetTotalTxAttemptInFlow()`
-      - `testUnValidFlowNameForGetTotalTxAttemptInFlow()`
-    - Test cases for `getNumTxAttemptsPerLink()`:
-      - `testGetNumTxAttemptsPerLink()`
-      - `testGetNumTxAttemptsPerLinkNonValidFlowName()`
-      - `testSetFlowPriorityOfNonExistingFlow()`
-    - Test cases for `maxFlowLength()`:
-      - `testMaxFlowLengthMutipleFlowsWithDifferentLengths()`
-      - `testMaxFlowLengthMutipleFlowsWithSameLengths()`
-      - `testMaxFlowLengthOneFlow()`
-- **yongycheng**:  
-  	- Edited 'workload.java' file by setting a default output value for 'getFlowTxAttemptsPerLink' for non-existent flow name inputs.
+  - **msgauna**:
+  	 - Edited `workload.java` file by modifying `getNumTxAttemptsPerLink` and `getTotalTxAttemptsInFlow` methods to check if the inputed flowName is valid, added a default if its not. 
+     - Test cases for `getNodesInFlow()`:
+       - `testGetNodeInFlowOrder()`
+       - `testGetNodesInFlowDefault()`
+     - Test cases for `getHyperPeriod()`:
+       - `testGetHyperPeriodMutipleFlows()`
+       - `testGetHyperPeriodOneFlow()`
+       - `testDefaultHyperPeriod()`
+     - Test cases for `getTotalTxAttemptsInFlow()`:
+       - `testValidFlowNameForGetTotalTxAttemptInFlow()`
+       - `testUnValidFlowNameForGetTotalTxAttemptInFlow()`
+     - Test cases for `getNumTxAttemptsPerLink()`:
+       - `testGetNumTxAttemptsPerLink()`
+       - `testGetNumTxAttemptsPerLinkNonValidFlowName()`
+     - Test cases for `maxFlowLength()`:
+       - `testMaxFlowLengthMutipleFlowsWithDifferentLengths()`
+       - `testMaxFlowLengthMutipleFlowsWithSameLengths()`
+       - `testMaxFlowLengthOneFlow()`
+  - **yongycheng**:  
+    - Edited `workload.java` file by setting a default output value for `getFlowTxAttemptsPerLink` for non-existent flow name inputs.
     - Test cases for `getFlowTxAttemptsPerLink()`:
-    - `testGetFlowTxAttemptsPerLinkDefault()`
-    - `testGetFlowTxAttemptsPerLinkNonExisting()`
+      - `testGetFlowTxAttemptsPerLinkDefault()`
+      - `testGetFlowTxAttemptsPerLinkNonExisting()`
     - Test cases for `setFlowsInRMorder()`:
-    - `testSetFlowsInRMorderDefault()`
-    - `testSetFlowsInRMorderEmpty()`
-    - `testSetFlowsInRMorderStressTest()`
+      - `testSetFlowsInRMorderDefault()`
+      - `testSetFlowsInRMorderEmpty()`
+      - `testSetFlowsInRMorderStressTest()`
         - `generateRandomWorkloadFlows()`
         - `assertWorkloadFlows(Iterator<String> iter)`
     - Test cases for `getNodeNamesOrderedAlphabetically()`:
-    - `testGetNodeNamesOrderedAlphabeticallyDefault()`
-    - `testGetNodeNamesOrderedAlphabeticallyEmpty()`
-    - `testGetNodeNamesOrderedAlphabeticallyStressTest()`
+      - `testGetNodeNamesOrderedAlphabeticallyDefault()`
+      - `testGetNodeNamesOrderedAlphabeticallyEmpty()`
+      - `testGetNodeNamesOrderedAlphabeticallyStressTest()`
         - `generateRandomNodes()`
         - `assertWorkloadNodes(String[] nodes)`
     - Test cases for `getFlowNames()`:
-    - `testGetFlowNames1()`
-    - `testGetFlowNames2()`
-    - `testGetFlowNamesEmpty()`
+      - `testGetFlowNames1()`
+      - `testGetFlowNames2()`
+      - `testGetFlowNamesEmpty()`
     - Test cases for `getNodeIndex()`:
-    - `testGetNodeIndexDefault()`
-    - `testGetNodeIndexNonExistent()`
+      - `testGetNodeIndexDefault()`
+      - `testGetNodeIndexNonExistent()`
     - Test cases for `getFlowDeadline()`:
-    - `testGetFlowDeadlineDefault()`
-    - `testGetFlowDeadlineNonExistent()`
+      - `testGetFlowDeadlineDefault()`
+      - `testGetFlowDeadlineNonExistent()`
         
 
   		
