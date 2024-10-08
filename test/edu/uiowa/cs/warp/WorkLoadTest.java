@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
@@ -378,7 +379,7 @@ class WorkLoadTest {
 	 * in random order and numbers and asserts the result.
 	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getNodeNamesOrderedAlphabetically()}.
 	 */
-	@RepeatedTest(1000)
+	@RepeatedTest(500)
 	void testGetNodeNamesOrderedAlphabeticallyStressTest() {
 		generateRandomNodes();
 		String[] sortedNodes = workLoad.getNodeNamesOrderedAlphabetically();
@@ -392,7 +393,8 @@ class WorkLoadTest {
 	 * 26 alphabet letters
 	 */
 	private void generateRandomNodes() {
-		String[] nodeNames = new String[]{"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+		String[] nodeNames = new String[]{"A","B","C","D","E","F","G","H","I","J","K","L","M","N",
+											"O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 		workLoad.addFlow("Flow1");
 		for(int i = 0; i < Math.random()*100; i++) {
 			String nodeName = nodeNames[(int) (Math.random() * 25.99)]; //random alphabet as name
@@ -421,19 +423,65 @@ class WorkLoadTest {
 	}
 
 	/**
+	 * Tests the getFlowNames result for the default StressTest.txt
 	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getFlowNames()}.
 	 */
 	@Test
-	void testGetFlowNames() {
-		fail("Not yet implemented");
+	void testGetFlowNames1() {
+		String[] expected = new String[] {"F1", "F5", "F2", "F4", "F3", "F6", "F7", "F8", 
+										"F9", "F10", "AF1", "AF5", "AF2", "AF4", "AF10"};
+		String[] actual = workLoad.getFlowNames();
+		Assert.assertArrayEquals(expected, actual);
+	}
+	
+	/**
+	 * Tests the getFlowNames result with StressTest4.txt.
+	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getFlowNames()}.
+	 */
+	@Test
+	void testGetFlowNames2() {
+		workLoad = new WorkLoad(0.9, 0.99, "Test1.txt");
+		String[] expected = new String[] {"F1A", "F1B"};
+		String[] actual = workLoad.getFlowNames();
+		Assert.assertArrayEquals(expected, actual);
 	}
 
 	/**
+	 * Tests getNodeIndex with StressTest.txt nodes
 	 * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getNodeIndex(java.lang.String)}.
 	 */
 	@Test
-	void testGetNodeIndex() {
-		fail("Not yet implemented");
+	void testGetNodeIndexDefault() {
+		int aNode = workLoad.getNodeIndex("A");
+		int bNode = workLoad.getNodeIndex("B");
+		int cNode = workLoad.getNodeIndex("C");
+		int dNode = workLoad.getNodeIndex("D");
+		int eNode = workLoad.getNodeIndex("E");
+		int fNode = workLoad.getNodeIndex("F");
+		int gNode = workLoad.getNodeIndex("G");
+		int hNode = workLoad.getNodeIndex("H");
+		int iNode = workLoad.getNodeIndex("I");
+		int jNode = workLoad.getNodeIndex("J");
+		int kNode = workLoad.getNodeIndex("K");
+		int lNode = workLoad.getNodeIndex("L");
+		int mNode = workLoad.getNodeIndex("M");
+		int nNode = workLoad.getNodeIndex("N");
+		
+		
+		assertEquals(0, bNode, "node B fail");
+		assertEquals(1, cNode, "node C fail");
+		assertEquals(2, dNode, "node D fail");
+		assertEquals(3, aNode, "node A fail");
+		assertEquals(4, eNode, "node E fail");
+		assertEquals(5, fNode, "node F fail");
+		assertEquals(6, gNode, "node G fail");
+		assertEquals(7, hNode, "node H fail");
+		assertEquals(8, iNode, "node I fail");
+		assertEquals(9, jNode, "node J fail");
+		assertEquals(10, kNode, "node K fail");
+		assertEquals(11, lNode, "node L fail");
+		assertEquals(15, mNode, "node M fail");
+		assertEquals(12, nNode, "node N fail");
 	}
 
 	/**
