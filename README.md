@@ -19,6 +19,11 @@ WARP is interacted with via the command line interface (CLI). The primary comman
 
 This project has been modified and extended by **ccolin**, **msgauna**, and **yongycheng** as part of Steve Goddard's Software Development course.
 *The above details of WARP's architecture and features are based on the officially released paper by Ryan Brummet, Md Kowsar Hossain, Octav Chipara, Ted Herman, and Steve Goddard, presented at IPSN '21.*
+
+## README Disclaimer
+
+Please be aware that Eclipse's markdown file previewer does not appear to be a WYSIWYG (What You See Is What You Get) markdown editor, as markdown formatting does not correctly parse (i.e. doesn't show correct amount of bullet point indentation level). When considering the README.md, please read it as it is parsed by GitLab, not by Eclipse. It looks much prettier and understandable when formatting is parsed correctly.
+
 ---
 
 ## Homework Assignments
