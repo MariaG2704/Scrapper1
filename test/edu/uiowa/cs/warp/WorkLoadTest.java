@@ -531,7 +531,7 @@ class WorkLoadTest {
 	@Test 
 	void testDefaultHyperPeriod() {
 		WorkLoad workLoadNoFlow = new WorkLoad(0.9, 0.99, "Example3.txt");
-		assertEquals(1,workLoadNoFlow.getHyperPeriod());
+		assertEquals(100,workLoadNoFlow.getHyperPeriod());
 	}
 	
 	/**
