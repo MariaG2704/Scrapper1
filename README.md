@@ -70,7 +70,7 @@ Please be aware that Eclipse's markdown file previewer does not appear to be a W
       - `getNodeMapIndex()`
       - `toWorkLoad()`
 
-### HW3: JUnit 5 Testing (Contributions by ccolin, placeholders for msgauna and yongycheng)
+### HW3: JUnit 5 Testing (Contributions by ccolin, msgauna, yongycheng)
 - **Objective**: Develop, comment, and execute JUnit 5 test cases for `WorkLoad.java`.
 - **Contributions**:
   - **ccolin**:
