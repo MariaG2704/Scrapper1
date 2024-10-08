@@ -496,15 +496,15 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
 
   /**
    * Get the number of transmissions per link for a given flow.
-   * 
+
    * Returns -1 if invalid flowName
 
    * @param flowName Name of the flow
    * @return numTxPerLink of the flow
    */
   public Integer getFlowTxAttemptsPerLink(String flowName) {
-		var flowNode = getFlow(flowName);
-		return flowNode.numTxPerLink;
+    var flowNode = getFlow(flowName);
+    return flowNode.numTxPerLink;
   }
 
   /**
@@ -919,21 +919,21 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
   /**
    * Get the total cost of all transmission attempts in flow.
    * returns -1 if the flowName doesn't exists in the workLoad 
-   * 
+
    * @param flowName Name of the flow
    * @return Cost of all transmissions
    */
   public Integer getTotalTxAttemptsInFlow(String flowName) {
-	  Integer totalCost =-1;
-	  String[] flowNames= this.getFlowNames();
-		for(int i=0; i<flowNames.length;i++) {
-			if(flowNames[i].equals(flowName)) {
-				var flow = getFlow(flowName);
-				var linkTxAndTotalCost = flow.getLinkTxAndTotalCost();
-				var totalCostIndex = linkTxAndTotalCost.size() - 1;
-				totalCost = linkTxAndTotalCost.get(totalCostIndex);
-			}
-		}
+    Integer totalCost = -1;
+    String[] flowNames = this.getFlowNames();
+    for (int i = 0; i < flowNames.length; i++) {
+      if (flowNames[i].equals(flowName)) {
+        var flow = getFlow(flowName);
+        var linkTxAndTotalCost = flow.getLinkTxAndTotalCost();
+        var totalCostIndex = linkTxAndTotalCost.size() - 1;
+        totalCost = linkTxAndTotalCost.get(totalCostIndex);
+      }
+    }
     return totalCost;
   }
 
@@ -945,18 +945,18 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
    * @return Array of number of transmissions needed per link
    */
   public Integer[] getNumTxAttemptsPerLink(String flowName) {
-	ArrayList<Integer> linkTxAndTotalCost = new ArrayList<Integer>();
-	String[] flowNames= this.getFlowNames();
-	for(int i=0; i<flowNames.length;i++) {
-		if(flowNames[i].equals(flowName)) {
-			var flow = getFlow(flowName);
-			linkTxAndTotalCost = new ArrayList<Integer>(flow.getLinkTxAndTotalCost());
-			var lastElement = linkTxAndTotalCost.size() - 1;
-			/* Remove last element since that is the sum of the others */
-			linkTxAndTotalCost.remove(lastElement);
-		}
-	}
-	return linkTxAndTotalCost.toArray(new Integer[0]);
+    ArrayList<Integer> linkTxAndTotalCost = new ArrayList<Integer>();
+    String[] flowNames = this.getFlowNames();
+    for (int i = 0; i < flowNames.length; i++) {
+      if (flowNames[i].equals(flowName)) {
+        var flow = getFlow(flowName);
+        linkTxAndTotalCost = new ArrayList<Integer>(flow.getLinkTxAndTotalCost());
+        var lastElement = linkTxAndTotalCost.size() - 1;
+        /* Remove last element since that is the sum of the others */
+        linkTxAndTotalCost.remove(lastElement);
+      }
+    }
+    return linkTxAndTotalCost.toArray(new Integer[0]);
   }
 
   /**
@@ -982,6 +982,6 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
       maxLength = Math.max(maxLength, flow.nodes.size());
     }
     return maxLength;
-  }
- }
+  }  
+}
 
