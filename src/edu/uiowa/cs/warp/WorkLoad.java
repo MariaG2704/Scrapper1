@@ -17,6 +17,9 @@ import java.util.stream.Collectors;
  * Fixed a handful of indentation and grammar problems
  * Fixed incorrect usage of multi-line comments
  * Comments will be above line with asterisk, unneeded code will be double-slash
+ * Couple formatted prints contained missing object for %s or newline before period, fixed.
+ * msgauna - fixed getNumTxAttemptsPerLink and getTotalTxAttemptsInFlow methods to check if the inputed flowName is valid.
+ * Added a default if its not. 
  */
 
 /**
@@ -27,6 +30,7 @@ import java.util.stream.Collectors;
  * @author sgoddard
  * @author ccolin - modified as per HW2 instructions
  * @version 1.4
+ * @author msgauna- modified  getNumTxAttemptsPerLink and getTotalTxAttemptsInFlow methods 
  *
  */
 public class WorkLoad extends WorkLoadDescription implements ReliabilityParameters {
@@ -346,7 +350,7 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
      */
     if (flows.containsKey(flowName)) {
       System.out.printf("\n\tWarning! A flow with name %s already exists. "
-          + "It has been replaced with a new flow\n.");
+          + "It has been replaced with a new flow.\n", flowName);
     }
     var index = flows.size();
     var flowNode = new Flow(flowName, index, index);
@@ -493,6 +497,8 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
   /**
    * Get the number of transmissions per link for a given flow.
 
+   * Returns -1 if invalid flowName
+
    * @param flowName Name of the flow
    * @return numTxPerLink of the flow
    */
@@ -621,7 +627,7 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
       /* should never happen... */
     } else {
       System.out.printf("\n\tWarning! Bad situation: Flow %s doesn't exist but "
-          + "trying to get its numTxPerLink property\n.", flowName);
+          + "trying to get its numTxPerLink property.\n", flowName);
     }
   }
 
@@ -638,7 +644,7 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
       /* should never happen... */
     } else {
       System.out.printf("\n\tWarning! Bad situation: Flow %s doesn't exist but "
-          + "trying to get its numTxPerLink property\n.", flowName);
+          + "trying to get its numTxPerLink property.\n", flowName);
     }
   }
 
@@ -837,7 +843,7 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
     /* Return empty node if not found */
     if (flow == null) {
       flow = new Flow();
-      System.out.printf(FLOW_WARNING + "retrieve it\n.", flowName);
+      System.out.printf(FLOW_WARNING + "retrieve it.\n", flowName);
     }
     return flow;
   }
@@ -912,30 +918,44 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
 
   /**
    * Get the total cost of all transmission attempts in flow.
+   * returns -1 if the flowName doesn't exists in the workLoad 
 
    * @param flowName Name of the flow
    * @return Cost of all transmissions
    */
   public Integer getTotalTxAttemptsInFlow(String flowName) {
-    var flow = getFlow(flowName);
-    var linkTxAndTotalCost = flow.getLinkTxAndTotalCost();
-    var totalCostIndex = linkTxAndTotalCost.size() - 1;
-    var totalCost = linkTxAndTotalCost.get(totalCostIndex);
+    Integer totalCost = -1;
+    String[] flowNames = this.getFlowNames();
+    for (int i = 0; i < flowNames.length; i++) {
+      if (flowNames[i].equals(flowName)) {
+        var flow = getFlow(flowName);
+        var linkTxAndTotalCost = flow.getLinkTxAndTotalCost();
+        var totalCostIndex = linkTxAndTotalCost.size() - 1;
+        totalCost = linkTxAndTotalCost.get(totalCostIndex);
+      }
+    }
     return totalCost;
   }
 
   /**
    * Get the number of transmissions needed per link to meet E2E reliability target.
+   * returns an empty array of integers if the flowName doesn't exists in the workLoad
 
    * @param flowName Name of flow
    * @return Array of number of transmissions needed per link
    */
   public Integer[] getNumTxAttemptsPerLink(String flowName) {
-    var flow = getFlow(flowName);
-    var linkTxAndTotalCost = new ArrayList<Integer>(flow.getLinkTxAndTotalCost());
-    var lastElement = linkTxAndTotalCost.size() - 1;
-    /* Remove last element since that is the sum of the others */
-    linkTxAndTotalCost.remove(lastElement);
+    ArrayList<Integer> linkTxAndTotalCost = new ArrayList<Integer>();
+    String[] flowNames = this.getFlowNames();
+    for (int i = 0; i < flowNames.length; i++) {
+      if (flowNames[i].equals(flowName)) {
+        var flow = getFlow(flowName);
+        linkTxAndTotalCost = new ArrayList<Integer>(flow.getLinkTxAndTotalCost());
+        var lastElement = linkTxAndTotalCost.size() - 1;
+        /* Remove last element since that is the sum of the others */
+        linkTxAndTotalCost.remove(lastElement);
+      }
+    }
     return linkTxAndTotalCost.toArray(new Integer[0]);
   }
 
@@ -962,5 +982,6 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
       maxLength = Math.max(maxLength, flow.nodes.size());
     }
     return maxLength;
-  }
+  }  
 }
+
