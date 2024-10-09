@@ -485,8 +485,7 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
 
   /**
    * Get the phase of a given flow.
-
-   * @param flowName Name of the flow
+u90
    * @return Phase of the flow
    */
   public Integer getFlowPhase(String flowName) {
