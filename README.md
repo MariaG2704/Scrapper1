@@ -115,7 +115,6 @@ Please be aware that Eclipse's markdown file previewer does not appear to be a W
       - `testGetNumTxAttemptsPerLink()`
       - `testGetNumTxAttemptsPerLinkNonValidFlowName()`
       - `testSetFlowPriorityOfNonExistingFlow()`
-      - `testGetNumTxAttemptsPerLinkOneFlow()`
     - Test cases for `maxFlowLength()`:
       - `testMaxFlowLengthMutipleFlowsWithDifferentLengths()`
       - `testMaxFlowLengthMutipleFlowsWithSameLengths()`

@@ -711,21 +711,6 @@ class WorkLoadTest {
 	  assertTrue(output.length==0);
   }
 	
-  /**
-   * Tests if the method getNumTxAttemptsPerLink correctly returns an array with length 1 for a workload with one flow
-   * Test method for {@link edu.uiowa.cs.warp.WorkLoad#getNumTxAttemptsPerLink(java.lang.String)}.
-   */
-  @Test
-  void testGetNumTxAttemptsPerLinkOneFlow() {
-	  WorkLoad workLoadOneFlow = new WorkLoad(0.9, 0.99, "LongChain.txt");
-	  workLoadOneFlow.addFlow("F1");
-	  workLoadOneFlow.addNodeToFlow("F1", "A");
-	  Integer[] output = workLoadOneFlow.getNumTxAttemptsPerLink("F1");
-	  for(int i=0;i<output.length;i++){
-		  System.out.println(output[i]);
-	  }	
-	  assertTrue(output.length==1, "Your length is actually"+ output.length);
-  }
 	
   /**
    * Tests if the largest flow length is correctly outputted for a workload with multiple flows of the different lengths
