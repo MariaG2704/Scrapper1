@@ -93,6 +93,9 @@
     <targetRole xmi:id="_txKV7oZXEe-bUZ-w3fFkrg" aggregationKind="NONE" name="flowNamesInOriginalOrder" navigable="true">
       <modelElement href="WorkLoad.uml#_sAN8soZXEe-bUZ-w3fFkrg"/>
       <visualProperties xmi:id="_CEHRsoZYEe-bUZ-w3fFkrg" position="-82.0,-82.0"/>
+      <stereotypes xmi:id="_cBJ_EIvVEe-33faTEbFp4w" name="Generics">
+        <modelElement href="WorkLoad.uml#_sAN8s4ZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_txKV74ZXEe-bUZ-w3fFkrg" label="+"/>
       <cardinality xmi:id="_txKV8IZXEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -115,6 +118,9 @@
     <targetRole xmi:id="_txKV94ZXEe-bUZ-w3fFkrg" aggregationKind="NONE" name="flowNamesInPriorityOrder" navigable="true">
       <modelElement href="WorkLoad.uml#_sAN8tYZXEe-bUZ-w3fFkrg"/>
       <visualProperties xmi:id="_CEHRtYZYEe-bUZ-w3fFkrg" position="-106.0,41.0"/>
+      <stereotypes xmi:id="_cBJ_EYvVEe-33faTEbFp4w" name="Generics">
+        <modelElement href="WorkLoad.uml#_sAN8toZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_txKV-IZXEe-bUZ-w3fFkrg" label="+"/>
       <cardinality xmi:id="_txKV-YZXEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -142,6 +148,9 @@
     </sourceRole>
     <targetRole xmi:id="_ucQhVoZXEe-bUZ-w3fFkrg" aggregationKind="NONE" name="description" navigable="true">
       <modelElement href="WorkLoad.uml#_sAPK0YZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBKmIIvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sAPK0oZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_ucQhV4ZXEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_ucQhWIZXEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -159,6 +168,9 @@
     </sourceRole>
     <targetRole xmi:id="_ucRIYIZXEe-bUZ-w3fFkrg" aggregationKind="NONE" name="fm" navigable="true">
       <modelElement href="WorkLoad.uml#_sAPK1YZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBKmIYvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sAPK1oZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_ucRIYYZXEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_ucRIYoZXEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -181,6 +193,9 @@
     <targetRole xmi:id="_BlFMUIZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="workLoad" navigable="true">
       <modelElement href="WorkLoad.uml#_r_5MloZXEe-bUZ-w3fFkrg"/>
       <visualProperties xmi:id="_CD_884ZYEe-bUZ-w3fFkrg" position="-51.0,-43.0"/>
+      <stereotypes xmi:id="_cBLNMIvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_r_5Ml4ZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlGad4ZYEe-bUZ-w3fFkrg" label="~"/>
       <cardinality xmi:id="_BlGadoZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -199,6 +214,9 @@
     </sourceRole>
     <targetRole xmi:id="_BlGacoZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="wfm" navigable="true">
       <modelElement href="WorkLoad.uml#_r_5MkIZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBLNMYvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_r_5MkYZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlHBg4ZYEe-bUZ-w3fFkrg" label="~"/>
       <cardinality xmi:id="_BlHBgoZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -221,6 +239,9 @@
     <targetRole xmi:id="_BlJdwoZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="workload" navigable="true">
       <modelElement href="WorkLoad.uml#_r_-FHIZXEe-bUZ-w3fFkrg"/>
       <visualProperties xmi:id="_CEAkAoZYEe-bUZ-w3fFkrg" position="-17.0,2.0"/>
+      <stereotypes xmi:id="_cBLNMovVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_r_-sIIZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlKr5oZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlKr5YZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -239,6 +260,9 @@
     </sourceRole>
     <targetRole xmi:id="_BlKr4YZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="latencyReport" navigable="true">
       <modelElement href="WorkLoad.uml#_r_-FGIZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBL0QIvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_r_-FGYZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlLS8oZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlLS8YZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -260,6 +284,9 @@
     <targetRole xmi:id="_BlL6BoZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="program" navigable="true">
       <modelElement href="WorkLoad.uml#_r_-FGoZXEe-bUZ-w3fFkrg"/>
       <visualProperties xmi:id="_CEByIIZYEe-bUZ-w3fFkrg" position="-41.0,-82.0"/>
+      <stereotypes xmi:id="_cBL0QYvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_r_-FG4ZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlL6B4ZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlL6CIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -277,6 +304,9 @@
     </sourceRole>
     <targetRole xmi:id="_BlL6D4ZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="programTable" navigable="true">
       <modelElement href="WorkLoad.uml#_r_-sIYZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBL0QovVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_r_-sIoZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlL6EIZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlL6EYZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -294,6 +324,12 @@
     </sourceRole>
     <targetRole xmi:id="_BlMhFoZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="nodeIndex" navigable="true">
       <modelElement href="WorkLoad.uml#_r_-sI4ZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBMbUIvVEe-33faTEbFp4w" name="Generics">
+        <modelElement href="WorkLoad.uml#_r_-sJIZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_cBMbUYvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_r_-sJYZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlMhF4ZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlMhGIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -316,6 +352,9 @@
     <targetRole xmi:id="_BlNvNIZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="workload" navigable="true">
       <modelElement href="WorkLoad.uml#_r__6S4ZXEe-bUZ-w3fFkrg"/>
       <visualProperties xmi:id="_CECZMYZYEe-bUZ-w3fFkrg" position="-110.0,2.0"/>
+      <stereotypes xmi:id="_cBMbUovVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sAAhUIZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlPkY4ZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlPkYoZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -334,6 +373,9 @@
     </sourceRole>
     <targetRole xmi:id="_BlPkZ4ZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="flows" navigable="true">
       <modelElement href="WorkLoad.uml#_sAAhUYZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBNCYIvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sAAhVYZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlQyg4ZYEe-bUZ-w3fFkrg" label="#"/>
       <cardinality xmi:id="_BlQygoZYEe-bUZ-w3fFkrg" label="1..*" max="-1" min="1"/>
     </targetRole>
@@ -355,6 +397,9 @@
     <targetRole xmi:id="_BlQLcYZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="nodeMap" navigable="true">
       <modelElement href="WorkLoad.uml#_sAAhW4ZXEe-bUZ-w3fFkrg"/>
       <visualProperties xmi:id="_CEDAQYZYEe-bUZ-w3fFkrg" position="-86.0,2.0000000000000036"/>
+      <stereotypes xmi:id="_cBNCYYvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sAAhXIZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlQyiIZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlQyh4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -372,6 +417,12 @@
     </sourceRole>
     <targetRole xmi:id="_BlQLdYZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="nodeConnectivityMap" navigable="true">
       <modelElement href="WorkLoad.uml#_sABIYIZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBNCYovVEe-33faTEbFp4w" name="Generics">
+        <modelElement href="WorkLoad.uml#_sABIYYZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_cBNCY4vVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sABIYoZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlQyjYZYEe-bUZ-w3fFkrg" label="#"/>
       <cardinality xmi:id="_BlQyjIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -394,6 +445,9 @@
     </sourceRole>
     <targetRole xmi:id="_BlRZloZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="activations" navigable="true">
       <modelElement href="WorkLoad.uml#_r__6SYZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBNpcIvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_r__6SoZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlRZl4ZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlRZmIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -411,6 +465,9 @@
     </sourceRole>
     <targetRole xmi:id="_BlSApoZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="nodes" navigable="true">
       <modelElement href="WorkLoad.uml#_sAAhVoZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBNpcYvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sAAhWoZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlSAp4ZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlSAqIZYEe-bUZ-w3fFkrg" label="1..*" max="-1" min="1"/>
     </targetRole>
@@ -428,6 +485,12 @@
     </sourceRole>
     <targetRole xmi:id="_BlSntoZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="priorityQueue" navigable="true">
       <modelElement href="WorkLoad.uml#_sAAhXYZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBOQgIvVEe-33faTEbFp4w" name="Generics">
+        <modelElement href="WorkLoad.uml#_sAAhXoZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_cBOQgYvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sAAhX4ZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlSnt4ZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlSnuIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -445,6 +508,9 @@
     </sourceRole>
     <targetRole xmi:id="_BlSnv4ZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="activationMap" navigable="true">
       <modelElement href="WorkLoad.uml#_sABIY4ZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBOQgovVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sABIZIZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlSnwIZYEe-bUZ-w3fFkrg" label="~"/>
       <cardinality xmi:id="_BlSnwYZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -467,6 +533,9 @@
     <targetRole xmi:id="_BlUc4YZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="workLoad" navigable="true">
       <modelElement href="WorkLoad.uml#_sABvdoZXEe-bUZ-w3fFkrg"/>
       <visualProperties xmi:id="_CEDARIZYEe-bUZ-w3fFkrg" position="52.0,2.000000000000057"/>
+      <stereotypes xmi:id="_cBO3kIvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sABvd4ZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlW5IYZYEe-bUZ-w3fFkrg" label="~"/>
       <cardinality xmi:id="_BlW5IIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -485,6 +554,9 @@
     </sourceRole>
     <targetRole xmi:id="_BlW5JYZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="scheduleBuilt" navigable="true">
       <modelElement href="WorkLoad.uml#_sABveIZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBO3kYvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sABveYZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlYHQ4ZYEe-bUZ-w3fFkrg" label="~"/>
       <cardinality xmi:id="_BlYHQoZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -502,6 +574,9 @@
     </sourceRole>
     <targetRole xmi:id="_BlW5KYZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="deadlineMisses" navigable="true">
       <modelElement href="WorkLoad.uml#_sAC9kYZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBO3kovVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sAC9koZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlYHSIZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlYHR4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -522,6 +597,9 @@
     </sourceRole>
     <targetRole xmi:id="_BlYuVoZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="SchedulerSelected" navigable="true">
       <modelElement href="WorkLoad.uml#_sABveoZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBPeoIvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sABve4ZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlYuV4ZYEe-bUZ-w3fFkrg" label="~"/>
       <cardinality xmi:id="_BlYuWIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -539,6 +617,9 @@
     </sourceRole>
     <targetRole xmi:id="_BlZVZoZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="channelsAvailable" navigable="true">
       <modelElement href="WorkLoad.uml#_sACWhoZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBQFsIvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sACWh4ZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlZVZ4ZYEe-bUZ-w3fFkrg" label="~"/>
       <cardinality xmi:id="_BlZVaIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -561,6 +642,9 @@
     <targetRole xmi:id="_BlbKl4ZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="workLoad" navigable="true">
       <modelElement href="WorkLoad.uml#_sAHPAoZXEe-bUZ-w3fFkrg"/>
       <visualProperties xmi:id="_CEEOYYZYEe-bUZ-w3fFkrg" position="-51.0,-43.0"/>
+      <stereotypes xmi:id="_cBQFsYvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sAHPBIZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlcYw4ZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlcYwoZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -579,6 +663,9 @@
     </sourceRole>
     <targetRole xmi:id="_BlcYsoZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="visualization" navigable="true">
       <modelElement href="WorkLoad.uml#_sAGA6IZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBQswIvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sAGn8IZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_Blc_w4ZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_Blc_woZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -596,6 +683,9 @@
     </sourceRole>
     <targetRole xmi:id="_BlcYtoZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="fileContent" navigable="true">
       <modelElement href="WorkLoad.uml#_sAGn8YZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBRT0IvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sAGn8oZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_Blc_yIZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_Blc_x4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -613,6 +703,9 @@
     </sourceRole>
     <targetRole xmi:id="_BlcYuoZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="fm" navigable="true">
       <modelElement href="WorkLoad.uml#_sAGn-4ZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBR64IvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sAGn_YZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_Blc_zYZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_Blc_zIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -630,6 +723,9 @@
     </sourceRole>
     <targetRole xmi:id="_BlcYvoZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="warp" navigable="true">
       <modelElement href="WorkLoad.uml#_sAGn_oZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBSh8IvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sAHPAYZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_Bldm0YZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_Bldm0IZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -652,6 +748,9 @@
     </sourceRole>
     <targetRole xmi:id="_BleN5oZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="window" navigable="true">
       <modelElement href="WorkLoad.uml#_sAGn84ZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBSh8YvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sAGn9IZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BleN54ZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BleN6IZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -669,6 +768,9 @@
     </sourceRole>
     <targetRole xmi:id="_BleN74ZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="visualizationObject" navigable="true">
       <modelElement href="WorkLoad.uml#_sAHPBYZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBTJAIvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sAHPBoZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BleN8IZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BleN8YZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -690,6 +792,9 @@
     <targetRole xmi:id="_BlfcBoZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="program" navigable="true">
       <modelElement href="WorkLoad.uml#_sALgdYZXEe-bUZ-w3fFkrg"/>
       <visualProperties xmi:id="_CEEOZIZYEe-bUZ-w3fFkrg" position="5.0,-82.0"/>
+      <stereotypes xmi:id="_cBTJAYvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sALgdoZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlgqI4ZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlgqIoZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -712,6 +817,9 @@
     <targetRole xmi:id="_BlfcCoZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="workLoad" navigable="true">
       <modelElement href="WorkLoad.uml#_sALgd4ZXEe-bUZ-w3fFkrg"/>
       <visualProperties xmi:id="_CEE1coZYEe-bUZ-w3fFkrg" position="60.0,2.0"/>
+      <stereotypes xmi:id="_cBTJAovVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sALgeIZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlhRMoZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlhRMYZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -733,11 +841,14 @@
     <targetRole xmi:id="_BlfcDoZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="la" navigable="true">
       <modelElement href="WorkLoad.uml#_sAMHgoZXEe-bUZ-w3fFkrg"/>
       <visualProperties xmi:id="_CEFcgYZYEe-bUZ-w3fFkrg" position="22.0,1.9999999999998863"/>
+      <stereotypes xmi:id="_cBTwEIvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sAMHg4ZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlhRN4ZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlhRNoZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
   </edges>
-  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_BlfcAoZYEe-bUZ-w3fFkrg" targetItem="_BlkUgIZYEe-bUZ-w3fFkrg" sourceItem="_BlfcAYZYEe-bUZ-w3fFkrg"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_BlfcAoZYEe-bUZ-w3fFkrg" targetItem="_BlkUgIZYEe-bUZ-w3fFkrg"/>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_BlfcA4ZYEe-bUZ-w3fFkrg" dashed="true" subClass="_BlkUgIZYEe-bUZ-w3fFkrg">
     <modelElement href="WorkLoad.uml#_r-8KUIZXEe-bUZ-w3fFkrg"/>
   </edges>
@@ -755,6 +866,9 @@
     </sourceRole>
     <targetRole xmi:id="_BljtdoZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="ra" navigable="true">
       <modelElement href="WorkLoad.uml#_sAMHgIZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBTwEYvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sAMHgYZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_Bljtd4ZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BljteIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -772,6 +886,9 @@
     </sourceRole>
     <targetRole xmi:id="_Bljtf4ZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="ca" navigable="true">
       <modelElement href="WorkLoad.uml#_sAMHhIZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBUXIIvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sAMHhYZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BljtgIZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BljtgYZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -794,6 +911,9 @@
     <targetRole xmi:id="_Blk7lIZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="workLoad" navigable="true">
       <modelElement href="WorkLoad.uml#_sAPK2IZXEe-bUZ-w3fFkrg"/>
       <visualProperties xmi:id="_CEGDkYZYEe-bUZ-w3fFkrg" position="-88.0,2.0"/>
+      <stereotypes xmi:id="_cBUXIYvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sAPK2YZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_Bllio4ZYEe-bUZ-w3fFkrg" label="~"/>
       <cardinality xmi:id="_BlliooZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -817,6 +937,9 @@
     <targetRole xmi:id="_BlnX1YZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="workLoad" navigable="true">
       <modelElement href="WorkLoad.uml#_sARnEIZXEe-bUZ-w3fFkrg"/>
       <visualProperties xmi:id="_CEGDlIZYEe-bUZ-w3fFkrg" position="-116.0,-43.0"/>
+      <stereotypes xmi:id="_cBUXIovVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sARnEYZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlpNBYZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlpNBIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -840,6 +963,9 @@
     </sourceRole>
     <targetRole xmi:id="_BlsQVoZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="originalOut" navigable="true">
       <modelElement href="WorkLoad.uml#_sARnEoZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBU-MIvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sASOIIZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlsQV4ZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlsQWIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -857,6 +983,9 @@
     </sourceRole>
     <targetRole xmi:id="_BlsQX4ZYEe-bUZ-w3fFkrg" aggregationKind="NONE" name="tempOutContent" navigable="true">
       <modelElement href="WorkLoad.uml#_sASOIYZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cBU-MYvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_sASOI4ZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
       <visibility xmi:id="_BlsQYIZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlsQYYZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
     </targetRole>
@@ -1039,6 +1168,52 @@
     </targetRole>
   </edges>
   <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_Blv6sYZYEe-bUZ-w3fFkrg" sourceItem="_Blv6sIZYEe-bUZ-w3fFkrg"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_cBlc4IvVEe-33faTEbFp4w" subClass="_BlHokIZYEe-bUZ-w3fFkrg">
+    <modelElement href="WorkLoad.uml#_r-al84ZXEe-bUZ-w3fFkrg"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_cBtYsIvVEe-33faTEbFp4w" target="_BlZVaYZYEe-bUZ-w3fFkrg">
+    <modelElement href="WorkLoad.uml#_sA8Vd4ZXEe-bUZ-w3fFkrg"/>
+    <stereotypes xmi:id="_cB6NA4vVEe-33faTEbFp4w" name="Reference">
+      <modelElement href="WorkLoad.uml#_sA8VeYZXEe-bUZ-w3fFkrg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_cB6NAIvVEe-33faTEbFp4w" text=""/>
+    <sourceRole xmi:id="_cB6NAYvVEe-33faTEbFp4w" aggregationKind="NONE" name="">
+      <modelElement href="WorkLoad.uml#_sA8VeIZXEe-bUZ-w3fFkrg"/>
+      <visibility xmi:id="_cB8CMovVEe-33faTEbFp4w" label="+"/>
+      <cardinality xmi:id="_cB8CMYvVEe-33faTEbFp4w" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_cB6NAovVEe-33faTEbFp4w" aggregationKind="NONE" name="program" navigable="true">
+      <modelElement href="WorkLoad.uml#_r_2wUoZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cB8pQovVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_r_2wU4ZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
+      <visibility xmi:id="_cB8pQYvVEe-33faTEbFp4w" label="-"/>
+      <cardinality xmi:id="_cB8pQIvVEe-33faTEbFp4w" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_cByRMYvVEe-33faTEbFp4w" targetItem="_BlkUgIZYEe-bUZ-w3fFkrg" sourceItem="_cByRMIvVEe-33faTEbFp4w"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_cB2ioIvVEe-33faTEbFp4w" subClass="_ucRIY4ZXEe-bUZ-w3fFkrg">
+    <modelElement href="WorkLoad.uml#_r_BC1YZXEe-bUZ-w3fFkrg"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_cB7bIYvVEe-33faTEbFp4w" sourceItem="_cB7bIIvVEe-33faTEbFp4w"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_cB8CMIvVEe-33faTEbFp4w">
+    <modelElement href="WorkLoad.uml#_sBERR4ZXEe-bUZ-w3fFkrg"/>
+    <stereotypes xmi:id="_cB-ecovVEe-33faTEbFp4w" name="Reference">
+      <modelElement href="WorkLoad.uml#_sBERSYZXEe-bUZ-w3fFkrg"/>
+    </stereotypes>
+    <nameVisual xmi:id="_cB93YIvVEe-33faTEbFp4w" text=""/>
+    <sourceRole xmi:id="_cB-ecIvVEe-33faTEbFp4w" aggregationKind="NONE" name="">
+      <modelElement href="WorkLoad.uml#_sBERSIZXEe-bUZ-w3fFkrg"/>
+      <visibility xmi:id="_cB_FgYvVEe-33faTEbFp4w" label="+"/>
+      <cardinality xmi:id="_cB_FgIvVEe-33faTEbFp4w" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_cB-ecYvVEe-33faTEbFp4w" aggregationKind="NONE" name="fm" navigable="true">
+      <modelElement href="WorkLoad.uml#_sAHPB4ZXEe-bUZ-w3fFkrg"/>
+      <visibility xmi:id="_cB_skYvVEe-33faTEbFp4w" label="-"/>
+      <cardinality xmi:id="_cB_skIvVEe-33faTEbFp4w" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_cB9QUYvVEe-33faTEbFp4w" sourceItem="_cB9QUIvVEe-33faTEbFp4w"/>
   <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_twluIIZXEe-bUZ-w3fFkrg" sourceConnectionVisual="_tw4CAIZXEe-bUZ-w3fFkrg" text="Build the nodes and flows for the workload described in the workload description file, whose name&#xA;is passed into the Constructor via the parameter inputFileName. Good default values for the&#xA;constructors are m = 0.9, e2e = 0.99, and numFaults = 1 when the second constructor is used.&#xA;&#xA;@author sgoddard&#xA;@author ccolin - modified as per HW2 instructions&#xA;@version 1.4&#xA;@author msgauna- modified  getNumTxAttemptsPerLink and getTotalTxAttemptsInFlow methods &#xA; *" item="_txK88IZXEe-bUZ-w3fFkrg">
     <modelElement href="WorkLoad.uml#_sAwvQ4ZXEe-bUZ-w3fFkrg"/>
   </nodes>
@@ -1207,9 +1382,6 @@
   <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_BlbxpIZYEe-bUZ-w3fFkrg" sourceConnectionVisual="_BlbxpYZYEe-bUZ-w3fFkrg" text="Creates a visualization based on a choice parameter. &lt;br>&#xA;   * A switch statement evaluates the choice, options for choices include:  &lt;br>&#xA;   * communication graph, graph visualization, or input graph. &lt;br>&#xA;   * The default case creates a placeholder visualization.  &lt;br>&#xA;   * @param choice, the type of workload visualization to make. &lt;br>&#xA;   * @see VisualizationImplementation's createVisualization(WorkLoadChoices) &lt;br>" item="_Ble1YoZYEe-bUZ-w3fFkrg">
     <modelElement href="WorkLoad.uml#_sAwINoZXEe-bUZ-w3fFkrg"/>
   </nodes>
-  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_BlfcAYZYEe-bUZ-w3fFkrg" sourceConnectionVisual="_BlfcAoZYEe-bUZ-w3fFkrg" text="@author sgoddard&#xA;@version 1.4" item="_BlkUgIZYEe-bUZ-w3fFkrg">
-    <modelElement href="WorkLoad.uml#_sAwvQoZXEe-bUZ-w3fFkrg"/>
-  </nodes>
   <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_Blh4QIZYEe-bUZ-w3fFkrg" sourceConnectionVisual="_BlifUIZYEe-bUZ-w3fFkrg" text="@author sgoddard&#xA;@version 1.4">
     <modelElement href="WorkLoad.uml#_sAwIO4ZXEe-bUZ-w3fFkrg"/>
   </nodes>
@@ -1354,9 +1526,9 @@
     </attributes>
     <attributes xmi:id="_txK9JoZXEe-bUZ-w3fFkrg" defaultValue="new ArrayList&lt;>()" name="flowNamesInOriginalOrder">
       <modelElement href="WorkLoad.uml#_sAN8soZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_txK9J4ZXEe-bUZ-w3fFkrg" name="Generics">
-        <modelElement href="WorkLoad.uml#_sAN8s4ZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cCCI0IvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_cCDW8IvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_cDL_YIvVEe-33faTEbFp4w" name="Generics"/>
       <visibility xmi:id="_txK9KIZXEe-bUZ-w3fFkrg" label="+"/>
       <cardinality xmi:id="_txK9KYZXEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_txK9KoZXEe-bUZ-w3fFkrg" name="ArrayList">
@@ -1365,9 +1537,9 @@
     </attributes>
     <attributes xmi:id="_txK9K4ZXEe-bUZ-w3fFkrg" defaultValue="new ArrayList&lt;>()" name="flowNamesInPriorityOrder">
       <modelElement href="WorkLoad.uml#_sAN8tYZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_txK9LIZXEe-bUZ-w3fFkrg" name="Generics">
-        <modelElement href="WorkLoad.uml#_sAN8toZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cCElEIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_cCFMIIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_cDL_YYvVEe-33faTEbFp4w" name="Generics"/>
       <visibility xmi:id="_txK9LYZXEe-bUZ-w3fFkrg" label="+"/>
       <cardinality xmi:id="_txK9LoZXEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_txK9L4ZXEe-bUZ-w3fFkrg" name="ArrayList">
@@ -2195,9 +2367,9 @@
     <visibility xmi:id="_Ble08oZYEe-bUZ-w3fFkrg" label="+"/>
     <attributes xmi:id="_Ble084ZYEe-bUZ-w3fFkrg" name="visualization">
       <modelElement href="WorkLoad.uml#_sAGA6IZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_Ble09IZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sAGn8IZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cC0zAIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cC1aEIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDMmcIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_Ble09YZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_Ble09oZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_Ble094ZYEe-bUZ-w3fFkrg" name="Description">
@@ -2206,9 +2378,9 @@
     </attributes>
     <attributes xmi:id="_Ble0-IZYEe-bUZ-w3fFkrg" name="fileContent">
       <modelElement href="WorkLoad.uml#_sAGn8YZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_Ble0-YZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sAGn8oZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cC2BIIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cC2BIYvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDNNgIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_Ble0-oZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_Ble0-4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_Ble0_IZYEe-bUZ-w3fFkrg" name="Description">
@@ -2217,9 +2389,9 @@
     </attributes>
     <attributes xmi:id="_Ble0_YZYEe-bUZ-w3fFkrg" name="window">
       <modelElement href="WorkLoad.uml#_sAGn84ZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_Ble0_oZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sAGn9IZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cC5EcIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cC5rgIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDNNgYvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_Ble0_4ZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_Ble1AIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_Ble1AYZYEe-bUZ-w3fFkrg" name="GuiVisualization">
@@ -2261,9 +2433,9 @@
     </attributes>
     <attributes xmi:id="_Ble1EYZYEe-bUZ-w3fFkrg" defaultValue="null" name="fm">
       <modelElement href="WorkLoad.uml#_sAGn-4ZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_Ble1EoZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sAGn_YZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cC2oMIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cC3PQIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDN0kIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_Ble1E4ZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_Ble1FIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_Ble1FYZYEe-bUZ-w3fFkrg" name="FileManager">
@@ -2272,9 +2444,9 @@
     </attributes>
     <attributes xmi:id="_Ble1FoZYEe-bUZ-w3fFkrg" defaultValue="null" name="warp">
       <modelElement href="WorkLoad.uml#_sAGn_oZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_Ble1F4ZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sAHPAYZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cC32UIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cC4dYIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDOboIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_Ble1GIZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_Ble1GYZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_Ble1GoZYEe-bUZ-w3fFkrg" name="WarpInterface">
@@ -2283,9 +2455,9 @@
     </attributes>
     <attributes xmi:id="_Ble1G4ZYEe-bUZ-w3fFkrg" defaultValue="null" name="workLoad">
       <modelElement href="WorkLoad.uml#_sAHPAoZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_Ble1HIZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sAHPBIZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cCy90IvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCzk4IvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDPCsIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_Ble1HYZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_Ble1HoZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_Ble1H4ZYEe-bUZ-w3fFkrg" name="WorkLoad">
@@ -2294,9 +2466,9 @@
     </attributes>
     <attributes xmi:id="_Ble1IIZYEe-bUZ-w3fFkrg" name="visualizationObject">
       <modelElement href="WorkLoad.uml#_sAHPBYZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_Ble1IYZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sAHPBoZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cC6SkIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cC65oIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDPpwIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_Ble1IoZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_Ble1I4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_Ble1JIZYEe-bUZ-w3fFkrg" name="VisualizationObject">
@@ -2475,9 +2647,9 @@
     <visibility xmi:id="_BlmwwoZYEe-bUZ-w3fFkrg" label="~"/>
     <attributes xmi:id="_Blmww4ZYEe-bUZ-w3fFkrg" name="workLoad">
       <modelElement href="WorkLoad.uml#_sAPK2IZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlmwxIZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sAPK2YZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cDCOYIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDDcgIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDQQ0IvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlmwxYZYEe-bUZ-w3fFkrg" label="~"/>
       <cardinality xmi:id="_BlmwxoZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_Blmwx4ZYEe-bUZ-w3fFkrg" name="WorkLoad">
@@ -2707,9 +2879,9 @@
     <visibility xmi:id="_Bls3YoZYEe-bUZ-w3fFkrg" label="~"/>
     <attributes xmi:id="_Bls3Y4ZYEe-bUZ-w3fFkrg" name="workLoad">
       <modelElement href="WorkLoad.uml#_sARnEIZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_Bls3ZIZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sARnEYZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cDEDkIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDEqoIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDQ34IvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_Bls3ZYZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_Bls3ZoZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_Bls3Z4ZYEe-bUZ-w3fFkrg" name="WorkLoad">
@@ -2718,9 +2890,9 @@
     </attributes>
     <attributes xmi:id="_Bls3aIZYEe-bUZ-w3fFkrg" defaultValue="System.out" name="originalOut">
       <modelElement href="WorkLoad.uml#_sARnEoZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_Bls3aYZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sASOIIZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cDFRsIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDF4wIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDQ34YvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_Bls3aoZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_Bls3a4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_Bls3bIZYEe-bUZ-w3fFkrg" name="PrintStream">
@@ -2729,9 +2901,9 @@
     </attributes>
     <attributes xmi:id="_Bls3bYZYEe-bUZ-w3fFkrg" defaultValue="new ByteArrayOutputStream()" name="tempOutContent">
       <modelElement href="WorkLoad.uml#_sASOIYZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_Bls3boZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sASOI4ZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cDGf0IvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDGf0YvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDRe8IvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_Bls3b4ZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_Bls3cIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_Bls3cYZYEe-bUZ-w3fFkrg" name="ByteArrayOutputStream">
@@ -3295,15 +3467,15 @@
       </parameters>
     </operations>
   </nodes>
-  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_BlHokIZYEe-bUZ-w3fFkrg" comments="_BlElQIZYEe-bUZ-w3fFkrg" targetConnectionVisual="_BlElQYZYEe-bUZ-w3fFkrg" name="CommunicationGraph" associationsOut="_BlDXIIZYEe-bUZ-w3fFkrg _BlElQoZYEe-bUZ-w3fFkrg">
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_BlHokIZYEe-bUZ-w3fFkrg" comments="_BlElQIZYEe-bUZ-w3fFkrg" targetConnectionVisual="_BlElQYZYEe-bUZ-w3fFkrg" name="CommunicationGraph" associationsOut="_BlDXIIZYEe-bUZ-w3fFkrg _BlElQoZYEe-bUZ-w3fFkrg" generalizations="_cBlc4IvVEe-33faTEbFp4w">
     <modelElement href="WorkLoad.uml#_r5N80IZXEe-bUZ-w3fFkrg"/>
     <visualProperties xmi:id="_BlHokYZYEe-bUZ-w3fFkrg" position="963.0,246.0" size="318.0,187.0"/>
     <visibility xmi:id="_BlHokoZYEe-bUZ-w3fFkrg" label="+"/>
     <attributes xmi:id="_BlHok4ZYEe-bUZ-w3fFkrg" name="wfm">
       <modelElement href="WorkLoad.uml#_r_5MkIZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlHolIZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_r_5MkYZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cCMg4IvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCNvAIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDSGAIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlHolYZYEe-bUZ-w3fFkrg" label="~"/>
       <cardinality xmi:id="_BlHoloZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_BlHol4ZYEe-bUZ-w3fFkrg" name="FileManager">
@@ -3334,9 +3506,9 @@
     </attributes>
     <attributes xmi:id="_BlHoooZYEe-bUZ-w3fFkrg" name="workLoad">
       <modelElement href="WorkLoad.uml#_r_5MloZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlHoo4ZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_r_5Ml4ZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cCKEoIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCKrsIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDStEIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlHopIZYEe-bUZ-w3fFkrg" label="~"/>
       <cardinality xmi:id="_BlHopYZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_BlHopoZYEe-bUZ-w3fFkrg" name="WorkLoad">
@@ -3484,9 +3656,9 @@
     <visibility xmi:id="_BlSnxIZYEe-bUZ-w3fFkrg" label="+"/>
     <attributes xmi:id="_BlSnxYZYEe-bUZ-w3fFkrg" name="activations">
       <modelElement href="WorkLoad.uml#_r__6SYZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlSnxoZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_r__6SoZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cCgp8IvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCh4EIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDTUIIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlSnx4ZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlSnyIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_BlSnyYZYEe-bUZ-w3fFkrg" name="Activations">
@@ -3495,9 +3667,9 @@
     </attributes>
     <attributes xmi:id="_BlSnyoZYEe-bUZ-w3fFkrg" name="workload">
       <modelElement href="WorkLoad.uml#_r__6S4ZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlSny4ZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sAAhUIZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cCYuIIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCZ8QIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDUiQIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlSnzIZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlSnzYZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_BlSnzoZYEe-bUZ-w3fFkrg" name="WorkLoad">
@@ -3506,9 +3678,9 @@
     </attributes>
     <attributes xmi:id="_BlSnz4ZYEe-bUZ-w3fFkrg" name="flows">
       <modelElement href="WorkLoad.uml#_sAAhUYZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlSn0IZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sAAhVYZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cCajUIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCbxcIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDVJUIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlSn0YZYEe-bUZ-w3fFkrg" label="#"/>
       <cardinality xmi:id="_BlSn0oZYEe-bUZ-w3fFkrg" label="1..*" max="-1" min="1"/>
       <type xmi:id="_BlSn04ZYEe-bUZ-w3fFkrg" name="Flow">
@@ -3517,9 +3689,9 @@
     </attributes>
     <attributes xmi:id="_BlSn1IZYEe-bUZ-w3fFkrg" name="nodes">
       <modelElement href="WorkLoad.uml#_sAAhVoZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlSn1YZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sAAhWoZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cCjGMIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCkUUIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDVJUYvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlSn1oZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlSn14ZYEe-bUZ-w3fFkrg" label="1..*" max="-1" min="1"/>
       <type xmi:id="_BlSn2IZYEe-bUZ-w3fFkrg" name="Node">
@@ -3528,9 +3700,9 @@
     </attributes>
     <attributes xmi:id="_BlSn2YZYEe-bUZ-w3fFkrg" name="nodeMap">
       <modelElement href="WorkLoad.uml#_sAAhW4ZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlSn2oZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sAAhXIZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cCcYgIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCc_kIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDVwYIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlSn24ZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlSn3IZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_BlSn3YZYEe-bUZ-w3fFkrg" name="NodeMap">
@@ -3539,12 +3711,12 @@
     </attributes>
     <attributes xmi:id="_BlSn3oZYEe-bUZ-w3fFkrg" name="priorityQueue">
       <modelElement href="WorkLoad.uml#_sAAhXYZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlSn34ZYEe-bUZ-w3fFkrg" name="Generics">
-        <modelElement href="WorkLoad.uml#_sAAhXoZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
-      <stereotypes xmi:id="_BlSn4IZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sAAhX4ZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cCk7YIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_cClicIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCmwkIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_cCmwkYvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDWXcIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_cDWXcYvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlSn4YZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlSn4oZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_BlSn44ZYEe-bUZ-w3fFkrg" name="PriorityQueue">
@@ -3553,12 +3725,12 @@
     </attributes>
     <attributes xmi:id="_BlSn5IZYEe-bUZ-w3fFkrg" name="nodeConnectivityMap">
       <modelElement href="WorkLoad.uml#_sABIYIZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlSn5YZYEe-bUZ-w3fFkrg" name="Generics">
-        <modelElement href="WorkLoad.uml#_sABIYYZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
-      <stereotypes xmi:id="_BlSn5oZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sABIYoZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cCeNsIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_cCeNsYvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCfb0IvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_cCfb0YvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDW-gIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_cDW-gYvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlSn54ZYEe-bUZ-w3fFkrg" label="#"/>
       <cardinality xmi:id="_BlSn6IZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_BlSn6YZYEe-bUZ-w3fFkrg" name="HashMap">
@@ -3567,9 +3739,9 @@
     </attributes>
     <attributes xmi:id="_BlSn6oZYEe-bUZ-w3fFkrg" name="activationMap">
       <modelElement href="WorkLoad.uml#_sABIY4ZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlSn64ZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sABIZIZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cCn-sIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCpM0IvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDXlkIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlSn7IZYEe-bUZ-w3fFkrg" label="~"/>
       <cardinality xmi:id="_BlSn7YZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_BlSn7oZYEe-bUZ-w3fFkrg" name="FlowNodeToActivationMap">
@@ -3832,183 +4004,7 @@
     </stereotypes>
     <visibility xmi:id="_Blxv44ZYEe-bUZ-w3fFkrg" label="+"/>
   </nodes>
-  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_BlMhGYZYEe-bUZ-w3fFkrg" comments="_BlI2sIZYEe-bUZ-w3fFkrg" targetConnectionVisual="_BlI2sYZYEe-bUZ-w3fFkrg" name="LatencyAnalysis" associationsIn="_BlfcAIZYEe-bUZ-w3fFkrg" associationsOut="_BlIPoIZYEe-bUZ-w3fFkrg _BlI2soZYEe-bUZ-w3fFkrg _BlL6AIZYEe-bUZ-w3fFkrg _BlL6CYZYEe-bUZ-w3fFkrg _BlMhEIZYEe-bUZ-w3fFkrg">
-    <modelElement href="WorkLoad.uml#_r5dNbIZXEe-bUZ-w3fFkrg"/>
-    <visualProperties xmi:id="_BlMhGoZYEe-bUZ-w3fFkrg" position="2124.0,532.0" size="374.0,183.0"/>
-    <stereotypes xmi:id="_BlMhG4ZYEe-bUZ-w3fFkrg" name="Patch">
-      <modelElement href="WorkLoad.uml#_sngmMIZXEe-bUZ-w3fFkrg"/>
-    </stereotypes>
-    <visibility xmi:id="_BlMhHIZYEe-bUZ-w3fFkrg" label="+"/>
-    <attributes xmi:id="_BlMhHYZYEe-bUZ-w3fFkrg" defaultValue="&quot; => DEADLINE MISS&quot;" name="DEADLINE_MISS" staticAttribute="true">
-      <modelElement href="WorkLoad.uml#_r_-FEoZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlMhHoZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_r_-FFIZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
-      <visibility xmi:id="_BlMhH4ZYEe-bUZ-w3fFkrg" label="-"/>
-      <cardinality xmi:id="_BlMhIIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
-      <type xmi:id="_BlMhIYZYEe-bUZ-w3fFkrg" name="String">
-        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_BlMhIoZYEe-bUZ-w3fFkrg" defaultValue="&quot;******************************\n&quot;" name="FLOW_SEPARATOR" staticAttribute="true">
-      <modelElement href="WorkLoad.uml#_r_-FFYZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlMhI4ZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_r_-FFoZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
-      <visibility xmi:id="_BlMhJIZYEe-bUZ-w3fFkrg" label="+"/>
-      <cardinality xmi:id="_BlMhJYZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
-      <type xmi:id="_BlMhJoZYEe-bUZ-w3fFkrg" name="String">
-        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_BlMhJ4ZYEe-bUZ-w3fFkrg" name="latencyReport">
-      <modelElement href="WorkLoad.uml#_r_-FGIZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlMhKIZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_r_-FGYZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
-      <visibility xmi:id="_BlMhKYZYEe-bUZ-w3fFkrg" label="-"/>
-      <cardinality xmi:id="_BlMhKoZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
-      <type xmi:id="_BlMhK4ZYEe-bUZ-w3fFkrg" name="Description">
-        <modelElement href="WorkLoad.uml#_r5PyAYZXEe-bUZ-w3fFkrg"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_BlMhLIZYEe-bUZ-w3fFkrg" name="program">
-      <modelElement href="WorkLoad.uml#_r_-FGoZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlMhLYZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_r_-FG4ZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
-      <visibility xmi:id="_BlMhLoZYEe-bUZ-w3fFkrg" label="-"/>
-      <cardinality xmi:id="_BlMhL4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
-      <type xmi:id="_BlMhMIZYEe-bUZ-w3fFkrg" name="Program">
-        <modelElement href="WorkLoad.uml#_r5nlcIZXEe-bUZ-w3fFkrg"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_BlMhMYZYEe-bUZ-w3fFkrg" name="workload">
-      <modelElement href="WorkLoad.uml#_r_-FHIZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlMhMoZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_r_-sIIZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
-      <visibility xmi:id="_BlMhM4ZYEe-bUZ-w3fFkrg" label="-"/>
-      <cardinality xmi:id="_BlMhNIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
-      <type xmi:id="_BlMhNYZYEe-bUZ-w3fFkrg" name="WorkLoad">
-        <modelElement href="WorkLoad.uml#_r6Jw8IZXEe-bUZ-w3fFkrg"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_BlMhNoZYEe-bUZ-w3fFkrg" name="programTable">
-      <modelElement href="WorkLoad.uml#_r_-sIYZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlMhN4ZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_r_-sIoZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
-      <visibility xmi:id="_BlMhOIZYEe-bUZ-w3fFkrg" label="-"/>
-      <cardinality xmi:id="_BlMhOYZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
-      <type xmi:id="_BlMhOoZYEe-bUZ-w3fFkrg" name="ProgramSchedule">
-        <modelElement href="WorkLoad.uml#_r5tFAIZXEe-bUZ-w3fFkrg"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_BlMhO4ZYEe-bUZ-w3fFkrg" name="nodeIndex">
-      <modelElement href="WorkLoad.uml#_r_-sI4ZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlMhPIZYEe-bUZ-w3fFkrg" name="Generics">
-        <modelElement href="WorkLoad.uml#_r_-sJIZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
-      <stereotypes xmi:id="_BlMhPYZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_r_-sJYZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
-      <visibility xmi:id="_BlMhPoZYEe-bUZ-w3fFkrg" label="-"/>
-      <cardinality xmi:id="_BlMhP4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
-      <type xmi:id="_BlMhQIZYEe-bUZ-w3fFkrg" name="HashMap">
-        <modelElement href="WorkLoad.uml#_r-T4MIZXEe-bUZ-w3fFkrg"/>
-      </type>
-    </attributes>
-    <operations xmi:id="_BlMhQYZYEe-bUZ-w3fFkrg" name="latencyReport">
-      <modelElement href="WorkLoad.uml#_r5d0cIZXEe-bUZ-w3fFkrg"/>
-      <visibility xmi:id="_BlMhQoZYEe-bUZ-w3fFkrg" label="+"/>
-      <cardinality xmi:id="_BlMhQ4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
-      <outParameters xmi:id="_BlMhRIZYEe-bUZ-w3fFkrg">
-        <modelElement href="WorkLoad.uml#_r-mMGoZXEe-bUZ-w3fFkrg"/>
-        <type xmi:id="_BlMhRYZYEe-bUZ-w3fFkrg" name="Description">
-          <modelElement href="WorkLoad.uml#_r5PyAYZXEe-bUZ-w3fFkrg"/>
-        </type>
-      </outParameters>
-    </operations>
-    <operations xmi:id="_BlMhRoZYEe-bUZ-w3fFkrg" name="numMatchingTx">
-      <modelElement href="WorkLoad.uml#_r5d0cYZXEe-bUZ-w3fFkrg"/>
-      <visibility xmi:id="_BlMhR4ZYEe-bUZ-w3fFkrg" label="+"/>
-      <cardinality xmi:id="_BlMhSIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
-      <outParameters xmi:id="_BlMhSYZYEe-bUZ-w3fFkrg">
-        <modelElement href="WorkLoad.uml#_r5d0doZXEe-bUZ-w3fFkrg"/>
-        <type xmi:id="_BlMhSoZYEe-bUZ-w3fFkrg" name="Integer">
-          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </type>
-      </outParameters>
-      <parameters xmi:id="_BlMhS4ZYEe-bUZ-w3fFkrg" name="flow">
-        <modelElement href="WorkLoad.uml#_r5d0coZXEe-bUZ-w3fFkrg"/>
-        <cardinality xmi:id="_BlMhTIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
-        <type xmi:id="_BlMhTYZYEe-bUZ-w3fFkrg" name="String">
-          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </type>
-      </parameters>
-      <parameters xmi:id="_BlMhToZYEe-bUZ-w3fFkrg" name="src">
-        <modelElement href="WorkLoad.uml#_r5d0c4ZXEe-bUZ-w3fFkrg"/>
-        <cardinality xmi:id="_BlMhT4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
-        <type xmi:id="_BlMhUIZYEe-bUZ-w3fFkrg" name="String">
-          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </type>
-      </parameters>
-      <parameters xmi:id="_BlMhUYZYEe-bUZ-w3fFkrg" name="snk">
-        <modelElement href="WorkLoad.uml#_r5d0dIZXEe-bUZ-w3fFkrg"/>
-        <cardinality xmi:id="_BlMhUoZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
-        <type xmi:id="_BlMhU4ZYEe-bUZ-w3fFkrg" name="String">
-          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </type>
-      </parameters>
-      <parameters xmi:id="_BlMhVIZYEe-bUZ-w3fFkrg" name="instr">
-        <modelElement href="WorkLoad.uml#_r5d0dYZXEe-bUZ-w3fFkrg"/>
-        <cardinality xmi:id="_BlMhVYZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
-        <type xmi:id="_BlMhVoZYEe-bUZ-w3fFkrg" name="String">
-          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </type>
-      </parameters>
-    </operations>
-    <operations xmi:id="_BlMhV4ZYEe-bUZ-w3fFkrg" name="LatencyAnalysis">
-      <modelElement href="WorkLoad.uml#_r-mMEIZXEe-bUZ-w3fFkrg"/>
-      <keywords xmi:id="_BlMhWIZYEe-bUZ-w3fFkrg" keyword="create"/>
-      <visibility xmi:id="_BlMhWYZYEe-bUZ-w3fFkrg" label="~"/>
-      <cardinality xmi:id="_BlMhWoZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
-      <outParameters xmi:id="_BlMhW4ZYEe-bUZ-w3fFkrg">
-        <modelElement href="WorkLoad.uml#_r-mMFIZXEe-bUZ-w3fFkrg"/>
-        <type xmi:id="_BlMhXIZYEe-bUZ-w3fFkrg" name="LatencyAnalysis">
-          <modelElement href="WorkLoad.uml#_r5dNbIZXEe-bUZ-w3fFkrg"/>
-        </type>
-      </outParameters>
-      <parameters xmi:id="_BlMhXYZYEe-bUZ-w3fFkrg" name="warp">
-        <modelElement href="WorkLoad.uml#_r-mMEYZXEe-bUZ-w3fFkrg"/>
-        <cardinality xmi:id="_BlMhXoZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
-        <type xmi:id="_BlMhX4ZYEe-bUZ-w3fFkrg" name="WarpInterface">
-          <modelElement href="WorkLoad.uml#_r5__8YZXEe-bUZ-w3fFkrg"/>
-        </type>
-      </parameters>
-    </operations>
-    <operations xmi:id="_BlMhYIZYEe-bUZ-w3fFkrg" name="LatencyAnalysis">
-      <modelElement href="WorkLoad.uml#_r-mMFYZXEe-bUZ-w3fFkrg"/>
-      <keywords xmi:id="_BlMhYYZYEe-bUZ-w3fFkrg" keyword="create"/>
-      <visibility xmi:id="_BlMhYoZYEe-bUZ-w3fFkrg" label="~"/>
-      <cardinality xmi:id="_BlMhY4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
-      <outParameters xmi:id="_BlMhZIZYEe-bUZ-w3fFkrg">
-        <modelElement href="WorkLoad.uml#_r-mMGYZXEe-bUZ-w3fFkrg"/>
-        <type xmi:id="_BlMhZYZYEe-bUZ-w3fFkrg" name="LatencyAnalysis">
-          <modelElement href="WorkLoad.uml#_r5dNbIZXEe-bUZ-w3fFkrg"/>
-        </type>
-      </outParameters>
-      <parameters xmi:id="_BlMhZoZYEe-bUZ-w3fFkrg" name="program">
-        <modelElement href="WorkLoad.uml#_r-mMFoZXEe-bUZ-w3fFkrg"/>
-        <cardinality xmi:id="_BlMhZ4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
-        <type xmi:id="_BlMhaIZYEe-bUZ-w3fFkrg" name="Program">
-          <modelElement href="WorkLoad.uml#_r5nlcIZXEe-bUZ-w3fFkrg"/>
-        </type>
-      </parameters>
-    </operations>
-  </nodes>
-  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_BlZVaYZYEe-bUZ-w3fFkrg" comments="_BlT10IZYEe-bUZ-w3fFkrg" targetConnectionVisual="_BlT10YZYEe-bUZ-w3fFkrg" name="Program" associationsIn="_BlL6AIZYEe-bUZ-w3fFkrg _Ble1cIZYEe-bUZ-w3fFkrg" associationsOut="_BlTOwIZYEe-bUZ-w3fFkrg _BlUc44ZYEe-bUZ-w3fFkrg _BlUc5IZYEe-bUZ-w3fFkrg _BlYuUIZYEe-bUZ-w3fFkrg _BlZVYIZYEe-bUZ-w3fFkrg">
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_BlZVaYZYEe-bUZ-w3fFkrg" comments="_BlT10IZYEe-bUZ-w3fFkrg" targetConnectionVisual="_BlT10YZYEe-bUZ-w3fFkrg" name="Program" associationsIn="_BlL6AIZYEe-bUZ-w3fFkrg _Ble1cIZYEe-bUZ-w3fFkrg _cBtYsIvVEe-33faTEbFp4w" associationsOut="_BlTOwIZYEe-bUZ-w3fFkrg _BlUc44ZYEe-bUZ-w3fFkrg _BlUc5IZYEe-bUZ-w3fFkrg _BlYuUIZYEe-bUZ-w3fFkrg _BlZVYIZYEe-bUZ-w3fFkrg">
     <modelElement href="WorkLoad.uml#_r5nlcIZXEe-bUZ-w3fFkrg"/>
     <visualProperties xmi:id="_BlZVaoZYEe-bUZ-w3fFkrg" position="2521.0,37.0" size="491.0,562.0"/>
     <visibility xmi:id="_BlZVa4ZYEe-bUZ-w3fFkrg" label="+"/>
@@ -4046,9 +4042,9 @@
     </attributes>
     <attributes xmi:id="_BlZVfIZYEe-bUZ-w3fFkrg" name="workLoad">
       <modelElement href="WorkLoad.uml#_sABvdoZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlZVfYZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sABvd4ZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cCpz4IvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCqa8IvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDceEIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlZVfoZYEe-bUZ-w3fFkrg" label="~"/>
       <cardinality xmi:id="_BlZVf4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_BlZVgIZYEe-bUZ-w3fFkrg" name="WorkLoad">
@@ -4057,9 +4053,9 @@
     </attributes>
     <attributes xmi:id="_BlZVgYZYEe-bUZ-w3fFkrg" name="scheduleBuilt">
       <modelElement href="WorkLoad.uml#_sABveIZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlZVgoZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sABveYZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cCrCAIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCsQIIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDdFIIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlZVg4ZYEe-bUZ-w3fFkrg" label="~"/>
       <cardinality xmi:id="_BlZVhIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_BlZVhYZYEe-bUZ-w3fFkrg" name="ProgramSchedule">
@@ -4068,9 +4064,9 @@
     </attributes>
     <attributes xmi:id="_BlZVhoZYEe-bUZ-w3fFkrg" name="SchedulerSelected">
       <modelElement href="WorkLoad.uml#_sABveoZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlZVh4ZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sABve4ZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cCvTcIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCv6gIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDdsMIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlZViIZYEe-bUZ-w3fFkrg" label="~"/>
       <cardinality xmi:id="_BlZViYZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_BlZVioZYEe-bUZ-w3fFkrg" name="ScheduleChoices">
@@ -4134,9 +4130,9 @@
     </attributes>
     <attributes xmi:id="_BlZVpIZYEe-bUZ-w3fFkrg" name="channelsAvailable">
       <modelElement href="WorkLoad.uml#_sACWhoZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlZVpYZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sACWh4ZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cCxIoIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCyWwIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDe6UIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlZVpoZYEe-bUZ-w3fFkrg" label="~"/>
       <cardinality xmi:id="_BlZVp4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_BlZVqIZYEe-bUZ-w3fFkrg" name="Channels">
@@ -4178,9 +4174,9 @@
     </attributes>
     <attributes xmi:id="_BlZVuIZYEe-bUZ-w3fFkrg" name="deadlineMisses">
       <modelElement href="WorkLoad.uml#_sAC9kYZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlZVuYZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sAC9koZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cCs3MIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCuFUIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDfhYIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlZVuoZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlZVu4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_BlZVvIZYEe-bUZ-w3fFkrg" name="Description">
@@ -4923,15 +4919,15 @@
       </parameters>
     </operations>
   </nodes>
-  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_BlkUgIZYEe-bUZ-w3fFkrg" comments="_BlfcAYZYEe-bUZ-w3fFkrg" targetConnectionVisual="_BlfcAoZYEe-bUZ-w3fFkrg" name="WarpSystem" associationsOut="_Ble1cIZYEe-bUZ-w3fFkrg _Ble1cYZYEe-bUZ-w3fFkrg _BlfcAIZYEe-bUZ-w3fFkrg _BljtcIZYEe-bUZ-w3fFkrg _BljteYZYEe-bUZ-w3fFkrg" generalizations="_BlfcA4ZYEe-bUZ-w3fFkrg">
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_BlkUgIZYEe-bUZ-w3fFkrg" comments="_cByRMIvVEe-33faTEbFp4w" targetConnectionVisual="_BlfcAoZYEe-bUZ-w3fFkrg _cByRMYvVEe-33faTEbFp4w" name="WarpSystem" associationsOut="_Ble1cIZYEe-bUZ-w3fFkrg _Ble1cYZYEe-bUZ-w3fFkrg _BlfcAIZYEe-bUZ-w3fFkrg _BljtcIZYEe-bUZ-w3fFkrg _BljteYZYEe-bUZ-w3fFkrg" generalizations="_BlfcA4ZYEe-bUZ-w3fFkrg">
     <modelElement href="WorkLoad.uml#_r6GGkIZXEe-bUZ-w3fFkrg"/>
     <visualProperties xmi:id="_BlkUgYZYEe-bUZ-w3fFkrg" position="3052.0,548.0" size="390.0,301.0"/>
     <visibility xmi:id="_BlkUgoZYEe-bUZ-w3fFkrg" label="+"/>
     <attributes xmi:id="_BlkUg4ZYEe-bUZ-w3fFkrg" name="program">
       <modelElement href="WorkLoad.uml#_sALgdYZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlkUhIZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sALgdoZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cC7gsIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cC7gsYvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDgIcIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlkUhYZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlkUhoZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_BlkUh4ZYEe-bUZ-w3fFkrg" name="Program">
@@ -4940,9 +4936,9 @@
     </attributes>
     <attributes xmi:id="_BlkUiIZYEe-bUZ-w3fFkrg" name="workLoad">
       <modelElement href="WorkLoad.uml#_sALgd4ZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlkUiYZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sALgeIZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cC8HwIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cC8u0IvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDgvgIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlkUioZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlkUi4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_BlkUjIZYEe-bUZ-w3fFkrg" name="WorkLoad">
@@ -4951,9 +4947,9 @@
     </attributes>
     <attributes xmi:id="_BlkUjYZYEe-bUZ-w3fFkrg" name="ra">
       <modelElement href="WorkLoad.uml#_sAMHgIZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlkUjoZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sAMHgYZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cC_LEIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDAZMIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDhWkIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlkUj4ZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlkUkIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_BlkUkYZYEe-bUZ-w3fFkrg" name="ReliabilityAnalysis">
@@ -4962,9 +4958,9 @@
     </attributes>
     <attributes xmi:id="_BlkUkoZYEe-bUZ-w3fFkrg" name="la">
       <modelElement href="WorkLoad.uml#_sAMHgoZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlkUk4ZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sAMHg4ZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cC9V4IvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cC988IvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDh9oIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlkUlIZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlkUlYZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_BlkUloZYEe-bUZ-w3fFkrg" name="LatencyAnalysis">
@@ -4973,9 +4969,9 @@
     </attributes>
     <attributes xmi:id="_BlkUl4ZYEe-bUZ-w3fFkrg" name="ca">
       <modelElement href="WorkLoad.uml#_sAMHhIZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_BlkUmIZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sAMHhYZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cDBAQIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDBnUIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDjLwIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_BlkUmYZYEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_BlkUmoZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_BlkUm4ZYEe-bUZ-w3fFkrg" name="ChannelAnalysis">
@@ -5341,7 +5337,7 @@
       </parameters>
     </operations>
   </nodes>
-  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_ucRIY4ZXEe-bUZ-w3fFkrg" comments="_ucOsIIZXEe-bUZ-w3fFkrg" targetConnectionVisual="_ucOsIYZXEe-bUZ-w3fFkrg" name="WorkLoadDescription" associationsOut="_ucQhUIZXEe-bUZ-w3fFkrg _ucQhWYZXEe-bUZ-w3fFkrg" subclassedBy="_ucOsIoZXEe-bUZ-w3fFkrg">
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_ucRIY4ZXEe-bUZ-w3fFkrg" comments="_ucOsIIZXEe-bUZ-w3fFkrg" targetConnectionVisual="_ucOsIYZXEe-bUZ-w3fFkrg" name="WorkLoadDescription" associationsOut="_ucQhUIZXEe-bUZ-w3fFkrg _ucQhWYZXEe-bUZ-w3fFkrg" generalizations="_cB2ioIvVEe-33faTEbFp4w" subclassedBy="_ucOsIoZXEe-bUZ-w3fFkrg">
     <modelElement href="WorkLoad.uml#_r6RFsIZXEe-bUZ-w3fFkrg"/>
     <visualProperties xmi:id="_ucRIZIZXEe-bUZ-w3fFkrg" position="2022.0,-487.0" size="-1.0,-1.0"/>
     <visibility xmi:id="_ucRIZYZXEe-bUZ-w3fFkrg" label="+"/>
@@ -5363,9 +5359,9 @@
     </attributes>
     <attributes xmi:id="_ucRIboZXEe-bUZ-w3fFkrg" name="description">
       <modelElement href="WorkLoad.uml#_sAPK0YZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_ucRIb4ZXEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sAPK0oZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cCFzMIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCHBUIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDkZ4IvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_ucRIcIZXEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_ucRIcYZXEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_ucRIcoZXEe-bUZ-w3fFkrg" name="Description">
@@ -5385,9 +5381,9 @@
     </attributes>
     <attributes xmi:id="_ucRIeIZXEe-bUZ-w3fFkrg" name="fm">
       <modelElement href="WorkLoad.uml#_sAPK1YZXEe-bUZ-w3fFkrg"/>
-      <stereotypes xmi:id="_ucRIeYZXEe-bUZ-w3fFkrg" name="LegacyStyledElement">
-        <modelElement href="WorkLoad.uml#_sAPK1oZXEe-bUZ-w3fFkrg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_cCIPcIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCI2gIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDlA8IvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_ucRIeoZXEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_ucRIe4ZXEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_ucRIfIZXEe-bUZ-w3fFkrg" name="FileManager">
@@ -5568,5 +5564,190 @@
         <modelElement href="WorkLoad.uml#_r_hZI4ZXEe-bUZ-w3fFkrg"/>
       </type>
     </attributes>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_cByRMIvVEe-33faTEbFp4w" sourceConnectionVisual="_cByRMYvVEe-33faTEbFp4w" text="@author sgoddard&#xA;@version 1.4" item="_BlkUgIZYEe-bUZ-w3fFkrg">
+    <modelElement href="WorkLoad.uml#_dooH4YZeEe-bUZ-w3fFkrg"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_cB7bIIvVEe-33faTEbFp4w" sourceConnectionVisual="_cB7bIYvVEe-33faTEbFp4w" text="@author sgoddard&#xA;@version 1.5&#xA; *">
+    <modelElement href="WorkLoad.uml#_sAwIOIZXEe-bUZ-w3fFkrg"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_cB9QUIvVEe-33faTEbFp4w" sourceConnectionVisual="_cB9QUYvVEe-33faTEbFp4w" text="@return the fm">
+    <modelElement href="WorkLoad.uml#_sAwIOYZXEe-bUZ-w3fFkrg"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_BlMhGYZYEe-bUZ-w3fFkrg" comments="_BlI2sIZYEe-bUZ-w3fFkrg" targetConnectionVisual="_BlI2sYZYEe-bUZ-w3fFkrg" name="LatencyAnalysis" associationsIn="_BlfcAIZYEe-bUZ-w3fFkrg" associationsOut="_BlIPoIZYEe-bUZ-w3fFkrg _BlI2soZYEe-bUZ-w3fFkrg _BlL6AIZYEe-bUZ-w3fFkrg _BlL6CYZYEe-bUZ-w3fFkrg _BlMhEIZYEe-bUZ-w3fFkrg">
+    <modelElement href="WorkLoad.uml#_r5dNbIZXEe-bUZ-w3fFkrg"/>
+    <visualProperties xmi:id="_BlMhGoZYEe-bUZ-w3fFkrg" position="2124.0,532.0" size="374.0,183.0"/>
+    <stereotypes xmi:id="_BlMhG4ZYEe-bUZ-w3fFkrg" name="Patch">
+      <modelElement href="WorkLoad.uml#_sngmMIZXEe-bUZ-w3fFkrg"/>
+    </stereotypes>
+    <visibility xmi:id="_BlMhHIZYEe-bUZ-w3fFkrg" label="+"/>
+    <attributes xmi:id="_BlMhHYZYEe-bUZ-w3fFkrg" defaultValue="&quot; => DEADLINE MISS&quot;" name="DEADLINE_MISS" staticAttribute="true">
+      <modelElement href="WorkLoad.uml#_r_-FEoZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_BlMhHoZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_r_-FFIZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
+      <visibility xmi:id="_BlMhH4ZYEe-bUZ-w3fFkrg" label="-"/>
+      <cardinality xmi:id="_BlMhIIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
+      <type xmi:id="_BlMhIYZYEe-bUZ-w3fFkrg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_BlMhIoZYEe-bUZ-w3fFkrg" defaultValue="&quot;******************************\n&quot;" name="FLOW_SEPARATOR" staticAttribute="true">
+      <modelElement href="WorkLoad.uml#_r_-FFYZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_BlMhI4ZYEe-bUZ-w3fFkrg" name="LegacyStyledElement">
+        <modelElement href="WorkLoad.uml#_r_-FFoZXEe-bUZ-w3fFkrg"/>
+      </stereotypes>
+      <visibility xmi:id="_BlMhJIZYEe-bUZ-w3fFkrg" label="+"/>
+      <cardinality xmi:id="_BlMhJYZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
+      <type xmi:id="_BlMhJoZYEe-bUZ-w3fFkrg" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_BlMhJ4ZYEe-bUZ-w3fFkrg" name="latencyReport">
+      <modelElement href="WorkLoad.uml#_r_-FGIZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cCQyUIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCRZYIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDYzsIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <visibility xmi:id="_BlMhKYZYEe-bUZ-w3fFkrg" label="-"/>
+      <cardinality xmi:id="_BlMhKoZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
+      <type xmi:id="_BlMhK4ZYEe-bUZ-w3fFkrg" name="Description">
+        <modelElement href="WorkLoad.uml#_r5PyAYZXEe-bUZ-w3fFkrg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_BlMhLIZYEe-bUZ-w3fFkrg" name="program">
+      <modelElement href="WorkLoad.uml#_r_-FGoZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cCTOkIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCT1oIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDZawIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <visibility xmi:id="_BlMhLoZYEe-bUZ-w3fFkrg" label="-"/>
+      <cardinality xmi:id="_BlMhL4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
+      <type xmi:id="_BlMhMIZYEe-bUZ-w3fFkrg" name="Program">
+        <modelElement href="WorkLoad.uml#_r5nlcIZXEe-bUZ-w3fFkrg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_BlMhMYZYEe-bUZ-w3fFkrg" name="workload">
+      <modelElement href="WorkLoad.uml#_r_-FHIZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cCOWEIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCPkMIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDaB0IvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <visibility xmi:id="_BlMhM4ZYEe-bUZ-w3fFkrg" label="-"/>
+      <cardinality xmi:id="_BlMhNIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
+      <type xmi:id="_BlMhNYZYEe-bUZ-w3fFkrg" name="WorkLoad">
+        <modelElement href="WorkLoad.uml#_r6Jw8IZXEe-bUZ-w3fFkrg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_BlMhNoZYEe-bUZ-w3fFkrg" name="programTable">
+      <modelElement href="WorkLoad.uml#_r_-sIYZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cCVDwIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCWR4IvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDao4IvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <visibility xmi:id="_BlMhOIZYEe-bUZ-w3fFkrg" label="-"/>
+      <cardinality xmi:id="_BlMhOYZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
+      <type xmi:id="_BlMhOoZYEe-bUZ-w3fFkrg" name="ProgramSchedule">
+        <modelElement href="WorkLoad.uml#_r5tFAIZXEe-bUZ-w3fFkrg"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_BlMhO4ZYEe-bUZ-w3fFkrg" name="nodeIndex">
+      <modelElement href="WorkLoad.uml#_r_-sI4ZXEe-bUZ-w3fFkrg"/>
+      <stereotypes xmi:id="_cCW48IvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_cCW48YvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cCXgAIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_cCYHEIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_cDbP8IvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_cDbP8YvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <visibility xmi:id="_BlMhPoZYEe-bUZ-w3fFkrg" label="-"/>
+      <cardinality xmi:id="_BlMhP4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
+      <type xmi:id="_BlMhQIZYEe-bUZ-w3fFkrg" name="HashMap">
+        <modelElement href="WorkLoad.uml#_r-T4MIZXEe-bUZ-w3fFkrg"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_BlMhQYZYEe-bUZ-w3fFkrg" name="latencyReport">
+      <modelElement href="WorkLoad.uml#_r5d0cIZXEe-bUZ-w3fFkrg"/>
+      <visibility xmi:id="_BlMhQoZYEe-bUZ-w3fFkrg" label="+"/>
+      <cardinality xmi:id="_BlMhQ4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_BlMhRIZYEe-bUZ-w3fFkrg">
+        <modelElement href="WorkLoad.uml#_r-mMGoZXEe-bUZ-w3fFkrg"/>
+        <type xmi:id="_BlMhRYZYEe-bUZ-w3fFkrg" name="Description">
+          <modelElement href="WorkLoad.uml#_r5PyAYZXEe-bUZ-w3fFkrg"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_BlMhRoZYEe-bUZ-w3fFkrg" name="numMatchingTx">
+      <modelElement href="WorkLoad.uml#_r5d0cYZXEe-bUZ-w3fFkrg"/>
+      <visibility xmi:id="_BlMhR4ZYEe-bUZ-w3fFkrg" label="+"/>
+      <cardinality xmi:id="_BlMhSIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_BlMhSYZYEe-bUZ-w3fFkrg">
+        <modelElement href="WorkLoad.uml#_r5d0doZXEe-bUZ-w3fFkrg"/>
+        <type xmi:id="_BlMhSoZYEe-bUZ-w3fFkrg" name="Integer">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_BlMhS4ZYEe-bUZ-w3fFkrg" name="flow">
+        <modelElement href="WorkLoad.uml#_r5d0coZXEe-bUZ-w3fFkrg"/>
+        <cardinality xmi:id="_BlMhTIZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
+        <type xmi:id="_BlMhTYZYEe-bUZ-w3fFkrg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_BlMhToZYEe-bUZ-w3fFkrg" name="src">
+        <modelElement href="WorkLoad.uml#_r5d0c4ZXEe-bUZ-w3fFkrg"/>
+        <cardinality xmi:id="_BlMhT4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
+        <type xmi:id="_BlMhUIZYEe-bUZ-w3fFkrg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_BlMhUYZYEe-bUZ-w3fFkrg" name="snk">
+        <modelElement href="WorkLoad.uml#_r5d0dIZXEe-bUZ-w3fFkrg"/>
+        <cardinality xmi:id="_BlMhUoZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
+        <type xmi:id="_BlMhU4ZYEe-bUZ-w3fFkrg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_BlMhVIZYEe-bUZ-w3fFkrg" name="instr">
+        <modelElement href="WorkLoad.uml#_r5d0dYZXEe-bUZ-w3fFkrg"/>
+        <cardinality xmi:id="_BlMhVYZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
+        <type xmi:id="_BlMhVoZYEe-bUZ-w3fFkrg" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_BlMhV4ZYEe-bUZ-w3fFkrg" name="LatencyAnalysis">
+      <modelElement href="WorkLoad.uml#_r-mMEIZXEe-bUZ-w3fFkrg"/>
+      <keywords xmi:id="_BlMhWIZYEe-bUZ-w3fFkrg" keyword="create"/>
+      <visibility xmi:id="_BlMhWYZYEe-bUZ-w3fFkrg" label="~"/>
+      <cardinality xmi:id="_BlMhWoZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_BlMhW4ZYEe-bUZ-w3fFkrg">
+        <modelElement href="WorkLoad.uml#_r-mMFIZXEe-bUZ-w3fFkrg"/>
+        <type xmi:id="_BlMhXIZYEe-bUZ-w3fFkrg" name="LatencyAnalysis">
+          <modelElement href="WorkLoad.uml#_r5dNbIZXEe-bUZ-w3fFkrg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_BlMhXYZYEe-bUZ-w3fFkrg" name="warp">
+        <modelElement href="WorkLoad.uml#_r-mMEYZXEe-bUZ-w3fFkrg"/>
+        <cardinality xmi:id="_BlMhXoZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
+        <type xmi:id="_BlMhX4ZYEe-bUZ-w3fFkrg" name="WarpInterface">
+          <modelElement href="WorkLoad.uml#_r5__8YZXEe-bUZ-w3fFkrg"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_BlMhYIZYEe-bUZ-w3fFkrg" name="LatencyAnalysis">
+      <modelElement href="WorkLoad.uml#_r-mMFYZXEe-bUZ-w3fFkrg"/>
+      <keywords xmi:id="_BlMhYYZYEe-bUZ-w3fFkrg" keyword="create"/>
+      <visibility xmi:id="_BlMhYoZYEe-bUZ-w3fFkrg" label="~"/>
+      <cardinality xmi:id="_BlMhY4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_BlMhZIZYEe-bUZ-w3fFkrg">
+        <modelElement href="WorkLoad.uml#_r-mMGYZXEe-bUZ-w3fFkrg"/>
+        <type xmi:id="_BlMhZYZYEe-bUZ-w3fFkrg" name="LatencyAnalysis">
+          <modelElement href="WorkLoad.uml#_r5dNbIZXEe-bUZ-w3fFkrg"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_BlMhZoZYEe-bUZ-w3fFkrg" name="program">
+        <modelElement href="WorkLoad.uml#_r-mMFoZXEe-bUZ-w3fFkrg"/>
+        <cardinality xmi:id="_BlMhZ4ZYEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
+        <type xmi:id="_BlMhaIZYEe-bUZ-w3fFkrg" name="Program">
+          <modelElement href="WorkLoad.uml#_r5nlcIZXEe-bUZ-w3fFkrg"/>
+        </type>
+      </parameters>
+    </operations>
   </nodes>
 </com.yattasolutions.uml.diagrams.classifier:ClassDiagram>

@@ -7005,7 +7005,7 @@ with the GuiVisualization class. &lt;br>
               </ownedOperation>
             </packagedElement>
             <packagedElement xmi:type="uml:Class" xmi:id="_DEvx0IZkEe-dHpKynSfVYg" name="ReliabilityAnalysis">
-              <ownedComment xmi:id="_DZ47YYZkEe-dHpKynSfVYg">
+              <ownedComment xmi:id="_ZknrMIvVEe-33faTEbFp4w">
                 <body>ReliabilityAnalysis analyzes the end-to-end reliability of messages transmitted in flows for the
 WARP system.
 &lt;p>
@@ -7045,13 +7045,16 @@ snk nodes from the instruction string in a program schedule time slot.
               </ownedComment>
               <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_DZTskIZkEe-dHpKynSfVYg" name="ReliabilityAnalysis" specification="_DUuukYZkEe-dHpKynSfVYg">
                 <ownedParameter xmi:id="_DZTskYZkEe-dHpKynSfVYg" name="program" type="_DENmUIZkEe-dHpKynSfVYg"/>
-                <ownedParameter xmi:id="_DZTskoZkEe-dHpKynSfVYg" type="_DEvx0IZkEe-dHpKynSfVYg" direction="return"/>
+                <ownedParameter xmi:id="_DZTskoZkEe-dHpKynSfVYg" type="_DEvx0IZkEe-dHpKynSfVYg" direction="return">
+                  <name xsi:nil="true"/>
+                </ownedParameter>
                 <language>java</language>
                 <body>// TODO Auto-generated constructor stub
   </body>
               </ownedBehavior>
               <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_DZTsk4ZkEe-dHpKynSfVYg" name="verifyReliablities" specification="_DEwY4IZkEe-dHpKynSfVYg">
                 <ownedParameter xmi:id="_DZTslIZkEe-dHpKynSfVYg" direction="return">
+                  <name xsi:nil="true"/>
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
                 </ownedParameter>
                 <language>java</language>

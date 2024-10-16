@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <com.yattasolutions.uml.diagrams.classifier:ClassDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.yattasolutions.diagrams="http://ns.yatta-solutions.com/umllab/diagrams/1.1.0" xmlns:com.yattasolutions.uml.diagrams.classifier="http://ns.yatta-solutions.com/umllab/diagrams/classifier/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmi:id="_B3yPcIZkEe-dHpKynSfVYg">
   <eAnnotations xmi:id="_I-yHUIZkEe-dHpKynSfVYg" source="http://ns.yatta.de/umllab">
-    <contents xsi:type="ecore:EAnnotation" xmi:id="_I-yuYIZkEe-dHpKynSfVYg" source="visual-filters/hideNonPublicElements" references="_Hp2UvIZkEe-dHpKynSfVYg _Hp2UwIZkEe-dHpKynSfVYg _Hp2UxIZkEe-dHpKynSfVYg _Hp2UyIZkEe-dHpKynSfVYg _Hp2UzIZkEe-dHpKynSfVYg _Hp2U0IZkEe-dHpKynSfVYg _Hp2U4YZkEe-dHpKynSfVYg _Hp2U5oZkEe-dHpKynSfVYg _Hp2U64ZkEe-dHpKynSfVYg _Hp2U_IZkEe-dHpKynSfVYg _Hp2VB4ZkEe-dHpKynSfVYg _Hp2VDYZkEe-dHpKynSfVYg _Hp2VH4ZkEe-dHpKynSfVYg _Hp2VNIZkEe-dHpKynSfVYg _Hp270oZkEe-dHpKynSfVYg">
+    <contents xsi:type="ecore:EAnnotation" xmi:id="_I-yuYIZkEe-dHpKynSfVYg" source="visual-filters/hideNonPublicElements" references="_Hp2UvIZkEe-dHpKynSfVYg _Hp2UwIZkEe-dHpKynSfVYg _Hp2UxIZkEe-dHpKynSfVYg _Hp2UyIZkEe-dHpKynSfVYg _Hp2UzIZkEe-dHpKynSfVYg _Hp2U0IZkEe-dHpKynSfVYg _Hp2U4YZkEe-dHpKynSfVYg _Hp2U5oZkEe-dHpKynSfVYg _Hp2U64ZkEe-dHpKynSfVYg _Hp2U_IZkEe-dHpKynSfVYg _Hp2VB4ZkEe-dHpKynSfVYg _Hp2VDYZkEe-dHpKynSfVYg _Hp2VH4ZkEe-dHpKynSfVYg _Hp2VNIZkEe-dHpKynSfVYg _Hp270oZkEe-dHpKynSfVYg _JwuhoYZkEe-dHpKynSfVYg _Jw1PVoZkEe-dHpKynSfVYg _Jw12Y4ZkEe-dHpKynSfVYg _Jw12Z4ZkEe-dHpKynSfVYg _Jw12a4ZkEe-dHpKynSfVYg _Jw12b4ZkEe-dHpKynSfVYg _Jw12c4ZkEe-dHpKynSfVYg _Jw12d4ZkEe-dHpKynSfVYg _Jw12e4ZkEe-dHpKynSfVYg _Jw12gIZkEe-dHpKynSfVYg _Jw12hYZkEe-dHpKynSfVYg _Jw12ioZkEe-dHpKynSfVYg _Jw12kIZkEe-dHpKynSfVYg _Jw12loZkEe-dHpKynSfVYg _Jw12poZkEe-dHpKynSfVYg _Jw12tYZkEe-dHpKynSfVYg _JwtThIZkEe-dHpKynSfVYg _JwtTn4ZkEe-dHpKynSfVYg _JwtTpIZkEe-dHpKynSfVYg _JwtTqoZkEe-dHpKynSfVYg _Jw6H04ZkEe-dHpKynSfVYg _Jw6H6IZkEe-dHpKynSfVYg _JwppP4ZkEe-dHpKynSfVYg _JwppvYZkEe-dHpKynSfVYg _JwqQN4ZkEe-dHpKynSfVYg _JwqQQIZkEe-dHpKynSfVYg">
       <details xmi:id="_I-yuYYZkEe-dHpKynSfVYg" key="isActive" value="true"/>
+    </contents>
+    <contents xsi:type="ecore:EAnnotation" xmi:id="_rUUAEIvVEe-33faTEbFp4w" source="dangling-refs">
+      <contents xsi:type="com.yattasolutions.uml.diagrams.classifier:SimpleTypeVisual" xmi:id="_JwtTn4ZkEe-dHpKynSfVYg"/>
     </contents>
   </eAnnotations>
   <modelElement href="SchedulableObject.uml#_C8DI0IZkEe-dHpKynSfVYg"/>
@@ -53,6 +56,12 @@
     </sourceRole>
     <targetRole xmi:id="_Hp1GloZkEe-dHpKynSfVYg" aggregationKind="NONE" name="endTimes" navigable="true">
       <modelElement href="SchedulableObject.uml#_DYudwYZkEe-dHpKynSfVYg"/>
+      <stereotypes xmi:id="_VCDe8IvVEe-33faTEbFp4w" name="Generics">
+        <modelElement href="SchedulableObject.uml#_DYudwoZkEe-dHpKynSfVYg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VCDe8YvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="SchedulableObject.uml#_DYvE0IZkEe-dHpKynSfVYg"/>
+      </stereotypes>
       <visibility xmi:id="_Hp1Gl4ZkEe-dHpKynSfVYg" label="-"/>
       <cardinality xmi:id="_Hp1GmIZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
     </targetRole>
@@ -70,6 +79,9 @@
     </sourceRole>
     <targetRole xmi:id="_Hp2UtoZkEe-dHpKynSfVYg" aggregationKind="NONE" name="subObjects" navigable="true">
       <modelElement href="SchedulableObject.uml#_DYvE0YZkEe-dHpKynSfVYg"/>
+      <stereotypes xmi:id="_VCEGAIvVEe-33faTEbFp4w" name="Generics">
+        <modelElement href="SchedulableObject.uml#_DYvr4IZkEe-dHpKynSfVYg"/>
+      </stereotypes>
       <visibility xmi:id="_Hp2Ut4ZkEe-dHpKynSfVYg" label="+"/>
       <cardinality xmi:id="_Hp2UuIZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
     </targetRole>
@@ -106,6 +118,9 @@
     </sourceRole>
     <targetRole xmi:id="_JwobBoZkEe-dHpKynSfVYg" aggregationKind="NONE" name="coordinators" navigable="true">
       <modelElement href="SchedulableObject.uml#_DXlOQIZkEe-dHpKynSfVYg"/>
+      <stereotypes xmi:id="_VCEtEIvVEe-33faTEbFp4w" name="Generics">
+        <modelElement href="SchedulableObject.uml#_DXlOQYZkEe-dHpKynSfVYg"/>
+      </stereotypes>
       <visibility xmi:id="_JwobB4ZkEe-dHpKynSfVYg" label="+"/>
       <cardinality xmi:id="_JwobCIZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
     </targetRole>
@@ -123,6 +138,9 @@
     </sourceRole>
     <targetRole xmi:id="_JwpCFoZkEe-dHpKynSfVYg" aggregationKind="NONE" name="edges" navigable="true">
       <modelElement href="SchedulableObject.uml#_DXl1UIZkEe-dHpKynSfVYg"/>
+      <stereotypes xmi:id="_VCFUIIvVEe-33faTEbFp4w" name="Generics">
+        <modelElement href="SchedulableObject.uml#_DXmcYIZkEe-dHpKynSfVYg"/>
+      </stereotypes>
       <visibility xmi:id="_JwpCF4ZkEe-dHpKynSfVYg" label="+"/>
       <cardinality xmi:id="_JwpCGIZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
     </targetRole>
@@ -140,6 +158,9 @@
     </sourceRole>
     <targetRole xmi:id="_JwppJoZkEe-dHpKynSfVYg" aggregationKind="NONE" name="additionalScheduleTimes" navigable="true">
       <modelElement href="SchedulableObject.uml#_DXmcYYZkEe-dHpKynSfVYg"/>
+      <stereotypes xmi:id="_VCF7MIvVEe-33faTEbFp4w" name="Generics">
+        <modelElement href="SchedulableObject.uml#_DXnDcIZkEe-dHpKynSfVYg"/>
+      </stereotypes>
       <visibility xmi:id="_JwppJ4ZkEe-dHpKynSfVYg" label="+"/>
       <cardinality xmi:id="_JwppKIZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
     </targetRole>
@@ -180,7 +201,10 @@
     </sourceRole>
     <targetRole xmi:id="_JwuhoYZkEe-dHpKynSfVYg" aggregationKind="NONE" name="edgePredecessor" navigable="true">
       <modelElement href="SchedulableObject.uml#_DX4wQoZkEe-dHpKynSfVYg"/>
-      <visualProperties xmi:id="_J_NpkYZkEe-dHpKynSfVYg" position="9.0,-43.0"/>
+      <visualProperties xmi:id="_J_NpkYZkEe-dHpKynSfVYg" position="9.0,-43.0" visible="false"/>
+      <stereotypes xmi:id="_VCF7MYvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="SchedulableObject.uml#_DX4wQ4ZkEe-dHpKynSfVYg"/>
+      </stereotypes>
       <visibility xmi:id="_JwyzFIZkEe-dHpKynSfVYg" label="~"/>
       <cardinality xmi:id="_JwyzE4ZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
     </targetRole>
@@ -204,6 +228,12 @@
     </sourceRole>
     <targetRole xmi:id="_JwyMAoZkEe-dHpKynSfVYg" aggregationKind="NONE" name="nodes" navigable="true">
       <modelElement href="SchedulableObject.uml#_DX2UAYZkEe-dHpKynSfVYg"/>
+      <stereotypes xmi:id="_VCGiQIvVEe-33faTEbFp4w" name="Generics">
+        <modelElement href="SchedulableObject.uml#_DX27EIZkEe-dHpKynSfVYg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VCGiQYvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="SchedulableObject.uml#_DX27EYZkEe-dHpKynSfVYg"/>
+      </stereotypes>
       <visibility xmi:id="_JwzaI4ZkEe-dHpKynSfVYg" label="~"/>
       <cardinality xmi:id="_JwzaIoZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
     </targetRole>
@@ -221,6 +251,12 @@
     </sourceRole>
     <targetRole xmi:id="_JwyMBoZkEe-dHpKynSfVYg" aggregationKind="NONE" name="linkTxAndTotalCost" navigable="true">
       <modelElement href="SchedulableObject.uml#_DX3iIIZkEe-dHpKynSfVYg"/>
+      <stereotypes xmi:id="_VCHwYIvVEe-33faTEbFp4w" name="Generics">
+        <modelElement href="SchedulableObject.uml#_DX3iIYZkEe-dHpKynSfVYg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VCHwYYvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="SchedulableObject.uml#_DX3iIoZkEe-dHpKynSfVYg"/>
+      </stereotypes>
       <visibility xmi:id="_JwzaKYZkEe-dHpKynSfVYg" label="~"/>
       <cardinality xmi:id="_JwzaKIZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
     </targetRole>
@@ -238,6 +274,12 @@
     </sourceRole>
     <targetRole xmi:id="_JwyMCoZkEe-dHpKynSfVYg" aggregationKind="NONE" name="edges" navigable="true">
       <modelElement href="SchedulableObject.uml#_DX4JMIZkEe-dHpKynSfVYg"/>
+      <stereotypes xmi:id="_VCIXcIvVEe-33faTEbFp4w" name="Generics">
+        <modelElement href="SchedulableObject.uml#_DX4JMYZkEe-dHpKynSfVYg"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VCIXcYvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="SchedulableObject.uml#_DX4JMoZkEe-dHpKynSfVYg"/>
+      </stereotypes>
       <visibility xmi:id="_Jw0BM4ZkEe-dHpKynSfVYg" label="~"/>
       <cardinality xmi:id="_Jw0BMoZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
     </targetRole>
@@ -273,7 +315,10 @@
     </sourceRole>
     <targetRole xmi:id="_Jw1PVoZkEe-dHpKynSfVYg" aggregationKind="NONE" name="nodePredecessor" navigable="true">
       <modelElement href="SchedulableObject.uml#_DX4wQIZkEe-dHpKynSfVYg"/>
-      <visualProperties xmi:id="_J_OQoYZkEe-dHpKynSfVYg" position="-71.0,-43.0"/>
+      <visualProperties xmi:id="_J_OQoYZkEe-dHpKynSfVYg" position="-71.0,-43.0" visible="false"/>
+      <stereotypes xmi:id="_VCI-gIvVEe-33faTEbFp4w" name="LegacyStyledElement">
+        <modelElement href="SchedulableObject.uml#_DX4wQYZkEe-dHpKynSfVYg"/>
+      </stereotypes>
       <visibility xmi:id="_Jw1PV4ZkEe-dHpKynSfVYg" label="~"/>
       <cardinality xmi:id="_Jw1PWIZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
     </targetRole>
@@ -297,6 +342,9 @@
     </sourceRole>
     <targetRole xmi:id="_Jw45soZkEe-dHpKynSfVYg" aggregationKind="NONE" name="edges" navigable="true">
       <modelElement href="SchedulableObject.uml#_DYDIU4ZkEe-dHpKynSfVYg"/>
+      <stereotypes xmi:id="_VCJlkIvVEe-33faTEbFp4w" name="Generics">
+        <modelElement href="SchedulableObject.uml#_DYDvYIZkEe-dHpKynSfVYg"/>
+      </stereotypes>
       <visibility xmi:id="_Jw5gw4ZkEe-dHpKynSfVYg" label="+"/>
       <cardinality xmi:id="_Jw5gwoZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
     </targetRole>
@@ -572,12 +620,12 @@
     <attributes xmi:id="_Hp2U_IZkEe-dHpKynSfVYg" name="endTimes">
       <modelElement href="SchedulableObject.uml#_DYudwYZkEe-dHpKynSfVYg"/>
       <visualProperties xmi:id="_I-1xs4ZkEe-dHpKynSfVYg" visible="false"/>
-      <stereotypes xmi:id="_Hp2U_YZkEe-dHpKynSfVYg" name="Generics">
-        <modelElement href="SchedulableObject.uml#_DYudwoZkEe-dHpKynSfVYg"/>
-      </stereotypes>
-      <stereotypes xmi:id="_Hp2U_oZkEe-dHpKynSfVYg" name="LegacyStyledElement">
-        <modelElement href="SchedulableObject.uml#_DYvE0IZkEe-dHpKynSfVYg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_VCaEQIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VCaEQYvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_VCarUIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VCarUYvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_VCpU0IvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VCp74IvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_Hp2U_4ZkEe-dHpKynSfVYg" label="-"/>
       <cardinality xmi:id="_Hp2VAIZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <type xmi:id="_Hp2VAYZkEe-dHpKynSfVYg" name="PriorityQueue">
@@ -586,9 +634,9 @@
     </attributes>
     <attributes xmi:id="_Hp2VAoZkEe-dHpKynSfVYg" name="subObjects">
       <modelElement href="SchedulableObject.uml#_DYvE0YZkEe-dHpKynSfVYg"/>
-      <stereotypes xmi:id="_Hp2VA4ZkEe-dHpKynSfVYg" name="Generics">
-        <modelElement href="SchedulableObject.uml#_DYvr4IZkEe-dHpKynSfVYg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_VCb5cIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VCcggIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VCqi8IvVEe-33faTEbFp4w" name="Generics"/>
       <visibility xmi:id="_Hp2VBIZkEe-dHpKynSfVYg" label="+"/>
       <cardinality xmi:id="_Hp2VBYZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <type xmi:id="_Hp2VBoZkEe-dHpKynSfVYg" name="Queue">
@@ -1244,6 +1292,7 @@
     <visibility xmi:id="_Jw12YoZkEe-dHpKynSfVYg" label="+"/>
     <attributes xmi:id="_Jw12Y4ZkEe-dHpKynSfVYg" defaultValue="-1" name="UNDEFINED" staticAttribute="true">
       <modelElement href="SchedulableObject.uml#_DXz3wYZkEe-dHpKynSfVYg"/>
+      <visualProperties xmi:id="_VB2DkIvVEe-33faTEbFp4w" visible="false"/>
       <visibility xmi:id="_Jw12ZIZkEe-dHpKynSfVYg" label="-"/>
       <cardinality xmi:id="_Jw12ZYZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <type xmi:id="_Jw12ZoZkEe-dHpKynSfVYg" name="Integer">
@@ -1252,6 +1301,7 @@
     </attributes>
     <attributes xmi:id="_Jw12Z4ZkEe-dHpKynSfVYg" defaultValue="0" name="DEFAULT_FAULTS_TOLERATED" staticAttribute="true">
       <modelElement href="SchedulableObject.uml#_DXz3w4ZkEe-dHpKynSfVYg"/>
+      <visualProperties xmi:id="_VB2DkYvVEe-33faTEbFp4w" visible="false"/>
       <visibility xmi:id="_Jw12aIZkEe-dHpKynSfVYg" label="-"/>
       <cardinality xmi:id="_Jw12aYZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <type xmi:id="_Jw12aoZkEe-dHpKynSfVYg" name="Integer">
@@ -1260,6 +1310,7 @@
     </attributes>
     <attributes xmi:id="_Jw12a4ZkEe-dHpKynSfVYg" defaultValue="0" name="DEFAULT_INDEX" staticAttribute="true">
       <modelElement href="SchedulableObject.uml#_DX0e0YZkEe-dHpKynSfVYg"/>
+      <visualProperties xmi:id="_VB2DkovVEe-33faTEbFp4w" visible="false"/>
       <visibility xmi:id="_Jw12bIZkEe-dHpKynSfVYg" label="-"/>
       <cardinality xmi:id="_Jw12bYZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <type xmi:id="_Jw12boZkEe-dHpKynSfVYg" name="Integer">
@@ -1268,6 +1319,7 @@
     </attributes>
     <attributes xmi:id="_Jw12b4ZkEe-dHpKynSfVYg" defaultValue="100" name="DEFAULT_PERIOD" staticAttribute="true">
       <modelElement href="SchedulableObject.uml#_DX0e04ZkEe-dHpKynSfVYg"/>
+      <visualProperties xmi:id="_VB2Dk4vVEe-33faTEbFp4w" visible="false"/>
       <visibility xmi:id="_Jw12cIZkEe-dHpKynSfVYg" label="-"/>
       <cardinality xmi:id="_Jw12cYZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <type xmi:id="_Jw12coZkEe-dHpKynSfVYg" name="Integer">
@@ -1276,6 +1328,7 @@
     </attributes>
     <attributes xmi:id="_Jw12c4ZkEe-dHpKynSfVYg" defaultValue="100" name="DEFAULT_DEADLINE" staticAttribute="true">
       <modelElement href="SchedulableObject.uml#_DX0e1YZkEe-dHpKynSfVYg"/>
+      <visualProperties xmi:id="_VB2qoIvVEe-33faTEbFp4w" visible="false"/>
       <visibility xmi:id="_Jw12dIZkEe-dHpKynSfVYg" label="-"/>
       <cardinality xmi:id="_Jw12dYZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <type xmi:id="_Jw12doZkEe-dHpKynSfVYg" name="Integer">
@@ -1284,6 +1337,7 @@
     </attributes>
     <attributes xmi:id="_Jw12d4ZkEe-dHpKynSfVYg" defaultValue="0" name="DEFAULT_PHASE" staticAttribute="true">
       <modelElement href="SchedulableObject.uml#_DX1F4IZkEe-dHpKynSfVYg"/>
+      <visualProperties xmi:id="_VB2qoYvVEe-33faTEbFp4w" visible="false"/>
       <visibility xmi:id="_Jw12eIZkEe-dHpKynSfVYg" label="-"/>
       <cardinality xmi:id="_Jw12eYZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <type xmi:id="_Jw12eoZkEe-dHpKynSfVYg" name="Integer">
@@ -1292,6 +1346,7 @@
     </attributes>
     <attributes xmi:id="_Jw12e4ZkEe-dHpKynSfVYg" defaultValue="UNDEFINED" name="initialPriority">
       <modelElement href="SchedulableObject.uml#_DX1F4oZkEe-dHpKynSfVYg"/>
+      <visualProperties xmi:id="_VB2qoovVEe-33faTEbFp4w" visible="false"/>
       <stereotypes xmi:id="_Jw12fIZkEe-dHpKynSfVYg" name="LegacyStyledElement">
         <modelElement href="SchedulableObject.uml#_DX1s8IZkEe-dHpKynSfVYg"/>
       </stereotypes>
@@ -1303,6 +1358,7 @@
     </attributes>
     <attributes xmi:id="_Jw12gIZkEe-dHpKynSfVYg" name="index">
       <modelElement href="SchedulableObject.uml#_DX1s8YZkEe-dHpKynSfVYg"/>
+      <visualProperties xmi:id="_VB2qo4vVEe-33faTEbFp4w" visible="false"/>
       <stereotypes xmi:id="_Jw12gYZkEe-dHpKynSfVYg" name="LegacyStyledElement">
         <modelElement href="SchedulableObject.uml#_DX1s8oZkEe-dHpKynSfVYg"/>
       </stereotypes>
@@ -1314,6 +1370,7 @@
     </attributes>
     <attributes xmi:id="_Jw12hYZkEe-dHpKynSfVYg" name="numTxPerLink">
       <modelElement href="SchedulableObject.uml#_DX1s84ZkEe-dHpKynSfVYg"/>
+      <visualProperties xmi:id="_VB2qpIvVEe-33faTEbFp4w" visible="false"/>
       <stereotypes xmi:id="_Jw12hoZkEe-dHpKynSfVYg" name="LegacyStyledElement">
         <modelElement href="SchedulableObject.uml#_DX2UAIZkEe-dHpKynSfVYg"/>
       </stereotypes>
@@ -1325,12 +1382,13 @@
     </attributes>
     <attributes xmi:id="_Jw12ioZkEe-dHpKynSfVYg" name="nodes">
       <modelElement href="SchedulableObject.uml#_DX2UAYZkEe-dHpKynSfVYg"/>
-      <stereotypes xmi:id="_Jw12i4ZkEe-dHpKynSfVYg" name="Generics">
-        <modelElement href="SchedulableObject.uml#_DX27EIZkEe-dHpKynSfVYg"/>
-      </stereotypes>
-      <stereotypes xmi:id="_Jw12jIZkEe-dHpKynSfVYg" name="LegacyStyledElement">
-        <modelElement href="SchedulableObject.uml#_DX27EYZkEe-dHpKynSfVYg"/>
-      </stereotypes>
+      <visualProperties xmi:id="_VB2qpYvVEe-33faTEbFp4w" visible="false"/>
+      <stereotypes xmi:id="_VCiAEYvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VCinIIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_VCinIYvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VCjOMIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_VCsYIIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VCsYIYvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_Jw12jYZkEe-dHpKynSfVYg" label="~"/>
       <cardinality xmi:id="_Jw12joZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <type xmi:id="_Jw12j4ZkEe-dHpKynSfVYg" name="ArrayList">
@@ -1339,12 +1397,13 @@
     </attributes>
     <attributes xmi:id="_Jw12kIZkEe-dHpKynSfVYg" name="linkTxAndTotalCost">
       <modelElement href="SchedulableObject.uml#_DX3iIIZkEe-dHpKynSfVYg"/>
-      <stereotypes xmi:id="_Jw12kYZkEe-dHpKynSfVYg" name="Generics">
-        <modelElement href="SchedulableObject.uml#_DX3iIYZkEe-dHpKynSfVYg"/>
-      </stereotypes>
-      <stereotypes xmi:id="_Jw12koZkEe-dHpKynSfVYg" name="LegacyStyledElement">
-        <modelElement href="SchedulableObject.uml#_DX3iIoZkEe-dHpKynSfVYg"/>
-      </stereotypes>
+      <visualProperties xmi:id="_VB2qpovVEe-33faTEbFp4w" visible="false"/>
+      <stereotypes xmi:id="_VCjOMYvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VCj1QIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_VCj1QYvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VCkcUIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_VCtmQIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VCtmQYvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_Jw12k4ZkEe-dHpKynSfVYg" label="~"/>
       <cardinality xmi:id="_Jw12lIZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <type xmi:id="_Jw12lYZkEe-dHpKynSfVYg" name="ArrayList">
@@ -1353,12 +1412,13 @@
     </attributes>
     <attributes xmi:id="_Jw12loZkEe-dHpKynSfVYg" name="edges">
       <modelElement href="SchedulableObject.uml#_DX4JMIZkEe-dHpKynSfVYg"/>
-      <stereotypes xmi:id="_Jw12l4ZkEe-dHpKynSfVYg" name="Generics">
-        <modelElement href="SchedulableObject.uml#_DX4JMYZkEe-dHpKynSfVYg"/>
-      </stereotypes>
-      <stereotypes xmi:id="_Jw12mIZkEe-dHpKynSfVYg" name="LegacyStyledElement">
-        <modelElement href="SchedulableObject.uml#_DX4JMoZkEe-dHpKynSfVYg"/>
-      </stereotypes>
+      <visualProperties xmi:id="_VB2qp4vVEe-33faTEbFp4w" visible="false"/>
+      <stereotypes xmi:id="_VClDYIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VClDYYvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_VClqcIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VClqcYvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_VCuNUIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VCu0YIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_Jw12mYZkEe-dHpKynSfVYg" label="~"/>
       <cardinality xmi:id="_Jw12moZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <type xmi:id="_Jw12m4ZkEe-dHpKynSfVYg" name="ArrayList">
@@ -1367,9 +1427,9 @@
     </attributes>
     <attributes xmi:id="_Jw12nIZkEe-dHpKynSfVYg" name="nodePredecessor">
       <modelElement href="SchedulableObject.uml#_DX4wQIZkEe-dHpKynSfVYg"/>
-      <stereotypes xmi:id="_Jw12nYZkEe-dHpKynSfVYg" name="LegacyStyledElement">
-        <modelElement href="SchedulableObject.uml#_DX4wQYZkEe-dHpKynSfVYg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_VCmRgIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_VCm4kIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_VCvbcIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_Jw12noZkEe-dHpKynSfVYg" label="~"/>
       <cardinality xmi:id="_Jw12n4ZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <type xmi:id="_Jw12oIZkEe-dHpKynSfVYg" name="Node">
@@ -1378,9 +1438,9 @@
     </attributes>
     <attributes xmi:id="_Jw12oYZkEe-dHpKynSfVYg" name="edgePredecessor">
       <modelElement href="SchedulableObject.uml#_DX4wQoZkEe-dHpKynSfVYg"/>
-      <stereotypes xmi:id="_Jw12ooZkEe-dHpKynSfVYg" name="LegacyStyledElement">
-        <modelElement href="SchedulableObject.uml#_DX4wQ4ZkEe-dHpKynSfVYg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_VChZAIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_VCiAEIvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_VCvbcYvVEe-33faTEbFp4w" name="LegacyStyledElement"/>
       <visibility xmi:id="_Jw12o4ZkEe-dHpKynSfVYg" label="~"/>
       <cardinality xmi:id="_Jw12pIZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <type xmi:id="_Jw12pYZkEe-dHpKynSfVYg" name="Edge">
@@ -1389,6 +1449,7 @@
     </attributes>
     <operations xmi:id="_Jw12poZkEe-dHpKynSfVYg" comments="_JwvIsIZkEe-dHpKynSfVYg" targetConnectionVisual="_JwvIsYZkEe-dHpKynSfVYg" name="Flow">
       <modelElement href="SchedulableObject.uml#_DDDIsIZkEe-dHpKynSfVYg"/>
+      <visualProperties xmi:id="_VB2qqIvVEe-33faTEbFp4w" visible="false"/>
       <keywords xmi:id="_Jw12p4ZkEe-dHpKynSfVYg" keyword="create"/>
       <visibility xmi:id="_Jw12qIZkEe-dHpKynSfVYg" label="~"/>
       <cardinality xmi:id="_Jw12qYZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
@@ -1422,6 +1483,7 @@
     </operations>
     <operations xmi:id="_Jw12tYZkEe-dHpKynSfVYg" comments="_JwvIsoZkEe-dHpKynSfVYg" targetConnectionVisual="_JwvIs4ZkEe-dHpKynSfVYg" name="Flow">
       <modelElement href="SchedulableObject.uml#_DDDvw4ZkEe-dHpKynSfVYg"/>
+      <visualProperties xmi:id="_VB2qqYvVEe-33faTEbFp4w" visible="false"/>
       <keywords xmi:id="_Jw12toZkEe-dHpKynSfVYg" keyword="create"/>
       <visibility xmi:id="_Jw12t4ZkEe-dHpKynSfVYg" label="~"/>
       <cardinality xmi:id="_Jw12uIZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
@@ -1642,6 +1704,7 @@
     <visibility xmi:id="_JwtTg4ZkEe-dHpKynSfVYg" label="+"/>
     <attributes xmi:id="_JwtThIZkEe-dHpKynSfVYg" defaultValue="&quot;Unknown&quot;" name="UNKNOWN" staticAttribute="true">
       <modelElement href="SchedulableObject.uml#_DXyCkIZkEe-dHpKynSfVYg"/>
+      <visualProperties xmi:id="_VB2qqovVEe-33faTEbFp4w" visible="false"/>
       <visibility xmi:id="_JwtThYZkEe-dHpKynSfVYg" label="-"/>
       <cardinality xmi:id="_JwtThoZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <type xmi:id="_JwtTh4ZkEe-dHpKynSfVYg" name="String">
@@ -1692,7 +1755,7 @@
       <modelElement href="SchedulableObject.uml#_DXypo4ZkEe-dHpKynSfVYg"/>
       <visibility xmi:id="_JwtTnYZkEe-dHpKynSfVYg" label="+"/>
       <cardinality xmi:id="_JwtTnoZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
-      <type xmi:id="_JwtTn4ZkEe-dHpKynSfVYg" name="EdgeState">
+      <type xmi:id="_VCTWkIvVEe-33faTEbFp4w" name="EdgeState">
         <modelElement href="SchedulableObject.uml#_DC1GQIZkEe-dHpKynSfVYg"/>
       </type>
     </attributes>
@@ -1706,6 +1769,7 @@
     </attributes>
     <operations xmi:id="_JwtTpIZkEe-dHpKynSfVYg" name="Edge">
       <modelElement href="SchedulableObject.uml#_DC1tU4ZkEe-dHpKynSfVYg"/>
+      <visualProperties xmi:id="_VB2qrIvVEe-33faTEbFp4w" visible="false"/>
       <keywords xmi:id="_JwtTpYZkEe-dHpKynSfVYg" keyword="create"/>
       <visibility xmi:id="_JwtTpoZkEe-dHpKynSfVYg" label="~"/>
       <cardinality xmi:id="_JwtTp4ZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
@@ -1718,6 +1782,7 @@
     </operations>
     <operations xmi:id="_JwtTqoZkEe-dHpKynSfVYg" name="Edge">
       <modelElement href="SchedulableObject.uml#_DC27cIZkEe-dHpKynSfVYg"/>
+      <visualProperties xmi:id="_VB2qrYvVEe-33faTEbFp4w" visible="false"/>
       <keywords xmi:id="_JwtTq4ZkEe-dHpKynSfVYg" keyword="create"/>
       <visibility xmi:id="_JwtTrIZkEe-dHpKynSfVYg" label="~"/>
       <cardinality xmi:id="_JwtTrYZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
@@ -1861,6 +1926,7 @@
     <visibility xmi:id="_Jw6H0oZkEe-dHpKynSfVYg" label="+"/>
     <attributes xmi:id="_Jw6H04ZkEe-dHpKynSfVYg" defaultValue="0" name="DEFAULT_CHANNEL" staticAttribute="true">
       <modelElement href="SchedulableObject.uml#_DYChRIZkEe-dHpKynSfVYg"/>
+      <visualProperties xmi:id="_VB2qrovVEe-33faTEbFp4w" visible="false"/>
       <visibility xmi:id="_Jw6H1IZkEe-dHpKynSfVYg" label="-"/>
       <cardinality xmi:id="_Jw6H1YZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <type xmi:id="_Jw6H1oZkEe-dHpKynSfVYg" name="Integer">
@@ -1885,9 +1951,9 @@
     </attributes>
     <attributes xmi:id="_Jw6H34ZkEe-dHpKynSfVYg" name="edges">
       <modelElement href="SchedulableObject.uml#_DYDIU4ZkEe-dHpKynSfVYg"/>
-      <stereotypes xmi:id="_Jw6H4IZkEe-dHpKynSfVYg" name="Generics">
-        <modelElement href="SchedulableObject.uml#_DYDvYIZkEe-dHpKynSfVYg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_VCnfoIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VCnfoYvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VCxQoIvVEe-33faTEbFp4w" name="Generics"/>
       <visibility xmi:id="_Jw6H4YZkEe-dHpKynSfVYg" label="+"/>
       <cardinality xmi:id="_Jw6H4oZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <type xmi:id="_Jw6H44ZkEe-dHpKynSfVYg" name="ArrayList">
@@ -1904,6 +1970,7 @@
     </attributes>
     <operations xmi:id="_Jw6H6IZkEe-dHpKynSfVYg" name="Node">
       <modelElement href="SchedulableObject.uml#_DDvFMIZkEe-dHpKynSfVYg"/>
+      <visualProperties xmi:id="_VB2qr4vVEe-33faTEbFp4w" visible="false"/>
       <keywords xmi:id="_Jw6H6YZkEe-dHpKynSfVYg" keyword="create"/>
       <visibility xmi:id="_Jw6H6oZkEe-dHpKynSfVYg" label="~"/>
       <cardinality xmi:id="_Jw6H64ZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
@@ -2047,9 +2114,9 @@
     <visibility xmi:id="_JwppK4ZkEe-dHpKynSfVYg" label="+"/>
     <attributes xmi:id="_JwppLIZkEe-dHpKynSfVYg" name="coordinators">
       <modelElement href="SchedulableObject.uml#_DXlOQIZkEe-dHpKynSfVYg"/>
-      <stereotypes xmi:id="_JwppLYZkEe-dHpKynSfVYg" name="Generics">
-        <modelElement href="SchedulableObject.uml#_DXlOQYZkEe-dHpKynSfVYg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_VCdHkIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VCduoIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VCyewIvVEe-33faTEbFp4w" name="Generics"/>
       <visibility xmi:id="_JwppLoZkEe-dHpKynSfVYg" label="+"/>
       <cardinality xmi:id="_JwppL4ZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <type xmi:id="_JwppMIZkEe-dHpKynSfVYg" name="ArrayList">
@@ -2058,9 +2125,9 @@
     </attributes>
     <attributes xmi:id="_JwppMYZkEe-dHpKynSfVYg" name="edges">
       <modelElement href="SchedulableObject.uml#_DXl1UIZkEe-dHpKynSfVYg"/>
-      <stereotypes xmi:id="_JwppMoZkEe-dHpKynSfVYg" name="Generics">
-        <modelElement href="SchedulableObject.uml#_DXmcYIZkEe-dHpKynSfVYg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_VCeVsIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VCe8wIvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VCzF0IvVEe-33faTEbFp4w" name="Generics"/>
       <visibility xmi:id="_JwppM4ZkEe-dHpKynSfVYg" label="+"/>
       <cardinality xmi:id="_JwppNIZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <type xmi:id="_JwppNYZkEe-dHpKynSfVYg" name="ArrayList">
@@ -2069,9 +2136,9 @@
     </attributes>
     <attributes xmi:id="_JwppNoZkEe-dHpKynSfVYg" name="additionalScheduleTimes">
       <modelElement href="SchedulableObject.uml#_DXmcYYZkEe-dHpKynSfVYg"/>
-      <stereotypes xmi:id="_JwppN4ZkEe-dHpKynSfVYg" name="Generics">
-        <modelElement href="SchedulableObject.uml#_DXnDcIZkEe-dHpKynSfVYg"/>
-      </stereotypes>
+      <stereotypes xmi:id="_VCgK4IvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VCgx8IvVEe-33faTEbFp4w" name="Generics"/>
+      <stereotypes xmi:id="_VCzs4IvVEe-33faTEbFp4w" name="Generics"/>
       <visibility xmi:id="_JwppOIZkEe-dHpKynSfVYg" label="+"/>
       <cardinality xmi:id="_JwppOYZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <type xmi:id="_JwppOoZkEe-dHpKynSfVYg" name="ArrayList">
@@ -2088,6 +2155,7 @@
     </attributes>
     <operations xmi:id="_JwppP4ZkEe-dHpKynSfVYg" name="Activation">
       <modelElement href="SchedulableObject.uml#_DB2O0IZkEe-dHpKynSfVYg"/>
+      <visualProperties xmi:id="_VB2qsIvVEe-33faTEbFp4w" visible="false"/>
       <keywords xmi:id="_JwppQIZkEe-dHpKynSfVYg" keyword="create"/>
       <visibility xmi:id="_JwppQYZkEe-dHpKynSfVYg" label="~"/>
       <cardinality xmi:id="_JwppQoZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
@@ -2364,6 +2432,7 @@
     </operations>
     <operations xmi:id="_JwppvYZkEe-dHpKynSfVYg" name="Activation">
       <modelElement href="SchedulableObject.uml#_DTdjQIZkEe-dHpKynSfVYg"/>
+      <visualProperties xmi:id="_VB2qsYvVEe-33faTEbFp4w" visible="false"/>
       <keywords xmi:id="_JwppvoZkEe-dHpKynSfVYg" keyword="create"/>
       <visibility xmi:id="_Jwppv4ZkEe-dHpKynSfVYg" label="~"/>
       <cardinality xmi:id="_JwppwIZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
@@ -2480,6 +2549,7 @@
     </operations>
     <operations xmi:id="_JwqQN4ZkEe-dHpKynSfVYg" name="printEdges">
       <modelElement href="SchedulableObject.uml#_DThNoIZkEe-dHpKynSfVYg"/>
+      <visualProperties xmi:id="_VB2qsovVEe-33faTEbFp4w" visible="false"/>
       <visibility xmi:id="_JwqQOIZkEe-dHpKynSfVYg" label="-"/>
       <cardinality xmi:id="_JwqQOYZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <parameters xmi:id="_JwqQOoZkEe-dHpKynSfVYg" name="header">
@@ -2499,6 +2569,7 @@
     </operations>
     <operations xmi:id="_JwqQQIZkEe-dHpKynSfVYg" name="printEdges">
       <modelElement href="SchedulableObject.uml#_DTh0sYZkEe-dHpKynSfVYg"/>
+      <visualProperties xmi:id="_VB2qs4vVEe-33faTEbFp4w" visible="false"/>
       <visibility xmi:id="_JwqQQYZkEe-dHpKynSfVYg" label="-"/>
       <cardinality xmi:id="_JwqQQoZkEe-dHpKynSfVYg" label="1" max="1" min="1"/>
       <parameters xmi:id="_JwqQQ4ZkEe-dHpKynSfVYg" name="edges">

@@ -36,6 +36,7 @@ package edu.uiowa.cs.warp;
  * 
  * @author sgoddard
  * @version 1.8 Fall 2024
+ * @versio  1.8.1 Fall 2024 msgauna- added new method getReliablities that returns a Reliability Table
  *
  */
 public class ReliabilityAnalysis {
