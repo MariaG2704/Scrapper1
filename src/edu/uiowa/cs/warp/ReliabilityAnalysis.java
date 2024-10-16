@@ -39,16 +39,21 @@ package edu.uiowa.cs.warp;
  *
  */
 public class ReliabilityAnalysis {
-  // TODO Auto-generated class
-
 
   public ReliabilityAnalysis(Program program) {
     // TODO Auto-generated constructor stub
   }
 
-  public Boolean verifyReliabilities() {
+  public Boolean verifyReliablities() {
     // TODO Auto-generated method stub
     return true;
+  }
+  
+  // TODO Auto-generated class
+  //TODO implement this operation
+  public ReliabilityTable getReliabilities() {
+	  // TODO implement this operation
+	  throw new UnsupportedOperationException("not implemented");
   }
 
 }

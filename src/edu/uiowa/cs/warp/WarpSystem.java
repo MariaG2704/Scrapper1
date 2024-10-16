@@ -68,8 +68,8 @@ public class WarpSystem implements WarpInterface {
     if (ra == null) {
       ra = new ReliabilityAnalysis(program);
     }
-    return ra.verifyReliabilities();
-  }
+    return ra.verifyReliablities();
+     }
 
   @Override
   public Boolean deadlinesMet() {

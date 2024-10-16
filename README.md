@@ -146,7 +146,12 @@ Please be aware that Eclipse's markdown file previewer does not appear to be a W
     - Test cases for `getFlowDeadline()`:
       - `testGetFlowDeadlineDefault()`
       - `testGetFlowDeadlineNonExistent()`
-        
+### HW4: JUnit 5 Testing (Contributions by ccolin, msgauna, yongycheng)
+- **Objective**: Learn to create UML diagrams which are diagrams that represent visually the relationship and structure between classes in system.
+- **Changes**: 
+	- Added UML diagrams for all the Reliability java classes, `WorkLoad.java`, and    		`ScheudulableObject.java`. And saved them to a new folder called UML_LAB.
+	- Also provided png screenshots of what each diagram look like and added those to UML_LAB folder
+	- Updated ReliablityAnaylsis by adding another method called `getReliabilities()` that return a ReliabilityTable. 
 
   		
 
