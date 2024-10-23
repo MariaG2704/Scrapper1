@@ -48,8 +48,24 @@ public class ReliabilityAnalysis {
 	private double e2e;
 	private double minPacketReceptionRate;
 	private Integer numFaults;
+	 
+public void ReliabilityAnalysis(Double e2e, Double minPacketReceptionRate) {
+	e2e=e2e;
+	minPacketReceptionRate = minPacketReceptionRate;
+}
+	   
+public void ReliabilityAnalysis(Integer numFaults) {
+	numFaults=numFaults;
+	e2e=0.99;
+	minPacketReceptionRate=0.9;
+}
+	   
+
+public ReliabilityAnalysis(Program program) {
+	// TODO Auto-generated constructor stub
+}
 	
-  public ArrayList<Integer> numTxPerLinkAndTotalTxCost(Flow flow) {
+ public ArrayList<Integer> numTxPerLinkAndTotalTxCost(Flow flow) {
     if(numFaults==null) {
     	    var nodesInFlow = flow.nodes;
     	    /* The last entry will contain the worst-case cost of transmitting E2E in isolation */
@@ -116,7 +132,7 @@ public class ReliabilityAnalysis {
     	         * BUT skip if no chance of success (source doesn't have packet) */
     	        if ((prevSnkNodeState < minLinkReliablityNeded) && prevSrcNodeState > 0) {
     	          /* Need to continue attempting Tx so update current state */
-    	          nextSnkState = ((1.0 - M) * prevSnkNodeState) + (M * prevSrcNodeState);
+    	          nextSnkState = ((1.0 - minPacketReceptionRate) * prevSnkNodeState) + (minPacketReceptionRate * prevSrcNodeState);
     	          /* Increment number of pushes for this node to sink node */
     	          nPushes[nodeIndex] += 1;
     	        } else {
@@ -175,23 +191,7 @@ public class ReliabilityAnalysis {
         return txArrayList;
     }
   }
-   
-  public void ReliabilityAnalysis(Double e2e, Double minPacketReceptionRate) {
-	  e2e=e2e;
-	  minPacketReceptionRate = minPacketReceptionRate;
-  }
-   
-  public void ReliabilityAnalysis(Integer numFaults) {
-	  numFaults=numFaults;
-	  e2e=0.99;
-	  minPacketReceptionRate=0.9;
-  }
-   
-
-  public ReliabilityAnalysis(Program program) {
-    // TODO Auto-generated constructor stub
-  }
-
+  
   public Boolean verifyReliablities() {
     // TODO Auto-generated method stub
     return true;
