@@ -50,14 +50,15 @@ public class ReliabilityAnalysis {
   private Integer numFaults;
   
   public void ReliabilityAnalysis(Double e2e, Double minPacketReceptionRate) {
-	e2e=e2e;
-	minPacketReceptionRate = minPacketReceptionRate;
+	this.e2e = e2e;
+	this.minPacketReceptionRate = minPacketReceptionRate;
+	this.numFaults = null;
   }
   
   public void ReliabilityAnalysis(Integer numFaults) {
-	numFaults=numFaults;
-	e2e=0.99;
-	minPacketReceptionRate=0.9;
+	this.e2e = 0.99;
+	this.minPacketReceptionRate = 0.9;
+	this.numFaults = numFaults;
   }
 
   public ReliabilityAnalysis(Program program) {
@@ -65,7 +66,17 @@ public class ReliabilityAnalysis {
   }
   
   public ArrayList<Integer> numTxPerLinkAndTotalTxCost(Flow flow) {
-    if (numFaults==null) {
+    if (this.numFaults != null) {
+      return getFixedTxPerLinkAndTotalTxCost(flow);
+    
+    /* Case 1: If there is not set numFaults */
+    } else {
+      return numTxAttemptsPerLinkAndTotalTxAttempts(flow, this.e2e, 
+                                                          this.minPacketReceptionRate, false); }
+  }
+	
+  public ArrayList<Integer> numTxAttemptsPerLinkAndTotalTxAttempts(Flow flow, Double e2e, Double M, boolean optimizationRequested) {
+    if (numFaults == null) {
       var nodesInFlow = flow.nodes;
       /* The last entry will contain the worst-case cost of transmitting E2E in isolation */
       var nNodesInFlow = nodesInFlow.size();
@@ -195,6 +206,33 @@ public class ReliabilityAnalysis {
       txArrayList.add(numEdgesInFlow + maxFaultsInFlow);
       return txArrayList;
     }
+  }
+  
+  /**
+   * Computes the number of transmissions needed per node and total cost for a given flow.
+
+   * @param flow Flow whose node transmissions and total cost need to be calculated
+   * @return Array of number of transmissions needed for each node
+   */
+  private ArrayList<Integer> getFixedTxPerLinkAndTotalTxCost(Flow flow) {
+    var nodesInFlow = flow.nodes;
+    var nNodesInFlow = nodesInFlow.size();
+    ArrayList<Integer> txArrayList = new ArrayList<Integer>();
+    /*
+     * Each node will have at most numFaults+1 transmissions. Because we don't know which nodes will
+     * send the message over an edge, we give the cost to each node.
+     */
+    for (int i = 0; i < nNodesInFlow; i++) {
+      txArrayList.add(numFaults + 1);
+    }
+    /*
+     * now compute the maximum # of TX, assuming at most numFaults occur on an edge per period, and
+     * each edge requires at least one successful TX.
+     */
+    var numEdgesInFlow = nNodesInFlow - 1;
+    var maxFaultsInFlow = numEdgesInFlow * numFaults;
+    txArrayList.add(numEdgesInFlow + maxFaultsInFlow);
+    return txArrayList;
   }
   
   public Boolean verifyReliablities() {
