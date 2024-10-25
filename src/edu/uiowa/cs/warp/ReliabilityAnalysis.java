@@ -91,7 +91,7 @@ public class ReliabilityAnalysis {
 	 * @param flow Flow to compute the number of transmissions.
 	 * @return ArrayList<Integer> containing number of transmissions per link and total cost.
 	 */
-	private ArrayList<Integer> numTxPerLinkAndTotalTxCost(Flow flow) {
+	public ArrayList<Integer> numTxPerLinkAndTotalTxCost(Flow flow) {
 		if (this.mode) {
 			/* Case 1: If there is fixed numFaults */
 			return getFixedTxPerLinkAndTotalTxCost(flow);
