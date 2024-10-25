@@ -54,6 +54,12 @@ public class ReliabilityAnalysis {
 	private Double minPacketReceptionRate;
 	private Integer numFaults;
 
+	/**
+	 * Constructor for predictive fault model.
+	 * 
+	 * @param e2e End-to-end reliability target.
+	 * @param minPacketReceptionRate Minimum packet reception rate.
+	 */
 	public ReliabilityAnalysis(Double e2e, Double minPacketReceptionRate) {
 		this.mode= false;
 		this.e2e = e2e;
@@ -61,6 +67,11 @@ public class ReliabilityAnalysis {
 		this.numFaults = DEFAULT_TX_NUM;
 	}
 
+	/**
+	 * Constructor for fixed fault model
+	 * 
+	 * @param numFaults Number of faults to use in fixed model
+	 */
 	public ReliabilityAnalysis(Integer numFaults) {
 		this.mode = true;
 		this.e2e = DEFAULT_E2E;
@@ -72,16 +83,62 @@ public class ReliabilityAnalysis {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Compute number of Transmissions based on model type.
+	 * Given a fixed number of faults results in run of getFixedTxPerLinkAndTotalCost
+	 * If not given a fixed number we use predictive model numTxAttemptsPerLinkAndTotalTxAttempts.
+	 * 
+	 * @param flow Flow to compute the number of transmissions.
+	 * @return ArrayList<Integer> containing number of transmissions per link and total cost.
+	 */
 	private ArrayList<Integer> numTxPerLinkAndTotalTxCost(Flow flow) {
 		if (this.mode) {
+			/* Case 1: If there is fixed numFaults */
 			return getFixedTxPerLinkAndTotalTxCost(flow);
 
-			/* Case 1: If there is not set numFaults */
 		} else {
+			/* Case 2: If there is not fixed numFaults */
 			return numTxAttemptsPerLinkAndTotalTxAttempts(flow, this.e2e, 
 					this.minPacketReceptionRate, false); }
 	}
-
+	
+	/**
+	 * Computes the number of transmissions needed per node and total cost for a given flow.
+	 * 
+	 * @param flow Flow whose node transmissions and total cost need to be calculated
+	 * @return Array of number of transmissions needed for each node
+	 */
+	private ArrayList<Integer> getFixedTxPerLinkAndTotalTxCost(Flow flow) {
+		var nodesInFlow = flow.nodes;
+		var nNodesInFlow = nodesInFlow.size();
+		ArrayList<Integer> txArrayList = new ArrayList<Integer>();
+		/*
+		 * Each node will have at most numFaults+1 transmissions. Because we don't know which nodes will
+		 * send the message over an edge, we give the cost to each node.
+		 */
+		for (int i = 0; i < nNodesInFlow; i++) {
+			txArrayList.add(numFaults + 1);
+		}
+		/*
+		 * now compute the maximum # of TX, assuming at most numFaults occur on an edge per period, and
+		 * each edge requires at least one successful TX.
+		 */
+		var numEdgesInFlow = nNodesInFlow - 1;
+		var maxFaultsInFlow = numEdgesInFlow * numFaults;
+		txArrayList.add(numEdgesInFlow + maxFaultsInFlow);
+		return txArrayList;
+	}
+	
+	/**
+	 * Computes number of transmission attempts per link and total number to achieve end-to-end
+	 * reliability for given flow.
+	 * 
+	 * @param flow Flow to analyze.
+	 * @param e2e End-to-end reliability target
+	 * @param M Minimum link reliability needed per successful link
+	 * @param optimizationRequested Indicates if optimization is requested
+	 * @return ArrayList<Integer> represents number of transmissions per link and their cost
+	 */
 	private ArrayList<Integer> numTxAttemptsPerLinkAndTotalTxAttempts(Flow flow, Double e2e, Double M, boolean optimizationRequested) {
 		ArrayList<Node> nodesInFlow = new ArrayList<Node>();
 		int nNodesInFlow;
@@ -165,35 +222,9 @@ public class ReliabilityAnalysis {
 	}
 
 	/**
-	 * Computes the number of transmissions needed per node and total cost for a given flow.
-
-	 * @param flow Flow whose node transmissions and total cost need to be calculated
-	 * @return Array of number of transmissions needed for each node
-	 */
-	private ArrayList<Integer> getFixedTxPerLinkAndTotalTxCost(Flow flow) {
-		var nodesInFlow = flow.nodes;
-		var nNodesInFlow = nodesInFlow.size();
-		ArrayList<Integer> txArrayList = new ArrayList<Integer>();
-		/*
-		 * Each node will have at most numFaults+1 transmissions. Because we don't know which nodes will
-		 * send the message over an edge, we give the cost to each node.
-		 */
-		for (int i = 0; i < nNodesInFlow; i++) {
-			txArrayList.add(numFaults + 1);
-		}
-		/*
-		 * now compute the maximum # of TX, assuming at most numFaults occur on an edge per period, and
-		 * each edge requires at least one successful TX.
-		 */
-		var numEdgesInFlow = nNodesInFlow - 1;
-		var maxFaultsInFlow = numEdgesInFlow * numFaults;
-		txArrayList.add(numEdgesInFlow + maxFaultsInFlow);
-		return txArrayList;
-	}
-	/**
 	 * Places a variable sent to the method into each index from 1 to size of the ArrayList name sent to the method 
 	 * @param name The ArrayList being updated 
-	 * @param variable The variable being inputted into each index 
+	 * @param variable The variable being inputed into each index 
 	 * @param size The limit of how many indexed should be updated 
 	 * @return The ArrayList now updated 
 	 */
@@ -207,7 +238,7 @@ public class ReliabilityAnalysis {
 	 * 
 	 * @param e2eReliabilityState
 	 * @param currentReliabilityRow
-	 * @param newReliabilityRow
+	 * @param newReliabilityRow 
 	 * @param nNodesInFlow
 	 * @param nPushes
 	 * @param reliabilityWindow
@@ -226,6 +257,7 @@ public class ReliabilityAnalysis {
 			currentReliabilityRow = newReliabilityRow;
 			//currentReliabilityRow = newReliabilityRow.toArray(new Double[newReliabilityRow.size()]);
 			currentReliabilityRow = updateStates(nNodesInFlow,currentReliabilityRow, prevReliabilityRow, nPushes);
+			
 			e2eReliabilityState = currentReliabilityRow.get(nNodesInFlow - 1);
 			/* convert the row to a vector so we can add it to the reliability window */
 			Collections.addAll(currentReliabilityVector, currentReliabilityRow.toArray(new Double[0]));
