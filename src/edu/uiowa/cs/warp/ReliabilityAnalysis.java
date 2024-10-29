@@ -46,23 +46,44 @@ import java.util.Collection;
  *
  */
 public class ReliabilityAnalysis {
+	/**
+	 * The DEFAULT_TX_NUM variable specifies the default transmission number <br>
+	 */
 	private static final Integer DEFAULT_TX_NUM = 0;
+	/**
+	 * The DEFAULT_M variable specifies the default minimum packet reception rate <br>
+	 */
 	private static final Double DEFAULT_M = 0.9;
+	/**
+	 * The DEFAULT_E2E variable specifies the default end-to-end reliability target <br>
+	 */
 	private static final Double DEFAULT_E2E = 0.99;
-
-	private Boolean mode;
+	
+	/**
+	 * The model variable specifies which model needs to be used based on how the ReliabilityAnalysis is constructed <br>
+	 */
+	private Boolean model;
+	/**
+	 * The e2e variable specifies the end-to-end reliability target <br>
+	 */
 	private Double e2e;
+	/**
+	 * The minPacketReceptionRate variable specifies the minimum packet reception rate <br>
+	 */
 	private Double minPacketReceptionRate;
+	/**
+	 * The numFaults variable specifies the number of faults  <br>
+	 */
 	private Integer numFaults;
 
 	/**
 	 * Constructor for predictive fault model.
 	 * 
 	 * @param e2e End-to-end reliability target.
-	 * @param minPacketReceptionRate Minimum packet reception rate.
+	 * @param minPacketReceptionRate Minimum packet reception rate
 	 */
 	public ReliabilityAnalysis(Double e2e, Double minPacketReceptionRate) {
-		this.mode= false;
+		this.model= false;
 		this.e2e = e2e;
 		this.minPacketReceptionRate = minPacketReceptionRate;
 		this.numFaults = DEFAULT_TX_NUM;
@@ -74,7 +95,7 @@ public class ReliabilityAnalysis {
 	 * @param numFaults Number of faults to use in fixed model
 	 */
 	public ReliabilityAnalysis(Integer numFaults) {
-		this.mode = true;
+		this.model = true;
 		this.e2e = DEFAULT_E2E;
 		this.minPacketReceptionRate = DEFAULT_M;
 		this.numFaults = numFaults;
@@ -93,7 +114,7 @@ public class ReliabilityAnalysis {
 	 * @return ArrayList<Integer> containing number of transmissions per link and total cost.
 	 */
 	public ArrayList<Integer> numTxPerLinkAndTotalTxCost(Flow flow) {
-		if (this.mode) {
+		if (this.model) {
 			/* Case 1: If there is fixed numFaults */
 			return getFixedTxPerLinkAndTotalTxCost(flow);
 
@@ -107,7 +128,7 @@ public class ReliabilityAnalysis {
 	 * Computes the number of transmissions needed per node and total cost for a given flow.
 	 * 
 	 * @param flow Flow whose node transmissions and total cost need to be calculated
-	 * @return Array of number of transmissions needed for each node
+	 * @return ArrayList of number of transmissions needed for each node
 	 */
 	private ArrayList<Integer> getFixedTxPerLinkAndTotalTxCost(Flow flow) {
 		/* Each node will have at most numFaults+1 transmissions, do not know
@@ -120,12 +141,20 @@ public class ReliabilityAnalysis {
 	    txArrayList.add(numEdgesInFlow + maxFaultsInFlow);
 	    
 	    return txArrayList;
-  }
+	}
 	
+	/**
+	 * Initializes the TxArrayList with defaultTx values
+	 *  
+	 * @param nNodesInFlow an int representing the number of nodes in the flow 
+	 * @param defaultTx a int represents the default number of transmissions 
+	 * @return an arrayList initialized with all default values
+	 */
 	private ArrayList<Integer> initializeTxArrayList(int nNodesInFlow, int defaultTx) {
 		/* Compute the maximum # of TX, assuming at most numFaults occur on an edge per period, and
 	     * each edge requires at least one successful TX. */
 		ArrayList<Integer> txArrayList = new ArrayList<>();
+		
 		for (int i = 0; i < nNodesInFlow; i++) {
 		      txArrayList.add(defaultTx);
 		}
@@ -143,184 +172,126 @@ public class ReliabilityAnalysis {
 	 * @return ArrayList<Integer> represents number of transmissions per link and their cost
 	 */
 	private ArrayList<Integer> numTxAttemptsPerLinkAndTotalTxAttempts(Flow flow, Double e2e, Double M, boolean optimizationRequested) {
-//	    var nodesInFlow = flow.nodes;
-//	    /* The last entry will contain the worst-case cost of transmitting E2E in isolation */
-//	    var nNodesInFlow = nodesInFlow.size();
 		int nNodesInFlow = flow.nodes.size();
 		
-		
-//	    // var nPushes = Array(repeating: 0, count: nNodesInFlow+1);
-//	    /* Array to track nPushes for each node in this flow (same as nTx per link) */
-//	    var nPushes = new Integer[nNodesInFlow + 1];
-//	    /* initialize to all 0 values */
-//	    Arrays.fill(nPushes, 0);
-//		var nHops = nNodesInFlow - 1;
-	    Integer[] nPushes = initalizePushArray(nNodesInFlow);
+	    /* ArrayList to track nPushes for each node in this flow (same as nTx per link) */
+	    ArrayList<Integer> nPushes = initalizePushArray(nNodesInFlow);
 	    
-	    
-//	    /* minLinkReliablityNeded is the minimum reliability needed per link in a flow to hit E2E
-//	     * reliability for the flow
-//	     * Use max to handle rounding error when E2E == 1.0 */
-//	    Double minLinkReliablityNeded = Math.max(e2e, Math.pow(e2e, (1.0 / (double) nHops)));
 	    Double minLinkReliabilityNeeded = calculateMinLinkReliability(e2e, nNodesInFlow -1);
+	            
+		ReliabilityTable reliabilityWindow = initializeReliabilityWindow(nNodesInFlow);
+		ArrayList<Double> currentReliabilityRow = initializeReliabilityRow(reliabilityWindow);
+	    //Double e2eReliabilityState = currentReliabilityRow[nNodesInFlow - 1];
+		Double e2eReliabilityState = currentReliabilityRow.get(nNodesInFlow - 1);
 	    
-	    
-//	    /* Now compute reliability of packet reaching each node in the given time slot
-//	     * Start with a 2-D reliability window that is a 2-D matrix of no size
-//	     * each row is a time slot, stating at time 0
-//	     * each column represents the reliability of the packet reaching that node at the
-//	     * current time slot (i.e., the row it is in)
-//	     * will add rows as we compute reliabilities until the final reliability is reached
-//	     * for all nodes. */
-//	    var reliabilityWindow = new Vector<Vector<Double>>();
-//	    var newReliabilityRow = new Vector<Double>();
-//	    for (int i = 0; i < nNodesInFlow; i++) {
-//	      /* Create the row initialized with 0.0 values */
-//	      newReliabilityRow.add(0.0);
-//	    }
-//	    /* Now add row to the reliability window, Time 0 */
-//	    reliabilityWindow.add(newReliabilityRow);
-//	    Vector<Double> tmpVector = reliabilityWindow.get(0);
-//	    var currentReliabilityRow = tmpVector.toArray(new Double[tmpVector.size()]);
-//	    /* var currentReliabilityRow = (Double[]) reliabilityWindow.get(0).toArray();
-//	     * Want reliabilityWindow[0][0] = 1.0 (i.e., P(packet@FlowSrc) = 1
-//	     * but I din't want to mess with the newReliablityRow vector I use below
-//	     * So, we initialize this first entry to 1.0, which is reliabilityWindow[0][0]
-//	     * We will then update this row with computed values for each node and put it
-//	     * back in the matrix
-//	     * The analysis will end when the E2E reliability metric is met, initially
-//	     * will be 0 with this statement. */
-//	    currentReliabilityRow[0] = 1.0; // initialize (i.e., P(packet@FlowSrc) = 1
-//	    Double e2eReliabilityState = currentReliabilityRow[nNodesInFlow - 1];
-		Vector<Vector<Double>> reliabilityWindow = initializeReliabilityWindow(nNodesInFlow);
-		Double[] currentReliabilityRow = initializeReliabilityRow(reliabilityWindow);
-	    Double e2eReliabilityState = currentReliabilityRow[nNodesInFlow - 1];
-	    
-//	    /*Start time at 0  */
-//	    var timeSlot = 0;
-//	    /* Change to while and increment timeSlot since we don't know how long
-//	     * the schedule window will last */
-//	    while (e2eReliabilityState < e2e) {
-//	      var prevReliabilityRow = currentReliabilityRow;
-//	      /* Would be reliabilityWindow[timeSlot] if working through a schedule */
-//	      currentReliabilityRow = newReliabilityRow.toArray(new Double[newReliabilityRow.size()]);
-//	      /* Now use each flow:source->sink to update reliability computations
-//	       * this is the update formula for the state probabilities
-//	       * nextState = (1 - M) * prevState + M*NextHighestFlowState
-//	       * use MinLQ for M in above equation
-//	       * NewSinkNodeState = (1-M)*PrevSnkNodeState + M*PrevSrcNodeState
-//	       * 
-//	       * Loop Through each node in the flow and update states for each link (sink->source pair) */
-//	      for (int nodeIndex = 0; nodeIndex < (nNodesInFlow - 1); nodeIndex++) {
-//	        var flowSrcNodeindex = nodeIndex;
-//	        var flowSnkNodeindex = nodeIndex + 1;
-//	        var prevSrcNodeState = prevReliabilityRow[flowSrcNodeindex];
-//	        var prevSnkNodeState = prevReliabilityRow[flowSnkNodeindex];
-//	        Double nextSnkState;
-//	        /* Do a push until PrevSnk state > E2E to ensure next node reaches target E2E
-//	         * BUT skip if no chance of success (source doesn't have packet) */
-//	        if ((prevSnkNodeState < minLinkReliablityNeded) && prevSrcNodeState > 0) {
-//	          /* Need to continue attempting Tx so update current state */
-//	          nextSnkState = ((1.0 - M) * prevSnkNodeState) + (M * prevSrcNodeState);
-//	          /* Increment number of pushes for this node to sink node */
-//	          nPushes[nodeIndex] += 1;
-//	        } else {
-//	          /* sink node has met its reliability, move to next node and record the reliability met */
-//	          nextSnkState = prevSnkNodeState;
-//	        }
-//	        /* Probabilities are non-decreasing so update if we were
-//	         * higher by carrying old value forward */
-//	        if (currentReliabilityRow[flowSrcNodeindex] < prevReliabilityRow[flowSrcNodeindex]) {
-//	          /* Carry previous state forward for source node which may get overwritten
-//	           * later by another instruction in this slot */
-//	          currentReliabilityRow[flowSrcNodeindex] = prevReliabilityRow[flowSrcNodeindex];
-//	        }
-//	        currentReliabilityRow[flowSnkNodeindex] = nextSnkState;
-//	      }
-//
-//	      e2eReliabilityState = currentReliabilityRow[nNodesInFlow - 1];
-//	      Vector<Double> currentReliabilityVector = new Vector<Double>();
-//	      /* convert the row to a vector so we can add it to the reliability window */
-//	      Collections.addAll(currentReliabilityVector, currentReliabilityRow);
-//	      if (timeSlot < reliabilityWindow.size()) {
-//	        reliabilityWindow.set(timeSlot, (currentReliabilityVector));
-//	      } else {
-//	        reliabilityWindow.add(currentReliabilityVector);
-//	      }
-//	      /* Increase to next timeSlot */
-//	      timeSlot += 1;
-//	    }
-	    /*Start time at 0  */
+	  
 	    var timeSlot = 0;
-	    /* Change to while and increment timeSlot since we don't know how long
-	     * the schedule window will last */
 	    while (e2eReliabilityState < e2e) {
 	    	currentReliabilityRow = computeReliabilityForNxtTmSlt(currentReliabilityRow,
 	    															nNodesInFlow, M,
 	    															minLinkReliabilityNeeded,
 	    															nPushes);
-	    	e2eReliabilityState = currentReliabilityRow[nNodesInFlow - 1];
+	    	e2eReliabilityState = currentReliabilityRow.get(nNodesInFlow - 1);
+	    	//e2eReliabilityState = currentReliabilityRow[nNodesInFlow - 1];
 	    	updateReliabilityWindow(reliabilityWindow, currentReliabilityRow, timeSlot);
 	    	timeSlot++;
 	    }
-	    
-	    
-//	    var size = reliabilityWindow.size();
-//	    /* Total worst-case cost to transmit E2E in isolation where specified reliability
-//	     * target is the number of rows in the reliabilityWindow */
-//	    nPushes[nNodesInFlow] = size;
-	    nPushes[nNodesInFlow] = reliabilityWindow.size();
-	    
-	    
-	    
-//	    /* Now convert the array to the ArrayList needed to return */
-//	    ArrayList<Integer> nPushesArrayList = new ArrayList<Integer>();
-//	    Collections.addAll(nPushesArrayList, nPushes);
-//	    return nPushesArrayList;
-	    return new ArrayList<>(Arrays.asList(nPushes));
+	   
+	    nPushes.set(nNodesInFlow,reliabilityWindow.size());
+	    // return new ArrayList<>(Arrays.asList(nPushes));
+	    return nPushes;
 	}
-	
-	private Integer[] initalizePushArray(int nNodesInFlow) {
-		Integer[] nPushes = new Integer[nNodesInFlow + 1];
-		Arrays.fill(nPushes, 0);
+	/**
+	 * Fills an ArrayList called nPushes with values of 0
+	 *  
+	 * @param nNodesInFlow
+	 * @return nPushes which is an ArrayList of 0s 
+	 */
+	private ArrayList<Integer> initalizePushArray(int nNodesInFlow) {
+		//Integer[] nPushes = new Integer[nNodesInFlow + 1];
+		ArrayList<Integer> nPushes = new ArrayList<Integer>();
+		for (int i = 0; i <= nNodesInFlow; i++) {
+		      nPushes.add(0);
+		}
 		return nPushes;
 	}
-		
+	
+	/**
+	 * Calculates the minimum link reliability with e2e and n hops 
+	 * 
+	 * @param e2e the end to end reliability target 
+	 * @param nHops the number of hops per link 
+	 * @return returns the minimum link reliability
+	 */
 	private Double calculateMinLinkReliability(Double e2e, int nHops) {
 		return Math.max(e2e, Math.pow(e2e, (1.0 / (double) nHops)));
 	}
 	
-	private Vector<Vector<Double>> initializeReliabilityWindow(int nNodesInFlow) {
-		Vector<Vector<Double>> reliabilityWindow = new Vector<>();
-		Vector<Double> initialRow = new Vector<>(Collections.nCopies(nNodesInFlow, 0.0));
+	/**
+	 * Initializes a reliability window  with a single row containing reliability values 
+	 * 
+	 * @param nNodesInFlow the number of nodes in the flow 
+	 * @return reliablityWindow a ReliabilityTable with one row of 0s except for the first value of 1.0  
+	 */
+	private ReliabilityTable initializeReliabilityWindow(int nNodesInFlow) {
+		ReliabilityTable reliabilityWindow = new ReliabilityTable();
+		ReliabilityRow initialRow = new ReliabilityRow(nNodesInFlow, 0.0);
+		//Vector<Vector<Double>> reliabilityWindow = new Vector<>();
+		//Vector<Double> initialRow = new Vector<>(Collections.nCopies(nNodesInFlow, 0.0));
 		initialRow.set(0, 1.0);
 		reliabilityWindow.add(initialRow);
 		
 		return reliabilityWindow;
 	}
 	
-	private Double[] initializeReliabilityRow(Vector<Vector<Double>> reliabilityWindow) {
-		return reliabilityWindow.get(0).toArray(new Double[0]);
+	/**
+	 * Initializes a reliability row based on a reliability window 
+	 * 
+	 * @param reliabilityWindow a ReliabilityTable of ReliabilityRows, represents the reliability values 
+	 * @return a double ArrayList of the first row of the reliabilityWindow
+	 */
+	private ArrayList<Double> initializeReliabilityRow(ReliabilityTable reliabilityWindow) {
+		//return reliabilityWindow.get(0).toArray(new Double[0]);
+		return reliabilityWindow.get(0);
 	}
 	
-	private Double[] computeReliabilityForNxtTmSlt(Double[] prevReliabilityRow, int nNodesInFlow,
+	/**
+	 * Calculates a new reliability state for the nodes of the next time slot, based on the reliability values from the previous time slot
+	 * 
+	 * @param prevReliabilityRow an ArrayList of doubles 
+	 * @param nNodesInFlow a int value that relates the number of the nodes in the flow 
+	 * @param M the minimum packet reception rate 
+	 * @param minLinkReliabilityNeeded a double that is the minimum reliability needed per link in a flow to hit E2E 
+	 * @param nPushes a ArrayList of integers of pushes 
+	 * @return currentReliabilityRow a ArrayList of doubles representing the reliability states for each node in the flow at the next time slot
+	 */
+	private ArrayList<Double> computeReliabilityForNxtTmSlt(ArrayList<Double> prevReliabilityRow, int nNodesInFlow,
 													     Double M, Double minLinkReliabilityNeeded,
-													     Integer[] nPushes) {
-		Double[] currentReliabilityRow = Arrays.copyOf(prevReliabilityRow, 
-													   prevReliabilityRow.length);
+													     ArrayList<Integer> nPushes) {
+		ArrayList<Double> currentReliabilityRow = new ArrayList<Double>(prevReliabilityRow);
+		//Double[] currentReliabilityRow = Arrays.copyOf(prevReliabilityRow, prevReliabilityRow.length);
 		for (int i = 0; i < nNodesInFlow - 1; i++) {
-			Double prevSrcNodeState = prevReliabilityRow[i];
-			Double prevSnkNodeState = prevReliabilityRow[i + 1];
+			Double prevSrcNodeState = prevReliabilityRow.get(i);
+			Double prevSnkNodeState = prevReliabilityRow.get(i + 1);
 			Double nextSnkState = calculateNextSinkState(M, prevSnkNodeState, prevSrcNodeState,
 														 minLinkReliabilityNeeded);
 			if (nextSnkState > prevSnkNodeState) {
-				nPushes[i]++;
+				nPushes.set(i,nPushes.get(i)+1);
 			}
-			currentReliabilityRow[i + 1] = nextSnkState;
+			currentReliabilityRow.set(i + 1, nextSnkState);
 		}
 		return currentReliabilityRow;
 	}
 	
+	/**
+	 * Calculates the new reliability state for a sink node based on M,prevSnkNodeState, prevSrcNodeState, minLinkReliabilityNeeded
+	 *  
+	 * @param M the minimum packet reception rate
+	 * @param prevSnkNodeState a double that represents the previous sink node state 
+	 * @param prevSrcNodeState a double that represents the previous source node state 
+	 * @param minLinkReliabilityNeeded a double that is the minimum reliability needed per link in a flow to hit E2E
+	 * @return returns the next reliability state 
+	 */
 	private Double calculateNextSinkState(Double M, Double prevSnkNodeState,
 										   Double prevSrcNodeState, 
 										   Double minLinkReliabilityNeeded) {
@@ -330,126 +301,22 @@ public class ReliabilityAnalysis {
 		return prevSnkNodeState;
 	}
 	
-	private void updateReliabilityWindow(Vector<Vector<Double>> reliabilityWindow, 
-											Double[] currentReliabilityRow, int timeSlot) {
-		Vector<Double> newRow = new Vector<>(Arrays.asList(currentReliabilityRow));
+	/**
+	 * Updates the reliability window with a new row of reliability data for a specific time slot 
+	 * 
+	 * @param reliabilityWindow a ReliabilityTable of ReliabiltyRows, represents the reliability values
+	 * @param currentReliabilityRow a ArrayList of doubles representing the reliability states for each node in the flow at the next time slot 
+	 * @param timeSlot the current time slot 
+	 */
+	private void updateReliabilityWindow(ReliabilityTable reliabilityWindow, 
+											ArrayList<Double> currentReliabilityRow, int timeSlot) {
+		//Vector<Double> newRow = new Vector<>(Arrays.asList(currentReliabilityRow));
+		ReliabilityRow newRow = new ReliabilityRow(currentReliabilityRow.toArray(new Double[0]));
 		if (timeSlot < reliabilityWindow.size()) {
 			reliabilityWindow.set(timeSlot, newRow);
 		} else {
 			reliabilityWindow.add(newRow);
 		}
-	}
-	
-	
-	
-	
-
-	/**
-	 * Places a variable sent to the method into each index from 1 to size of the ArrayList name sent to the method 
-	 * @param name The ArrayList being updated 
-	 * @param variable The variable being inputed into each index 
-	 * @param size The limit of how many indexed should be updated 
-	 * @return The ArrayList now updated 
-	 */
-	private <T> Collection<T> addTo(Collection<T> collection , T variable, int size){
-		for (int i = 0; i < size; i++) {
-			collection.add(variable);
-		}
-		return collection;
-	}
-	/**
-	 * 
-	 * @param e2eReliabilityState
-	 * @param currentReliabilityRow
-	 * @param newReliabilityRow 
-	 * @param nNodesInFlow
-	 * @param nPushes
-	 * @param reliabilityWindow
-	 * @return
-	 */
-	private Vector<Vector<Double>> NoIdeaWhatThisDoesYet(Double e2eReliabilityState,ArrayList<Double> currentReliabilityRow,Vector<Double> newReliabilityRow,int nNodesInFlow,Integer[] nPushes,Vector<Vector<Double>> reliabilityWindow, double M, double e2e){
-		//ArrayList<Double> prevReliabilityRow = new ArrayList<Double>();
-		Vector<Double> currentReliabilityVector = new Vector<Double>();
-		int timeSlot = 0;
-		/*Start time at 0  */
-		/* Change to while and increment timeSlot since we don't know how long
-		 * the schedule window will last */
-		while (e2eReliabilityState < e2e) {
-			var prevReliabilityRow = currentReliabilityRow;
-			/* Would be reliabilityWindow[timeSlot] if working through a schedule */
-			currentReliabilityRow = new ArrayList<>(newReliabilityRow);
-			//currentReliabilityRow = newReliabilityRow.toArray(new Double[newReliabilityRow.size()]);
-			//currentReliabilityRow = newReliabilityRow.toArray(new Double[newReliabilityRow.size()]);
-			currentReliabilityRow = updateStates(nNodesInFlow,currentReliabilityRow, prevReliabilityRow, nPushes, M, e2e);
-			
-			e2eReliabilityState = currentReliabilityRow.get(nNodesInFlow - 1);
-			/* convert the row to a vector so we can add it to the reliability window */
-			Collections.addAll(currentReliabilityVector, currentReliabilityRow.toArray(new Double[0]));
-			if (timeSlot < reliabilityWindow.size()) {
-				reliabilityWindow.set(timeSlot, (currentReliabilityVector));
-			} else {
-				reliabilityWindow.add(currentReliabilityVector);
-			}
-			/* Increase to next timeSlot */
-			timeSlot += 1;
-		} 
-		return reliabilityWindow;
-	}
-	/**
-	 * Now use each flow:source->sink to update reliability computations
-	 * this is the update formula for the state probabilities
-	 * nextState = (1 - M) * prevState + M*NextHighestFlowState
-	 * use minPacketReceptionRate for M in above equation
-	 * NewSinkNodeState = (1-M)*PrevSnkNodeState + M*PrevSrcNodeState
-	 * 
-	 * Loop Through each node in the flow and update states for each link (sink->source pair) 
-	 * 
-	 * @param NodesInFlow, 
-	 * @param currentReliabilityRow, 
-	 * @param prevReliabilityRow, 
-	 * @param nPushes
-	 */
-	private ArrayList<Double> updateStates(int nNodesInFlow, ArrayList<Double> currentReliabilityRow,ArrayList<Double> prevReliabilityRow, Integer[] nPushes, double M, double e2e) {
-		int flowSrcNodeindex;
-		int flowSnkNodeindex;
-		Double prevSrcNodeState;
-		Double prevSnkNodeState;
-		Double nextSnkState;
-		int nHops = nNodesInFlow - 1;
-		/* minLinkReliablityNeded is the minimum reliability needed per link in a flow to hit E2E
-		 * reliability for the flow
-		 * Use max to handle rounding error when E2E == 1.0 
-		 */
-		Double minLinkReliablityNeded = Math.max(e2e, Math.pow(e2e, (1.0 / (double) nHops)));
-
-		for (int nodeIndex = 0; nodeIndex < (nNodesInFlow - 1); nodeIndex++) {
-			flowSrcNodeindex = nodeIndex;
-			flowSnkNodeindex = nodeIndex + 1;
-			prevSrcNodeState = prevReliabilityRow.get(flowSrcNodeindex);
-			prevSnkNodeState = prevReliabilityRow.get(flowSnkNodeindex);
-			/* Do a push until PrevSnk state > E2E to ensure next node reaches target E2E
-			 * BUT skip if no chance of success (source doesn't have packet) */
-			if ((prevSnkNodeState < minLinkReliablityNeded) && prevSrcNodeState > 0) {
-				/* Need to continue attempting Tx so update current state */
-				nextSnkState = ((1.0 - M) * prevSnkNodeState) 
-						+ (M * prevSrcNodeState);
-				/* Increment number of pushes for this node to sink node */
-				nPushes[nodeIndex] += 1;
-			} else {
-				/* sink node has met its reliability, move to next node and record 
-				 * the reliability met */
-				nextSnkState = prevSnkNodeState;
-			}
-			/* Probabilities are non-decreasing so update if we were
-			 * higher by carrying old value forward */
-			if (currentReliabilityRow.get(flowSrcNodeindex) < prevReliabilityRow.get(flowSnkNodeindex)){
-				/* Carry previous state forward for source node which may get overwritten
-				 * later by another instruction in this slot */
-				currentReliabilityRow.set(flowSrcNodeindex, prevReliabilityRow.get(flowSrcNodeindex));
-			}
-			currentReliabilityRow.set(flowSnkNodeindex,nextSnkState);
-		}
-		return currentReliabilityRow;
 	}
 	 
 	public Boolean verifyReliablities() {
