@@ -110,44 +110,28 @@ public class ReliabilityAnalysis {
 	 * @return Array of number of transmissions needed for each node
 	 */
 	private ArrayList<Integer> getFixedTxPerLinkAndTotalTxCost(Flow flow) {
-//		var nodesInFlow = flow.nodes;
-//		var nNodesInFlow = nodesInFlow.size();
-//		ArrayList<Integer> txArrayList = new ArrayList<Integer>();
-//		/*
-//		 * Each node will have at most numFaults+1 transmissions. Because we don't know which nodes will
-//		 * send the message over an edge, we give the cost to each node.
-//		 */
-//		txArrayList = (ArrayList<Integer>)addTo(txArrayList,numFaults+1,nNodesInFlow);
-//		/*
-//		 * now compute the maximum # of TX, assuming at most numFaults occur on an edge per period, and
-//		 * each edge requires at least one successful TX.
-//		 */
-//		var numEdgesInFlow = nNodesInFlow - 1;
-//		var maxFaultsInFlow = numEdgesInFlow * numFaults;
-//		txArrayList.add(numEdgesInFlow + maxFaultsInFlow);
-//		return txArrayList;
-		
-	    var nodesInFlow = flow.nodes;
-	    var nNodesInFlow = nodesInFlow.size();
-	    ArrayList<Integer> txArrayList = new ArrayList<Integer>();
-	    /*
-	     * Each node will have at most numFaults+1 transmissions. Because we don't know which nodes will
-	     * send the message over an edge, we give the cost to each node.
-	     */
-	    for (int i = 0; i < nNodesInFlow; i++) {
-	      txArrayList.add(numFaults + 1);
-	    }
-	    /*
-	     * now compute the maximum # of TX, assuming at most numFaults occur on an edge per period, and
-	     * each edge requires at least one successful TX.
-	     */
-	    var numEdgesInFlow = nNodesInFlow - 1;
-	    var maxFaultsInFlow = numEdgesInFlow * numFaults;
+		/* Each node will have at most numFaults+1 transmissions, do not know
+		 * which nodes will send message over an edge, giving cost to each node. */
+	    int nNodesInFlow = flow.nodes.size();
+	    int numEdgesInFlow = nNodesInFlow - 1;
+	    
+	    ArrayList<Integer> txArrayList = initializeTxArrayList(nNodesInFlow, numFaults + 1);
+	    var maxFaultsInFlow = (nNodesInFlow - 1) * numFaults;
 	    txArrayList.add(numEdgesInFlow + maxFaultsInFlow);
+	    
 	    return txArrayList;
   }
 	
-
+	private ArrayList<Integer> initializeTxArrayList(int nNodesInFlow, int defaultTx) {
+		/* Compute the maximum # of TX, assuming at most numFaults occur on an edge per period, and
+	     * each edge requires at least one successful TX. */
+		ArrayList<Integer> txArrayList = new ArrayList<>();
+		for (int i = 0; i < nNodesInFlow; i++) {
+		      txArrayList.add(defaultTx);
+		}
+		return txArrayList;
+	}
+	
 	/**
 	 * Computes number of transmission attempts per link and total number to achieve end-to-end
 	 * reliability for given flow.
@@ -159,61 +143,6 @@ public class ReliabilityAnalysis {
 	 * @return ArrayList<Integer> represents number of transmissions per link and their cost
 	 */
 	private ArrayList<Integer> numTxAttemptsPerLinkAndTotalTxAttempts(Flow flow, Double e2e, Double M, boolean optimizationRequested) {
-//		ArrayList<Node> nodesInFlow = new ArrayList<Node>();
-//		int nNodesInFlow;
-//		
-//		Integer[] nPushes = new Integer[0];
-//		ArrayList<Double> currentReliabilityRow = new ArrayList<Double>();
-//		ArrayList<Integer> nPushesArrayList = new ArrayList<Integer>();
-//		Vector<Vector<Double>> reliabilityWindow = new Vector<Vector<Double>>();
-//		Vector<Double> newReliabilityRow = new Vector<Double>();
-//		Vector<Double> tmpVector = new Vector<Double>();
-//		Double e2eReliabilityState;
-//			
-//		nodesInFlow = flow.nodes;
-//			/* The last entry will contain the worst-case cost of transmitting E2E in isolation */
-//		nNodesInFlow = nodesInFlow.size();
-//			// var nPushes = Array(repeating: 0, count: nNodesInFlow+1);
-//			/* Array to track nPushes for each node in this flow (same as nTx per link) */
-//		nPushes = new Integer[nNodesInFlow + 1];
-//			/* initialize to all 0 values */
-//		Arrays.fill(nPushes, 0);
-//				
-//	
-//			/* Now compute reliability of packet reaching each node in the given time slot
-//			* Start with a 2-D reliability window that is a 2-D matrix of no size
-//			* each row is a time slot, stating at time 0
-//			* each column represents the reliability of the packet reaching that node at the
-//			* current time slot (i.e., the row it is in)
-//			* will add rows as we compute reliabilities until the final reliability is reached
-//			* for all nodes. 
-//			*/
-//		newReliabilityRow = (Vector<Double>)addTo(newReliabilityRow,0.0,nNodesInFlow);
-//				
-//			/* Now add row to the reliability window, Time 0 */
-//		reliabilityWindow.add(newReliabilityRow);
-//		tmpVector = reliabilityWindow.get(0);
-//		currentReliabilityRow = new ArrayList<>(tmpVector);
-//				/* var currentReliabilityRow = (Double[]) reliabilityWindow.get(0).toArray();
-//				 * Want reliabilityWindow[0][0] = 1.0 (i.e., P(packet@FlowSrc) = 1
-//				 * but I din't want to mess with the newReliablityRow vector I use below
-//				 * So, we initialize this first entry to 1.0, which is reliabilityWindow[0][0]
-//				 * We will then update this row with computed values for each node and put it
-//				 * back in the matrix
-//				 * The analysis will end when the E2E reliability metric is met, initially
-//				 * will be 0 with this statement. */
-//		currentReliabilityRow.set(0, 1.0);
-//				// initialize (i.e., P(packet@FlowSrc) = 1
-//		e2eReliabilityState = currentReliabilityRow.get(nNodesInFlow - 1);
-//		reliabilityWindow = NoIdeaWhatThisDoesYet(e2eReliabilityState,currentReliabilityRow,newReliabilityRow,nNodesInFlow,nPushes,reliabilityWindow,M, e2e);
-//				/* Total worst-case cost to transmit E2E in isolation where specified reliability
-//				 * target is the number of rows in the reliabilityWindow */
-//		nPushes[nNodesInFlow] = reliabilityWindow.size();
-//				/* Now convert the array to the ArrayList needed to return */
-//		Collections.addAll(nPushesArrayList, nPushes);
-//		return nPushesArrayList;
-//	
-		
 	    var nodesInFlow = flow.nodes;
 	    /* The last entry will contain the worst-case cost of transmitting E2E in isolation */
 	    var nNodesInFlow = nodesInFlow.size();
