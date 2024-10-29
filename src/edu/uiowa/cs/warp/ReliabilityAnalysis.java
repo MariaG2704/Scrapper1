@@ -60,7 +60,8 @@ public class ReliabilityAnalysis {
 	private static final Double DEFAULT_E2E = 0.99;
 	
 	/**
-	 * The model variable specifies which model needs to be used based on how the ReliabilityAnalysis is constructed <br>
+	 * The model variable specifies which model needs to be used based on how the 
+	 * ReliabilityAnalysis is constructed <br>
 	 */
 	private Boolean model;
 	/**
@@ -117,7 +118,6 @@ public class ReliabilityAnalysis {
 		if (this.model) {
 			/* Case 1: If there is fixed numFaults */
 			return getFixedTxPerLinkAndTotalTxCost(flow);
-
 		} else {
 			/* Case 2: If there is not fixed numFaults */
 			return numTxAttemptsPerLinkAndTotalTxAttempts(flow, this.e2e, 
@@ -171,7 +171,9 @@ public class ReliabilityAnalysis {
 	 * @param optimizationRequested Indicates if optimization is requested
 	 * @return ArrayList<Integer> represents number of transmissions per link and their cost
 	 */
-	private ArrayList<Integer> numTxAttemptsPerLinkAndTotalTxAttempts(Flow flow, Double e2e, Double M, boolean optimizationRequested) {
+	private ArrayList<Integer> numTxAttemptsPerLinkAndTotalTxAttempts(Flow flow, Double e2e, 
+																	   Double M, 
+																	   boolean optimizationRequested) {
 		int nNodesInFlow = flow.nodes.size();
 		
 	    /* ArrayList to track nPushes for each node in this flow (same as nTx per link) */
@@ -196,7 +198,7 @@ public class ReliabilityAnalysis {
 	    	updateReliabilityWindow(reliabilityWindow, currentReliabilityRow, timeSlot);
 	    	timeSlot++;
 	    }
-	   
+
 	    nPushes.set(nNodesInFlow,reliabilityWindow.size());
 	    // return new ArrayList<>(Arrays.asList(nPushes));
 	    return nPushes;
@@ -247,7 +249,7 @@ public class ReliabilityAnalysis {
 	/**
 	 * Initializes a reliability row based on a reliability window 
 	 * 
-	 * @param reliabilityWindow a ReliabilityTable of ReliabilityRows, represents the reliability values 
+	 * @param reliabilityWindow a ReliabilityTable of ReliabilityRows, represents reliability values 
 	 * @return a double ArrayList of the first row of the reliabilityWindow
 	 */
 	private ArrayList<Double> initializeReliabilityRow(ReliabilityTable reliabilityWindow) {
@@ -256,14 +258,15 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
-	 * Calculates a new reliability state for the nodes of the next time slot, based on the reliability values from the previous time slot
+	 * Calculates a new reliability state for the nodes of the next time slot, based on the 
+	 * reliability values from the previous time slot
 	 * 
 	 * @param prevReliabilityRow an ArrayList of doubles 
 	 * @param nNodesInFlow a int value that relates the number of the nodes in the flow 
 	 * @param M the minimum packet reception rate 
-	 * @param minLinkReliabilityNeeded a double that is the minimum reliability needed per link in a flow to hit E2E 
+	 * @param minLinkReliabilityNeeded a double that is the min reliability per link to hit E2E 
 	 * @param nPushes a ArrayList of integers of pushes 
-	 * @return currentReliabilityRow a ArrayList of doubles representing the reliability states for each node in the flow at the next time slot
+	 * @return currentReliabilityRow a ArrayList of doubles reps reliability states of each node at
 	 */
 	private ArrayList<Double> computeReliabilityForNxtTmSlt(ArrayList<Double> prevReliabilityRow, int nNodesInFlow,
 													     Double M, Double minLinkReliabilityNeeded,
@@ -284,7 +287,8 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
-	 * Calculates the new reliability state for a sink node based on M,prevSnkNodeState, prevSrcNodeState, minLinkReliabilityNeeded
+	 * Calculates the new reliability state for a sink node based on M,prevSnkNodeState,
+	 * prevSrcNodeState, minLinkReliabilityNeeded
 	 *  
 	 * @param M the minimum packet reception rate
 	 * @param prevSnkNodeState a double that represents the previous sink node state 

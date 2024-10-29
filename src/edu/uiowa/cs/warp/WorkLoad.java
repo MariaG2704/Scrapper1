@@ -648,15 +648,16 @@ u90
   }
 
   /**
-   * Computes the number of transmissions needed per node and total cost for a given flow using the ReliabilityAnaylsis class.
-
+   * Computes the number of transmissions needed per node and total cost for a given 
+   * flow using the ReliabilityAnaylsis class.
+   * 
    * @param flow Flow whose node transmissions and total cost need to be calculated
    * @return Array of number of transmissions needed for each node 
    */
   private ArrayList<Integer> getFixedTxPerLinkAndTotalTxCost(Flow flow) {
-	  /* Use ReliabilityAnalysis class for fixed fault model */
+	  /* Instantiate the ReliabilityAnalysis object and correct constructor*/
 	  ReliabilityAnalysis reliabilityAnalysis = new ReliabilityAnalysis(numFaults);
-	  
+	  /* Call the method that will determine which method to call */
 	  return reliabilityAnalysis.numTxPerLinkAndTotalTxCost(flow);
   }
 
@@ -673,9 +674,9 @@ u90
    */
   private ArrayList<Integer> numTxAttemptsPerLinkAndTotalTxAttempts(Flow flow, Double e2e, Double M,
       boolean optimizationRequested) {
-	  /* Use ReliabilityAnalysis class for the e2e reliability model */
+	  /* Instantiate the ReliabilityAnalysis object and correct constructor*/
 	  ReliabilityAnalysis reliabilityAnalysis = new ReliabilityAnalysis(e2e, M);
-	  
+	  /* Call the method that will determine which method to call */
 	  return reliabilityAnalysis.numTxPerLinkAndTotalTxCost(flow);
   }
 
