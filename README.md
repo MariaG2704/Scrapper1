@@ -155,8 +155,18 @@ Please be aware that Eclipse's markdown file previewer does not appear to be a W
 	- Updated ReliablityAnaylsis by adding another method called `getReliabilities()` that return a ReliabilityTable. 
 
   		
+### HW5: Refactoring
+- **Objective**: Learn to refactor existing code, enhancing the modularity of a class.
+- **wplucas**:  
+    - Added the three methods to RelibailityAnlysis UML Model.
+    - 50% of step 3, the work on refactoring the two methods from workLoad
+    - Created the new UML Diagrams
+    - Generated new JavaDoc files
 
----
+- **msguana**:
+
+
+
 
 ## Project Setup
 
