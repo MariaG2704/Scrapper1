@@ -658,7 +658,6 @@ u90
 	  ReliabilityAnalysis reliabilityAnalysis = new ReliabilityAnalysis(numFaults);
 	  
 	  return reliabilityAnalysis.numTxPerLinkAndTotalTxCost(flow);
-	  
   }
 
   /**
@@ -680,11 +679,9 @@ u90
 	  return reliabilityAnalysis.numTxPerLinkAndTotalTxCost(flow);
   }
 
-
   /**
    * Get the names of all nodes in flow, ordered alphabetically.
    * 
-
    * @return Array of all node names sorted
    */
   public String[] getNodeNamesOrderedAlphabetically() {
