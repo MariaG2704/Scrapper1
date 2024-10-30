@@ -159,11 +159,14 @@ Please be aware that Eclipse's markdown file previewer does not appear to be a W
 - **Objective**: Learn to refactor existing code, enhancing the modularity of a class.
 - **wplucas**:  
     - Added the three methods to RelibailityAnlysis UML Model.
-    - 50% of step 3, the work on refactoring the two methods from workLoad
-    - Created the new UML Diagrams
-    - Generated new JavaDoc files
+    - Did 50% of step 3 and refactored the two methods from workLoad to fit with Reliability Analysis. 
+    - Created the new UML Diagrams.
+    - Generated new JavaDoc files. 
 
 - **msguana**:
+	- I wrote the basics of Reliability Analysis like the constructors and the variables 
+	- Did 50% of step 3, refactoring reliability Analysis to fit with ArrayList and ReliabilityWindow and ReliabilityRow
+	- Wrote all Java Doc comments. 
 
 
 
