@@ -166,7 +166,7 @@ Please be aware that Eclipse's markdown file previewer does not appear to be a W
 - **msguana**:
 	- I wrote the basics of Reliability Analysis like the constructors and the variables 
 	- Did 50% of step 3, refactoring reliability Analysis to fit with ArrayList and ReliabilityWindow and ReliabilityRow
-	- Wrote all Java Doc comments. 
+	- Wrote all Java Doc comments 
 
 
 
