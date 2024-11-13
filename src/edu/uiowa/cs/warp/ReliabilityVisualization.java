@@ -33,8 +33,7 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	
 	// TODO Auto-generated class stub for unimplemented visualization
 	public GuiVisualization displayVisualization() {
-	   // TODO implement this operation
-	   throw new UnsupportedOperationException("not implemented");
+		return new GuiVisualization(createTitle(), createColumnHeader(), createVisualizationData());
 	}
 	
 	public Description createHeader() {
