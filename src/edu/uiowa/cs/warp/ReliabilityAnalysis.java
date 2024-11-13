@@ -80,11 +80,10 @@ public class ReliabilityAnalysis {
 	private Integer numFaults;
 
 	/**
-
-* Constructor for predictive fault model.
- * 	 * 
- * 	 * @param e2e End-to-end reliability target.
- * 	 * @param minPacketReceptionRate Minimum packet reception rate
+	 * Constructor for predictive fault model.
+	 * 
+ 	 * @param e2e End-to-end reliability target.
+ 	 * @param minPacketReceptionRate Minimum packet reception rate
 	 */
 	public ReliabilityAnalysis(Double e2e, Double minPacketReceptionRate) {
 		this.model= false;
@@ -94,10 +93,9 @@ public class ReliabilityAnalysis {
 	}
 
 	/**
-
-* Constructor for fixed fault model
- * 	 * 
- * 	 * @param numFaults Number of faults to use in fixed model
+	 * Constructor for fixed fault model
+  	 * 
+  	 * @param numFaults Number of faults to use in fixed model
 	 */
 	public ReliabilityAnalysis(Integer numFaults) {
 		this.model = true;
@@ -111,13 +109,12 @@ public class ReliabilityAnalysis {
 	}
 
 	/**
-
-* Compute number of Transmissions based on model type.
- * 	 * Given a fixed number of faults results in run of getFixedTxPerLinkAndTotalCost
- * 	 * If not given a fixed number we use predictive model numTxAttemptsPerLinkAndTotalTxAttempts.
- * 	 * 
- * 	 * @param flow Flow to compute the number of transmissions.
- * 	 * @return ArrayList<Integer> containing number of transmissions per link and total cost.
+	 * Compute number of Transmissions based on model type.
+ 	 * Given a fixed number of faults results in run of getFixedTxPerLinkAndTotalCost
+	 * If not given a fixed number we use predictive model numTxAttemptsPerLinkAndTotalTxAttempts.
+ 	 * 
+ 	 * @param flow Flow to compute the number of transmissions.
+ 	 * @return ArrayList<Integer> containing number of transmissions per link and total cost.
 	 */
 	public ArrayList<Integer> numTxPerLinkAndTotalTxCost(Flow flow) {
 		if (this.model) {
@@ -130,11 +127,10 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
-
-* Computes the number of transmissions needed per node and total cost for a given flow.
- * 	 * 
- * 	 * @param flow Flow whose node transmissions and total cost need to be calculated
- * 	 * @return ArrayList of number of transmissions needed for each node
+	 * Computes the number of transmissions needed per node and total cost for a given flow.
+ 	 * 
+ 	 * @param flow Flow whose node transmissions and total cost need to be calculated
+ 	 * @return ArrayList of number of transmissions needed for each node
 	 */
 	private ArrayList<Integer> getFixedTxPerLinkAndTotalTxCost(Flow flow) {
 		/* Each node will have at most numFaults+1 transmissions, do not know
@@ -150,12 +146,11 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
-
-* Initializes the TxArrayList with defaultTx values
- * 	 *  
- * 	 * @param nNodesInFlow an int representing the number of nodes in the flow 
- * 	 * @param defaultTx a int represents the default number of transmissions 
- * 	 * @return an arrayList initialized with all default values
+	 * Initializes the TxArrayList with defaultTx values
+	 *   
+	 * @param nNodesInFlow an int representing the number of nodes in the flow 
+	 * @param defaultTx a int represents the default number of transmissions 
+	 * @return an arrayList initialized with all default values
 	 */
 	private ArrayList<Integer> initializeTxArrayList(int nNodesInFlow, int defaultTx) {
 		/* Compute the maximum # of TX, assuming at most numFaults occur on an edge per period, and
@@ -169,15 +164,14 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
-
-* Computes number of transmission attempts per link and total number to achieve end-to-end
- * 	 * reliability for given flow.
- * 	 * 
- * 	 * @param flow Flow to analyze.
- * 	 * @param e2e End-to-end reliability target
- * 	 * @param M Minimum link reliability needed per successful link
- * 	 * @param optimizationRequested Indicates if optimization is requested
- * 	 * @return ArrayList<Integer> represents number of transmissions per link and their cost
+	 * Computes number of transmission attempts per link and total number to achieve end-to-end
+	 * reliability for given flow.
+	 * 
+	 * @param flow Flow to analyze.
+	 * @param e2e End-to-end reliability target
+	 * @param M Minimum link reliability needed per successful link
+	 * @param optimizationRequested Indicates if optimization is requested
+	 * @return ArrayList<Integer> represents number of transmissions per link and their cost
 	 */
 	private ArrayList<Integer> numTxAttemptsPerLinkAndTotalTxAttempts(Flow flow, Double e2e, 
 																	   Double M, 
@@ -212,11 +206,10 @@ public class ReliabilityAnalysis {
 	    return nPushes;
 	}
 	/**
-
-* Fills an ArrayList called nPushes with values of 0
- * 	 *  
- * 	 * @param nNodesInFlow
- * 	 * @return nPushes which is an ArrayList of 0s 
+	 * Fills an ArrayList called nPushes with values of 0
+	 *   
+	 * @param nNodesInFlow
+	 * @return nPushes which is an ArrayList of 0s 
 	 */
 	private ArrayList<Integer> initalizePushArray(int nNodesInFlow) {
 		//Integer[] nPushes = new Integer[nNodesInFlow + 1];
@@ -228,23 +221,21 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
-
-* Calculates the minimum link reliability with e2e and n hops 
- * 	 * 
- * 	 * @param e2e the end to end reliability target 
- * 	 * @param nHops the number of hops per link 
- * 	 * @return returns the minimum link reliability
+	 * Calculates the minimum link reliability with e2e and n hops 
+	 * 
+	 * @param e2e the end to end reliability target 
+	 * @param nHops the number of hops per link 
+	 * @return returns the minimum link reliability
 	 */
 	private Double calculateMinLinkReliability(Double e2e, int nHops) {
 		return Math.max(e2e, Math.pow(e2e, (1.0 / (double) nHops)));
 	}
 	
 	/**
-
-* Initializes a reliability window  with a single row containing reliability values 
- * 	 * 
- * 	 * @param nNodesInFlow the number of nodes in the flow 
- * 	 * @return reliablityWindow a ReliabilityTable with one row of 0s except for the first value of 1.0  
+	 * Initializes a reliability window  with a single row containing reliability values 
+	 * 
+	 * @param nNodesInFlow the number of nodes in the flow 
+	 * @return reliablityWindow a ReliabilityTable with one row of 0s except for the first value of 1.0  
 	 */
 	private ReliabilityTable initializeReliabilityWindow(int nNodesInFlow) {
 		ReliabilityTable reliabilityWindow = new ReliabilityTable();
@@ -258,11 +249,10 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
-
-* Initializes a reliability row based on a reliability window 
- * 	 * 
- * 	 * @param reliabilityWindow a ReliabilityTable of ReliabilityRows, represents reliability values 
- * 	 * @return a double ArrayList of the first row of the reliabilityWindow
+	 * Initializes a reliability row based on a reliability window 
+	 * 
+	 * @param reliabilityWindow a ReliabilityTable of ReliabilityRows, represents reliability values 
+	 * @return a double ArrayList of the first row of the reliabilityWindow
 	 */
 	private ArrayList<Double> initializeReliabilityRow(ReliabilityTable reliabilityWindow) {
 		//return reliabilityWindow.get(0).toArray(new Double[0]);
@@ -270,16 +260,15 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
-
-* Calculates a new reliability state for the nodes of the next time slot, based on the 
- * 	 * reliability values from the previous time slot
- * 	 * 
- * 	 * @param prevReliabilityRow an ArrayList of doubles 
- * 	 * @param nNodesInFlow a int value that relates the number of the nodes in the flow 
- * 	 * @param M the minimum packet reception rate 
- * 	 * @param minLinkReliabilityNeeded a double that is the min reliability per link to hit E2E 
- * 	 * @param nPushes a ArrayList of integers of pushes 
- * 	 * @return currentReliabilityRow a ArrayList of doubles reps reliability states of each node at
+	 * Calculates a new reliability state for the nodes of the next time slot, based on the 
+	 * reliability values from the previous time slot
+	 * 
+	 * @param prevReliabilityRow an ArrayList of doubles 
+	 * @param nNodesInFlow a int value that relates the number of the nodes in the flow 
+	 * @param M the minimum packet reception rate 
+	 * @param minLinkReliabilityNeeded a double that is the min reliability per link to hit E2E 
+	 * @param nPushes a ArrayList of integers of pushes 
+	 * @return currentReliabilityRow a ArrayList of doubles reps reliability states of each node at
 	 */
 	private ArrayList<Double> computeReliabilityForNxtTmSlt(ArrayList<Double> prevReliabilityRow, int nNodesInFlow,
 													     Double M, Double minLinkReliabilityNeeded,
@@ -300,15 +289,14 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
-
-* Calculates the new reliability state for a sink node based on M,prevSnkNodeState,
- * 	 * prevSrcNodeState, minLinkReliabilityNeeded
- * 	 *  
- * 	 * @param M the minimum packet reception rate
- * 	 * @param prevSnkNodeState a double that represents the previous sink node state 
- * 	 * @param prevSrcNodeState a double that represents the previous source node state 
- * 	 * @param minLinkReliabilityNeeded a double that is the minimum reliability needed per link in a flow to hit E2E
- * 	 * @return returns the next reliability state 
+	 * Calculates the new reliability state for a sink node based on M,prevSnkNodeState,
+	 * prevSrcNodeState, minLinkReliabilityNeeded
+	 *  
+	 * @param M the minimum packet reception rate
+	 * @param prevSnkNodeState a double that represents the previous sink node state 
+	 * @param prevSrcNodeState a double that represents the previous source node state 
+	 * @param minLinkReliabilityNeeded a double that is the minimum reliability needed per link in a flow to hit E2E
+	 * @return returns the next reliability state 
 	 */
 	private Double calculateNextSinkState(Double M, Double prevSnkNodeState,
 										   Double prevSrcNodeState, 
@@ -320,12 +308,11 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
-
-* Updates the reliability window with a new row of reliability data for a specific time slot 
- * 	 * 
- * 	 * @param reliabilityWindow a ReliabilityTable of ReliabiltyRows, represents the reliability values
- * 	 * @param currentReliabilityRow a ArrayList of doubles representing the reliability states for each node in the flow at the next time slot 
- * 	 * @param timeSlot the current time slot 
+	 * Updates the reliability window with a new row of reliability data for a specific time slot 
+	 * 
+	 * @param reliabilityWindow a ReliabilityTable of ReliabiltyRows, represents the reliability values
+	 * @param currentReliabilityRow a ArrayList of doubles representing the reliability states for each node in the flow at the next time slot 
+	 * @param timeSlot the current time slot 
 	 */
 	private void updateReliabilityWindow(ReliabilityTable reliabilityWindow, 
 											ArrayList<Double> currentReliabilityRow, int timeSlot) {
