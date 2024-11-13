@@ -1,0 +1,161 @@
+title Warp Sequence Diagram\n
+
+
+actor User
+
+participant Warp
+
+participant VisualizationFactory
+
+participant VisualizationImplementation
+
+entryspacing 1.3
+
+participant WorkLoadDescription
+
+participant ReliabilityVisualization
+
+participant WarpSystem
+
+participant ReliabilityAnalysis
+
+participant VisualizationObject
+
+participant Description
+
+participant FileManager
+
+participant GuiVisualization
+
+activate User
+Warp<-User:setWarpParameters(String[]args)
+activate Warp
+
+box right of Warp:creates a WARP from\n WarpSystem using \nworkLoad,\n nChannels,\nSchedulerSelected\n\n
+Warp->User:Tells WARP to use the -ra flag (returns void)
+deactivate User
+Warp->Warp:visualize(warp, Systemchoices.RELIABILITIES)\n\n
+
+Warp->VisualizationFactory:createVisualization(warp, outputSubDirectory, choice)
+activate Warp
+
+activate VisualizationFactory
+VisualizationFactory->VisualizationImplementation:createVisualization(warp, outputSubDirectory, choice)
+VisualizationFactory->VisualizationImplementation:VisualizationImplementation(warp, outputDirectory, choice)
+
+
+activate VisualizationImplementation
+VisualizationImplementation->FileManager:new FileManager()
+activate VisualizationImplementation
+
+activate FileManager
+VisualizationImplementation<--FileManager:returns FileManager
+deactivate VisualizationImplementation
+deactivate FileManager
+VisualizationImplementation->WorkLoadDescription:getInputFileName() invoked on a WARP
+activate VisualizationImplementation
+
+VisualizationImplementation<--WorkLoadDescription:Returns string of the filename of our Warp
+deactivate VisualizationImplementation
+
+
+VisualizationImplementation->VisualizationImplementation:createVisualization(choice)
+
+VisualizationImplementation->ReliabilityVisualization:ReliabilityVisualization(warp)
+activate ReliabilityVisualization
+activate VisualizationImplementation
+
+
+ReliabilityVisualization->WarpSystem:toReliabilityAnalysis()
+
+activate WarpSystem
+WarpSystem->ReliabilityAnalysis:ReliabilityAnalysis(program)
+activate ReliabilityAnalysis
+WarpSystem<--ReliabilityAnalysis:return reliabilityAnalysis ra
+deactivate ReliabilityAnalysis
+ReliabilityVisualization<--WarpSystem:return reliabilityAnalysis ra
+deactivate WarpSystem
+
+VisualizationImplementation<--ReliabilityVisualization:return ReliabilityVisualization
+deactivate ReliabilityVisualization
+deactivate VisualizationImplementation
+
+VisualizationImplementation->VisualizationObject:visualization()
+activate VisualizationImplementation
+
+activate VisualizationObject
+VisualizationObject->Description:Description() object created
+activate Description
+
+
+VisualizationObject<--Description:returns Description object
+deactivate Description
+VisualizationImplementation<--VisualizationObject:returns VisualizationObject
+deactivate VisualizationImplementation
+deactivate VisualizationObject
+
+VisualizationImplementation->VisualizationObject:fileVisualization()
+activate VisualizationObject
+activate VisualizationImplementation
+
+VisualizationObject->Description:Description() object created
+activate Description
+
+VisualizationObject<--Description:returns Description object
+deactivate Description
+VisualizationImplementation<--VisualizationObject:returns description
+deactivate VisualizationObject
+deactivate VisualizationImplementation
+
+VisualizationImplementation->VisualizationObject:createFile(fileNameTemplate)
+activate VisualizationObject
+
+activate VisualizationImplementation
+
+VisualizationObject->FileManager:createFile(fileNameTemplate, nameExtension, suffix)
+activate FileManager
+
+VisualizationObject<--FileManager:returns fileName string
+deactivate FileManager
+VisualizationImplementation<--VisualizationObject:returns fileName string
+deactivate VisualizationObject
+
+deactivate VisualizationImplementation
+
+VisualizationFactory<--VisualizationImplementation:return vizualizationImplentation object
+deactivate VisualizationFactory
+Warp<--VisualizationFactory:return vizualizationImplentation object
+deactivate Warp
+
+box right of Warp:if viz != null \nwe will call viz.toFile()
+Warp->VisualizationImplementation:toFile()
+activate Warp
+VisualizationImplementation->FileManager:writeFile(fileName, fileContent.toString());
+
+activate FileManager
+activate VisualizationImplementation
+VisualizationImplementation<--FileManager:return
+deactivate FileManager
+deactivate VisualizationImplementation
+Warp<--VisualizationImplementation:return
+deactivate Warp
+box right of Warp:if (guiRequested && schedularRequested)\nwe will call viz.toDisplay()
+Warp->VisualizationImplementation:toDisplay()
+activate Warp
+
+VisualizationImplementation->VisualizationObject:displayVisualization()
+activate VisualizationImplementation
+activate VisualizationObject
+VisualizationImplementation<--VisualizationObject:returns GUIVisualization
+deactivate VisualizationImplementation
+deactivate VisualizationObject
+VisualizationImplementation->GuiVisualization:setVisible()
+activate VisualizationImplementation
+activate GuiVisualization
+VisualizationImplementation<--GuiVisualization:return
+deactivate VisualizationImplementation
+deactivate GuiVisualization
+Warp<--VisualizationImplementation:return
+deactivate VisualizationImplementation
+deactivate Warp
+deactivate Warp
