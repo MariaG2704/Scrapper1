@@ -7,11 +7,11 @@ public class ProgramSchedule extends Table<String,InstructionTimeSlot> {
 	// default constructor
 	public ProgramSchedule() {
 		super();
-	}
+   	}
 	
 	ProgramSchedule(Integer row, Integer column) {
 		super(row,column);
-	}
+   	}
 	
 }
 

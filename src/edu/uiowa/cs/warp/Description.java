@@ -6,8 +6,9 @@ package edu.uiowa.cs.warp;
 import java.util.ArrayList;
 
 /**
- * @author sgoddard
- *
+
+* @author sgoddard
+ *  *
  */
 public class Description extends ArrayList<String> {
 
@@ -19,22 +20,22 @@ public class Description extends ArrayList<String> {
 	// default constructor
 	public Description() {
 		super();
-	}
+   	}
 
 	public Description(String descriptionString) {
 		super();
-		String[] lines = descriptionString.split("\\r?\\n");
-		for (String line : lines) {
-			this.add(line+"\n");
-		}
-	}
+   		String[] lines = descriptionString.split("\\r?\\n");
+   		for (String line : lines) {
+   			this.add(line+"\n");
+   		}
+   	}
 
 	@Override
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
-		for (String row: this) { 
-			sb.append(row);
-		}
-		return sb.toString();
-	}	
+   		for (String row: this) { 
+   			sb.append(row);
+   		}
+   		return sb.toString();
+   	}	
 }

@@ -7,9 +7,10 @@ import java.util.HashMap;
 
 
 /**
- * @author sgoddard <br>
+
+* @author sgoddard <br>
  * @author yongycheng - added comments for 3 functions as per HW2 part 7 instructions. <br>
- *
+ *  *
  */
 // Old Scheduler Worked as class Scheduler{} on Feb 17
 public class Program implements SystemAttributes {
@@ -39,12 +40,12 @@ public class Program implements SystemAttributes {
       Boolean reportLatency) {
     setDefaultParameters(workLoad, nChannels, verbose, reportLatency);
     buildProgram(choice);
-  }
+     }
 
   Program(WorkLoad workLoad, Integer nChannels, ScheduleChoices choice) {
     setDefaultParameters(workLoad, nChannels, false, false);
     buildProgram(choice);
-  }
+     }
 
   private void setDefaultParameters(WorkLoad workLoad, Integer nChannels, Boolean verbose,
       Boolean reportLatency) {
@@ -62,15 +63,16 @@ public class Program implements SystemAttributes {
     this.channelsAvailable = new Channels(nChannels, verbose);
     this.reportLatency = reportLatency;
     this.deadlineMisses = new Description();
-  }
+     }
 
   /**
-   * Function returns the Workload of the program <br>
-   * @return WorkLoad object <br>
+
+* Function returns the Workload of the program <br>
+ *    * @return WorkLoad object <br>
    */
   public WorkLoad toWorkLoad() {
     return workLoad;
-  }
+     }
 
   public void buildProgram(ScheduleChoices choice) {
     /*
@@ -131,10 +133,10 @@ public class Program implements SystemAttributes {
         buildOriginalProgram(); // build the requested schedule
         break; // break from switch
     }
-  }
+     }
 
   public void buildOriginalProgram() { // builds a Priority schedule
-
+   
     if (verbose) {
       var scheduleDetails =
           String.format("\nSystem schedule for graph %s created with the following parameters:\n",
@@ -191,7 +193,7 @@ public class Program implements SystemAttributes {
     }
     // create an instance of the Warp DSL class for parsing instructions
     var dsl = new WarpDSL();
-
+   
     for (String flowName : prioritizedFlows) { // loop through all of the nodes in priority order
       var nodesInFlow = workLoad.getNodesInFlow(flowName);
       var nNodesInFlow = nodesInFlow.length;
@@ -202,7 +204,7 @@ public class Program implements SystemAttributes {
         if (realtimeHART) {
           nTx = workLoad.getFlowTxAttemptsPerLink(flowName);
         } // else we will computer nTx from the linkTx array for the flow as we go
-
+   
       } else {
         nTx = nTransmissions;
       }
@@ -300,7 +302,7 @@ public class Program implements SystemAttributes {
             }
             String channel = findNextAvailableChannel(schedule, instructionNodeName,
                 instructionIndex, nodeIndex.get(currentNodeName), nodeIndex.get(snk));
-
+   
             // Now check if we have a valid channel. If not we need to find a new time slot further
             // down the schedule.
             // So, initialize the search to start at the current slot and then increase by one each
@@ -349,7 +351,7 @@ public class Program implements SystemAttributes {
             } else {
               newInstruction = hasPushInstruction(flowName, currentNodeName, snk, channel);
             }
-
+   
             // if optimization flag is set, look to see if any optimizations are possible
             if (optimizationRequested && instructionIndex > 0) {
               var priorInstructionTimeSlotArrayList = schedule.get(instructionIndex - 1);
@@ -711,7 +713,7 @@ public class Program implements SystemAttributes {
       }
     }
     setSchedule(schedule); // store the schedule built
-  }
+     }
 
   private String waitInstruction(String channel) {
     var size = channel.length();
@@ -720,7 +722,7 @@ public class Program implements SystemAttributes {
       System.err.println("ERROR: channel is not an Integer: " + channel);
     }
     return String.format("wait(#%s)", channel);
-  }
+     }
 
 
   private String elseWaitInstruction(String channel) {
@@ -730,19 +732,19 @@ public class Program implements SystemAttributes {
       System.err.println("\t channel size is not an Integer: " + String.valueOf(size));
     }
     return String.format(" else wait(#%s)", channel);
-  }
+     }
 
   private String elsePullClause(String flow, String src, String snk, String channel) {
     return String.format(" else pull(%s: %s -> %s, #%s)", flow, src, snk, channel);
-  }
+     }
 
   private String hasPushInstruction(String flow, String src, String snk, String channel) {
     return String.format("if has(%1$s) push(%1$s: %2$s -> %3$s, #%4$s)", flow, src, snk, channel);
-  }
+     }
 
   private String pushInstruction(String flow, String src, String snk, String channel) {
     return String.format("push(%1$s: %2$s -> %3$s, #%4$s)", flow, src, snk, channel);
-  }
+     }
 
   private String getFirstChannelInInstruction(String Instruction) {
     var beginIndex = Instruction.indexOf('#') + 1; // get index of the start of the channel #
@@ -750,7 +752,7 @@ public class Program implements SystemAttributes {
                                                          // channel #
     var channel = Instruction.substring(beginIndex, endIndex); // this substring has the 1st channel
     return channel;
-  }
+     }
 
   private Integer findNextAvailableInstructionTimeSlot(ProgramSchedule schedule,
       Integer startLocation, Integer nodeInFlow, Integer transIndex, Integer nTx,
@@ -950,7 +952,7 @@ public class Program implements SystemAttributes {
       }
     }
     return currentTime;
-  }
+     }
 
   private Boolean slotIsAvailable(InstructionTimeSlot currentInstructionTimeSlot,
       Integer srcNodeIndex, Integer snkNodeIndex) {
@@ -965,18 +967,18 @@ public class Program implements SystemAttributes {
       vacantSlot = true;
     }
     return vacantSlot;
-  }
+     }
 
   private String findNextAvailableChannel(ProgramSchedule schedule, String nodeName,
       Integer currentTime, Integer srcNodeIndex, Integer snkNodeIndex) {
 
     var newChannel = UNKNOWN; // indicates no channel was available. The caller will need to check
                               // this result
-
+   
     // create an instance of the Warp DSL class for parsing instructions
     var dsl = new WarpDSL();
     InstructionTimeSlot priorInstructionTimeSlot;
-
+   
     var channels = channelsAvailable.getChannelSet(currentTime);
     if (currentTime > 0) { // get the prior schedule time slot to see what channels were used in
                            // that slot, which have to be avoided here
@@ -984,7 +986,7 @@ public class Program implements SystemAttributes {
       priorInstructionTimeSlot = schedule.get(priorTime); // get a copy of the prior time slot
       var srcPriorInstruction = priorInstructionTimeSlot.get(srcNodeIndex);
       var snkPriorInstruction = priorInstructionTimeSlot.get(snkNodeIndex);
-
+   
       // extract the channels used by the src and snk nodes in the prior time slot and store them in
       // an array
       var instructionParametersArrayList = dsl.getInstructionParameters(srcPriorInstruction); // get
@@ -1048,23 +1050,23 @@ public class Program implements SystemAttributes {
       }
     }
     return newChannel; // returns UNKNOWN to indicate no channel found. This should never happen.
-  }
+     }
 
   public void selectPriority() {
     setScheduleSelected(ScheduleChoices.PRIORITY);
-  }
+     }
 
   public void selectRM() {
     setScheduleSelected(ScheduleChoices.RM);
-  }
+     }
 
   public void selectDM() {
     setScheduleSelected(ScheduleChoices.DM);
-  }
+     }
 
   public void selectRtHART() {
     setScheduleSelected(ScheduleChoices.RTHART);
-  }
+     }
 
   private void setScheduleSelected(ScheduleChoices choice) {
     switch (choice) {
@@ -1141,80 +1143,82 @@ public class Program implements SystemAttributes {
         break;
     }
     SchedulerSelected = choice;
-  }
+     }
 
   private void setSchedule(ProgramSchedule schedule) {
     scheduleBuilt = schedule;
-  }
+     }
 
   /**
-   * Function returns the schedule built as a ProgramSchedule object. <br>
-   * @return scheduleBuilt <br>
+
+* Function returns the schedule built as a ProgramSchedule object. <br>
+ *    * @return scheduleBuilt <br>
    */
   public ProgramSchedule getSchedule() {
     return scheduleBuilt;
-  }
+     }
 
   @Override
   public String getSchedulerName() {
     return schedulerName;
-  }
+     }
 
   public String getSchChoice() {
     return schChoice;
-  }
+     }
 
   @Override
   public Integer getNumChannels() {
     return nChannels;
-  }
+     }
 
   @Override
   public Integer getNumTransmissions() {
     return nTransmissions;
-  }
+     }
 
   private Boolean getRealTimeHartFlag() {
     return realTimeHARTflag;
-  }
+     }
 
   private void setRealTimeHartFlag(Boolean flag) {
     realTimeHARTflag = flag;
-  }
+     }
 
   @Override
   public Double getMinPacketReceptionRate() {
     return workLoad.getMinPacketReceptionRate();
-  }
+     }
 
   @Override
   public Double getE2e() {
     return workLoad.getE2e();
-  }
+     }
 
   @Override
   public String getName() {
     return workLoad.getName();
-  }
+     }
 
   @Override
   public Boolean getOptimizationFlag() {
     return optimizationRequested;
-  }
+     }
 
   public Description deadlineMisses() {
     return deadlineMisses;
-  }
+     }
 
   @Override
   public Integer getNumFaults() {
     return workLoad.getNumFaults();
-  }
+     }
 
   /**
-   * Function creates and returns a HashMap with the nodes
-   * and their indexes when sorted alphabetically. <br>
-   * @return HashMap of (node name, index) <br>
+
+* Function creates and returns a HashMap with the nodes
+ *    * and their indexes when sorted alphabetically. <br>
+ *    * @return HashMap of (node name, index) <br>
    */
   public HashMap<String, Integer> getNodeMapIndex() {
     var orderedNodes = workLoad.getNodeNamesOrderedAlphabetically(); // create an array of node
@@ -1229,6 +1233,6 @@ public class Program implements SystemAttributes {
       nodeIndexMap.put(name, index); // add name, index mapping to NodeIndex map
     }
     return nodeIndexMap;
-  }
+     }
 
 }

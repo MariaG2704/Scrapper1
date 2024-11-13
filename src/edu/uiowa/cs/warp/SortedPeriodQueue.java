@@ -10,7 +10,7 @@ public class SortedPeriodQueue <T extends SchedulableObject> extends java.util.P
 	 */
 	SortedPeriodQueue() {
 		super(1, new PeriodComparator<T>());
-	}
+   	}
 	
 	/**
 	 * Construct a priority queue of schedulable objects based
@@ -18,7 +18,7 @@ public class SortedPeriodQueue <T extends SchedulableObject> extends java.util.P
 	 */
 	SortedPeriodQueue(java.util.Collection<T> schedulableObjects) {
 		super(new PeriodComparator<T>());
-		this.addAll(schedulableObjects);
-	}
+   		this.addAll(schedulableObjects);
+   	}
 
 }

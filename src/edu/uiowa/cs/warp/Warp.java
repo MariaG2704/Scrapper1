@@ -32,7 +32,8 @@ import edu.uiowa.cs.warp.Visualization.SystemChoices;
 import edu.uiowa.cs.warp.Visualization.WorkLoadChoices;
 
 /**
- * Warp class that is implemented to manage the behavior of a network <br>
+
+* Warp class that is implemented to manage the behavior of a network <br>
  * There is no constructor so no Warp objects need to be instantiated <br>
  * All variables represent default conditions for Warp object creation <br>
  * All methods either implement or qualify the behavior of a warp <br>
@@ -43,7 +44,7 @@ import edu.uiowa.cs.warp.Visualization.WorkLoadChoices;
  * 
  * @author sgoddard <br>
  * @version 1.8 Fall 2024 <br>
- *
+ *  *
  */
  
  //added comment to test pushing - Nancy
@@ -153,36 +154,37 @@ public class Warp {
   private static ScheduleChoices schedulerSelected; 
   
   /**
-   * Main: <br>
-   * Calls the setWarpParamters method and calls the printWarpParameters when verboseMode is on. <br>
-   * Create and visualizes a new workload with a inputFile string, which may be null. <br>
-   * If the user has request all to be visualized, its iterates through all the workloads and visualizes them. <br>
-   * If a schedule was chosen, it creates a warp system for it, 
-   * then checks the performance requirements and visualizes the system's choices. <br>
-   * Else it creates a system for each scheduler choice, 
-   * checks the performance requirements of each system and for each system visualizes all the system choices <br>
-   * If all were not requested, is visualizes warp workload, sources program, and any other requested items. <br>
-   * It creates a warp interface with the specified workload, channels, and selected schedule <br>
-   * Finally, it visualizing other aspects of the system based on what the user inputs <br>
-   *  
-   * @param args which is an input of an array of arguments from a command line <br>
-   * @see WorkLoad's method workload(Integer,Double,Double,String) <br>
-   * @see SystemFactory's create setWarpParameters(WorkLoad,Integer,ScheduleChoices) <br>
-   * @see Warp's method setWarpParameters(String[] args) <br>
-   * @see Warp's method printWarpParameters() <br>
-   * @see Warp's method visualize(WorkLoad, WorkLoadChoices) <br>
-   * @see Warp's method verifyPerformanceRequirements(Warp) <br>
-   * 
+
+* Main: <br>
+ *    * Calls the setWarpParamters method and calls the printWarpParameters when verboseMode is on. <br>
+ *    * Create and visualizes a new workload with a inputFile string, which may be null. <br>
+ *    * If the user has request all to be visualized, its iterates through all the workloads and visualizes them. <br>
+ *    * If a schedule was chosen, it creates a warp system for it, 
+ *    * then checks the performance requirements and visualizes the system's choices. <br>
+ *    * Else it creates a system for each scheduler choice, 
+ *    * checks the performance requirements of each system and for each system visualizes all the system choices <br>
+ *    * If all were not requested, is visualizes warp workload, sources program, and any other requested items. <br>
+ *    * It creates a warp interface with the specified workload, channels, and selected schedule <br>
+ *    * Finally, it visualizing other aspects of the system based on what the user inputs <br>
+ *    *  
+ *    * @param args which is an input of an array of arguments from a command line <br>
+ *    * @see WorkLoad's method workload(Integer,Double,Double,String) <br>
+ *    * @see SystemFactory's create setWarpParameters(WorkLoad,Integer,ScheduleChoices) <br>
+ *    * @see Warp's method setWarpParameters(String[] args) <br>
+ *    * @see Warp's method printWarpParameters() <br>
+ *    * @see Warp's method visualize(WorkLoad, WorkLoadChoices) <br>
+ *    * @see Warp's method verifyPerformanceRequirements(Warp) <br>
+ *    * 
    */
   public static void main(String[] args) {
     /** parse command-line options and set WARP system parameters */
     setWarpParameters(args);
-
+   
     /** and print out the values if in verbose mode */
     if (verboseMode) {
       printWarpParameters();
     }
-
+   
     /** Create and visualize the workload, inputFile string, which may be null. */
     WorkLoad workLoad = new WorkLoad(numFaults, minLQ, e2e, inputFile);
     
@@ -231,16 +233,17 @@ public class Warp {
         visualize(warp, SystemChoices.RELIABILITIES);
       }
     }
-
-  }
+   
+     }
   /**
-   * Creates a visualize for workload based on specific choices sent to command line. <br>
-   * And prints that visualization to the consule or to a GUI, 
-   * depending on if either the verboseMode or the GUI is enabled <br>
-   * Also places the visualization into a file <br>
-   * @param workLoad used to create a visualization <br>
-   * @param choice the type of visualization to make <br>
-   * @see VisualizationFactory's createVisualization(WorkLoad,String,WorkLoadChoices) <br>
+
+* Creates a visualize for workload based on specific choices sent to command line. <br>
+ *    * And prints that visualization to the consule or to a GUI, 
+ *    * depending on if either the verboseMode or the GUI is enabled <br>
+ *    * Also places the visualization into a file <br>
+ *    * @param workLoad used to create a visualization <br>
+ *    * @param choice the type of visualization to make <br>
+ *    * @see VisualizationFactory's createVisualization(WorkLoad,String,WorkLoadChoices) <br>
    */
   private static void visualize(WorkLoad workLoad, WorkLoadChoices choice) {
     var viz =
@@ -254,13 +257,14 @@ public class Warp {
         viz.toDisplay();
       }
     }
-  }
+     }
   /**
-   * Creates a visualization of a warp based on specific choices sent to command line. <br>
-   * If that visualization exists, send to to a file,
-   * and if GUI and scheduler equals true, then display the visualization. <br>
-   * @param warp the warp used to create a visualization <br>
-   * @param choice the type of visualization to make <br>
+
+* Creates a visualization of a warp based on specific choices sent to command line. <br>
+ *    * If that visualization exists, send to to a file,
+ *    * and if GUI and scheduler equals true, then display the visualization. <br>
+ *    * @param warp the warp used to create a visualization <br>
+ *    * @param choice the type of visualization to make <br>
    */
   private static void visualize(WarpInterface warp, SystemChoices choice) {
     var viz = VisualizationFactory.createVisualization(warp, outputSubDirectory, choice);
@@ -271,26 +275,28 @@ public class Warp {
         viz.toDisplay();
       }
     }
-  }
+     }
   /**
-   * Verifies each of the performance requirements for a warp <br>
-   * @param warp what is sent to the methods <br>
-   * @see Warp's method verifyDeadlines(Warp) <br>
-   * @see Warp's verifyReliabilities(Warp) <br>
-   * @see Warp's method  verifyNoChannelConflicts(Warp) <br> 
+
+* Verifies each of the performance requirements for a warp <br>
+ *    * @param warp what is sent to the methods <br>
+ *    * @see Warp's method verifyDeadlines(Warp) <br>
+ *    * @see Warp's verifyReliabilities(Warp) <br>
+ *    * @see Warp's method  verifyNoChannelConflicts(Warp) <br> 
    */
   private static void verifyPerformanceRequirements(WarpInterface warp) {
     verifyDeadlines(warp);
     verifyReliabilities(warp);
     verifyNoChannelConflicts(warp);
-  }
+     }
   
   /**
-   * As long as the schedule selected is not RTHART, then this method: <br>
-   * Verifies if all reliabilities have been met. <br>
-   * Prints an error if they don't  
-   * or prints a confirmation of reliability if they are and verboseMode is on. <br>
-   * @param warp the warp you use to determine if reliabilities have been met
+
+* As long as the schedule selected is not RTHART, then this method: <br>
+ *    * Verifies if all reliabilities have been met. <br>
+ *    * Prints an error if they don't  
+ *    * or prints a confirmation of reliability if they are and verboseMode is on. <br>
+ *    * @param warp the warp you use to determine if reliabilities have been met
    */
   private static void verifyReliabilities(WarpInterface warp) {
     if (schedulerSelected != ScheduleChoices.RTHART) {
@@ -306,14 +312,15 @@ public class Warp {
             String.valueOf(e2e), schedulerSelected.toString());
       }
     }
-  }
+     }
   /**
-   * Checks if deadlines of a warp have been met. <br>
-   * If they haven't been met, an error is printed,
-   * and a visualization of the deadline report is prompted <br>
-   * Else if verboseMode is on, a deadline confirmation is printed to console. <br>
-   * @param warp an interface that gives access to methods for managing warp operations in the visualization. <br>
-   * @see Warp's method visualize(WorkLoad, WorkLoadChoices) <br>
+
+* Checks if deadlines of a warp have been met. <br>
+ *    * If they haven't been met, an error is printed,
+ *    * and a visualization of the deadline report is prompted <br>
+ *    * Else if verboseMode is on, a deadline confirmation is printed to console. <br>
+ *    * @param warp an interface that gives access to methods for managing warp operations in the visualization. <br>
+ *    * @see Warp's method visualize(WorkLoad, WorkLoadChoices) <br>
    */
   private static void verifyDeadlines(WarpInterface warp) {
     if (!warp.deadlinesMet()) {
@@ -324,13 +331,14 @@ public class Warp {
       System.out.printf("\n\tAll flows meet their deadlines under %s scheduling.\n",
           schedulerSelected.toString());
     }
-  }
+     }
   /**
-   * Checks if there is no channel conflicts for a warp. <br>
-   * If there is a channel conflict then an error is printed, 
-   * and if a visualization is not requested yet then prompt a visualization of the channel. <br>
-   * Else if verbose mode is on, an no channel conflicts confirmation is printed to console. <br>
-   * @param warp an interface that gives access to methods for managing warp operations in the visualization. <br>
+
+* Checks if there is no channel conflicts for a warp. <br>
+ *    * If there is a channel conflict then an error is printed, 
+ *    * and if a visualization is not requested yet then prompt a visualization of the channel. <br>
+ *    * Else if verbose mode is on, an no channel conflicts confirmation is printed to console. <br>
+ *    * @param warp an interface that gives access to methods for managing warp operations in the visualization. <br>
    */
   private static void verifyNoChannelConflicts(WarpInterface warp) {
     if (warp.toChannelAnalysis().isChannelConflict()) {
@@ -342,22 +350,23 @@ public class Warp {
     } else if (verboseMode) {
       System.out.printf("\n\tNo channel conflicts detected.\n");
     }
-  }
+     }
   /** 
-   * Creates a parser, that parses the command line arguments and adds certain parameters for the system depending on the input. <br>
-   * The Holders store parsed variables from the command line arguments. <br>
-   * The parser's addOption sets valid command line options, types, and what holder will hold them. <br>
-   * Sets Warp system configuration options: <br>
-   * If a global variable defined doesn't figure certain requirements,then set it equal to a default. <br>
-   * Sets requested flag variables equal to holders <br>
-   * If a scheduler value was defined, scheduler choices equal to that value. <br>
-   * Else set the scheduler choices equal to a default schedule. <br>
-   * 
-   * @param args which is an input of an array of arguments from a command line <br>
+
+* Creates a parser, that parses the command line arguments and adds certain parameters for the system depending on the input. <br>
+ *    * The Holders store parsed variables from the command line arguments. <br>
+ *    * The parser's addOption sets valid command line options, types, and what holder will hold them. <br>
+ *    * Sets Warp system configuration options: <br>
+ *    * If a global variable defined doesn't figure certain requirements,then set it equal to a default. <br>
+ *    * Sets requested flag variables equal to holders <br>
+ *    * If a scheduler value was defined, scheduler choices equal to that value. <br>
+ *    * Else set the scheduler choices equal to a default schedule. <br>
+ *    * 
+ *    * @param args which is an input of an array of arguments from a command line <br>
    */
   private static void setWarpParameters(String[] args) { // move command line parsing into this
                                                          // function--need to set up globals?
-
+   
     // create holder objects for storing results ...
     // BooleanHolder debug = new BooleanHolder();
     StringHolder schedulerSelected = new StringHolder();
@@ -377,7 +386,7 @@ public class Warp {
     BooleanHolder verbose = new BooleanHolder();
     StringHolder input = new StringHolder();
     StringHolder output = new StringHolder();
-
+   
     // create the parser and specify the allowed options ...
     ArgParser parser = new ArgParser("java -jar warp.jar");
     parser.addOption("-sch, --schedule %s {priority,rm,dm,rtHart,poset} #scheduler options",
@@ -412,11 +421,11 @@ public class Warp {
         verbose);
     // parser.addOption ("-d, -debug, --debug %v #Debug mode: base directory =
     // $HOME/Documents/WARP/", debug);
-
-
+   
+   
     // match the arguments ...
     parser.matchAllArgs(args);
-
+   
     // Set WARP system configuration options
     if (channels.value > 0) {
       nChannels = channels.value; // set option specified
@@ -473,23 +482,23 @@ public class Warp {
         case "priority":
           Warp.schedulerSelected = ScheduleChoices.PRIORITY;
           break;
-
+   
         case "rm":
           Warp.schedulerSelected = ScheduleChoices.RM;
           break;
-
+   
         case "dm":
           Warp.schedulerSelected = ScheduleChoices.DM;
           break;
-
+   
         case "rtHart":
           Warp.schedulerSelected = ScheduleChoices.RTHART;
           break;
-
+   
         case "poset":
           Warp.schedulerSelected = ScheduleChoices.POSET_PRIORITY;
           break;
-
+   
         default:
           Warp.schedulerSelected = ScheduleChoices.PRIORITY;
           break;
@@ -497,9 +506,10 @@ public class Warp {
     } else { // null value when no scheduler specified; so use default
       Warp.schedulerSelected = DEFAULT_SCHEDULER;
     }
-  }
+     }
   /**
-   * Prints out each of the warp system configuration parameters on a separate lines <br>
+
+* Prints out each of the warp system configuration parameters on a separate lines <br>
    */
   private static void printWarpParameters() { 
     System.out.println("WARP system configuration values:");
@@ -525,6 +535,6 @@ public class Warp {
     System.out.println("\toutputSubDirectory=" + outputSubDirectory);
     System.out.println("\tverbose flag=" + verboseMode);
     // System.out.println ("\tdebug flag=" + debugMode);
-  }
+     }
 
 }

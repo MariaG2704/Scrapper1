@@ -9,7 +9,7 @@ public class ScheduleTable extends Table<Activation,Row<Activation>> {
 
 	ScheduleTable(){
 		super();
-	}
+   	}
 	
 	/**
 	 * Constructor creates a table row x column in size, full
@@ -20,7 +20,7 @@ public class ScheduleTable extends Table<Activation,Row<Activation>> {
 	 */
 	ScheduleTable(Integer row, Integer column){
 		super(row,column);
-		
-	}
+   		
+   	}
 
 }

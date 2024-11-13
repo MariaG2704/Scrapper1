@@ -9,6 +9,6 @@ public class LatestReleaseTimeComparator <T extends SchedulableObject> implement
 	@Override
 	public int compare(T obj1, T obj2) {	
 		var result = obj1.LatestReleaseTimeComparison(obj2);
-		return result; // 0 => tie on release time
-	}
+   		return result; // 0 => tie on release time
+   	}
 }

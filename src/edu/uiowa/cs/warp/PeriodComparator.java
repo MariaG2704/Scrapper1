@@ -10,6 +10,6 @@ public class PeriodComparator<T extends SchedulableObject> implements Comparator
 	public int compare(T obj1, T obj2) {	
 		/* only sort by period, as we only want shortest period */
 		return obj1.periodComparison(obj2); 
-	}
+   	}
 
 }

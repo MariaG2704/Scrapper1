@@ -10,6 +10,6 @@ public class MaxPhaseComparator <T extends SchedulableObject> implements Compara
 	public int compare(T obj1, T obj2) {	
 		/* only sort by period, as we only want shortest period */
 		return obj1.maxPhaseComparison(obj2); 
-	}
+   	}
 
 }

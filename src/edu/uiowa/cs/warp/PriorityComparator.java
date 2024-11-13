@@ -9,11 +9,11 @@ public class PriorityComparator <T extends SchedulableObject> implements Compara
 	@Override
 	public int compare(T obj1, T obj2) {
 		var result = obj1.priorityComparison(obj2);
-		if (result == 0) {
-			// tied for priority, so break tie on release time
-			result = obj1.releaseTimeComparison(obj2);
-		}
-		return result; // 0 => tie on priority and release time
-	}
+   		if (result == 0) {
+   			// tied for priority, so break tie on release time
+   			result = obj1.releaseTimeComparison(obj2);
+   		}
+   		return result; // 0 => tie on priority and release time
+   	}
 	
 }

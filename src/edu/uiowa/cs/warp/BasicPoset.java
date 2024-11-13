@@ -1,7 +1,8 @@
 package edu.uiowa.cs.warp;
 
 /**
- * ConnectivityPoset extends Poset by selecting
+
+* ConnectivityPoset extends Poset by selecting
  * primary coordinator in the flow based on highest
  * local connectivity.
  * 
@@ -10,5 +11,5 @@ package edu.uiowa.cs.warp;
 public class BasicPoset extends Poset {
 	BasicPoset(WorkLoad workload) {
 		super(workload);
-	}
+   	}
 }

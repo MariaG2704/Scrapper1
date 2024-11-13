@@ -1,9 +1,10 @@
 package edu.uiowa.cs.warp;
 
 /**
- * @author sgoddard2
+
+* @author sgoddard2
  * Copyright © 2020 Steve Goddard. All rights reserved.
- * 
+ *  * 
  */
 public class GraphViz extends VisualizationObject {
 
@@ -51,7 +52,7 @@ public class GraphViz extends VisualizationObject {
     @Override
 	public Description visualization() {
 		return new Description(getGraphVizContent());
-	}
+   	}
     
     public void initializeGraphVizContent (String graphName)  {
         /*start the gv file by adding the 1st line to the contents string */
@@ -79,9 +80,10 @@ public class GraphViz extends VisualizationObject {
     }
    
     /* 
-     * public function to return the string gvFileContents.
-     * designed to be called after finalizeGraphVizContent() is called by the listener
-     * but will return the current state of the contents string anytime it is called
+     * 
+* public function to return the string gvFileContents.
+ *      * designed to be called after finalizeGraphVizContent() is called by the listener
+ *      * but will return the current state of the contents string anytime it is called
      */
     public String getGraphVizContent ( )  {
         return gvFileContents;

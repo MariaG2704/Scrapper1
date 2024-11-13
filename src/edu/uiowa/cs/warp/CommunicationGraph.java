@@ -1,8 +1,9 @@
 package edu.uiowa.cs.warp;
 
 /**
- * @author sgoddard2
- *
+
+* @author sgoddard2
+ *  *
  */
 public class CommunicationGraph extends VisualizationObject {
 
@@ -13,33 +14,33 @@ public class CommunicationGraph extends VisualizationObject {
 	
 	public CommunicationGraph(FileManager fm, WorkLoad workLoad) {
 		// constructor for GraphFile class
-		super(fm, workLoad, ".wf");
-		this.wfm = fm;
-		this.workLoad = workLoad;
-		verbose = false; // initialize verbose to false
-	}
+   		super(fm, workLoad, ".wf");
+   		this.wfm = fm;
+   		this.workLoad = workLoad;
+   		verbose = false; // initialize verbose to false
+   	}
 	
 	public CommunicationGraph(FileManager fm, WorkLoad workLoad, Boolean verbose) {
 		// constructor for GraphFile class
-		super(fm, workLoad, ".wf");
-		this.wfm = fm;
-		this.workLoad = workLoad;
-		this.verbose = verbose; // initialize verbose to false
-	}
+   		super(fm, workLoad, ".wf");
+   		this.wfm = fm;
+   		this.workLoad = workLoad;
+   		this.verbose = verbose; // initialize verbose to false
+   	}
 	
 	@Override
 	public Description createHeader ( )  {
 		Description header = new Description();
-		header.add(String.format("WARP_%s{\n",workLoad.getName()));
-		return header;
-	}
+   		header.add(String.format("WARP_%s{\n",workLoad.getName()));
+   		return header;
+   	}
 	
 	@Override
 	public Description createFooter ( )  {
 		Description footer = new Description();
-		footer.add("}\n");
-		return footer;
-	}
+   		footer.add("}\n");
+   		return footer;
+   	}
 	
 	@Override
     public Description visualization ( )  {

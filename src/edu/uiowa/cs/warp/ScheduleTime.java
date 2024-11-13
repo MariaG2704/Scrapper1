@@ -6,8 +6,8 @@ public class ScheduleTime {
 
 	ScheduleTime(Integer startTime, Integer endTime) {
 		this.startTime = startTime;
-		this.endTime = endTime;
-	}
+   		this.endTime = endTime;
+   	}
 
 	/**
 	 * @return the startTime

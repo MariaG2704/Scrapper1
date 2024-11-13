@@ -1,7 +1,8 @@
 package edu.uiowa.cs.warp;
 
 /**
- * Class takes in a WarpInterface object, and includes tools to 
+
+* Class takes in a WarpInterface object, and includes tools to 
  * visualize the data, such as a table/matrix representation of the schedule, 
  * header, footer, and title generator with relevant information about the program.
  * Also supports the use of a graphical user interface visualization 
@@ -11,7 +12,7 @@ package edu.uiowa.cs.warp;
  * @author sgoddard
  * @author yongycheng - Develop JavaDoc comments for the missing summary comment 
  * 						  and all methods in in Flow.java
- * 
+ *  * 
  */
 public class ProgramVisualization extends VisualizationObject {
 
@@ -21,17 +22,18 @@ public class ProgramVisualization extends VisualizationObject {
   private Boolean deadlinesMet; //whether deadlines were met
   
   /**
-   * Constructor for ProgramVisualization that sets program, sourceCode,
-   * and deadlinesMet variables from a warp program. <br>
-   * 
-   * @param warp	warp program to visualize <br>
+
+* Constructor for ProgramVisualization that sets program, sourceCode,
+ *    * and deadlinesMet variables from a warp program. <br>
+ *    * 
+ *    * @param warp	warp program to visualize <br>
    */
   ProgramVisualization(WarpInterface warp) {
     super(new FileManager(), warp, SOURCE_SUFFIX);
     this.program = warp.toProgram();
     this.sourceCode = program.getSchedule();
     this.deadlinesMet = warp.deadlinesMet();
-  }
+     }
 
   /**
    * Function creates and returns a GuiVisualization object. <br>
@@ -39,7 +41,7 @@ public class ProgramVisualization extends VisualizationObject {
   @Override
   public GuiVisualization displayVisualization() {
     return new GuiVisualization(createTitle(), createColumnHeader(), createVisualizationData());
-  }
+     }
 
   /**
    * Function creates and returns a header description for the warp program that includes the title, 
@@ -49,10 +51,10 @@ public class ProgramVisualization extends VisualizationObject {
   @Override
   protected Description createHeader() {
     Description header = new Description();
-
+   
     header.add(createTitle());
     header.add(String.format("Scheduler Name: %s\n", program.getSchedulerName()));
-
+   
     /* The following parameters are output based on a special schedule or the fault model */
     if (program.getNumFaults() > 0) { // only specify when deterministic fault model is assumed
       header.add(String.format("numFaults: %d\n", program.getNumFaults()));
@@ -61,7 +63,7 @@ public class ProgramVisualization extends VisualizationObject {
     header.add(String.format("E2E: %s\n", String.valueOf(program.getE2e())));
     header.add(String.format("nChannels: %d\n", program.getNumChannels()));
     return header;
-  }
+     }
 
   /**
    * Function creates and returns a footer description for the warp program that indicates
@@ -71,7 +73,7 @@ public class ProgramVisualization extends VisualizationObject {
   protected Description createFooter() {
     Description footer = new Description();
     String deadlineMsg = null;
-
+   
     if (deadlinesMet) {
       deadlineMsg = "All flows meet their deadlines\n";
     } else {
@@ -79,7 +81,7 @@ public class ProgramVisualization extends VisualizationObject {
     }
     footer.add(String.format("// %s", deadlineMsg));
     return footer;
-  }
+     }
 
 
   /**
@@ -96,7 +98,7 @@ public class ProgramVisualization extends VisualizationObject {
       columnNames[i + 1] = orderedNodes[i];
     }
     return columnNames;
-  }
+     }
 
   /**
    * Function creates and returns a 2D array of Strings filled with the schedule data. <br>
@@ -107,7 +109,7 @@ public class ProgramVisualization extends VisualizationObject {
       int numRows = sourceCode.getNumRows();
       int numColumns = sourceCode.getNumColumns();
       visualizationData = new String[numRows][numColumns + 1];
-
+   
       for (int row = 0; row < numRows; row++) {
         visualizationData[row][0] = String.format("%s", row);
         for (int column = 0; column < numColumns; column++) {
@@ -116,12 +118,13 @@ public class ProgramVisualization extends VisualizationObject {
       }
     }
     return visualizationData;
-  }
+     }
 
   /**
-   * Function creates and returns a String as the name of the warp program visualization. <br>
+
+* Function creates and returns a String as the name of the warp program visualization. <br>
    */
   private String createTitle() {
     return String.format("WARP program for graph %s\n", program.getName());
-  }
+     }
 }

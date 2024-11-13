@@ -98,17 +98,17 @@ public class Node extends SchedulableObject implements Comparable<Node> {
 	@Override
 	public void print(String headerMsg) {
 		System.out.printf("\n%s",headerMsg);
-		this.print();
-	}
+   		this.print();
+   	}
 	
 	@Override
 	public void print() {
 		super.print();
-		System.out.print("Edge info for this partiion\n");
-		for (Edge edge: edges) {
-			edge.print();
-		}
-	}
+   		System.out.print("Edge info for this partiion\n");
+   		for (Edge edge: edges) {
+   			edge.print();
+   		}
+   	}
 
 }
 

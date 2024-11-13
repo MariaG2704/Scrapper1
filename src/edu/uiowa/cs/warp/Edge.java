@@ -18,26 +18,26 @@ public class Edge extends SchedulableObject implements Comparable<Edge> {
 
 	Edge() {
 		super();
-		this.flow = UNKNOWN;
-		this.src = UNKNOWN;
-		this.snk = UNKNOWN;
-		this.instance = 0;
-		this.coordinator = UNKNOWN;
-		this.state = EdgeState.NOT_READY;
-		this.numTx = 0;
-	}
+   		this.flow = UNKNOWN;
+   		this.src = UNKNOWN;
+   		this.snk = UNKNOWN;
+   		this.instance = 0;
+   		this.coordinator = UNKNOWN;
+   		this.state = EdgeState.NOT_READY;
+   		this.numTx = 0;
+   	}
 	
 	Edge(String flow, String src, String snk, Integer priority, 
 		Integer period, Integer deadline, Integer phase, Integer numTx) {
 		super(priority, period, deadline, phase);
-		this.flow = flow;
-		this.src =src;
-		this.snk = snk;
-		this.instance = 0;
-		this.coordinator = UNKNOWN;
-		this.state = EdgeState.NOT_READY;	
-		this.numTx = numTx;
-	}
+   		this.flow = flow;
+   		this.src =src;
+   		this.snk = snk;
+   		this.instance = 0;
+   		this.coordinator = UNKNOWN;
+   		this.state = EdgeState.NOT_READY;	
+   		this.numTx = numTx;
+   	}
 
 	@Override
     public int compareTo(Edge edge) {
@@ -145,16 +145,16 @@ public class Edge extends SchedulableObject implements Comparable<Edge> {
 	@Override
 	public void print(String headerMsg) {
 		System.out.printf("\n%s",headerMsg);
-		this.print();
-	}
+   		this.print();
+   	}
 	
 	@Override
 	public void print() {
 		super.print();
-		System.out.printf("\tFlow:%s\n", this.flow);
-		System.out.printf("\tSrc:%s\n", this.src);
-		System.out.printf("\tSnk:%s\n", this.snk);
-	}
+   		System.out.printf("\tFlow:%s\n", this.flow);
+   		System.out.printf("\tSrc:%s\n", this.src);
+   		System.out.printf("\tSnk:%s\n", this.snk);
+   	}
 	
     
 }

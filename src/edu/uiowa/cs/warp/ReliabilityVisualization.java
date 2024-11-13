@@ -1,23 +1,55 @@
 package edu.uiowa.cs.warp;
+import java.util.Set;
 
 /**
- * ReliabilityVisualization creates the visualizations for
+
+* ReliabilityVisualization creates the visualizations for
  * the reliability analysis of the WARP program. <p>
  * 
  * CS2820 Fall 2024 Project: Implement this class to create
  * the visualizations that are requested in Warp. Your solution
  * should support both the file and Java Swing Window (gui) visualizations.
- *
+ *  *
  * I recommend using class ProgramVisualization as an example of how to implement
  * this class. Your solution will likely be similar to the code in ProgramVisualization.
  * 
  * @author sgoddard
  * @version 1.8 Fall 2024
- *
+ *  *
  */
 public class ReliabilityVisualization  extends VisualizationObject {
 
 	// TODO Auto-generated class stub for unimplemented visualization
+public GuiVisualization displayVisualization() {
+   // TODO implement this operation
+   throw new UnsupportedOperationException("not implemented");
+}
+
+public Description createHeader() {
+   // TODO implement this operation
+   throw new UnsupportedOperationException("not implemented");
+}
+
+public Description createFooter() {
+   // TODO implement this operation
+   throw new UnsupportedOperationException("not implemented");
+}
+
+public String[] createColumnHeader() {
+   // TODO implement this operation
+   throw new UnsupportedOperationException("not implemented");
+}
+
+public String[][] createVisualizationData() {
+   // TODO implement this operation
+   throw new UnsupportedOperationException("not implemented");
+}
+
+public String createTitle() {
+   // TODO implement this operation
+   throw new UnsupportedOperationException("not implemented");
+}
+
 	
 	private static final String SOURCE_SUFFIX = ".ra";
 	private static final String OBJECT_NAME = "Reliability Analysis";
@@ -26,9 +58,11 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	
 	ReliabilityVisualization(WarpInterface warp) {
 		super(new FileManager(), warp, SOURCE_SUFFIX);
-		this.warp = warp;
-		this.ra = warp.toReliabilityAnalysis();
-	}
+   		this.warp = warp;
+   		this.ra = warp.toReliabilityAnalysis();
+   	}
+	
+
 	
 /* File Visualization for workload defined in Example.txt follows. 
  * Your output in the file ExamplePriority-0.9M-0.99E2E.ra

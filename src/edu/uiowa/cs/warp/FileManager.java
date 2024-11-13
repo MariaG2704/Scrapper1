@@ -9,9 +9,10 @@ import java.nio.file.Paths;
 import javax.swing.JFileChooser;
 
 /**
- * @author sgoddard
+
+* @author sgoddard
  * @version 1.5
- *
+ *  *
  */
 public class FileManager {
   // uncomment next line to tag course file
@@ -20,22 +21,23 @@ public class FileManager {
   private Boolean verbose;
 
   /**
-   * @param args
+
+* @param args
    */
   public FileManager() {
     baseDirectory = System.getProperty("user.dir"); // Get current directory path and set to the
                                                     // base directory
     // constructor for this class
     verbose = false; // initialize verbose to false
-  }
+     }
 
   public FileManager(Boolean verbose) {
     baseDirectory = System.getProperty("user.dir"); // Get current directory path and set to the
                                                     // base directory
     // constructor for this class
     this.verbose = verbose; // initialize verbose as specified
-
-  }
+   
+     }
 
   public String getDocumentsDirectory() { // return the 'Documents Directory' for the appropriate OS
     String documentsDirectory;
@@ -48,11 +50,11 @@ public class FileManager {
                                                             // MACOS)
     }
     return documentsDirectory;
-  }
+     }
 
   public String getCurrentDirectory() {
     return System.getProperty("user.dir");
-  }
+     }
 
   public void setBaseDirectory(String directory) {
     baseDirectory = directory;
@@ -63,13 +65,14 @@ public class FileManager {
   }
 
   /*
-   * Build the name extension used for all files created by this tool. The nameExtension will be
-   * added to the base input file name so that all of the output files can be associated with the
-   * input file The file naming pattern is: baseFileNameFileType-NonDefaultParameterList where
-   * FileType is Schedule, SimInput, ReliabilityMatrix, or ReliabilityArray Default parameters are
-   * not identified in the NameExtension All parameters used to create the file, should be listed
-   * near the top of the file in the Parameter Section, followed by the file contents.
    * 
+* Build the name extension used for all files created by this tool. The nameExtension will be
+ *    * added to the base input file name so that all of the output files can be associated with the
+ *    * input file The file naming pattern is: baseFileNameFileType-NonDefaultParameterList where
+ *    * FileType is Schedule, SimInput, ReliabilityMatrix, or ReliabilityArray Default parameters are
+ *    * not identified in the NameExtension All parameters used to create the file, should be listed
+ *    * near the top of the file in the Parameter Section, followed by the file contents.
+ *    * 
    */
   public String createFile(String file, String nameExtension, String suffix) {
     /*
@@ -86,12 +89,12 @@ public class FileManager {
      * and suffix
      */
     fileString = fileString + nameExtension + suffix;
-
+   
     if (verbose) {
       System.out.println("File " + fileString + " is created!");
     }
     return fileString;
-  }
+     }
 
   public String createFile(String file, String suffix) {
     Integer suffixIndex = file.lastIndexOf('.');
@@ -108,7 +111,7 @@ public class FileManager {
       System.out.println("File " + fileString + " is created!");
     }
     return fileString;
-  }
+     }
 
   public String createDirectory(String directory, String subDirectory) {
     String newDirectory;
@@ -128,7 +131,7 @@ public class FileManager {
       newDirectory = directory; // in case of error, just use the initial directory
     }
     return newDirectory;
-  }
+     }
 
   public void writeFile(String file, String fileContents) {
     // Authentication tag = new Authentication(COURSE_TAG);
@@ -140,7 +143,7 @@ public class FileManager {
       // handle error
       System.err.println("Error on writing file contents to file" + file + ": " + e.getMessage());
     } // the file will be closed automatically upon exit of this try block
-  }
+     }
 
   public String readFile(String file) {
     // String contents = null;
@@ -153,6 +156,6 @@ public class FileManager {
       System.err.println("Error on reading file" + file + ": " + e.getMessage());
     } // the file will be closed automatically upon exit of this try block
     return contents;
-  }
+     }
 
 }

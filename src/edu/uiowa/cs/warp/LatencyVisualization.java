@@ -1,7 +1,8 @@
 package edu.uiowa.cs.warp;
 
 /**
- * LatencyVisualization creates the visualizations for the liability analysis of the WARP program.
+
+* LatencyVisualization creates the visualizations for the liability analysis of the WARP program.
  * <p>
  * 
  * CS2820 Spring 2022 Project: Implement this class to create the file visualization that is
@@ -9,7 +10,7 @@ package edu.uiowa.cs.warp;
  * 
  * @author sgoddard
  * @version 1.3
- *
+ *  *
  */
 public class LatencyVisualization extends VisualizationObject {
 
@@ -24,5 +25,5 @@ public class LatencyVisualization extends VisualizationObject {
     super(new FileManager(), warp, SOURCE_SUFFIX);
     this.warp = warp;
     this.la = warp.toLatencyAnalysis();
-  }
+     }
 }

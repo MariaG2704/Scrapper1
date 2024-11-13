@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
- * @author sgoddard
+
+* @author sgoddard
  * @version 1.4
- *
+ *  *
  */
 public class Channels {
 
@@ -37,42 +38,42 @@ public class Channels {
     this.nChannels = nChannels;
     this.verbose = verbose;
     this.channelsAvailable = new ArrayList<ChannelSet>();
-  }
+     }
 
   public HashSet<String> getChannelSet(Integer timeSlot) {
     /* get the channel set for this timeSlot */
     HashSet<String> channelSet = new HashSet<String>(channelsAvailable.get(timeSlot));
     return channelSet;
-  }
+     }
 
   public void addNewChannelSet() {
     var channels = new ChannelSet(nChannels);
     channelsAvailable.add(channels);
-  }
+     }
 
 
   public Boolean isEmpty(int timeSlot) {
     ChannelSet channelSet = channelsAvailable.get(timeSlot); // get the channel set for this
                                                              // timeSlot
     return channelSet.isEmpty(); // returns true channel set is empty and false if not
-  }
+     }
 
   public Boolean removeChannel(int timeSlot, String channel) {
     Boolean result;
     ChannelSet channels = channelsAvailable.get(timeSlot);
     result = channels.remove(channel);
     return result;
-  }
+     }
 
   public Boolean addChannel(int timeSlot, String channel) {
     Boolean result;
     ChannelSet channels = channelsAvailable.get(timeSlot); // get a pointer to the channel set
     result = channels.add(channel); // remove the channel, returning the result
     return result;
-  }
+     }
 
   public Integer getNumChannels() {
     return nChannels;
-  }
+     }
 
 }

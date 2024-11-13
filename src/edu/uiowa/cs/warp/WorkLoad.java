@@ -23,15 +23,16 @@ import java.util.stream.Collectors;
  */
 
 /**
- * Build the nodes and flows for the workload described in the workload description file, whose name
+
+* Build the nodes and flows for the workload described in the workload description file, whose name
  * is passed into the Constructor via the parameter inputFileName. Good default values for the
  * constructors are m = 0.9, e2e = 0.99, and numFaults = 1 when the second constructor is used.
-
+ * 
  * @author sgoddard
  * @author ccolin - modified as per HW2 instructions
  * @version 1.4
  * @author msgauna- modified  getNumTxAttemptsPerLink and getTotalTxAttemptsInFlow methods 
- *
+ *  *
  */
 public class WorkLoad extends WorkLoadDescription implements ReliabilityParameters {
 
@@ -59,12 +60,13 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
   // private FileManager fm;
 
   /**
-   * Creates WorkLoad with 0 faults tolerated, specified packet reception rate and E2E reliability, 
-   * and reads input file to build node and flow data.
 
-   * @param m              minimum packet reception rate
-   * @param e2e            E2E reliability target
-   * @param inputFileName  name of input file
+* Creates WorkLoad with 0 faults tolerated, specified packet reception rate and E2E reliability, 
+ *    * and reads input file to build node and flow data.
+ * 
+ *    * @param m              minimum packet reception rate
+ *    * @param e2e            E2E reliability target
+ *    * @param inputFileName  name of input file
    */
   WorkLoad(Double m, Double e2e, String inputFileName) {
     super(inputFileName);
@@ -80,13 +82,14 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
     WorkLoadListener.buildNodesAndFlows(this);
   }
   /**
-   * Creates WorkLoad with specified fault toleration, packet reception rate and E2E reliability, 
-   * and reads input file to build node and flow data.
 
-   * @param numFaults      number of faults tolerated
-   * @param m              minimum packet reception rate
-   * @param e2e            E2E reliability target
-   * @param inputFileName  name of input file
+* Creates WorkLoad with specified fault toleration, packet reception rate and E2E reliability, 
+ *    * and reads input file to build node and flow data.
+ * 
+ *    * @param numFaults      number of faults tolerated
+ *    * @param m              minimum packet reception rate
+ *    * @param e2e            E2E reliability target
+ *    * @param inputFileName  name of input file
    */
   WorkLoad(Integer numFaults, Double m, Double e2e, String inputFileName) {
     super(inputFileName);
@@ -136,9 +139,10 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
   }
 
   /**
-   * Get the E2E reliability target.
 
-   * @return the e2e
+* Get the E2E reliability target.
+ * 
+ *    * @return the e2e
    */
   public Double getE2e() {
     return e2e;
@@ -154,9 +158,10 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
   }
 
   /**
-   * Get whether flow names are represented by integers.
 
-   * @return the intForFlowNames
+* Get whether flow names are represented by integers.
+ * 
+ *    * @return the intForFlowNames
    */
   public Boolean getIntForFlowNames() {
     return intForFlowNames;
@@ -181,9 +186,10 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
   }
 
   /**
-   * Get the name of the WARP graph.
 
-   * @return the name
+* Get the name of the WARP graph.
+ * 
+ *    * @return the name
    */
   public String getName() {
     return name;
@@ -208,18 +214,20 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
   }
 
   /**
-   * Sets the minimum packet reception rate of the WorkLoad.
 
-   * @param minPacketReceptionRate the minPacketReceptionRate to set
+* Sets the minimum packet reception rate of the WorkLoad.
+ * 
+ *    * @param minPacketReceptionRate the minPacketReceptionRate to set
    */
   public void setMinPacketReceptionRate(Double minPacketReceptionRate) {
     this.minPacketReceptionRate = minPacketReceptionRate;
   }
 
   /**
-   * Finds what the largest phase is of all flows.
 
-   * @return the maximum phase of all flows
+* Finds what the largest phase is of all flows.
+ * 
+ *    * @return the maximum phase of all flows
    */
   public Integer getMaxPhase() {
     var queue = new SchedulableObjectQueue<Flow>(new MaxPhaseComparator<Flow>(), flows.values());
@@ -227,9 +235,10 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
   }
 
   /**
-   * Gets the minimum period of all flows.
 
-   * @return the minimum period of all flows
+* Gets the minimum period of all flows.
+ * 
+ *    * @return the minimum period of all flows
    */
   public Integer getMinPeriod() {
     var queue = new SchedulableObjectQueue<Flow>(new PeriodComparator<Flow>(), flows.values());
@@ -237,9 +246,10 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
   }
 
   /**
-   * Sets the E2E reliability target.
 
-   * @param e2e the e2e to set
+* Sets the E2E reliability target.
+ * 
+ *    * @param e2e the e2e to set
    */
   public void setE2e(Double e2e) {
     this.e2e = e2e;
@@ -255,9 +265,10 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
   }
 
   /**
-   * Sets whether flow names are represented by integers or not.
 
-   * @param intForFlowNames the intForFlowNames to set
+* Sets whether flow names are represented by integers or not.
+ * 
+ *    * @param intForFlowNames the intForFlowNames to set
    */
   public void setIntForFlowNames(Boolean intForFlowNames) {
     this.intForFlowNames = intForFlowNames;
@@ -282,9 +293,10 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
   }
 
   /**
-   * Sets the name of the WorkLoad.
 
-   * @param name the name to set
+* Sets the name of the WorkLoad.
+ * 
+ *    * @param name the name to set
    */
   public void setName(String name) {
     this.name = name;
@@ -309,10 +321,11 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
   }
 
   /**
-   * Sets a specific node to a specific channel.
 
-   * @param name the node whose channel is to be set
-   * @param channel the channel to set
+* Sets a specific node to a specific channel.
+ * 
+ *    * @param name the node whose channel is to be set
+ *    * @param channel the channel to set
    */
   public void setNodeChannel(String name, Integer channel) {
     /* Get the node object */
@@ -323,9 +336,10 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
   }
 
   /**
-   * Gets the channel of a node.
 
-   * @return the node channel
+* Gets the channel of a node.
+ * 
+ *    * @return the node channel
    */
   public Integer getNodeChannel(String name) {
     /* Get node object */
@@ -333,9 +347,10 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
     return node.getChannel();
   }
   /**
-   * Add a new flow node to the Flow dictionary.
 
-   * @param flowName Name of the flow.
+* Add a new flow node to the Flow dictionary.
+ * 
+ *    * @param flowName Name of the flow.
    */
 
   public void addFlow(String flowName) {
@@ -373,10 +388,11 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
   }
 
   /**
-   * Add a new node to the flow.
 
-   * @param flowName Name of the flow.
-   * @param nodeName Name of the new node.
+* Add a new node to the flow.
+ * 
+ *    * @param flowName Name of the flow.
+ *    * @param nodeName Name of the new node.
    */
   public void addNodeToFlow(String flowName, String nodeName) {
     if (!Utilities.isInteger(nodeName) && intForNodeNames) {
@@ -405,11 +421,12 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
   }
 
   /**
-   * Get the priority of a specific node in a flow.
 
-   * @param flowName Name of the flow that contains node
-   * @param nodeName Name of the node in the flow
-   * @return Priority of the given node in the flow
+* Get the priority of a specific node in a flow.
+ * 
+ *    * @param flowName Name of the flow that contains node
+ *    * @param nodeName Name of the node in the flow
+ *    * @return Priority of the given node in the flow
    */
   public Integer getFlowPriority(String flowName, String nodeName) {
     var priority = 0;
@@ -426,10 +443,11 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
     return priority;
   }
   /**
-   * Return priority of a flow across all flows.
 
-   * @param flowName Name of the flow
-   * @return Priority of the flow
+* Return priority of a flow across all flows.
+ * 
+ *    * @param flowName Name of the flow
+ *    * @return Priority of the flow
    */
   public Integer getFlowPriority(String flowName) {
     var flowNode = getFlow(flowName);
@@ -462,10 +480,11 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
   }
 
   /**
-   * Retrieves the period of a given flow.
 
-   * @param flowName Name of flow
-   * @return Period of flow
+* Retrieves the period of a given flow.
+ * 
+ *    * @param flowName Name of flow
+ *    * @return Period of flow
    */
   public Integer getFlowPeriod(String flowName) {
     var flowNode = getFlow(flowName);
@@ -473,10 +492,11 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
   }
 
   /**
-   * Get the deadline of a given flow.
 
-   * @param flowName Name of the flow
-   * @return Deadline of the flow
+* Get the deadline of a given flow.
+ * 
+ *    * @param flowName Name of the flow
+ *    * @return Deadline of the flow
    */
   public Integer getFlowDeadline(String flowName) {
     var flowNode = getFlow(flowName);
@@ -484,9 +504,10 @@ public class WorkLoad extends WorkLoadDescription implements ReliabilityParamete
   }
 
   /**
-   * Get the phase of a given flow.
-u90
-   * @return Phase of the flow
+
+* Get the phase of a given flow.
+ * u90
+ *    * @return Phase of the flow
    */
   public Integer getFlowPhase(String flowName) {
     var flowNode = getFlow(flowName);
@@ -494,12 +515,13 @@ u90
   }
 
   /**
-   * Get the number of transmissions per link for a given flow.
 
-   * Returns -1 if invalid flowName
-
-   * @param flowName Name of the flow
-   * @return numTxPerLink of the flow
+* Get the number of transmissions per link for a given flow.
+ * 
+ *    * Returns -1 if invalid flowName
+ * 
+ *    * @param flowName Name of the flow
+ *    * @return numTxPerLink of the flow
    */
   public Integer getFlowTxAttemptsPerLink(String flowName) {
     var flowNode = getFlow(flowName);
@@ -507,8 +529,9 @@ u90
   }
 
   /**
-   * Sorts flows first by priority and then by index, and updates the `flowNamesInPriorityOrder`
-   * list with the names of the flows in the sorted order.
+
+* Sorts flows first by priority and then by index, and updates the `flowNamesInPriorityOrder`
+ *    * list with the names of the flows in the sorted order.
    */
   public void setFlowsInPriorityOrder() {
     /* create a list of Flow objects from the FlowMap using the stream interface. */
@@ -526,8 +549,9 @@ u90
   }
 
   /**
-   * Sorts flows first by deadline and then by priority, and updates the `flowNamesInPriorityOrder`
-   * list with the names of the flows in the sorted order.
+
+* Sorts flows first by deadline and then by priority, and updates the `flowNamesInPriorityOrder`
+ *    * list with the names of the flows in the sorted order.
    */
   public void setFlowsInDMorder() {
     /* create a list of Flow objects from the FlowMap using the stream interface. */
@@ -545,8 +569,9 @@ u90
   }
 
   /**
-   * Sorts flows first by period and then by priority, and updates the `flowNamesInPriorityOrder`
-   * list with the names of the flows in the sorted order.
+
+* Sorts flows first by period and then by priority, and updates the `flowNamesInPriorityOrder`
+ *    * list with the names of the flows in the sorted order.
    */
   public void setFlowsInRMorder() {
     /* create a list of Flow objects from the FlowMap using the stream interface. */
@@ -648,11 +673,12 @@ u90
   }
 
   /**
-   * Computes the number of transmissions needed per node and total cost for a given 
-   * flow using the ReliabilityAnaylsis class.
-   * 
-   * @param flow Flow whose node transmissions and total cost need to be calculated
-   * @return Array of number of transmissions needed for each node 
+
+* Computes the number of transmissions needed per node and total cost for a given 
+ *    * flow using the ReliabilityAnaylsis class.
+ *    * 
+ *    * @param flow Flow whose node transmissions and total cost need to be calculated
+ *    * @return Array of number of transmissions needed for each node 
    */
   private ArrayList<Integer> getFixedTxPerLinkAndTotalTxCost(Flow flow) {
 	  /* Instantiate the ReliabilityAnalysis object and correct constructor*/
@@ -662,15 +688,16 @@ u90
   }
 
   /**
-   * Computes the number of transmission attempts needed per link and the total number of
-   * transmission attempts required to achieve the E2E reliability target for the given flow,
-   * considering the specified reliability and optimization parameters using the ReliabilityAnaylsis class.
 
-   * @param flow Flow for which to compute transmission attempts and the cost for
-   * @param e2e  E2E reliability target
-   * @param M    Minimum link reliability needed to ensure successful transmission
-   * @param optimizationRequested  Boolean for if transmission calculations should be optimized
-   * @return The numTxAttemptsPerLinkAndTotalTxAttempts of the given flow
+* Computes the number of transmission attempts needed per link and the total number of
+ *    * transmission attempts required to achieve the E2E reliability target for the given flow,
+ *    * considering the specified reliability and optimization parameters using the ReliabilityAnaylsis class.
+ * 
+ *    * @param flow Flow for which to compute transmission attempts and the cost for
+ *    * @param e2e  E2E reliability target
+ *    * @param M    Minimum link reliability needed to ensure successful transmission
+ *    * @param optimizationRequested  Boolean for if transmission calculations should be optimized
+ *    * @return The numTxAttemptsPerLinkAndTotalTxAttempts of the given flow
    */
   private ArrayList<Integer> numTxAttemptsPerLinkAndTotalTxAttempts(Flow flow, Double e2e, Double M,
       boolean optimizationRequested) {
@@ -681,9 +708,10 @@ u90
   }
 
   /**
-   * Get the names of all nodes in flow, ordered alphabetically.
-   * 
-   * @return Array of all node names sorted
+
+* Get the names of all nodes in flow, ordered alphabetically.
+ *    * 
+ *    * @return Array of all node names sorted
    */
   public String[] getNodeNamesOrderedAlphabetically() {
     var nodes = getNodes();
@@ -734,20 +762,22 @@ u90
     return flow;
   }
   /**
-   * Get the names of all the flows in the graph file, ordered as they were read from
-   * the graph file.
 
-   * @return Array of all flow names ordered as read
+* Get the names of all the flows in the graph file, ordered as they were read from
+ *    * the graph file.
+ * 
+ *    * @return Array of all flow names ordered as read
    */
   public String[] getFlowNames() {
     return flowNamesInOriginalOrder.toArray(new String[0]);
     // could use new String[list.size()], but due to JVM optimizations new (new String[0] is better 
   }
   /**
-   * Get the index of the node in the nodes dictionary.
 
-   * @param nodeName Name of node.
-   * @return Index of node
+* Get the index of the node in the nodes dictionary.
+ * 
+ *    * @param nodeName Name of node.
+ *    * @return Index of node
    */
   public Integer getNodeIndex(String nodeName) {
     var index = 0;
@@ -760,10 +790,11 @@ u90
   }
 
   /**
-   * Get the names of all the nodes in a flow, ordered as they exist in the flow specification.
 
-   * @param flowName Name of flow
-   * @return All node names in the flow
+* Get the names of all the nodes in a flow, ordered as they exist in the flow specification.
+ * 
+ *    * @param flowName Name of flow
+ *    * @return All node names in the flow
    */
   public String[] getNodesInFlow(String flowName) {
     var flow = flows.get(flowName);
@@ -785,10 +816,11 @@ u90
   }
 
   /**
-   * Calculates and returns the least common multiple (LCM) of the periods
-   * of all flows to determine the hyperPeriod.
 
-   * @return the hyperPeriod of the flow
+* Calculates and returns the least common multiple (LCM) of the periods
+ *    * of all flows to determine the hyperPeriod.
+ * 
+ *    * @return the hyperPeriod of the flow
    */
   public Integer getHyperPeriod() {
     /* hyperPeriod is LCM of all periods, initialize to 1 */
@@ -803,11 +835,12 @@ u90
   }
 
   /**
-   * Get the total cost of all transmission attempts in flow.
-   * returns -1 if the flowName doesn't exists in the workLoad 
 
-   * @param flowName Name of the flow
-   * @return Cost of all transmissions
+* Get the total cost of all transmission attempts in flow.
+ *    * returns -1 if the flowName doesn't exists in the workLoad 
+ * 
+ *    * @param flowName Name of the flow
+ *    * @return Cost of all transmissions
    */
   public Integer getTotalTxAttemptsInFlow(String flowName) {
     Integer totalCost = -1;
@@ -824,11 +857,12 @@ u90
   }
 
   /**
-   * Get the number of transmissions needed per link to meet E2E reliability target.
-   * returns an empty array of integers if the flowName doesn't exists in the workLoad
 
-   * @param flowName Name of flow
-   * @return Array of number of transmissions needed per link
+* Get the number of transmissions needed per link to meet E2E reliability target.
+ *    * returns an empty array of integers if the flowName doesn't exists in the workLoad
+ * 
+ *    * @param flowName Name of flow
+ *    * @return Array of number of transmissions needed per link
    */
   public Integer[] getNumTxAttemptsPerLink(String flowName) {
     ArrayList<Integer> linkTxAndTotalCost = new ArrayList<Integer>();
@@ -846,10 +880,11 @@ u90
   }
 
   /**
-   * Add an edge to a given node.
 
-   * @param nodeName Name of the node for new edge
-   * @param edge New edge to be added
+* Add an edge to a given node.
+ * 
+ *    * @param nodeName Name of the node for new edge
+ *    * @param edge New edge to be added
    */
   public void addEdge(String nodeName, Edge edge) {
     /* Get node object */
@@ -858,9 +893,10 @@ u90
   }
 
   /**
-   * Get the length of the longest flow among all flows.
 
-   * @return Longest flow integer
+* Get the length of the longest flow among all flows.
+ * 
+ *    * @return Longest flow integer
    */
   public Integer maxFlowLength() {
     Integer maxLength = 0;

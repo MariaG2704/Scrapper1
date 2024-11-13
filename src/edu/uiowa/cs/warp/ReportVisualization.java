@@ -10,25 +10,25 @@ public class ReportVisualization extends VisualizationObject{
 	ReportVisualization (FileManager fm, SystemAttributes warp, 
 			Description content, String title) {
 		super(fm, warp, new String(title + "Report"), SUFFIX);
-		this.content = content;
-		this.title = title;
-	}
+   		this.content = content;
+   		this.title = title;
+   	}
 
 
 	@Override
 	public Description visualization() {
 		return createReport();
-	}
+   	}
 	
 	private Description createReport () {
 		Description report;
-		if (content.size() > 0) {
-			report = new Description(new String (title + " Report"));
-			report.addAll(content);
-		} else {
-			report = new Description(new String ("No " + title + " to report"));
-		}
-		return report;
-	}
+   		if (content.size() > 0) {
+   			report = new Description(new String (title + " Report"));
+   			report.addAll(content);
+   		} else {
+   			report = new Description(new String ("No " + title + " to report"));
+   		}
+   		return report;
+   	}
 	
 }

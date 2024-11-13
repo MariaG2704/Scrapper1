@@ -7,7 +7,8 @@ package edu.uiowa.cs.warp;
 import java.io.File;
 
 /**
- * Creates a VisualizationImplementation that implements Visualization <br>
+
+* Creates a VisualizationImplementation that implements Visualization <br>
  * Has two constructors for either a workload or warp input  <br>
  * Also has a default initalizer for a visualization for any object <br>
  * Has different methods for ways to display the contents of the visualization: file, display, string <br>
@@ -61,18 +62,19 @@ public class VisualizationImplementation implements Visualization {
   private VisualizationObject visualizationObject;
   
   /**
-   * Constructor that creates a VisualizationImplementataion that: <br>
-   * Creates a new file manager. <br>
-   * Assigns the inputed warp to warp instance variable. <br>
-   * Gets the fileName from the warp and assigns it the inputFileName instance variable. <br>
-   * Creates a file name template based on the inputed output directory, 
-   * and assigns it to the fileNameTemplete instance variable. <br>
-   * Sets the visualization object equal to null and  
-   * calls method createVisualization with an parameter choice sent to the constructor. <br> 
-   * @param warp an interface that gives access to methods for managing warp operations <br>
-   * @param outputDirectory a string that provides reference to the output directory <br>
-   * @param choice what is sent to the createVizualization method <br>
-   * @see VisualizationImplementation method createVisualization(SystemChoices) <br>
+
+* Constructor that creates a VisualizationImplementataion that: <br>
+ *    * Creates a new file manager. <br>
+ *    * Assigns the inputed warp to warp instance variable. <br>
+ *    * Gets the fileName from the warp and assigns it the inputFileName instance variable. <br>
+ *    * Creates a file name template based on the inputed output directory, 
+ *    * and assigns it to the fileNameTemplete instance variable. <br>
+ *    * Sets the visualization object equal to null and  
+ *    * calls method createVisualization with an parameter choice sent to the constructor. <br> 
+ *    * @param warp an interface that gives access to methods for managing warp operations <br>
+ *    * @param outputDirectory a string that provides reference to the output directory <br>
+ *    * @param choice what is sent to the createVizualization method <br>
+ *    * @see VisualizationImplementation method createVisualization(SystemChoices) <br>
    */
   public VisualizationImplementation(WarpInterface warp, String outputDirectory,
       SystemChoices choice) {
@@ -82,21 +84,22 @@ public class VisualizationImplementation implements Visualization {
     this.fileNameTemplate = createFileNameTemplate(outputDirectory);
     visualizationObject = null;
     createVisualization(choice);
-  }
+     }
   
   /**
-   * Constructor that creates a VisualizationImplementation that: <br>
-   * Creates a new file manager. <br>
-   * Assigns the inputed workload to workload instance variable. <br>
-   * Gets the fileName from the workload and assigns it the inputFileName instance variable. <br>
-   * Creates a file name template based on the inputed output directory, 
-   * and assigns it to the fileNameTemplete instance variable. <br>
-   * Sets the visualization object equal to null and 
-   * calls method createVisualization with an parameter choice sent to the constructor. <br>
-   * @param workLoad an workload that gives access to methods for managing workload operations <br>
-   * @param outputDirectory a string that provides reference to the output directory <br>
-   * @param choice what is sent to the createVizualization method <br>
-   * @see VisualizationImplementation method createVisualization(SystemChoices)  <br>
+
+* Constructor that creates a VisualizationImplementation that: <br>
+ *    * Creates a new file manager. <br>
+ *    * Assigns the inputed workload to workload instance variable. <br>
+ *    * Gets the fileName from the workload and assigns it the inputFileName instance variable. <br>
+ *    * Creates a file name template based on the inputed output directory, 
+ *    * and assigns it to the fileNameTemplete instance variable. <br>
+ *    * Sets the visualization object equal to null and 
+ *    * calls method createVisualization with an parameter choice sent to the constructor. <br>
+ *    * @param workLoad an workload that gives access to methods for managing workload operations <br>
+ *    * @param outputDirectory a string that provides reference to the output directory <br>
+ *    * @param choice what is sent to the createVizualization method <br>
+ *    * @see VisualizationImplementation method createVisualization(SystemChoices)  <br>
    */
   public VisualizationImplementation(WorkLoad workLoad, String outputDirectory,
       WorkLoadChoices choice) {
@@ -106,7 +109,7 @@ public class VisualizationImplementation implements Visualization {
     this.fileNameTemplate = createFileNameTemplate(outputDirectory);
     visualizationObject = null;
     createVisualization(choice);
-  }
+     }
   
   /**
    * Overrides the implemented Visualization toDisplay method. <br>
@@ -121,7 +124,7 @@ public class VisualizationImplementation implements Visualization {
     if (window != null) {
       window.setVisible();
     }
-  }
+     }
   
   /**
    * Overrides the implemented Visualization toFile method. <br>
@@ -130,7 +133,7 @@ public class VisualizationImplementation implements Visualization {
   @Override
   public void toFile() {
     fm.writeFile(fileName, fileContent.toString());
-  }
+     }
   
   /**
    * Overrides the implemented Visualization toString method. <br>
@@ -139,64 +142,66 @@ public class VisualizationImplementation implements Visualization {
   @Override
   public String toString() {
     return visualization.toString();
-  }
+     }
   
   /**
-   * Creates a visualization based on a choice parameter. <br>
-   * A switch statement evaluates the choice, options for choices include: <br>
-   * source, reliability, simulator, latency, channel, latency report, and deadline report <br>
-   * The default case creates a placeholder visualization.  <br>
-   * @param choice, the type of system visualization to create <br>
-   * @see VisualizationImplementation's createVisualization(WorkLoadChoices) <br>
+
+* Creates a visualization based on a choice parameter. <br>
+ *    * A switch statement evaluates the choice, options for choices include: <br>
+ *    * source, reliability, simulator, latency, channel, latency report, and deadline report <br>
+ *    * The default case creates a placeholder visualization.  <br>
+ *    * @param choice, the type of system visualization to create <br>
+ *    * @see VisualizationImplementation's createVisualization(WorkLoadChoices) <br>
    */
   private void createVisualization(SystemChoices choice) {
     switch (choice) { // select the requested visualization
       case SOURCE:
         createVisualization(new ProgramVisualization(warp));
         break;
-
+   
       case RELIABILITIES:
         // TODO Implement Reliability Analysis Visualization
         createVisualization(new ReliabilityVisualization(warp));
         break;
-
+   
       case SIMULATOR_INPUT:
         // TODO Implement Simulator Input Visualization
         createVisualization(new NotImplentedVisualization("SimInputNotImplemented"));
         break;
-
+   
       case LATENCY:
         // TODO Implement Latency Analysis Visualization
         createVisualization(new LatencyVisualization(warp));
         break;
-
+   
       case CHANNEL:
         // TODO Implement Channel Analysis Visualization
         createVisualization(new ChannelVisualization(warp));
         break;
-
+   
       case LATENCY_REPORT:
         createVisualization(new ReportVisualization(fm, warp,
             new LatencyAnalysis(warp).latencyReport(), "Latency"));
         break;
-
+   
       case DEADLINE_REPORT:
         createVisualization(
             new ReportVisualization(fm, warp, warp.toProgram().deadlineMisses(), "DeadlineMisses"));
         break;
-
+   
       default:
         createVisualization(new NotImplentedVisualization("UnexpectedChoice"));
         break;
     }
-  }
+     }
   /**
-   * Creates a visualization based on a choice parameter. <br>
-   * A switch statement evaluates the choice, options for choices include:  <br>
-   * communication graph, graph visualization, or input graph. <br>
-   * The default case creates a placeholder visualization.  <br>
-   * @param choice, the type of workload visualization to make. <br>
-   * @see VisualizationImplementation's createVisualization(WorkLoadChoices) <br>
+
+* Creates a visualization based on a choice parameter. <br>
+ *    * A switch statement evaluates the choice, options for choices include:  <br>
+ *    * communication graph, graph visualization, or input graph. <br>
+ *    * The default case creates a placeholder visualization.  <br>
+ *    * @param choice, the type of workload visualization to make. <br>
+ *    * @see VisualizationImplementation's createVisualization(WorkLoadChoices) <br>
    */
   private void createVisualization(WorkLoadChoices choice) {
     switch (choice) { // select the requested visualization
@@ -204,20 +209,20 @@ public class VisualizationImplementation implements Visualization {
         // createWarpVisualization();
         createVisualization(new CommunicationGraph(fm, workLoad));
         break;
-
+   
       case GRAPHVIZ:
         createVisualization(new GraphViz(fm, workLoad.toString()));
         break;
-
+   
       case INPUT_GRAPH:
         createVisualization(workLoad);
         break;
-
+   
       default:
         createVisualization(new NotImplentedVisualization("UnexpectedChoice"));
         break;
     }
-  }
+     }
   
   /**
    * Create a visualization based on an object that extends VisualizationObject that is sent as a parameter. <br>
@@ -234,16 +239,17 @@ public class VisualizationImplementation implements Visualization {
     /* display is file content printed to console */
     fileName = obj.createFile(fileNameTemplate); // in output directory
     visualizationObject = obj;
-  }
+     }
   
   /**
-   * Creates a template for the file name of an outputDirectory parameter. <br>
-   * Uses a file manager to make a new directory for the filename based a base directory and output directory. <br>
-   * Creates the fileNameTemplate using full output path and input filename. <br>
-   * @param outputDirectory the directory where the file will be saved. <br>
-   * @return the fileNameTemplete as a string <br>
-   * @see FileManager's method getBaseDirectory() <br>
-   * @see FileManager's method createDirectory(String,String) <br> 
+
+* Creates a template for the file name of an outputDirectory parameter. <br>
+ *    * Uses a file manager to make a new directory for the filename based a base directory and output directory. <br>
+ *    * Creates the fileNameTemplate using full output path and input filename. <br>
+ *    * @param outputDirectory the directory where the file will be saved. <br>
+ *    * @return the fileNameTemplete as a string <br>
+ *    * @see FileManager's method getBaseDirectory() <br>
+ *    * @see FileManager's method createDirectory(String,String) <br> 
    */
   private String createFileNameTemplate(String outputDirectory) {
     String fileNameTemplate;
@@ -257,6 +263,6 @@ public class VisualizationImplementation implements Visualization {
       fileNameTemplate = newDirectory + File.separator + inputFileName;
     }
     return fileNameTemplate;
-  }
+     }
 
 }

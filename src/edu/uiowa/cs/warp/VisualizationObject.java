@@ -4,9 +4,10 @@
 package edu.uiowa.cs.warp;
 
 /**
- * @author sgoddard
+
+* @author sgoddard
  * @version 1.5
- *
+ *  *
  */
 abstract class VisualizationObject {
 
@@ -22,7 +23,7 @@ abstract class VisualizationObject {
         String.valueOf(workLoad.getMinPacketReceptionRate()), String.valueOf(workLoad.getE2e()));
     this.suffix = suffix;
     visualizationData = null;
-  }
+     }
 
   VisualizationObject(FileManager fm, SystemAttributes warp, String suffix) {
     this.fm = fm;
@@ -34,7 +35,7 @@ abstract class VisualizationObject {
     }
     this.suffix = suffix;
     visualizationData = null;
-  }
+     }
 
   VisualizationObject(FileManager fm, SystemAttributes warp, String nameExtension, String suffix) {
     this.fm = fm;
@@ -46,44 +47,45 @@ abstract class VisualizationObject {
           nameExtension(warp.getSchedulerName(), warp.getMinPacketReceptionRate(), warp.getE2e())
               + nameExtension;
     }
-
+   
     this.suffix = suffix;
     visualizationData = null;
-  }
+     }
 
   VisualizationObject(FileManager fm, String nameExtension, String suffix) {
     this.fm = fm;
     this.nameExtension = nameExtension;
     this.suffix = suffix;
     visualizationData = null;
-  }
+     }
 
   private String nameExtension(String schName, Double m, double e2e) {
     String extension =
         String.format("%s-%sM-%sE2E", schName, String.valueOf(m), String.valueOf(e2e));
     return extension;
-  }
+     }
 
   private String nameExtension(String schName, Integer numFaults) {
     String extension = String.format("%s-%sFaults", schName, String.valueOf(numFaults));
     return extension;
-  }
+     }
 
   /**
-   * @return the fm
+
+* @return the fm
    */
   public FileManager getFileManager() {
     return fm;
-  }
+     }
 
   public Description visualization() {
     Description content = new Description();
     var data = createVisualizationData();
-
+   
     if (data != null) {
       String nodeString = String.join("\t", createColumnHeader()) + "\n";
       content.add(nodeString);
-
+   
       for (int rowIndex = 0; rowIndex < data.length; rowIndex++) {
         var row = data[rowIndex];
         String rowString = String.join("\t", row) + "\n";
@@ -93,38 +95,38 @@ abstract class VisualizationObject {
       content.add(NOT_IMPLEMENTED);
     }
     return content;
-  }
+     }
 
   public String createFile(String fileNameTemplate) {
     return fm.createFile(fileNameTemplate, nameExtension, suffix);
-  }
+     }
 
   public Description fileVisualization() {
     Description fileContent = createHeader();
     fileContent.addAll(visualization());
     fileContent.addAll(createFooter());
     return fileContent;
-  }
+     }
 
   public GuiVisualization displayVisualization() {
     return null; // not implemented
-  }
+     }
 
   protected Description createHeader() {
     Description header = new Description();
     return header;
-  }
+     }
 
   protected Description createFooter() {
     Description footer = new Description();
     return footer;
-  }
+     }
 
   protected String[] createColumnHeader() {
     return new String[] {NOT_IMPLEMENTED};
-  }
+     }
 
   protected String[][] createVisualizationData() {
     return visualizationData; // not implemented--returns null
-  }
+     }
 }

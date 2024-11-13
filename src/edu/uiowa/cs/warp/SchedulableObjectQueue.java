@@ -12,7 +12,7 @@ public class SchedulableObjectQueue <T extends SchedulableObject> extends java.u
 	 */
 	SchedulableObjectQueue(Comparator<T> comparitor) {
 		super(1, comparitor);
-	}
+   	}
 	
 	/**
 	 * Construct a priority queue of schedulable objects based
@@ -20,6 +20,6 @@ public class SchedulableObjectQueue <T extends SchedulableObject> extends java.u
 	 */
 	SchedulableObjectQueue(Comparator<T> comparitor, java.util.Collection<T> schedulableObjects) {
 		super(comparitor);
-		this.addAll(schedulableObjects);
-	}
+   		this.addAll(schedulableObjects);
+   	}
 }

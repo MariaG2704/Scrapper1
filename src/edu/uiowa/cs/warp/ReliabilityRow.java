@@ -7,13 +7,13 @@ public class ReliabilityRow extends Row<Double> {
 	// default constructor
 	public ReliabilityRow() {
 		super();
-	}
+   	}
 
 	ReliabilityRow (Integer numColumns, Double element){
 		super(numColumns, element);
-	}
+   	}
 
 	ReliabilityRow (Double [] rowArray) {
 		super(rowArray);
-	}
+   	}
 }

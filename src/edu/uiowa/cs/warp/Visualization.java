@@ -4,7 +4,8 @@
 package edu.uiowa.cs.warp;
 
 /**
- * @author sgoddard
+
+* @author sgoddard
  * @version 1.4
  */
 public interface Visualization {

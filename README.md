@@ -168,7 +168,16 @@ Please be aware that Eclipse's markdown file previewer does not appear to be a W
 	- Did 50% of step 3, refactoring reliability Analysis to fit with ArrayList and ReliabilityWindow and ReliabilityRow
 	- Wrote all Java Doc comments 
 
-
+### Project Sprint 1
+- **Objective**： Develop a UML Sequence Diagram; create high-level plans for future Sprints of the project.
+- **wplucas**, **msgauna**, **nnahra**, **tomlooi**:
+	<ul>
+	<li> Worked collaboratively to trace the program flow from Warp when processing the "ra" run configuration.
+	<li> Deliberated on, and added empty methods to be (potentially) implemented in ReliabilityVisualization and ReliabilityAnalysis. 
+	<li> Updated UML class diagram with added methods to ReliabilityVisualization and ReliabilityAnalysis.
+	<li> Discussed general plans for Sprints 2 and 3; detailed these plans in a shared Word document.
+	<li> Assigned tentative roles for method implementation, JavaDoc creation, and JUnit testing for future Sprints.
+	</ul>
 
 
 ## Project Setup

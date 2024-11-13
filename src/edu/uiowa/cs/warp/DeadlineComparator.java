@@ -10,5 +10,5 @@ public class DeadlineComparator<T extends SchedulableObject> implements Comparat
 	public int compare(T obj1, T obj2) {	
 		/* only sort by period, as we only want shortest period */
 		return obj1.deadlineComparison(obj2); 
-	}
+   	}
 }

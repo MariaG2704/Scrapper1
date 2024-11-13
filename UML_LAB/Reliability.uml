@@ -4,7 +4,7 @@
     <eAnnotations xmi:id="_c1qr0IZcEe-bUZ-w3fFkrg" source="http://ns.yatta.de/umllab">
       <contents xmi:type="ecore:EAnnotation" xmi:id="_c1qr0YZcEe-bUZ-w3fFkrg" source="codegen">
         <details xmi:id="_c1qr0oZcEe-bUZ-w3fFkrg" key="codegenDirectory" value="/cs2820-fall24/src"/>
-        <details xmi:id="_fOrxoIZcEe-bUZ-w3fFkrg" key="AssociatedSourceCode" value="/cs2820-fall24/src/edu/uiowa/cs/warp/AbstractMap.java;2633489473/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Activation.java;3634548837/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Activations.java;3305092594/1;/cs2820-fall24/src/edu/uiowa/cs/warp/BasicPoset.java;3238489715/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ChannelAnalysis.java;1217720653/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ChannelVisualization.java;2873127052/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Channels.java;3701064188/1;/cs2820-fall24/src/edu/uiowa/cs/warp/CodeFragment.java;1941462046/1;/cs2820-fall24/src/edu/uiowa/cs/warp/CombinedActivation.java;3978818808/1;/cs2820-fall24/src/edu/uiowa/cs/warp/CommunicationGraph.java;724670632/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ConnectivityPoset.java;3754377617/1;/cs2820-fall24/src/edu/uiowa/cs/warp/DeadlineComparator.java;492899634/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Description.java;2596849957/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Edge.java;1242144003/1;/cs2820-fall24/src/edu/uiowa/cs/warp/FileManager.java;1791012323/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Flow.java;438145269/1;/cs2820-fall24/src/edu/uiowa/cs/warp/FlowMap.java;3735737588/1;/cs2820-fall24/src/edu/uiowa/cs/warp/FlowNodeToActivationMap.java;4234899521/1;/cs2820-fall24/src/edu/uiowa/cs/warp/GraphViz.java;1071888484/1;/cs2820-fall24/src/edu/uiowa/cs/warp/GraphVizListener.java;2126849807/1;/cs2820-fall24/src/edu/uiowa/cs/warp/GuiVisualization.java;654882569/1;/cs2820-fall24/src/edu/uiowa/cs/warp/InputGraphFile.java;937049578/1;/cs2820-fall24/src/edu/uiowa/cs/warp/InstructionTimeSlot.java;3408505142/1;/cs2820-fall24/src/edu/uiowa/cs/warp/LatencyAnalysis.java;2064230864/1;/cs2820-fall24/src/edu/uiowa/cs/warp/LatencyVisualization.java;2426998793/1;/cs2820-fall24/src/edu/uiowa/cs/warp/LatestReleaseTimeComparator.java;1106993157/1;/cs2820-fall24/src/edu/uiowa/cs/warp/MaxPhaseComparator.java;1745026972/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Node.java;1243472081/1;/cs2820-fall24/src/edu/uiowa/cs/warp/NodeMap.java;2177811796/1;/cs2820-fall24/src/edu/uiowa/cs/warp/NonPreemptiveSchedule.java;387408079/1;/cs2820-fall24/src/edu/uiowa/cs/warp/NotImplentedVisualization.java;3646556153/1;/cs2820-fall24/src/edu/uiowa/cs/warp/PeriodComparator.java;3057078727/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Poset.java;4263200805/1;/cs2820-fall24/src/edu/uiowa/cs/warp/PreemptiveSchedule.java;3080876127/1;/cs2820-fall24/src/edu/uiowa/cs/warp/PriorityComparator.java;349151360/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Program.java;4288988359/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ProgramSchedule.java;1770485609/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ProgramVisualization.java;416137349/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ReleaseTimeComparator.java;2065273961/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ReleaseTimeQueue.java;1776494724/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ReliabilityAnalysis.java;3315385454/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ReliabilityParameters.java;2925534695/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ReliabilityRow.java;3195166460/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ReliabilityTable.java;2918095589/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ReliabilityVisualization.java;872941976/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ReportVisualization.java;2571131140/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Row.java;3413533457/1;/cs2820-fall24/src/edu/uiowa/cs/warp/SchedulableObjectQueue.java;3263525257/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Schedule.java;3152618411/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ScheduleTable.java;970860350/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ScheduleTime.java;2579980776/1;/cs2820-fall24/src/edu/uiowa/cs/warp/SimulatorInput.java;3699590899/1;/cs2820-fall24/src/edu/uiowa/cs/warp/SortedPeriodQueue.java;3537725478/1;/cs2820-fall24/src/edu/uiowa/cs/warp/SystemAttributes.java;876440066/1;/cs2820-fall24/src/edu/uiowa/cs/warp/SystemFactory.java;4134708055/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Table.java;2577872269/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Visualization.java;2548788944/1;/cs2820-fall24/src/edu/uiowa/cs/warp/VisualizationFactory.java;3425614056/1;/cs2820-fall24/src/edu/uiowa/cs/warp/VisualizationImplementation.java;3719702118/1;/cs2820-fall24/src/edu/uiowa/cs/warp/VisualizationObject.java;1022989847/1;/cs2820-fall24/src/edu/uiowa/cs/warp/WorkLoadListener.java;195958787/1;/cs2820-fall24/src/edu/uiowa/cs/warp/WorkLoadDescription.java;4006652322/1;/cs2820-fall24/src/edu/uiowa/cs/warp/WarpInterface.java;2926400465/1;/cs2820-fall24/src/edu/uiowa/cs/warp/WarpPoset.java;4000167019/1;/cs2820-fall24/src/edu/uiowa/cs/warp/WarpSystem.java;1464956973/1;/cs2820-fall24/src/edu/uiowa/cs/warp/WorkLoad.java;1830150907/1;/cs2820-fall24/src/edu/uiowa/cs/warp/WarpDSL.java;1986156920/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Warp.java;2537215077/1;/cs2820-fall24/src/edu/uiowa/cs/warp/SchedulableObject.java;2451757979/1;/cs2820-fall24/test/edu/uiowa/cs/warp/WorkLoadTest.java;1047069810/1;"/>
+        <details xmi:id="_fOrxoIZcEe-bUZ-w3fFkrg" key="AssociatedSourceCode" value="/cs2820-fall24/src/edu/uiowa/cs/warp/AbstractMap.java;3550208140/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Activation.java;861525304/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Activations.java;820905503/1;/cs2820-fall24/src/edu/uiowa/cs/warp/BasicPoset.java;1143459458/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ChannelAnalysis.java;2800092398/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ChannelVisualization.java;3985865065/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Channels.java;3496347806/1;/cs2820-fall24/src/edu/uiowa/cs/warp/CodeFragment.java;3410838051/1;/cs2820-fall24/src/edu/uiowa/cs/warp/CombinedActivation.java;575745871/1;/cs2820-fall24/src/edu/uiowa/cs/warp/CommunicationGraph.java;618374091/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ConnectivityPoset.java;2963456854/1;/cs2820-fall24/src/edu/uiowa/cs/warp/DeadlineComparator.java;414714605/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Description.java;286945484/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Edge.java;3735315736/1;/cs2820-fall24/src/edu/uiowa/cs/warp/FileManager.java;2823970782/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Flow.java;1096578006/1;/cs2820-fall24/src/edu/uiowa/cs/warp/FlowMap.java;2490011227/1;/cs2820-fall24/src/edu/uiowa/cs/warp/FlowNodeToActivationMap.java;2467981572/1;/cs2820-fall24/src/edu/uiowa/cs/warp/GraphViz.java;2320820341/1;/cs2820-fall24/src/edu/uiowa/cs/warp/GraphVizListener.java;760717561/1;/cs2820-fall24/src/edu/uiowa/cs/warp/GuiVisualization.java;533766339/1;/cs2820-fall24/src/edu/uiowa/cs/warp/InputGraphFile.java;3207981496/1;/cs2820-fall24/src/edu/uiowa/cs/warp/InstructionTimeSlot.java;3866807440/1;/cs2820-fall24/src/edu/uiowa/cs/warp/LatencyAnalysis.java;3637580702/1;/cs2820-fall24/src/edu/uiowa/cs/warp/LatencyVisualization.java;3033108223/1;/cs2820-fall24/src/edu/uiowa/cs/warp/LatestReleaseTimeComparator.java;1072706774/1;/cs2820-fall24/src/edu/uiowa/cs/warp/MaxPhaseComparator.java;3371294625/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Node.java;3898041857/1;/cs2820-fall24/src/edu/uiowa/cs/warp/NodeMap.java;639252280/1;/cs2820-fall24/src/edu/uiowa/cs/warp/NonPreemptiveSchedule.java;476300921/1;/cs2820-fall24/src/edu/uiowa/cs/warp/NotImplentedVisualization.java;2337364385/1;/cs2820-fall24/src/edu/uiowa/cs/warp/PeriodComparator.java;2753322581/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Poset.java;3685862370/1;/cs2820-fall24/src/edu/uiowa/cs/warp/PreemptiveSchedule.java;865499240/1;/cs2820-fall24/src/edu/uiowa/cs/warp/PriorityComparator.java;399948297/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Program.java;3956431364/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ProgramSchedule.java;993312373/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ProgramVisualization.java;3362527305/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ReleaseTimeComparator.java;3315335975/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ReleaseTimeQueue.java;2385862264/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ReliabilityAnalysis.java;1372034818/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ReliabilityParameters.java;126323897/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ReliabilityRow.java;3751831507/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ReliabilityTable.java;3815809364/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ReliabilityVisualization.java;3113828931/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ReportVisualization.java;3181658269/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Row.java;2663840397/1;/cs2820-fall24/src/edu/uiowa/cs/warp/SchedulableObjectQueue.java;3412206237/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Schedule.java;911214946/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ScheduleTable.java;2650821308/1;/cs2820-fall24/src/edu/uiowa/cs/warp/ScheduleTime.java;2309464847/1;/cs2820-fall24/src/edu/uiowa/cs/warp/SimulatorInput.java;2379689683/1;/cs2820-fall24/src/edu/uiowa/cs/warp/SortedPeriodQueue.java;2946650070/1;/cs2820-fall24/src/edu/uiowa/cs/warp/SystemAttributes.java;3931163786/1;/cs2820-fall24/src/edu/uiowa/cs/warp/SystemFactory.java;3027490741/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Table.java;4271845015/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Visualization.java;3245781002/1;/cs2820-fall24/src/edu/uiowa/cs/warp/VisualizationFactory.java;81238363/1;/cs2820-fall24/src/edu/uiowa/cs/warp/VisualizationImplementation.java;4077604677/1;/cs2820-fall24/src/edu/uiowa/cs/warp/VisualizationObject.java;3842156986/1;/cs2820-fall24/src/edu/uiowa/cs/warp/WorkLoadListener.java;2843333100/1;/cs2820-fall24/src/edu/uiowa/cs/warp/WorkLoadDescription.java;3579212399/1;/cs2820-fall24/src/edu/uiowa/cs/warp/WarpInterface.java;2608547203/1;/cs2820-fall24/src/edu/uiowa/cs/warp/WarpPoset.java;3448202525/1;/cs2820-fall24/src/edu/uiowa/cs/warp/WarpSystem.java;3958378184/1;/cs2820-fall24/src/edu/uiowa/cs/warp/WorkLoad.java;691448898/1;/cs2820-fall24/src/edu/uiowa/cs/warp/WarpDSL.java;3146360579/1;/cs2820-fall24/src/edu/uiowa/cs/warp/Warp.java;383679841/1;/cs2820-fall24/src/edu/uiowa/cs/warp/SchedulableObject.java;1499171370/1;/cs2820-fall24/test/edu/uiowa/cs/warp/WorkLoadTest.java;280164446/1;"/>
       </contents>
       <contents xmi:type="ecore:EAnnotation" xmi:id="_ExaiAIvVEe-33faTEbFp4w" source="preferences">
         <contents xmi:type="ecore:EAnnotation" xmi:id="_ExbJEIvVEe-33faTEbFp4w" source="com.yattasolutions.codegen.reverse">
@@ -7274,7 +7274,7 @@ with the GuiVisualization class. &lt;br>&#xD;
               </ownedOperation>
             </packagedElement>
             <packagedElement xmi:type="uml:Class" xmi:id="_dWikQYZcEe-bUZ-w3fFkrg" name="ReliabilityAnalysis">
-              <ownedComment xmi:id="_wpIR8JZEEe-P69oLd8_9wg">
+              <ownedComment xmi:id="_6Ti98KFqEe-KfvBae3IKpA">
                 <body>ReliabilityAnalysis analyzes the end-to-end reliability of messages transmitted in flows for the
 WARP system.
 &lt;p>
@@ -7602,7 +7602,7 @@ snk nodes from the instruction string in a program schedule time slot.
                 <ownedParameter xmi:id="_puEPsYZeEe-bUZ-w3fFkrg" type="_dWjyY4ZcEe-bUZ-w3fFkrg" direction="return"/>
               </ownedOperation>
               <ownedOperation xmi:id="_B--B0JCyEe-WEJV2zG5XSQ" name="numTxPerLinkAndTotalTxCost" visibility="public" method="_by2Rg5ZCEe-S5LJtyBrH7w">
-                <ownedComment xmi:id="_wpIR85ZEEe-P69oLd8_9wg">
+                <ownedComment xmi:id="_6TjlAKFqEe-KfvBae3IKpA">
                   <body>Compute number of Transmissions based on model type.
 	 * Given a fixed number of faults results in run of getFixedTxPerLinkAndTotalCost
 	 * If not given a fixed number we use predictive model numTxAttemptsPerLinkAndTotalTxAttempts.
@@ -7617,7 +7617,7 @@ snk nodes from the instruction string in a program schedule time slot.
                 <eAnnotations xmi:id="_bxiC4JZCEe-S5LJtyBrH7w" source="http://www.eclipse.org/uml2/2.0.0/UML">
                   <details xmi:id="_bxiC4ZZCEe-S5LJtyBrH7w" key="create"/>
                 </eAnnotations>
-                <ownedComment xmi:id="_wpIR8ZZEEe-P69oLd8_9wg">
+                <ownedComment xmi:id="_6Ti98aFqEe-KfvBae3IKpA">
                   <body>Constructor for predictive fault model.
 	 * 
 	 * @param e2e End-to-end reliability target.
@@ -7631,7 +7631,7 @@ snk nodes from the instruction string in a program schedule time slot.
                 <eAnnotations xmi:id="_bxj4EJZCEe-S5LJtyBrH7w" source="http://www.eclipse.org/uml2/2.0.0/UML">
                   <details xmi:id="_bxj4EZZCEe-S5LJtyBrH7w" key="create"/>
                 </eAnnotations>
-                <ownedComment xmi:id="_wpIR8pZEEe-P69oLd8_9wg">
+                <ownedComment xmi:id="_6Ti98qFqEe-KfvBae3IKpA">
                   <body>Constructor for fixed fault model
 	 * 
 	 * @param numFaults Number of faults to use in fixed model</body>
@@ -7642,7 +7642,7 @@ snk nodes from the instruction string in a program schedule time slot.
                 </ownedParameter>
               </ownedOperation>
               <ownedOperation xmi:id="_bxrz4JZCEe-S5LJtyBrH7w" name="getFixedTxPerLinkAndTotalTxCost" visibility="private" method="_by24kJZCEe-S5LJtyBrH7w">
-                <ownedComment xmi:id="_wpI5AJZEEe-P69oLd8_9wg">
+                <ownedComment xmi:id="_6TjlAaFqEe-KfvBae3IKpA">
                   <body>Computes the number of transmissions needed per node and total cost for a given flow.
 	 * 
 	 * @param flow Flow whose node transmissions and total cost need to be calculated
@@ -7652,7 +7652,7 @@ snk nodes from the instruction string in a program schedule time slot.
                 <ownedParameter xmi:id="_bxsa8JZCEe-S5LJtyBrH7w" type="_db0s4YZcEe-bUZ-w3fFkrg" direction="return"/>
               </ownedOperation>
               <ownedOperation xmi:id="_bxu3MJZCEe-S5LJtyBrH7w" name="initializeReliabilityRow" visibility="private" method="_by4twJZCEe-S5LJtyBrH7w">
-                <ownedComment xmi:id="_wpI5BpZEEe-P69oLd8_9wg">
+                <ownedComment xmi:id="_6TkMEaFqEe-KfvBae3IKpA">
                   <body>Initializes a reliability row based on a reliability window 
 	 * 
 	 * @param reliabilityWindow a ReliabilityTable of ReliabilityRows, represents reliability values 
@@ -7662,7 +7662,7 @@ snk nodes from the instruction string in a program schedule time slot.
                 <ownedParameter xmi:id="_bxu3MpZCEe-S5LJtyBrH7w" type="_db0s4YZcEe-bUZ-w3fFkrg" direction="return"/>
               </ownedOperation>
               <ownedOperation xmi:id="_bxwFUZZCEe-S5LJtyBrH7w" name="calculateNextSinkState" visibility="private" method="_by4typZCEe-S5LJtyBrH7w">
-                <ownedComment xmi:id="_wpI5CJZEEe-P69oLd8_9wg">
+                <ownedComment xmi:id="_6TkzIKFqEe-KfvBae3IKpA">
                   <body>Calculates the new reliability state for a sink node based on M,prevSnkNodeState,
 	 * prevSrcNodeState, minLinkReliabilityNeeded
 	 *  
@@ -7679,7 +7679,7 @@ snk nodes from the instruction string in a program schedule time slot.
                 <ownedParameter xmi:id="_bxxTcJZCEe-S5LJtyBrH7w" type="_ddJiloZcEe-bUZ-w3fFkrg" direction="return"/>
               </ownedOperation>
               <ownedOperation xmi:id="_byUtEJZCEe-S5LJtyBrH7w" name="initializeTxArrayList" visibility="private" method="_by24k5ZCEe-S5LJtyBrH7w">
-                <ownedComment xmi:id="_wpI5AZZEEe-P69oLd8_9wg">
+                <ownedComment xmi:id="_6TjlAqFqEe-KfvBae3IKpA">
                   <body>Initializes the TxArrayList with defaultTx values
 	 *  
 	 * @param nNodesInFlow an int representing the number of nodes in the flow 
@@ -7695,7 +7695,7 @@ snk nodes from the instruction string in a program schedule time slot.
                 <ownedParameter xmi:id="_byUtE5ZCEe-S5LJtyBrH7w" type="_db0s4YZcEe-bUZ-w3fFkrg" direction="return"/>
               </ownedOperation>
               <ownedOperation xmi:id="_byV7MJZCEe-S5LJtyBrH7w" name="numTxAttemptsPerLinkAndTotalTxAttempts" visibility="private" method="_by3foJZCEe-S5LJtyBrH7w">
-                <ownedComment xmi:id="_wpI5ApZEEe-P69oLd8_9wg">
+                <ownedComment xmi:id="_6TjlA6FqEe-KfvBae3IKpA">
                   <body>Computes number of transmission attempts per link and total number to achieve end-to-end
 	 * reliability for given flow.
 	 * 
@@ -7714,7 +7714,7 @@ snk nodes from the instruction string in a program schedule time slot.
                 <ownedParameter xmi:id="_byWiQ5ZCEe-S5LJtyBrH7w" type="_db0s4YZcEe-bUZ-w3fFkrg" direction="return"/>
               </ownedOperation>
               <ownedOperation xmi:id="_byYXcJZCEe-S5LJtyBrH7w" name="initalizePushArray" visibility="private" method="_by3fppZCEe-S5LJtyBrH7w">
-                <ownedComment xmi:id="_wpI5A5ZEEe-P69oLd8_9wg">
+                <ownedComment xmi:id="_6TjlBKFqEe-KfvBae3IKpA">
                   <body>Fills an ArrayList called nPushes with values of 0
 	 *  
 	 * @param nNodesInFlow
@@ -7726,7 +7726,7 @@ snk nodes from the instruction string in a program schedule time slot.
                 <ownedParameter xmi:id="_byY-gZZCEe-S5LJtyBrH7w" type="_db0s4YZcEe-bUZ-w3fFkrg" direction="return"/>
               </ownedOperation>
               <ownedOperation xmi:id="_byazsZZCEe-S5LJtyBrH7w" name="calculateMinLinkReliability" visibility="private" method="_by4GsJZCEe-S5LJtyBrH7w">
-                <ownedComment xmi:id="_wpI5BJZEEe-P69oLd8_9wg">
+                <ownedComment xmi:id="_6TjlBaFqEe-KfvBae3IKpA">
                   <body>Calculates the minimum link reliability with e2e and n hops 
 	 * 
 	 * @param e2e the end to end reliability target 
@@ -7740,7 +7740,7 @@ snk nodes from the instruction string in a program schedule time slot.
                 <ownedParameter xmi:id="_bybawZZCEe-S5LJtyBrH7w" type="_ddJiloZcEe-bUZ-w3fFkrg" direction="return"/>
               </ownedOperation>
               <ownedOperation xmi:id="_bycB0JZCEe-S5LJtyBrH7w" name="initializeReliabilityWindow" visibility="private" method="_by4GtJZCEe-S5LJtyBrH7w">
-                <ownedComment xmi:id="_wpI5BZZEEe-P69oLd8_9wg">
+                <ownedComment xmi:id="_6TkMEKFqEe-KfvBae3IKpA">
                   <body>Initializes a reliability window  with a single row containing reliability values 
 	 * 
 	 * @param nNodesInFlow the number of nodes in the flow 
@@ -7752,7 +7752,7 @@ snk nodes from the instruction string in a program schedule time slot.
                 <ownedParameter xmi:id="_bycB0pZCEe-S5LJtyBrH7w" type="_dWjyY4ZcEe-bUZ-w3fFkrg" direction="return"/>
               </ownedOperation>
               <ownedOperation xmi:id="_byco4JZCEe-S5LJtyBrH7w" name="computeReliabilityForNxtTmSlt" visibility="private" method="_by4tw5ZCEe-S5LJtyBrH7w">
-                <ownedComment xmi:id="_wpI5B5ZEEe-P69oLd8_9wg">
+                <ownedComment xmi:id="_6TkMEqFqEe-KfvBae3IKpA">
                   <body>Calculates a new reliability state for the nodes of the next time slot, based on the 
 	 * reliability values from the previous time slot
 	 * 
@@ -7773,7 +7773,7 @@ snk nodes from the instruction string in a program schedule time slot.
                 <ownedParameter xmi:id="_bydP8JZCEe-S5LJtyBrH7w" type="_db0s4YZcEe-bUZ-w3fFkrg" direction="return"/>
               </ownedOperation>
               <ownedOperation xmi:id="_byg6UJZCEe-S5LJtyBrH7w" name="updateReliabilityWindow" visibility="private" method="_by4t0JZCEe-S5LJtyBrH7w">
-                <ownedComment xmi:id="_wpI5CZZEEe-P69oLd8_9wg">
+                <ownedComment xmi:id="_6TkzIaFqEe-KfvBae3IKpA">
                   <body>Updates the reliability window with a new row of reliability data for a specific time slot 
 	 * 
 	 * @param reliabilityWindow a ReliabilityTable of ReliabiltyRows, represents the reliability values
@@ -7785,6 +7785,26 @@ snk nodes from the instruction string in a program schedule time slot.
                 <ownedParameter xmi:id="_byg6U5ZCEe-S5LJtyBrH7w" name="timeSlot">
                   <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
                 </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_2MD9cKFlEe-TXJ192R5HUA" name="findSrc" visibility="public">
+                <ownedParameter xmi:id="_2MD9caFlEe-TXJ192R5HUA" type="_ddJiloZcEe-bUZ-w3fFkrg" direction="return"/>
+                <ownedParameter xmi:id="_nBbw4KFmEe-TXJ192R5HUA" name="instruction">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_jlsp0KFmEe-TXJ192R5HUA" name="prevSrcNodeState" type="_ddJiloZcEe-bUZ-w3fFkrg"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_3-9ecKFlEe-TXJ192R5HUA" name="findSnk" visibility="public">
+                <ownedParameter xmi:id="_QveKsKFmEe-TXJ192R5HUA" name="instruction">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_VPEigKFmEe-TXJ192R5HUA" name="prevSnkNodeState" type="_ddJiloZcEe-bUZ-w3fFkrg"/>
+                <ownedParameter xmi:id="_f73cYKFmEe-TXJ192R5HUA" type="_ddJiloZcEe-bUZ-w3fFkrg" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_rLrjwKFmEe-TXJ192R5HUA" name="findNewSnkNodeState" visibility="public">
+                <ownedParameter xmi:id="_rLrjwaFmEe-TXJ192R5HUA" type="_ddJiloZcEe-bUZ-w3fFkrg" direction="return"/>
+                <ownedParameter xmi:id="_uy1QoKFmEe-TXJ192R5HUA" name="currentSnkNode" type="_ddJiloZcEe-bUZ-w3fFkrg"/>
+                <ownedParameter xmi:id="_w1P0UKFmEe-TXJ192R5HUA" name="currentSrcNode" type="_ddJiloZcEe-bUZ-w3fFkrg"/>
+                <ownedParameter xmi:id="_yrpVQKFmEe-TXJ192R5HUA" name="M" type="_ddJiloZcEe-bUZ-w3fFkrg"/>
               </ownedOperation>
             </packagedElement>
             <packagedElement xmi:type="uml:Interface" xmi:id="_dWikRIZcEe-bUZ-w3fFkrg" name="ReliabilityParameters" visibility="package">
@@ -7914,7 +7934,7 @@ snk nodes from the instruction string in a program schedule time slot.
               </ownedOperation>
             </packagedElement>
             <packagedElement xmi:type="uml:Class" xmi:id="_dWkZdoZcEe-bUZ-w3fFkrg" name="ReliabilityVisualization">
-              <ownedComment xmi:id="_s_mt9ZCbEe-WEJV2zG5XSQ">
+              <ownedComment xmi:id="_FrQAkKFsEe-KfvBae3IKpA">
                 <body>ReliabilityVisualization creates the visualizations for&#xD;
 the reliability analysis of the WARP program. &lt;p>&#xD;
 &#xD;
@@ -7957,6 +7977,34 @@ this class. Your solution will likely be similar to the code in ProgramVisualiza
                 </eAnnotations>
                 <ownedParameter xmi:id="_dcVqQ4ZcEe-bUZ-w3fFkrg" name="warp" type="_dW3UYIZcEe-bUZ-w3fFkrg"/>
                 <ownedParameter xmi:id="_dcVqRoZcEe-bUZ-w3fFkrg" type="_dWkZdoZcEe-bUZ-w3fFkrg" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_p2Mw0KFhEe-TXJ192R5HUA" name="displayVisualization" visibility="public">
+                <ownedParameter xmi:id="_p2Mw0aFhEe-TXJ192R5HUA" name="displayVisualization()" type="_dWF4UIZcEe-bUZ-w3fFkrg" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_1-pT4KFiEe-TXJ192R5HUA" name="createHeader" visibility="public">
+                <ownedParameter xmi:id="_1-pT4aFiEe-TXJ192R5HUA" name="createHeader" type="_dV6SIYZcEe-bUZ-w3fFkrg" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_GPpdMKFjEe-TXJ192R5HUA" name="createFooter" visibility="public">
+                <ownedParameter xmi:id="_GPpdMaFjEe-TXJ192R5HUA" name="createFooter" type="_dV6SIYZcEe-bUZ-w3fFkrg" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_cZb-0KFjEe-TXJ192R5HUA" name="createColumnHeader" visibility="public">
+                <ownedParameter xmi:id="_cZb-0aFjEe-TXJ192R5HUA" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Bf4F8KFkEe-TXJ192R5HUA" value="1"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Bf4F8aFkEe-TXJ192R5HUA" value="*"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_irqx4KFjEe-TXJ192R5HUA" name="createVisualizationData" visibility="public">
+                <ownedParameter xmi:id="_irqx4aFjEe-TXJ192R5HUA" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_H_qXYKFlEe-TXJ192R5HUA" value="1"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_H_q-cKFlEe-TXJ192R5HUA" value="*"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_L2HhAKFkEe-TXJ192R5HUA" name="createTitle" visibility="public">
+                <ownedParameter xmi:id="_L2HhAaFkEe-TXJ192R5HUA" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
               </ownedOperation>
             </packagedElement>
             <packagedElement xmi:type="uml:Class" xmi:id="_dWlAgIZcEe-bUZ-w3fFkrg" name="ReportVisualization">
@@ -14964,6 +15012,11 @@ tests a total of 17 methods of Workload.java for correctness.</body>
       <packagedElement xmi:type="uml:Class" xmi:id="_dcolMYZcEe-bUZ-w3fFkrg" name="StringHolder"/>
     </packagedElement>
     <packagedElement xmi:type="uml:DataType" xmi:id="_cWTh8JCyEe-WEJV2zG5XSQ" name="ArrayList&lt;Integer>"/>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_iFFTAKFjEe-TXJ192R5HUA" name="String[]"/>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_lW3z4KFjEe-TXJ192R5HUA" name="String[][]"/>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_ty3TUKFkEe-TXJ192R5HUA" name="Reliability::String[1..*][]"/>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_BRvG0KFlEe-TXJ192R5HUA" name="Reliability::String[1..*]"/>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_y2yqwKFlEe-TXJ192R5HUA" name="return "/>
     <profileApplication xmi:id="_c1qr04ZcEe-bUZ-w3fFkrg">
       <eAnnotations xmi:id="_c1qr1IZcEe-bUZ-w3fFkrg" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile"/>
@@ -15964,7 +16017,7 @@ tests a total of 17 methods of Workload.java for correctness.</body>
   <UMLLabProfile:Reference xmi:id="_dezvdoZcEe-bUZ-w3fFkrg" base_Element="_dezvdIZcEe-bUZ-w3fFkrg"/>
   <UMLLabProfile:Reference xmi:id="_de0WgIZcEe-bUZ-w3fFkrg" base_Element="_dezvd4ZcEe-bUZ-w3fFkrg"/>
   <UMLLabProfile:Reference xmi:id="_de0Wg4ZcEe-bUZ-w3fFkrg" base_Element="_de0WgYZcEe-bUZ-w3fFkrg"/>
-  <UMLLabProfile:Patch xmi:id="_fOsYsIZcEe-bUZ-w3fFkrg" base_Element="_dV7gQIZcEe-bUZ-w3fFkrg" patchText="@@ -337,26 +337,24 @@&#xA; um EdgeState&#xA;-()&#xA;  %7B%0A%09%09RELEASE&#xA;" conflicting="false"/>
+  <UMLLabProfile:Patch xmi:id="_fOsYsIZcEe-bUZ-w3fFkrg" base_Element="_dV7gQIZcEe-bUZ-w3fFkrg" patchText="@@ -337,26 +337,24 @@&#xA; um EdgeState&#xA;-()&#xA;  %7B%0A%09%09RELEASE&#xA;" conflicting="true"/>
   <UMLLabProfile:Patch xmi:id="_fOs_wIZcEe-bUZ-w3fFkrg" base_Element="_dWKJzIZcEe-bUZ-w3fFkrg" patchText="@@ -242,22 +242,25 @@&#xA;  MISS%22;%0A&#xA;-public&#xA;+  private&#xA;  static &#xA;" conflicting="false"/>
   <UMLLabProfile:Patch xmi:id="_fOtm0IZcEe-bUZ-w3fFkrg" base_Element="_dWsVQoZcEe-bUZ-w3fFkrg" patchText="@@ -109,18 +109,16 @@&#xA; eChoices&#xA;-()&#xA;  %7B%0A%09    &#xA;" conflicting="false"/>
   <UMLLabProfile:Patch xmi:id="_fOtm0YZcEe-bUZ-w3fFkrg" base_Element="_dWuxgIZcEe-bUZ-w3fFkrg" patchText="@@ -134,26 +134,24 @@&#xA; ystemChoices&#xA;-()&#xA;  %7B%0A    SOURC&#xA;@@ -269,18 +269,16 @@&#xA; dChoices&#xA;-()&#xA;  %7B%0A    I&#xA;" conflicting="false"/>
@@ -15984,4 +16037,11 @@ tests a total of 17 methods of Workload.java for correctness.</body>
   <UMLLabProfile:LegacyStyledElement xmi:id="_byxZAJZCEe-S5LJtyBrH7w" base_Element="_bywx8ZZCEe-S5LJtyBrH7w"/>
   <UMLLabProfile:LegacyStyledElement xmi:id="_byyAEZZCEe-S5LJtyBrH7w" base_Element="_byyAEJZCEe-S5LJtyBrH7w"/>
   <UMLLabProfile:LegacyStyledElement xmi:id="_byynIZZCEe-S5LJtyBrH7w" base_Element="_byynIJZCEe-S5LJtyBrH7w"/>
+  <UMLLabProfile:UnresolvedElement xmi:id="_iFHIMKFjEe-TXJ192R5HUA" base_Element="_iFFTAKFjEe-TXJ192R5HUA"/>
+  <UMLLabProfile:UnresolvedElement xmi:id="_lW4a8KFjEe-TXJ192R5HUA" base_Element="_lW3z4KFjEe-TXJ192R5HUA"/>
+  <UMLLabProfile:UnresolvedElement xmi:id="_ty5IgKFkEe-TXJ192R5HUA" base_Element="_ty3TUKFkEe-TXJ192R5HUA"/>
+  <UMLLabProfile:UnresolvedElement xmi:id="_BRvt4KFlEe-TXJ192R5HUA" base_Element="_BRvG0KFlEe-TXJ192R5HUA"/>
+  <UMLLabProfile:UnresolvedElement xmi:id="_y2zR0KFlEe-TXJ192R5HUA" base_Element="_y2yqwKFlEe-TXJ192R5HUA"/>
+  <UMLLabProfile:Array xmi:id="_-KCuYKFqEe-KfvBae3IKpA" base_Element="_cZb-0KFjEe-TXJ192R5HUA"/>
+  <UMLLabProfile:Array xmi:id="_-KEjkKFqEe-KfvBae3IKpA" dimensions="2" base_Element="_irqx4KFjEe-TXJ192R5HUA"/>
 </xmi:XMI>

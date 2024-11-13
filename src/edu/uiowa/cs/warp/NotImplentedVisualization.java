@@ -8,15 +8,15 @@ public class NotImplentedVisualization extends VisualizationObject {
 	
 	NotImplentedVisualization() {
 		super(new FileManager(), NAME_EXTENSTION, SUFFIX);
-	}
+   	}
 	
 	NotImplentedVisualization(String extension) {
 		super(new FileManager(), extension, SUFFIX);
-	}
+   	}
 
 	@Override
 	public Description visualization() {
 		return new Description(CONTENT);
-	}
+   	}
 
 }

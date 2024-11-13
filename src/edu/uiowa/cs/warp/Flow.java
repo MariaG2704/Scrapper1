@@ -37,11 +37,12 @@ public class Flow extends SchedulableObject implements Comparable<Flow> {
   Edge edgePredecessor;
     
   /**
-   * Constructor that sets name, priority, and index.
 
-   * @param name        name of flow
-   * @param priority    priority of flow
-   * @param index       index of flow
+* Constructor that sets name, priority, and index.
+ * 
+ *    * @param name        name of flow
+ *    * @param priority    priority of flow
+ *    * @param index       index of flow
    */
   Flow(String name, Integer priority, Integer index) {
     super(name, priority, DEFAULT_PERIOD, DEFAULT_DEADLINE, DEFAULT_PHASE);
@@ -57,10 +58,11 @@ public class Flow extends SchedulableObject implements Comparable<Flow> {
     this.edges = new ArrayList<>();
     this.nodePredecessor = null;
     this.edgePredecessor = null;
-  }
+     }
     
   /**
-   * Default constructor that sets name, priority, and index to default values.
+
+* Default constructor that sets name, priority, and index to default values.
    */
   Flow() {
     super();
@@ -75,57 +77,63 @@ public class Flow extends SchedulableObject implements Comparable<Flow> {
     this.edges = new ArrayList<>();
     this.nodePredecessor = null;
     this.edgePredecessor = null;
-  }
+     }
 
   /**
-   * Get initial priority settings.
 
-   * @return the initialPriority
+* Get initial priority settings.
+ * 
+ *    * @return the initialPriority
    */
   public Integer getInitialPriority() {
     return initialPriority;
-  }
+     }
 
   /**
-   * Get current index.
 
-   * @return the index
+* Get current index.
+ * 
+ *    * @return the index
    */
   public Integer getIndex() {
     return index;
-  }
+     }
 
   /**
-   * Number of transmissions required per link in the flow.
 
-   * @return the numTxPerLink
+* Number of transmissions required per link in the flow.
+ * 
+ *    * @return the numTxPerLink
    */
   public Integer getNumTxPerLink() {
     return numTxPerLink;
-  }
+     }
 
   /**
-   * Get all nodes present.
 
-   * @return the nodes
+* Get all nodes present.
+ * 
+ *    * @return the nodes
    */
   public ArrayList<Node> getNodes() {
     return nodes;
-  }
+     }
 
   /**
-   * Get all edges connecting nodes.
 
-   * @return the edges
+* Get all edges connecting nodes.
+ * 
+ *    * @return the edges
    */
   public ArrayList<Edge> getEdges() {
     return edges;
-  }
+     }
 
   /**
-   * Add an edge to the flow.
 
-   * @param edge    Edge to be added.
+* Add an edge to the flow.
+ * 
+ *    * @param edge    Edge to be added.
    */
   public void addEdge(Edge edge) {
     /* set predecessor and add edge to flow */
@@ -133,12 +141,13 @@ public class Flow extends SchedulableObject implements Comparable<Flow> {
     edges.add(edge);
     /* update predecessor for next edge added */
     edgePredecessor = edge;
-  }
+     }
 
   /**
-   * Add a node to the flow.
 
-   * @param node    Node to be added.
+* Add a node to the flow.
+ * 
+ *    * @param node    Node to be added.
    */
   public void addNode(Node node) {
     /* set predecessor and add node to flow */
@@ -146,62 +155,68 @@ public class Flow extends SchedulableObject implements Comparable<Flow> {
     nodes.add(node);
     /* update predecessor for next node added */
     nodePredecessor = node;
-  }
+     }
   
   /**
-   * Transmission needed to achieve E2E reliability and total transmission cost.
 
-   * @return the linkTxAndTotalCost
+* Transmission needed to achieve E2E reliability and total transmission cost.
+ * 
+ *    * @return the linkTxAndTotalCost
    */
   
   public ArrayList<Integer> getLinkTxAndTotalCost() {
     return linkTxAndTotalCost;
-  }
+     }
 
   /**
-   * Sets priority of flow object.
 
-   * @param initialPriority the initialPriority to set
+* Sets priority of flow object.
+ * 
+ *    * @param initialPriority the initialPriority to set
    */
   public void setInitialPriority(Integer initialPriority) {
     this.initialPriority = initialPriority;
-  }
+     }
 
   /**
-   * Sets index of flow.
 
-   * @param index the index to set
+* Sets index of flow.
+ * 
+ *    * @param index the index to set
    */
   public void setIndex(Integer index) {
     this.index = index;
-  }
+     }
 
   /**
-   * Sets the number of transmissions per link.
 
-   * @param numTxPerLink the numTxPerLink to set
+* Sets the number of transmissions per link.
+ * 
+ *    * @param numTxPerLink the numTxPerLink to set
    */
   public void setNumTxPerLink(Integer numTxPerLink) {
     this.numTxPerLink = numTxPerLink;
-  }
+     }
 
   /**
-   * Sets nodes to flow.
 
-   * @param nodes the nodes to set
+* Sets nodes to flow.
+ * 
+ *    * @param nodes the nodes to set
    */
   public void setNodes(ArrayList<Node> nodes) {
     this.nodes = nodes;
-  }
+     }
 
   /**
-   * Sets the transmission and total cost for E2E.
 
-   * @param linkTxAndTotalCost the linkTxAndTotalCost to set
+* Sets the transmission and total cost for E2E.
+ * 
+ *    * @param linkTxAndTotalCost the linkTxAndTotalCost to set
    */
   public void setLinkTxAndTotalCost(ArrayList<Integer> linkTxAndTotalCost) {
     this.linkTxAndTotalCost = linkTxAndTotalCost;
-  }
+     }
 
   /**
    * Comparison override so that flow priority goes from 0 to infinity in highest priority.
@@ -212,7 +227,7 @@ public class Flow extends SchedulableObject implements Comparable<Flow> {
   public int compareTo(Flow flow) {
     // ascending order (0 is highest priority)
     return flow.getPriority() > this.getPriority() ? -1 : 1;
-  }
+     }
 
   /**
    * toString override so flow strings show names.
@@ -222,6 +237,6 @@ public class Flow extends SchedulableObject implements Comparable<Flow> {
   @Override
   public String toString() {
     return getName();
-  }
+     }
     
 }

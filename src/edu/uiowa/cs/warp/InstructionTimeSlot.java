@@ -7,13 +7,13 @@ public class InstructionTimeSlot extends Row<String> {
 	// default constructor
 	public InstructionTimeSlot() {
 		super();
-	}
+   	}
 
 	InstructionTimeSlot (Integer numNodes, String element){
 		super(numNodes, element);
-	}
+   	}
 
 	InstructionTimeSlot (String [] rowArray) {
 		super(rowArray);
-	}
+   	}
 }

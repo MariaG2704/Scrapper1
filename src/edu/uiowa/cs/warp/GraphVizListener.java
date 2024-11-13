@@ -11,7 +11,8 @@ import edu.uiowa.cs.warpdsls.WARPLexer;
 import edu.uiowa.cs.warpdsls.WARPParser;
 
 /*
- * Extend WARP Base Listener Class to extract info for Graph Viz file.
+ * 
+* Extend WARP Base Listener Class to extract info for Graph Viz file.
  * GraphVizListener reads the graphFile string and calls the functions
  * in this class, as it walks the input graphFile structure to build
  * the GraphViz contents.

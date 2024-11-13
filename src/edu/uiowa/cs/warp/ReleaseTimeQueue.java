@@ -10,7 +10,7 @@ public class ReleaseTimeQueue <T extends SchedulableObject> extends java.util.Pr
 	 */
 	ReleaseTimeQueue() {
 		super(1, new ReleaseTimeComparator<T>());
-	}
+   	}
 	
 	/**
 	 * Construct a priority queue of schedulable objects based
@@ -18,6 +18,6 @@ public class ReleaseTimeQueue <T extends SchedulableObject> extends java.util.Pr
 	 */
 	ReleaseTimeQueue(java.util.Collection<T> schedulableObjects) {
 		super(new ReleaseTimeComparator<T>());
-		this.addAll(schedulableObjects);
-	}
+   		this.addAll(schedulableObjects);
+   	}
 }

@@ -8,5 +8,5 @@ public abstract class AbstractMap<T,E> extends HashMap<T, E> {
 		// default constructor
 		public AbstractMap() {
 			super();
-		}
+   		}
 }

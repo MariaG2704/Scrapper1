@@ -11,8 +11,9 @@ import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 
 /**
- * @author sgoddard
- *
+
+* @author sgoddard
+ *  *
  */
 
 
@@ -49,11 +50,12 @@ public class WarpDSL {
         	return channel;
         }
 		/**
-		 * @return the coordinator
+
+* @return the coordinator
 		 */
 		public String getCoordinator() {
 			return coordinator;
-		}
+   		}
 		/**
 		 * @return the listener
 		 */
@@ -61,11 +63,12 @@ public class WarpDSL {
 			return listener;
 		}
 		/**
-		 * @param coordinator the coordinator to set
+
+* @param coordinator the coordinator to set
 		 */
 		public void setCoordinator(String coordinator) {
 			this.coordinator = coordinator;
-		}
+   		}
 		/**
 		 * @param listener the listener to set
 		 */
@@ -89,7 +92,7 @@ public class WarpDSL {
         }
 		public String unused() {
 			return UNUSED;
-		}
+   		}
 	
 	}
 
