@@ -19,10 +19,10 @@ import java.util.Set;
  */
 public class ReliabilityVisualization  extends VisualizationObject {
 	
-	private static final String SOURCE_SUFFIX = ".ra";
+	private static final String SOURCE_SUFFIX = ".ra"; //file type of warp file
 	private static final String OBJECT_NAME = "Reliability Analysis";
-	private WarpInterface warp;
-	private ReliabilityAnalysis ra;
+	private WarpInterface warp; //the warp program
+	private ReliabilityAnalysis ra; //reliability analysis object
 	
 	ReliabilityVisualization(WarpInterface warp) {
 		super(new FileManager(), warp, SOURCE_SUFFIX);
@@ -48,17 +48,41 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	
 	public String[] createColumnHeader() {
 	   // TODO implement this operation
-	   throw new UnsupportedOperationException("not implemented");
+		Set<String> flowNames = null; //need to access the flowNames in order from flow
+		String[] columnNames = new String[flowNames.size() + 1];
+		columnNames[0] = "Time Slot"; // first spot should be "Time Slot"
+		
+		//populating with flow names
+		int index = 1;
+		for (String flowName : flowNames) {
+			columnNames[index] = flowName;
+		}
+		
+		return columnNames;
 	}
 	
+	/**
+	 * Creates a 2D array that represents the reliability analysis.
+	 * Rows in table represent the time slots, 
+	 * and columns represent the reliability values for each flow.
+	 * 
+	 * @return 2D array containing visualization data
+	 */
 	public String[][] createVisualizationData() {
-	   // TODO implement this operation
-	   throw new UnsupportedOperationException("not implemented");
+		// TODO implement this operation
+		
+		//String[][] visualizationData = new String 
+		
+		return visualizationData;
 	}
-	
+	/**
+	 * Creates and returns the title header for a Reliability Analysis graph.
+	 * 
+	 * @return String that containing the graph title
+	 */
 	public String createTitle() {
 	   // TODO implement this operation
-	   throw new UnsupportedOperationException("not implemented");
+		return String.format("Reliability Analysis for graph %s\n", warp.getName());
 	}
 		
 
