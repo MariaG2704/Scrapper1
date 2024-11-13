@@ -380,7 +380,7 @@
   <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_6dPFcKFqEe-KfvBae3IKpA" targetItem="_b5uVkJZCEe-S5LJtyBrH7w" sourceItem="_6dOeYKFqEe-KfvBae3IKpA"/>
   <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_6dqjQKFqEe-KfvBae3IKpA" targetItem="_b6lRMJZCEe-S5LJtyBrH7w" sourceItem="_6dlqwKFqEe-KfvBae3IKpA"/>
   <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_6d9eMKFqEe-KfvBae3IKpA" targetItem="_b7eCAZZCEe-S5LJtyBrH7w" sourceItem="_6d83IKFqEe-KfvBae3IKpA"/>
-  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_FrWuQKFsEe-KfvBae3IKpA" targetItem="_gKRQKYZcEe-bUZ-w3fFkrg" sourceItem="_FrWHMKFsEe-KfvBae3IKpA"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_G15ucKFvEe-gLtlyBOsAGg" targetItem="_gKRQKYZcEe-bUZ-w3fFkrg" sourceItem="_G135QKFvEe-gLtlyBOsAGg"/>
   <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_tAb0YJCbEe-WEJV2zG5XSQ" sourceConnectionVisual="_tAb0YZCbEe-WEJV2zG5XSQ" text="@author sgoddard &lt;br>&#xD;&#xA;@author yongycheng - added comments for 3 functions as per HW2 part 7 instructions. &lt;br>&#xD;&#xA; *">
     <modelElement href="Reliability.uml#_s_lf1ZCbEe-WEJV2zG5XSQ"/>
   </nodes>
@@ -796,6 +796,9 @@
       <stereotypes xmi:id="_VQySYKFpEe-KfvBae3IKpA" name="LegacyStyledElement"/>
       <stereotypes xmi:id="_VQ5AEKFpEe-KfvBae3IKpA" name="LegacyStyledElement"/>
       <stereotypes xmi:id="_VRyX8KFpEe-KfvBae3IKpA" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_k4PyoKFtEe-gLtlyBOsAGg" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_k4V5QKFtEe-gLtlyBOsAGg" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_k5UwsKFtEe-gLtlyBOsAGg" name="LegacyStyledElement"/>
       <visibility xmi:id="_mpWMboZcEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_mpWMb4ZcEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_mpWMcIZcEe-bUZ-w3fFkrg" name="FileManager">
@@ -1788,7 +1791,7 @@
   <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_6d83IKFqEe-KfvBae3IKpA" sourceConnectionVisual="_6d9eMKFqEe-KfvBae3IKpA" text="Updates the reliability window with a new row of reliability data for a specific time slot &#xA;&#x9; * &#xA;&#x9; * @param reliabilityWindow a ReliabilityTable of ReliabiltyRows, represents the reliability values&#xA;&#x9; * @param currentReliabilityRow a ArrayList of doubles representing the reliability states for each node in the flow at the next time slot &#xA;&#x9; * @param timeSlot the current time slot" item="_b7eCAZZCEe-S5LJtyBrH7w">
     <modelElement href="Reliability.uml#_6TkzIaFqEe-KfvBae3IKpA"/>
   </nodes>
-  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_gKRQKYZcEe-bUZ-w3fFkrg" comments="_FrWHMKFsEe-KfvBae3IKpA" targetConnectionVisual="_FrWuQKFsEe-KfvBae3IKpA" name="ReliabilityVisualization" associationsOut="_gKJUUIZcEe-bUZ-w3fFkrg _gKRQIIZcEe-bUZ-w3fFkrg" generalizations="_mpSiAIZcEe-bUZ-w3fFkrg">
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_gKRQKYZcEe-bUZ-w3fFkrg" comments="_G135QKFvEe-gLtlyBOsAGg" targetConnectionVisual="_G15ucKFvEe-gLtlyBOsAGg" name="ReliabilityVisualization" associationsOut="_gKJUUIZcEe-bUZ-w3fFkrg _gKRQIIZcEe-bUZ-w3fFkrg" generalizations="_mpSiAIZcEe-bUZ-w3fFkrg">
     <modelElement href="Reliability.uml#_dWkZdoZcEe-bUZ-w3fFkrg"/>
     <visualProperties xmi:id="_gKRQKoZcEe-bUZ-w3fFkrg" position="-1174.0,1106.0" size="-1.0,-1.0"/>
     <visibility xmi:id="_gKRQK4ZcEe-bUZ-w3fFkrg" label="+"/>
@@ -1839,6 +1842,9 @@
       <stereotypes xmi:id="_VQnTQKFpEe-KfvBae3IKpA" name="LegacyStyledElement"/>
       <stereotypes xmi:id="_VQrksKFpEe-KfvBae3IKpA" name="LegacyStyledElement"/>
       <stereotypes xmi:id="_VR5ssKFpEe-KfvBae3IKpA" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_k3_T8KFtEe-gLtlyBOsAGg" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_k4KTEKFtEe-gLtlyBOsAGg" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_k5qH4KFtEe-gLtlyBOsAGg" name="LegacyStyledElement"/>
       <visibility xmi:id="_gKRQNoZcEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_gKRQN4ZcEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_gKRQOIZcEe-bUZ-w3fFkrg" name="WarpInterface">
@@ -1874,6 +1880,9 @@
       <stereotypes xmi:id="_VQTxQKFpEe-KfvBae3IKpA" name="LegacyStyledElement"/>
       <stereotypes xmi:id="_VQhMoKFpEe-KfvBae3IKpA" name="LegacyStyledElement"/>
       <stereotypes xmi:id="_VR9-IKFpEe-KfvBae3IKpA" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_k3zGsKFtEe-gLtlyBOsAGg" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_k36bcKFtEe-gLtlyBOsAGg" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_k5wOgKFtEe-gLtlyBOsAGg" name="LegacyStyledElement"/>
       <visibility xmi:id="_gKRQO4ZcEe-bUZ-w3fFkrg" label="-"/>
       <cardinality xmi:id="_gKRQPIZcEe-bUZ-w3fFkrg" label="1" max="1" min="1"/>
       <type xmi:id="_gKRQPYZcEe-bUZ-w3fFkrg" name="ReliabilityAnalysis">
@@ -1973,7 +1982,7 @@
       </outParameters>
     </operations>
   </nodes>
-  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_FrWHMKFsEe-KfvBae3IKpA" sourceConnectionVisual="_FrWuQKFsEe-KfvBae3IKpA" text="ReliabilityVisualization creates the visualizations for&#xD;&#xA;the reliability analysis of the WARP program. &lt;p>&#xD;&#xA;&#xD;&#xA;CS2820 Fall 2024 Project: Implement this class to create&#xD;&#xA;the visualizations that are requested in Warp. Your solution&#xD;&#xA;should support both the file and Java Swing Window (gui) visualizations.&#xD;&#xA; *&#xD;&#xA;I recommend using class ProgramVisualization as an example of how to implement&#xD;&#xA;this class. Your solution will likely be similar to the code in ProgramVisualization.&#xD;&#xA;&#xD;&#xA;@author sgoddard&#xD;&#xA;@version 1.8 Fall 2024&#xD;&#xA; *" item="_gKRQKYZcEe-bUZ-w3fFkrg">
-    <modelElement href="Reliability.uml#_FrQAkKFsEe-KfvBae3IKpA"/>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_G135QKFvEe-gLtlyBOsAGg" sourceConnectionVisual="_G15ucKFvEe-gLtlyBOsAGg" text="ReliabilityVisualization creates the visualizations for&#xD;&#xA;the reliability analysis of the WARP program. &lt;p>&#xD;&#xA;&#xD;&#xA;CS2820 Fall 2024 Project: Implement this class to create&#xD;&#xA;the visualizations that are requested in Warp. Your solution&#xD;&#xA;should support both the file and Java Swing Window (gui) visualizations.&#xD;&#xA; *&#xD;&#xA;I recommend using class ProgramVisualization as an example of how to implement&#xD;&#xA;this class. Your solution will likely be similar to the code in ProgramVisualization.&#xD;&#xA;&#xD;&#xA;@author sgoddard&#xD;&#xA;@version 1.8 Fall 2024&#xD;&#xA; *" item="_gKRQKYZcEe-bUZ-w3fFkrg">
+    <modelElement href="Reliability.uml#_G1SDYKFvEe-gLtlyBOsAGg"/>
   </nodes>
 </com.yattasolutions.uml.diagrams.classifier:ClassDiagram>

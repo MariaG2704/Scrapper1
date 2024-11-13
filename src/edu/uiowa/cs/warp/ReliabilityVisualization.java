@@ -18,38 +18,6 @@ import java.util.Set;
  *  *
  */
 public class ReliabilityVisualization  extends VisualizationObject {
-
-	// TODO Auto-generated class stub for unimplemented visualization
-public GuiVisualization displayVisualization() {
-   // TODO implement this operation
-   throw new UnsupportedOperationException("not implemented");
-}
-
-public Description createHeader() {
-   // TODO implement this operation
-   throw new UnsupportedOperationException("not implemented");
-}
-
-public Description createFooter() {
-   // TODO implement this operation
-   throw new UnsupportedOperationException("not implemented");
-}
-
-public String[] createColumnHeader() {
-   // TODO implement this operation
-   throw new UnsupportedOperationException("not implemented");
-}
-
-public String[][] createVisualizationData() {
-   // TODO implement this operation
-   throw new UnsupportedOperationException("not implemented");
-}
-
-public String createTitle() {
-   // TODO implement this operation
-   throw new UnsupportedOperationException("not implemented");
-}
-
 	
 	private static final String SOURCE_SUFFIX = ".ra";
 	private static final String OBJECT_NAME = "Reliability Analysis";
@@ -62,6 +30,38 @@ public String createTitle() {
    		this.ra = warp.toReliabilityAnalysis();
    	}
 	
+	
+	// TODO Auto-generated class stub for unimplemented visualization
+	public GuiVisualization displayVisualization() {
+	   // TODO implement this operation
+	   throw new UnsupportedOperationException("not implemented");
+	}
+	
+	public Description createHeader() {
+	   // TODO implement this operation
+	   throw new UnsupportedOperationException("not implemented");
+	}
+	
+	public Description createFooter() {
+	   // TODO implement this operation
+	   throw new UnsupportedOperationException("not implemented");
+	}
+	
+	public String[] createColumnHeader() {
+	   // TODO implement this operation
+	   throw new UnsupportedOperationException("not implemented");
+	}
+	
+	public String[][] createVisualizationData() {
+	   // TODO implement this operation
+	   throw new UnsupportedOperationException("not implemented");
+	}
+	
+	public String createTitle() {
+	   // TODO implement this operation
+	   throw new UnsupportedOperationException("not implemented");
+	}
+		
 
 	
 /* File Visualization for workload defined in Example.txt follows. 
