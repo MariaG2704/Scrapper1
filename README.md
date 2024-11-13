@@ -172,10 +172,10 @@ Please be aware that Eclipse's markdown file previewer does not appear to be a W
 - **Objective**： Develop a UML Sequence Diagram; create high-level plans for future Sprints of the project.
 - **wplucas**, **msgauna**, **nnahra**, **tomlooi**:
 	<ul>
-	<li> Worked collaboratively to trace the program flow from Warp when processing the "ra" run configuration.
+	<li> Worked collaboratively to trace the program flow from Warp when processing the "ra" run configuration and visually showed this in a UML sequence diagram called Final_Sequence_Diagram.png and also the code in a txt file called Final_Sequence_Diagram.txt, both placed in the ARTIFACTS folder. 
 	<li> Deliberated on, and added empty methods to be (potentially) implemented in ReliabilityVisualization and ReliabilityAnalysis. 
-	<li> Updated UML class diagram with added methods to ReliabilityVisualization and ReliabilityAnalysis.
-	<li> Discussed general plans for Sprints 2 and 3; detailed these plans in a shared Word document.
+	<li> Updated UML class diagram with added methods to ReliabilityVisualization and ReliabilityAnalysis, picture placed in ARTIFACTS folder with the name Reliability.umlcdSPRINT1.png.
+	<li> Discussed general high level plans for Sprints 2 and 3; detailed these plans in a shared Word called Software_Development_Project document, placed in ARTIFACTS folder.
 	<li> Assigned tentative roles for method implementation, JavaDoc creation, and JUnit testing for future Sprints.
 	</ul>
 
