@@ -189,4 +189,3 @@ No special installation or setup is required. The project is designed to run dir
 ## Acknowledgments
 
 This project was originally developed by **Steve Goddard** for the WARP sensor network research project. It has since been modified by **ccolin**, **msgauna**, and **yongycheng** for educational purposes in the CS2820 Software Development course.
- 
