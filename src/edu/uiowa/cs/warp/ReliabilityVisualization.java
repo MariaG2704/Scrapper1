@@ -1,5 +1,6 @@
 package edu.uiowa.cs.warp;
-import java.util.Set;
+import java.util.ArrayList;
+
 
 /**
 
@@ -38,17 +39,25 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	
 	public Description createHeader() {
 	   // TODO implement this operation
-	   throw new UnsupportedOperationException("not implemented");
+	   Description header = new Description();
+	   
+	   header.add(createTitle());
+	   header.add(String.format("Scheduler Name: %s\n", warp.toProgram().getSchedulerName()));
+	   /* The following parameters are output based on a special schedule or the fault model */
+	   if (warp.toProgram().getNumFaults() > 0) { // only specify when deterministic fault model is assumed
+		   header.add(String.format("numFaults: %d\n", warp.toProgram().getNumFaults()));
+	   }
+	   header.add(String.format("M: %s\n", String.valueOf(warp.toProgram().getMinPacketReceptionRate())));
+	   header.add(String.format("E2E: %s\n", String.valueOf(warp.toProgram().getE2e())));
+	   header.add(String.format("nChannels: %d\n", warp.toProgram().getNumChannels()));
+	   
+	   return header;
 	}
 	
-	public Description createFooter() {
-	   // TODO implement this operation
-	   throw new UnsupportedOperationException("not implemented");
-	}
 	
 	public String[] createColumnHeader() {
 	   // TODO implement this operation
-		Set<String> flowNames = null; //need to access the flowNames in order from flow
+		ArrayList<String> flowNames = warp.toWorkload().getFlowNamesInPriorityOrder(); //need to access the flowNames in order from flow
 		String[] columnNames = new String[flowNames.size() + 1];
 		columnNames[0] = "Time Slot"; // first spot should be "Time Slot"
 		
@@ -57,6 +66,7 @@ public class ReliabilityVisualization  extends VisualizationObject {
 		for (String flowName : flowNames) {
 			columnNames[index] = flowName;
 		}
+		System.out.println(flowNames);
 		
 		return columnNames;
 	}
@@ -75,6 +85,7 @@ public class ReliabilityVisualization  extends VisualizationObject {
 		
 		return visualizationData;
 	}
+
 	/**
 	 * Creates and returns the title header for a Reliability Analysis graph.
 	 * 
