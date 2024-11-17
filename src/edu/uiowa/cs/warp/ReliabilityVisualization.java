@@ -26,16 +26,16 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	private ReliabilityAnalysis ra; //reliability analysis object
 	private Program program;
 	private ReliabilityTable sourceCode;
+	private WorkLoad workLoad;
 	
 	ReliabilityVisualization(WarpInterface warp) {
 		super(new FileManager(), warp, SOURCE_SUFFIX);
    		this.warp = warp;
+   		this.workLoad = warp.toWorkload();
    		this.program = warp.toProgram();
    		this.ra = warp.toReliabilityAnalysis();
-   		this.sourceCode = ra.getReliabilities();
-   		
+   		this.sourceCode = ra.getReliabilities();	
    	}
-	
 	
 	// TODO Auto-generated class stub for unimplemented visualization
 	public GuiVisualization displayVisualization() {
@@ -47,22 +47,21 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	   Description header = new Description();
 	   
 	   header.add(createTitle());
-	   header.add(String.format("Scheduler Name: %s\n", warp.toProgram().getSchedulerName()));
+	   header.add(String.format("Scheduler Name: %s\n", program.getSchedulerName()));
 	   /* The following parameters are output based on a special schedule or the fault model */
-	   if (warp.toProgram().getNumFaults() > 0) { // only specify when deterministic fault model is assumed
-		   header.add(String.format("numFaults: %d\n", warp.toProgram().getNumFaults()));
+	   if (program.getNumFaults() > 0) { // only specify when deterministic fault model is assumed
+		   header.add(String.format("numFaults: %d\n", program.getNumFaults()));
 	   }
-	   header.add(String.format("M: %s\n", String.valueOf(warp.toProgram().getMinPacketReceptionRate())));
-	   header.add(String.format("E2E: %s\n", String.valueOf(warp.toProgram().getE2e())));
-	   header.add(String.format("nChannels: %d\n", warp.toProgram().getNumChannels()));
+	   header.add(String.format("M: %s\n", String.valueOf(program.getMinPacketReceptionRate())));
+	   header.add(String.format("E2E: %s\n", String.valueOf(program.getE2e())));
+	   header.add(String.format("nChannels: %d\n", program.getNumChannels()));
 	   
 	   return header;
 	}
 	
-	
 	public String[] createColumnHeader() {
 	   // TODO implement this operation
-		ArrayList<String> flowNames = warp.toWorkload().getFlowNamesInPriorityOrder(); //need to access the flowNames in order from flow
+		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder(); //need to access the flowNames in order from flow
 		String[] columnNames = new String[flowNames.size() + 1];
 		columnNames[0] = "Time Slot"; // first spot should be "Time Slot"
 		
@@ -71,8 +70,6 @@ public class ReliabilityVisualization  extends VisualizationObject {
 		for (String flowName : flowNames) {
 			columnNames[index] = flowName;
 		}
-		System.out.println(flowNames);
-		
 		return columnNames;
 	}
 	
@@ -87,7 +84,7 @@ public class ReliabilityVisualization  extends VisualizationObject {
 		String[][] visualizationData= null;
 		if (visualizationData == null) {
 			int numRows = sourceCode.getNumRows();
-			int numColumns = sourceCode. getNumColumns();
+			int numColumns = sourceCode.getNumColumns();
 			visualizationData = new String[numRows][numColumns];
 			
 			for (int row = 0; row < numRows; row++) {
@@ -95,11 +92,9 @@ public class ReliabilityVisualization  extends VisualizationObject {
 		        for (int column = 0; column < numColumns; column++) {
 		          visualizationData[row][column + 1] = Double.toString(sourceCode.get(row, column));
 		        }
-			
-		}
+			}
 		}
 		return visualizationData;
-	
 	}
 
 	/**
@@ -111,8 +106,6 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	   // TODO implement this operation
 		return String.format("Reliability Analysis for graph %s\n", warp.getName());
 	}
-		
-
 	
 /* File Visualization for workload defined in Example.txt follows. 
  * Your output in the file ExamplePriority-0.9M-0.99E2E.ra
