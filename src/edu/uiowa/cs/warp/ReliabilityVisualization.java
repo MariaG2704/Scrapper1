@@ -28,22 +28,35 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	private ReliabilityTable sourceCode;
 	private WorkLoad workLoad;
 	
+	/**
+	 * Constructor for ReliabilityVisualization that sets the 
+	 * workLoad, program, ra, sourceCode for the warp program. <br>
+	 * 
+	 * @param warp warp program to visualize <br>
+	 */
 	ReliabilityVisualization(WarpInterface warp) {
 		super(new FileManager(), warp, SOURCE_SUFFIX);
-   		this.warp = warp;
    		this.workLoad = warp.toWorkload();
    		this.program = warp.toProgram();
    		this.ra = warp.toReliabilityAnalysis();
    		this.sourceCode = ra.getReliabilities();	
    	}
 	
-	// TODO Auto-generated class stub for unimplemented visualization
+	/**
+	 * Function creates and returns a GuiVisualization object. <br>
+	 */
 	public GuiVisualization displayVisualization() {
 		return new GuiVisualization(createTitle(), createColumnHeader(), createVisualizationData());
 	}
 	
+	/**
+	 * Function creates and returns a header description for the warp program that includes the title, 
+	 * scheduler name, number of faults, minimum packet reception rate, E2E, 
+	 * and number of channels the schedule has. <br>
+	 * 
+	 * @return header A Description object that contains the header info
+	 */
 	public Description createHeader() {
-	   // TODO implement this operation
 	   Description header = new Description();
 	   
 	   header.add(createTitle());
@@ -59,6 +72,13 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	   return header;
 	}
 	
+	/**
+	 * Function that gets the names of the nodes ordered alphabetically, 
+	 * then stores and returns the names of the nodes in an array of Strings, 
+	 * used for column headers of table when visualizing data. <br>
+	 * 
+	 * @return columnNames An array of strings that represent the column header
+	 */
 	public String[] createColumnHeader() {
 	   // TODO implement this operation
 		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder(); //need to access the flowNames in order from flow
