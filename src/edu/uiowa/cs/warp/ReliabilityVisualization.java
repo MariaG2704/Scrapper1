@@ -1,5 +1,6 @@
 package edu.uiowa.cs.warp;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 /**
@@ -39,7 +40,7 @@ public class ReliabilityVisualization  extends VisualizationObject {
    		this.workLoad = warp.toWorkload();
    		this.program = warp.toProgram();
    		this.ra = warp.toReliabilityAnalysis();
-   		this.sourceCode = ra.getReliabilities();	
+   		//this.sourceCode = ra.getReliabilities();	
    	}
 	
 	/**
@@ -73,6 +74,21 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	}
 	
 	/**
+	 * Helper method to calculate the nodes in all flows of workLoad.
+	 * 
+	 * @param flowNames The flow names that are in workLoad
+	 * @param workLoad The Warp programs workLoad object
+	 * @return totalNodes The total number of nodes in each workLoad flow
+	 */
+	public int getTotalNumberOfNodes(ArrayList<String> flowNames ,WorkLoad workLoad) {
+		int totalNodes = 0;
+		for (String flowName : flowNames) {
+			totalNodes += workLoad.getFlows().get(flowName).getNodes().size();
+		}
+		return totalNodes;
+	}
+	
+	/**
 	 * Function that gets the names of the nodes ordered alphabetically, 
 	 * then stores and returns the names of the nodes in an array of Strings, 
 	 * used for column headers of table when visualizing data. <br>
@@ -80,18 +96,26 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	 * @return columnNames An array of strings that represent the column header
 	 */
 	public String[] createColumnHeader() {
-	   // TODO implement this operation
-		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder(); //need to access the flowNames in order from flow
-		String[] columnNames = new String[flowNames.size() + 1];
-		columnNames[0] = "Time Slot"; // first spot should be "Time Slot"
+		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder(); 
+		//need to access the flowNames in order from flow
 		
-		//populating with flow names
-		int index = 1;
+		int totalNodes = getTotalNumberOfNodes(flowNames, workLoad);
+		
+		String[] columnNames = new String[totalNodes];
+		
+		int index = 0;
 		for (String flowName : flowNames) {
-			columnNames[index] = flowName;
+			
+			ArrayList<Node> nodes = workLoad.getFlows().get(flowName).getNodes();
+			
+			for (Node node : nodes) {
+				columnNames[index] = flowName + ":" + node.getName();
+				index++;
+			}
 		}
 		return columnNames;
 	}
+
 	
 	/**
 	 * Creates a 2D array that represents the reliability analysis.
@@ -103,14 +127,14 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	public String[][] createVisualizationData() {
 		String[][] visualizationData= null;
 		if (visualizationData == null) {
-			int numRows = sourceCode.getNumRows();
-			int numColumns = sourceCode.getNumColumns();
-			visualizationData = new String[numRows][numColumns];
+			int numRows = 10; // sourceCode.getNumRows();
+			int numColumns = getTotalNumberOfNodes(workLoad.getFlowNamesInPriorityOrder(), workLoad); // sourceCode.getNumColumns();
+			visualizationData = new String[numRows][numColumns + 1];
 			
 			for (int row = 0; row < numRows; row++) {
-				visualizationData[row][0] = String.format("%s", row);
+				visualizationData[row][0] = String.format("1.0");
 		        for (int column = 0; column < numColumns; column++) {
-		          visualizationData[row][column + 1] = Double.toString(sourceCode.get(row, column));
+		        	visualizationData[row][column + 1] = "0";  //Double.toString(sourceCode.get(row, column));
 		        }
 			}
 		}
@@ -124,7 +148,7 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	 */
 	public String createTitle() {
 	   // TODO implement this operation
-		return String.format("Reliability Analysis for graph %s\n", warp.getName());
+		return String.format("Reliability Analysis for graph %s\n", program.getName());
 	}
 	
 /* File Visualization for workload defined in Example.txt follows. 
