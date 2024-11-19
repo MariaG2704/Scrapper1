@@ -127,7 +127,7 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	public String[][] createVisualizationData() {
 		String[][] visualizationData= null;
 		if (visualizationData == null) {
-			int numRows = 10; // sourceCode.getNumRows();
+			int numRows = program.getSchedule().getNumRows(); // sourceCode.getNumRows();
 			int numColumns = getTotalNumberOfNodes(workLoad.getFlowNamesInPriorityOrder(), workLoad); // sourceCode.getNumColumns();
 			visualizationData = new String[numRows][numColumns + 1];
 			

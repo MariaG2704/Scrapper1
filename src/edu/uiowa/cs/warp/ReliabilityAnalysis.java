@@ -333,8 +333,17 @@ public class ReliabilityAnalysis {
 	//TODO implement this operation
 	public ReliabilityTable getReliabilities() {
 		// TODO implement this operation
+		/*
+		 * ReliabilityTable dummyReliability; String[] header =
+		 * getReliabilityHeaderRow(); var numColumns = header.length(); var numRows =
+		 * program.getSchedule().getNumRows(); dummyReliability = new
+		 * ReliabiltiyTable(numRows, numColumns);
+		 * 
+		 * return dummyReliability;
+		 */
 		throw new UnsupportedOperationException("not implemented");
 	}
+		// create a hashmap mapping so that I can index back into it
 
 	public Double findSrc(String instruction, Double prevSrcNodeState) {
 	   // TODO implement this operation
