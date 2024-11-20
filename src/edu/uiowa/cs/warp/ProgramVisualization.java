@@ -33,7 +33,7 @@ public class ProgramVisualization extends VisualizationObject {
     this.program = warp.toProgram();
     this.sourceCode = program.getSchedule();
     this.deadlinesMet = warp.deadlinesMet();
-     }
+  		}
 
   /**
    * Function creates and returns a GuiVisualization object. <br>
