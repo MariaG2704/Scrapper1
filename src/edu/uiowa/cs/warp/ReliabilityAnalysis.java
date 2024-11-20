@@ -78,6 +78,9 @@ public class ReliabilityAnalysis {
 	 * The numFaults variable specifies the number of faults  <br>
 	 */
 	private Integer numFaults;
+	private WorkLoad workLoad;
+	private Program program;
+	
 
 	/**
 	 * Constructor for predictive fault model.
@@ -106,6 +109,14 @@ public class ReliabilityAnalysis {
 
 	public ReliabilityAnalysis(Program program) {
 		// TODO Auto-generated constructor stub
+		this.program = program;
+		this.workLoad = program.toWorkLoad();
+		this.numFaults = workLoad.getNumFaults();
+		
+		this.minPacketReceptionRate = workLoad.getMinPacketReceptionRate();
+		this.e2e = workLoad.getE2e();
+		
+		
 	}
 
 	/**
@@ -330,11 +341,32 @@ public class ReliabilityAnalysis {
 		return true;
 	}
 	
-	//TODO implement this operation
-	public ReliabilityTable getReliabilities() {
-		// TODO implement this operation
-		throw new UnsupportedOperationException("not implemented");
+	/**
+	 * Helper method to calculate the nodes in all flows of workLoad.
+	 * 
+	 * @param flowNames The flow names that are in workLoad
+	 * @param workLoad The Warp programs workLoad object
+	 * @return totalNodes The total number of nodes in each workLoad flow
+	 */
+	public int getTotalNumberOfNodes() {
+		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder(); 
+
+		int totalNodes = 0;
+		for (String flowName : flowNames) {
+			totalNodes += workLoad.getFlows().get(flowName).getNodes().size();
+		}
+		return totalNodes;
 	}
+	
+	public ReliabilityTable getReliabilities() {
+		ReliabilityTable dummyReliability; 
+		var numColumns = getTotalNumberOfNodes(); 
+		var numRows = program.getSchedule().getNumRows();
+		dummyReliability = new ReliabilityTable(numRows, numColumns);
+	 
+		return dummyReliability;
+	}
+		// create a hashmap mapping so that I can index back into it
 
 	public Double findSrc(String instruction, Double prevSrcNodeState) {
 	   // TODO implement this operation
