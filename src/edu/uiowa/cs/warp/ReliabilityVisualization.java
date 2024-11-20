@@ -116,6 +116,7 @@ public class ReliabilityVisualization  extends VisualizationObject {
 		return columnNames;
 	}
 
+	//odd cases number of columns is an odd number or even
 	
 	/**
 	 * Creates a 2D array that represents the reliability analysis.
