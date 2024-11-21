@@ -156,28 +156,6 @@ class ReliabilityVisualizationTest {
 	
 	
 	
-	
-	/*
-	 * public String[] createColumnHeader() { 
-		
-		int totalNodes = sourceTable.getNumColumns();
-		
-		String[] columnNames = new String[totalNodes];
-		
-		int index = 0;
-		for (String flowName : flowNames) {
-			
-			ArrayList<Node> nodes = workLoad.getFlows().get(flowName).getNodes();
-			
-			for (Node node : nodes) {
-				columnNames[index] = flowName + ":" + node.getName();
-				index++;
-			}
-		}
-		return columnNames;
-	}
-	 */
-	
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	@Test
 	void testCreateColumnHeader() {
@@ -191,32 +169,216 @@ class ReliabilityVisualizationTest {
 		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
 		
 		String singleDesc ="";
-		Description desc = new Description();
+		//Description desc = new Description();
+		ArrayList<String> desc = new ArrayList<String>();
 		
-		desc.add("F0:A	");
-		desc.add("F0:B	");
-		desc.add("F0:C	");
-		desc.add("F1:C	");
-		desc.add("F1:B	");
-		desc.add("F1:A	");
+		desc.add("F0:A");
+		desc.add("F0:B");
+		desc.add("F0:C");
+		desc.add("F1:C");
+		desc.add("F1:B");
+		desc.add("F1:A");
 		
-		for(int i =0; i < desc.size(); i++) {
-			
-			
-			singleDesc += desc.get(i);
-			System.out.print(desc.get(i));
-			
-		}
+
+		String actualColumnHeaderString = Arrays.toString(reliabilityVisualization.createColumnHeader());
+		String expectedColumnHeaderString = desc.toString();
 		
-		System.out.println();
+		System.out.println(desc.toString());
 		
-		System.out.println(reliabilityVisualization.createColumnHeader());
+		System.out.println(Arrays.toString(reliabilityVisualization.createColumnHeader()));
 		
-		assertEquals(singleDesc,reliabilityVisualization.createColumnHeader());
+		assertEquals(expectedColumnHeaderString, actualColumnHeaderString);
 		
 		//IN PROGRESS
 		
 	}
+	
+	
+	
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	@Test
+	void testCreateVisualizationDataDummyTable() {
+		
+		nChannels = 16;
+		workLoad = new WorkLoad(1, 0.9, 0.99, "Example1a.txt");
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		
+		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		
+		System.out.println("test");
+		
+		//System.out.println(Arrays.toString(reliabilityVisualization.createVisualizationData()));
+		
+		
+		
+		int numRows = 20;
+		int numColumns = 6;
+		
+		String[][] expected = new String[numRows][numColumns];
+		
+		for(int row = 0 ; row < numRows; row++) {
+			
+			for(int col = 0; col < numColumns; col++) {
+				
+				expected[row][col] = "1.0";
+			//	System.out.println(expected[row][col]);
+				
+				
+			}
+			
+		}
+			
+	}
+	
+	/*
+	 * 
+	 * public String[][] createVisualizationData() {
+			String[][] visualizationData= null;
+			if (visualizationData == null) {
+				int numRows = program.getSchedule().getNumRows(); // sourceCode.getNumRows();
+				int numColumns = sourceTable.getNumColumns();
+				visualizationData = new String[numRows][numColumns + 1];
+				
+				for (int row = 0; row < numRows; row++) {
+					visualizationData[row][0] = String.format("1.0");
+			        for (int column = 0; column < numColumns; column++) {
+			        	visualizationData[row][column + 1] = Double.toString(sourceTable.get(row, column));
+			        }
+				}
+			}
+			return visualizationData;
+		}
+	 */
+
+	
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	@Test
+	void testCreateVisualizationData() {
+		
+		nChannels = 16;
+		workLoad = new WorkLoad(1, 0.9, 0.99, "Example1a.txt");
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		
+		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		
+		System.out.println("test");
+		
+		//System.out.println(Arrays.toString(reliabilityVisualization.createVisualizationData()));
+		
+		
+		
+		int numRows = 20;
+		int numColumns = 6;
+		
+		String[][] table = new String[numRows][numColumns];
+		
+		
+		String[] row1 = {"1.0", "0.9", "0.0", "1.0", "0.0", "0.0"};
+		String[] row2 = {"1.0", "0.99", "0.81", "1.0", "0.0", "0.0"};
+		String[] row3 = {"1.0", "0.999", "0.972", "1.0", "0.0", "0.0"};
+		String[] row4 = {"1.0", "0.999", "0.9963", "1.0", "0.0", "0.0"};
+		String[] row5 = {"1.0", "0.999", "0.9963", "1.0", "0.9", "0.0"};
+		String[] row6 = {"1.0", "0.999", "0.9963", "1.0", "0.99", "0.81"};
+		String[] row7 = {"1.0", "0.999", "0.9963", "1.0", "0.999", "0.972"};
+		String[] row8 = {"1.0", "0.999", "0.9963", "1.0", "0.999", "0.9963"};
+		String[] row9 = {"1.0", "0.999", "0.9963", "1.0", "0.999", "0.9963"};
+		String[] row10 = {"1.0", "0.999", "0.9963", "1.0", "0.999", "0.9963"};
+		String[] row11 = {"1.0", "0.9", "0.0", "1.0", "0.999", "0.9963"};
+		String[] row12 = {"1.0", "0.99", "0.81", "1.0", "0.999", "0.9963"};
+		String[] row13 = {"1.0", "0.999", "0.972", "1.0", "0.999", "0.9963"};
+		String[] row14 = {"1.0", "0.999", "0.9963", "1.0", "0.999", "0.9963"};
+		String[] row15 = {"1.0", "0.999", "0.9963", "1.0", "0.999", "0.9963"};
+		String[] row16 = {"1.0", "0.999", "0.9963", "1.0", "0.999", "0.9963"};
+		String[] row17 = {"1.0", "0.999", "0.9963", "1.0", "0.999", "0.9963"};
+		String[] row18 = {"1.0", "0.999", "0.9963", "1.0", "0.999", "0.9963"};
+		String[] row19 = {"1.0", "0.999", "0.9963", "1.0", "0.999", "0.9963"};
+		String[] row20 = {"1.0", "0.999", "0.9963", "1.0", "0.999", "0.9963"};
+		
+		table[0] = row1;
+		table[1] = row2;
+		table[2] = row3;
+		table[3] = row4;
+		table[4] = row5;
+		table[5] = row6;
+		table[6] = row7;
+		table[7] = row8;
+		table[8] = row9;
+		table[9] = row10;
+		table[10] = row11;
+		table[11] = row12;
+		table[12] = row13;
+		table[13] = row14;
+		table[14] = row15;
+		table[15] = row16;
+		table[16] = row17;
+		table[17] = row18;
+		table[18] = row19;
+		table[19] = row20;
+
+		
+		
+		System.out.println("Testing visualization data below");
+		
+		for(int row = 0 ; row < numRows; row++) {
+			
+			for(int col = 0; col < numColumns; col++) {
+				
+				System.out.print(table[row][col] + ", "); 
+		
+				
+				
+			}
+			System.out.println("");
+			
+		}
+		
+		assertEquals(Arrays.toString(table), Arrays.toString(reliabilityVisualization.createVisualizationData()));
+			
+	}
+	
+	/*
+	 * public String createTitle() {
+	   // TODO implement this operation
+		return String.format("Reliability Analysis for graph %s\n", program.getName());
+	}
+	 */
+	
+	
+	//REVIEW THIS ONE!!!!!!!!!
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	@Test
+	void testCreateTitle (){
+		
+		nChannels = 16;
+		workLoad = new WorkLoad(1, 0.9, 0.99, "Example1a.txt");
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		
+		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);	
+		
+		String actualTitle = reliabilityVisualization.createTitle();
+		
+		//Really not sure if this one is correct because this could result in extra spaces between lines
+		String expectedTitle = "Reliability Analysis for graph Example1A\n";
+		
+		
+		System.out.println(actualTitle);
+		System.out.println(expectedTitle);
+		
+		
+		assertEquals(expectedTitle,actualTitle);
+		
+		
+		
+		
+	
+	}
+	
 	
 	
 	

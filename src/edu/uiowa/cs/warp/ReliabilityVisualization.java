@@ -26,10 +26,8 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	private WarpInterface warp; //the warp program
 	private ReliabilityAnalysis ra; //reliability analysis object
 	private Program program;
-	private ReliabilityTable sourceTable;
+	private ReliabilityTable sourceCode;
 	private WorkLoad workLoad;
-	private ArrayList<String> flowNames; 
-
 	
 	/**
 	 * Constructor for ReliabilityVisualization that sets the 
@@ -42,10 +40,7 @@ public class ReliabilityVisualization  extends VisualizationObject {
    		this.workLoad = warp.toWorkload();
    		this.program = warp.toProgram();
    		this.ra = warp.toReliabilityAnalysis();
-   		this.sourceTable = ra.getReliabilities();
-		this.flowNames = workLoad.getFlowNamesInPriorityOrder(); 
-
-   		
+   		//this.sourceCode = ra.getReliabilities();	
    	}
 	
 	/**
@@ -79,15 +74,32 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	}
 	
 	/**
+	 * Helper method to calculate the nodes in all flows of workLoad.
+	 * 
+	 * @param flowNames The flow names that are in workLoad
+	 * @param workLoad The Warp programs workLoad object
+	 * @return totalNodes The total number of nodes in each workLoad flow
+	 */
+	public int getTotalNumberOfNodes(ArrayList<String> flowNames ,WorkLoad workLoad) {
+		int totalNodes = 0;
+		for (String flowName : flowNames) {
+			totalNodes += workLoad.getFlows().get(flowName).getNodes().size();
+		}
+		return totalNodes;
+	}
+	
+	/**
 	 * Function that gets the names of the nodes ordered alphabetically, 
 	 * then stores and returns the names of the nodes in an array of Strings, 
 	 * used for column headers of table when visualizing data. <br>
 	 * 
 	 * @return columnNames An array of strings that represent the column header
 	 */
-	public String[] createColumnHeader() { 
+	public String[] createColumnHeader() {
+		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder(); 
+		//need to access the flowNames in order from flow
 		
-		int totalNodes = sourceTable.getNumColumns();
+		int totalNodes = getTotalNumberOfNodes(flowNames, workLoad);
 		
 		String[] columnNames = new String[totalNodes];
 		
@@ -104,7 +116,6 @@ public class ReliabilityVisualization  extends VisualizationObject {
 		return columnNames;
 	}
 
-	//odd cases number of columns is an odd number or even
 	
 	/**
 	 * Creates a 2D array that represents the reliability analysis.
@@ -117,13 +128,13 @@ public class ReliabilityVisualization  extends VisualizationObject {
 		String[][] visualizationData= null;
 		if (visualizationData == null) {
 			int numRows = program.getSchedule().getNumRows(); // sourceCode.getNumRows();
-			int numColumns = sourceTable.getNumColumns();
+			int numColumns = getTotalNumberOfNodes(workLoad.getFlowNamesInPriorityOrder(), workLoad); // sourceCode.getNumColumns();
 			visualizationData = new String[numRows][numColumns + 1];
 			
 			for (int row = 0; row < numRows; row++) {
 				visualizationData[row][0] = String.format("1.0");
 		        for (int column = 0; column < numColumns; column++) {
-		        	visualizationData[row][column + 1] = Double.toString(sourceTable.get(row, column));
+		        	visualizationData[row][column + 1] = "0";  //Double.toString(sourceCode.get(row, column));
 		        }
 			}
 		}
@@ -137,7 +148,7 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	 */
 	public String createTitle() {
 	   // TODO implement this operation
-		return String.format("Reliability Analysis for graph %s\n", program.getName());
+		return String.format("Reliability Analysis for graph %s\n",program.getName());
 	}
 	
 /* File Visualization for workload defined in Example.txt follows. 
