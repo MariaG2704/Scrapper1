@@ -119,7 +119,7 @@ class ReliabilityVisualizationTest {
 		
 		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
 		
-		System.out.println(reliabilityVisualization.createHeader());
+		//System.out.println(reliabilityVisualization.createHeader());
 		
 		assertEquals(desc, reliabilityVisualization.createHeader());
 		
@@ -146,7 +146,7 @@ class ReliabilityVisualizationTest {
 		
 		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
 		
-		System.out.println(reliabilityVisualization.createHeader());
+		//System.out.println(reliabilityVisualization.createHeader());
 		
 		assertEquals(desc, reliabilityVisualization.createHeader());
 		
@@ -181,6 +181,16 @@ class ReliabilityVisualizationTest {
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	@Test
 	void testCreateColumnHeader() {
+		
+		nChannels = 16;
+		workLoad = new WorkLoad(1, 0.9, 0.99, "Example1a.txt");
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		
+		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		
+		String singleDesc ="";
 		Description desc = new Description();
 		
 		desc.add("F0:A	");
@@ -190,6 +200,19 @@ class ReliabilityVisualizationTest {
 		desc.add("F1:B	");
 		desc.add("F1:A	");
 		
+		for(int i =0; i < desc.size(); i++) {
+			
+			
+			singleDesc += desc.get(i);
+			System.out.print(desc.get(i));
+			
+		}
+		
+		System.out.println();
+		
+		System.out.println(reliabilityVisualization.createColumnHeader());
+		
+		assertEquals(singleDesc,reliabilityVisualization.createColumnHeader());
 		
 		//IN PROGRESS
 		
