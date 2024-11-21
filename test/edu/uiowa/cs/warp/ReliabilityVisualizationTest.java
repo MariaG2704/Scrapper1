@@ -26,7 +26,6 @@ class ReliabilityVisualizationTest {
 //	private static final String String = null;
 	private GuiVisualization gVis;
 	
-	
 	/*
 	 public GuiVisualization displayVisualization() {
 		return new GuiVisualization(createTitle(), createColumnHeader(), createVisualizationData());
@@ -63,13 +62,7 @@ class ReliabilityVisualizationTest {
 	
 	@Test
 	void testCreateHeader() {	
-		/*
-		 * Reliability Analysis for graph StressTest
-			Scheduler Name: RateMonotonic
-			M: 0.9
-			E2E: 0.99
-			nChannels: 3
-		 */
+
 		
 		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);
 		
@@ -195,6 +188,12 @@ class ReliabilityVisualizationTest {
 	
 	
 	
+	
+	
+	
+	
+	
+	
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	@Test
 	void testCreateVisualizationDataDummyTable() {
@@ -269,8 +268,6 @@ class ReliabilityVisualizationTest {
 		
 		//System.out.println(Arrays.toString(reliabilityVisualization.createVisualizationData()));
 		
-		
-		
 		int numRows = 20;
 		int numColumns = 6;
 		
@@ -327,25 +324,17 @@ class ReliabilityVisualizationTest {
 			
 			for(int col = 0; col < numColumns; col++) {
 				
-				System.out.print(table[row][col] + ", "); 
-		
-				
+				System.out.print(table[row][col] + ", "); 	
 				
 			}
 			System.out.println("");
 			
 		}
 		
-		assertEquals(Arrays.toString(table), Arrays.toString(reliabilityVisualization.createVisualizationData()));
+		//assertEquals(Arrays.toString(table), Arrays.toString(reliabilityVisualization.createVisualizationData()));
+		assertArrayEquals
 			
 	}
-	
-	/*
-	 * public String createTitle() {
-	   // TODO implement this operation
-		return String.format("Reliability Analysis for graph %s\n", program.getName());
-	}
-	 */
 	
 	
 	//REVIEW THIS ONE!!!!!!!!!
@@ -367,14 +356,39 @@ class ReliabilityVisualizationTest {
 		String expectedTitle = "Reliability Analysis for graph Example1A\n";
 		
 		
+		System.out.print(actualTitle);
+		System.out.print(expectedTitle);
+		
+		
+		assertEquals(expectedTitle, actualTitle);
+		
+	
+	}
+	
+	
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	@Test
+	void testCreateTitleNull(){
+		
+		nChannels = 16;
+		workLoad = new WorkLoad(1, 0.9, 0.99, "ExampleNull.txt");
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		
+		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);	
+		
+		String actualTitle = reliabilityVisualization.createTitle();
+		
+		//Really not sure if this one is correct because this could result in extra spaces between lines
+		String expectedTitle = "Reliability Analysis for graph Example1A\n";
+		
+		
 		System.out.println(actualTitle);
 		System.out.println(expectedTitle);
 		
 		
-		assertEquals(expectedTitle,actualTitle);
-		
-		
-		
+		assertEquals(expectedTitle, actualTitle);
 		
 	
 	}
