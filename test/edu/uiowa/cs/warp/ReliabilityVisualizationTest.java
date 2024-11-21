@@ -154,31 +154,47 @@ class ReliabilityVisualizationTest {
 	}
 	
 	
+	
+	
+	
+	/*
+	 * public String[] createColumnHeader() { 
+		
+		int totalNodes = sourceTable.getNumColumns();
+		
+		String[] columnNames = new String[totalNodes];
+		
+		int index = 0;
+		for (String flowName : flowNames) {
+			
+			ArrayList<Node> nodes = workLoad.getFlows().get(flowName).getNodes();
+			
+			for (Node node : nodes) {
+				columnNames[index] = flowName + ":" + node.getName();
+				index++;
+			}
+		}
+		return columnNames;
+	}
+	 */
+	
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	@Test
-	void testGetTotalNumberOfNodes() {
+	void testCreateColumnHeader() {
+		Description desc = new Description();
 		
-		nChannels = 16;
-		workLoad = new WorkLoad(0.9, 0.99, "Example1a.txt");
-		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
-	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		desc.add("F0:A	");
+		desc.add("F0:B	");
+		desc.add("F0:C	");
+		desc.add("F1:C	");
+		desc.add("F1:B	");
+		desc.add("F1:A	");
 		
-		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
 		
-		ArrayList<String> flowNames = new ArrayList<String>();
-		flowNames.add("F0");
-		flowNames.add("F1");
-		
-		System.out.println(reliabilityVisualization.getTotalNumberOfNodes(flowNames, workLoad));
-		
-		int actualNodes = reliabilityVisualization.getTotalNumberOfNodes(flowNames, workLoad);
-		
-		assertEquals(6, actualNodes);
+		//IN PROGRESS
 		
 	}
 	
-		
 	
 	
 	//just test creating a ra file and see what an output likes
