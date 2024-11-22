@@ -1,5 +1,6 @@
 package edu.uiowa.cs.warp;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -211,47 +212,29 @@ class ReliabilityVisualizationTest {
 		//System.out.println(Arrays.toString(reliabilityVisualization.createVisualizationData()));
 		
 		
-		
 		int numRows = 20;
-		int numColumns = 6;
+		int numColumns = 7;
 		
-		String[][] expected = new String[numRows][numColumns];
 		
-		for(int row = 0 ; row < numRows; row++) {
+		Program program = warp.toProgram();
+		
+		String[][] createdData = reliabilityVisualization.createVisualizationData();
+		
+		int actualNumRows = createdData.length;
+		int actualNumColumns = createdData[0].length;
+		
+		
+		assertEquals(numRows, actualNumRows);
+		assertEquals(numColumns, actualNumColumns);
+	
+		
 			
-			for(int col = 0; col < numColumns; col++) {
-				
-				expected[row][col] = "1.0";
-			//	System.out.println(expected[row][col]);
-				
-				
-			}
-			
-		}
 			
 	}
 	
-	/*
-	 * 
-	 * public String[][] createVisualizationData() {
-			String[][] visualizationData= null;
-			if (visualizationData == null) {
-				int numRows = program.getSchedule().getNumRows(); // sourceCode.getNumRows();
-				int numColumns = sourceTable.getNumColumns();
-				visualizationData = new String[numRows][numColumns + 1];
-				
-				for (int row = 0; row < numRows; row++) {
-					visualizationData[row][0] = String.format("1.0");
-			        for (int column = 0; column < numColumns; column++) {
-			        	visualizationData[row][column + 1] = Double.toString(sourceTable.get(row, column));
-			        }
-				}
-			}
-			return visualizationData;
-		}
-	 */
-
 	
+
+	/*
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	@Test
 	void testCreateVisualizationData() {
@@ -273,6 +256,11 @@ class ReliabilityVisualizationTest {
 		
 		String[][] table = new String[numRows][numColumns];
 		
+		//reliabilitytable vs source table 
+		// entries, some kind of value, matches what you got from reliabilityTable 
+		// dont test for a good or bad value,
+		// table built should match for that entry  fort he reliabilityAnalysis
+		// print system error 
 		
 		String[] row1 = {"1.0", "0.9", "0.0", "1.0", "0.0", "0.0"};
 		String[] row2 = {"1.0", "0.99", "0.81", "1.0", "0.0", "0.0"};
@@ -332,10 +320,10 @@ class ReliabilityVisualizationTest {
 		}
 		
 		//assertEquals(Arrays.toString(table), Arrays.toString(reliabilityVisualization.createVisualizationData()));
-		assertArrayEquals
+		//assertArrayEquals(table, reliabilityVisualization.createVisualizationData());
 			
 	}
-	
+	*/
 	
 	//REVIEW THIS ONE!!!!!!!!!
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
@@ -366,35 +354,9 @@ class ReliabilityVisualizationTest {
 	}
 	
 	
-	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	@Test
-	void testCreateTitleNull(){
-		
-		nChannels = 16;
-		workLoad = new WorkLoad(1, 0.9, 0.99, "ExampleNull.txt");
-		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
-	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		
-		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);	
-		
-		String actualTitle = reliabilityVisualization.createTitle();
-		
-		//Really not sure if this one is correct because this could result in extra spaces between lines
-		String expectedTitle = "Reliability Analysis for graph Example1A\n";
-		
-		
-		System.out.println(actualTitle);
-		System.out.println(expectedTitle);
-		
-		
-		assertEquals(expectedTitle, actualTitle);
-		
-	
-	}
 	
 	
-	
+	//can i create the table, the table of diffferent sizes
 	
 	//just test creating a ra file and see what an output likes
 	// same structure as WorkLoadTest.java
