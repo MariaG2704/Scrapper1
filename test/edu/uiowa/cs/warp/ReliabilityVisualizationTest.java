@@ -288,7 +288,50 @@ class ReliabilityVisualizationTest {
 			return visualizationData;
 		}
 	 */
-
+	/**
+	 * Test for the createVisualizationData method. Since implementation of the methods necessary to populate the table with appropriate values in ReliabilityAnalysis.java 
+	 * are outside the scope of Sprint2, the table of data produced by createVisualizationData should contain values 0.0, with the exception of the first column, 
+	 * which should contain values 1.0 (as the probability of the packet having reached the first node in the first flow is guaranteed no matter the input).
+	 */
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	@Test
+	void testCreateVisualizationData_TableCheck() {
+		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);
+		
+		int numRows = warp.toProgram().getSchedule().getNumRows();
+		int numColumns = reliabilityVisualization.getTotalNumberOfNodes(workLoad.getFlowNamesInPriorityOrder(), workLoad);
+		
+		System.out.println(numRows + " AAAAAAAAAA");
+		System.out.println(numColumns + " FUUUUUCKKKKK");
+		
+		//create table of expected values
+		String[][] expected = new String[numRows][numColumns];
+		String[] expectedRow = new String[numColumns];
+		
+		expectedRow[0] = "1.0";
+		for (int j = 1; j < numColumns; j++) {
+			expectedRow[j] = "0.0";
+		}
+		for (int i = 0; i < numRows; i++) {
+			expected[i] = expectedRow;
+		}
+		
+		String[][] actual = reliabilityVisualization.createVisualizationData();
+		System.out.println("Testing visualization data below");
+		
+		for(int row = 0 ; row < numRows; row++) {
+			
+			for(int col = 0; col < numColumns; col++) {
+				
+				System.out.print(expected[row][col] + ", "); 	
+				
+			}
+			System.out.println("");
+			
+		}
+		
+		
+	}
 	
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	@Test
