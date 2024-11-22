@@ -33,7 +33,7 @@ class ReliabilityVisualizationTest {
 	 */
 	private static final Double MIN_LQ = 0.9;
 	private static final Double E2E = 0.99;
-	private static final String INPUT_FILE = "StressText4.txt";
+	private static final String INPUT_FILE = "StressTest4.txt";
 	private static final long TIMEOUT_IN_MILLISECONDS = 10000;
 	
 	private WorkLoad workLoad;
