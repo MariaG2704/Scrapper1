@@ -53,12 +53,32 @@ class ReliabilityVisualizationTest {
 	
 	 }
 	
+	/**
+	 * Test for the displayVisualization() method checking that output of method is not null.
+	 * Since the method just returns a GuiVisualization created with parameters provided by createTitle(), createColumnHeader(), and createVisualizationData() methods, 
+	 * testing these methods individually should be sufficient for guaranteeing the correctness of the output; 
+	 * testing the GuiVisualization constructor is outside of the scope of ReliabilityVisualization testing.
+	 */
 	@Test
-	void testDisplayVisualization() {
-		
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testDisplayVisualization_NotNull() {
 		// gVis = new GuiVisualization(String s, String[] a, String[][] b);
-		
-		//not done
+		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);
+		assertNotNull(reliabilityVisualization.displayVisualization());
+	}
+	
+	/**
+	 * Test for the displayVisualization() method checking that output of method is a GuiVisualization object.
+	 * Since the method just returns a GuiVisualization created with parameters provided by createTitle(), createColumnHeader(), and createVisualizationData() methods, 
+	 * testing these methods individually should be sufficient for guaranteeing the correctness of the output; 
+	 * testing the GuiVisualization constructor is outside of the scope of ReliabilityVisualization testing.
+	 */
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testDisplayVisualization_InstanceOfGuiVisualization() {
+		// gVis = new GuiVisualization(String s, String[] a, String[][] b);
+		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);
+		assertTrue(reliabilityVisualization.displayVisualization() instanceof GuiVisualization);
 	}
 	
 	@Test
