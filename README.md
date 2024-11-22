@@ -2,29 +2,27 @@
 
 This codebase is used for the University of Iowa CS:2820 Introduction to Software Development course section 0AAA of F24. The original author and developer was Steve Goddard of the University of Iowa for the WARP sensor network research project and has undergone multiple iterations, transitioning from Swift to Java and finally into an object-oriented programming style. This specific fork serves as a testing ground for learning software development principles.
 
-## Project Overview
-
-WARP (Wireless Adaptive Real-time Programming) is a novel approach designed to meet the demands of future Industrial Internet of Things (IIoT) applications. Traditional software synthesis relies heavily on SMT solvers and resource-rich machines. WARP adapts these techniques for embedded devices and wireless networks, offering real-time, reliable performance despite network dynamics.
-
-Key Features of WARP:
-- **Data Plane**: Programs specify network operations more expressively than traditional schedules.
-- **Software Synthesis**: Generates programs that meet real-time flow deadlines and reliability constraints.
-- **Control Plane**: Manages workload and network topology changes efficiently.
 
 ## Interaction
 
 WARP is interacted with via the command line interface (CLI). The primary command is `warp`, followed by various argparser options that can be supplied to modify behavior. Users can specify the network workload and topology, which consists of real-time flows between sensors, controllers, and actuators.
 
-## Contributions
-
-This project has been modified and extended by **ccolin**, **msgauna**, and **yongycheng** as part of Steve Goddard's Software Development course.
-*The above details of WARP's architecture and features are based on the officially released paper by Ryan Brummet, Md Kowsar Hossain, Octav Chipara, Ted Herman, and Steve Goddard, presented at IPSN '21.*
-
-## README Disclaimer
-
-Please be aware that Eclipse's markdown file previewer does not appear to be a WYSIWYG (What You See Is What You Get) markdown editor, as markdown formatting does not correctly parse (i.e. doesn't show correct amount of bullet point indentation level). When considering the README.md, please read it as it is parsed by GitLab, not by Eclipse. It looks much prettier and understandable when formatting is parsed correctly.
-
 ---
+### Project 
+
+###Sprint 1
+- **Objective**： Develop a UML Sequence Diagram; create high-level plans for future Sprints of the project.
+- **wplucas**, **msgauna**, **nnahra**, **tomlooi**:
+	<ul>
+	<li> Worked collaboratively to trace the program flow from Warp when processing the "ra" run configuration and visually showed this in a UML sequence diagram called Final_Sequence_Diagram.png and also the code in a txt file called Final_Sequence_Diagram.txt, both placed in the ARTIFACTS folder. 
+	<li> Deliberated on, and added empty methods to be (potentially) implemented in ReliabilityVisualization and ReliabilityAnalysis. 
+	<li> Updated UML class diagram with added methods to ReliabilityVisualization and ReliabilityAnalysis, picture placed in ARTIFACTS folder with the name Reliability.umlcdSPRINT1.png.
+	<li> Discussed general high level plans for Sprints 2 and 3; detailed these plans in a shared Word called Software_Development_Project document, placed in ARTIFACTS folder.
+	<li> Assigned tentative roles for method implementation, JavaDoc creation, and JUnit testing for future Sprints.
+	</ul>
+	
+###Sprint 2
+- 
 
 ## Homework Assignments
 
@@ -168,16 +166,18 @@ Please be aware that Eclipse's markdown file previewer does not appear to be a W
 	- Did 50% of step 3, refactoring reliability Analysis to fit with ArrayList and ReliabilityWindow and ReliabilityRow
 	- Wrote all Java Doc comments 
 
-### Project Sprint 1
-- **Objective**： Develop a UML Sequence Diagram; create high-level plans for future Sprints of the project.
-- **wplucas**, **msgauna**, **nnahra**, **tomlooi**:
-	<ul>
-	<li> Worked collaboratively to trace the program flow from Warp when processing the "ra" run configuration and visually showed this in a UML sequence diagram called Final_Sequence_Diagram.png and also the code in a txt file called Final_Sequence_Diagram.txt, both placed in the ARTIFACTS folder. 
-	<li> Deliberated on, and added empty methods to be (potentially) implemented in ReliabilityVisualization and ReliabilityAnalysis. 
-	<li> Updated UML class diagram with added methods to ReliabilityVisualization and ReliabilityAnalysis, picture placed in ARTIFACTS folder with the name Reliability.umlcdSPRINT1.png.
-	<li> Discussed general high level plans for Sprints 2 and 3; detailed these plans in a shared Word called Software_Development_Project document, placed in ARTIFACTS folder.
-	<li> Assigned tentative roles for method implementation, JavaDoc creation, and JUnit testing for future Sprints.
-	</ul>
+## Project Overview
+
+WARP (Wireless Adaptive Real-time Programming) is a novel approach designed to meet the demands of future Industrial Internet of Things (IIoT) applications. Traditional software synthesis relies heavily on SMT solvers and resource-rich machines. WARP adapts these techniques for embedded devices and wireless networks, offering real-time, reliable performance despite network dynamics.
+
+Key Features of WARP:
+- **Data Plane**: Programs specify network operations more expressively than traditional schedules.
+- **Software Synthesis**: Generates programs that meet real-time flow deadlines and reliability constraints.
+- **Control Plane**: Manages workload and network topology changes efficiently.
+
+## README Disclaimer
+
+Please be aware that Eclipse's markdown file previewer does not appear to be a WYSIWYG (What You See Is What You Get) markdown editor, as markdown formatting does not correctly parse (i.e. doesn't show correct amount of bullet point indentation level). When considering the README.md, please read it as it is parsed by GitLab, not by Eclipse. It looks much prettier and understandable when formatting is parsed correctly.
 
 
 ## Project Setup
