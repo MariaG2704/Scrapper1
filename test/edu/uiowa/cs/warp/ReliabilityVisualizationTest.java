@@ -101,7 +101,6 @@ class ReliabilityVisualizationTest {
 	@Test
 	void testCreateHeader_Contents() {	
 
-		
 		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);
 		
 		//System.out.println(reliabilityVisualization.createHeader());
@@ -113,17 +112,14 @@ class ReliabilityVisualizationTest {
 		desc.add("E2E: 0.99\n");
 		desc.add("nChannels: 16\n");
 	
-		
-		assertEquals(desc, reliabilityVisualization.createHeader());	
-		
+		assertEquals(desc, reliabilityVisualization.createHeader());		
 	}
 	
 	/**
-	 * Test for the createHeader method. Verifies that the header created from ReliabilityVisualization 
-	 * made from input warp contains the appropriate contents and formatting.
+	 * Test for the createHeader method. Basic test verifies that the method returns an object that is not Null.
 	 */
 	@Test
-	void testCreateHeaderNotNull() {
+	void testCreateHeader_IsNotNull() {
 		
 		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);
 		
