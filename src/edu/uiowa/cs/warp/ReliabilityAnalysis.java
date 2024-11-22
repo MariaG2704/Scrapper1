@@ -369,23 +369,23 @@ public class ReliabilityAnalysis {
 		// create a hashmap mapping so that I can index back into it
 
 	public Double findSrc(String instruction, Double prevSrcNodeState) {
-	   // TODO implement this operation
-	   throw new UnsupportedOperationException("not implemented");
+		// TODO implement this operation
+		throw new UnsupportedOperationException("not implemented");
 	}
 
 	public Double findSnk(String instruction, Double prevSnkNodeState) {
-	   // TODO implement this operation
-	   throw new UnsupportedOperationException("not implemented");
+		// TODO implement this operation
+		throw new UnsupportedOperationException("not implemented");
 	}
 
 	public Double findNewSnkNodeState(Double currentSnkNode, Double currentSrcNode, Double M) {
-	   // TODO implement this operation
-	   throw new UnsupportedOperationException("not implemented");
+		// TODO implement this operation
+		throw new UnsupportedOperationException("not implemented");
 	}
 	
 	protected Set<String> buildReliabilityTable() {
-	      // TODO implement this operation
-	      throw new UnsupportedOperationException("not implemented");
-	   }
+		// TODO implement this operation
+		throw new UnsupportedOperationException("not implemented");
+	}
 
 }
