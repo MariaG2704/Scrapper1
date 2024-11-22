@@ -310,27 +310,23 @@ class ReliabilityVisualizationTest {
 		
 		expectedRow[0] = "1.0";
 		for (int j = 1; j < numColumns; j++) {
-			expectedRow[j] = "0.0";
+			expectedRow[j] = "0";
 		}
+		
 		for (int i = 0; i < numRows; i++) {
 			expected[i] = expectedRow;
 		}
-		
 		String[][] actual = reliabilityVisualization.createVisualizationData();
+		
+		//assertEquals(expected, actual);
+		
 		System.out.println("Testing visualization data below");
-		
 		for(int row = 0 ; row < numRows; row++) {
-			
 			for(int col = 0; col < numColumns; col++) {
-				
-				System.out.print(expected[row][col] + ", "); 	
-				
+			System.out.print(actual[row][col] + ", "); 	
 			}
-			System.out.println("");
-			
+			System.out.println("");	
 		}
-		
-		
 	}
 	
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
