@@ -189,33 +189,32 @@ public class ReliabilityAnalysis {
 																	   Double M, 
 																	   boolean optimizationRequested) {
 		int nNodesInFlow = flow.nodes.size();
-		
-	    /* ArrayList to track nPushes for each node in this flow (same as nTx per link) */
-	    ArrayList<Integer> nPushes = initalizePushArray(nNodesInFlow);
+		/* ArrayList to track nPushes for each node in this flow (same as nTx per link) */
+		ArrayList<Integer> nPushes = initalizePushArray(nNodesInFlow);
 	    
-	    Double minLinkReliabilityNeeded = calculateMinLinkReliability(e2e, nNodesInFlow -1);
+		Double minLinkReliabilityNeeded = calculateMinLinkReliability(e2e, nNodesInFlow -1);
 	            
 		ReliabilityTable reliabilityWindow = initializeReliabilityWindow(nNodesInFlow);
 		ArrayList<Double> currentReliabilityRow = initializeReliabilityRow(reliabilityWindow);
-	    //Double e2eReliabilityState = currentReliabilityRow[nNodesInFlow - 1];
+		//Double e2eReliabilityState = currentReliabilityRow[nNodesInFlow - 1];
 		Double e2eReliabilityState = currentReliabilityRow.get(nNodesInFlow - 1);
 	    
 	  
-	    var timeSlot = 0;
-	    while (e2eReliabilityState < e2e) {
-	    	currentReliabilityRow = computeReliabilityForNxtTmSlt(currentReliabilityRow,
+		var timeSlot = 0;
+		while (e2eReliabilityState < e2e) {
+			currentReliabilityRow = computeReliabilityForNxtTmSlt(currentReliabilityRow,
 	    															nNodesInFlow, M,
 	    															minLinkReliabilityNeeded,
 	    															nPushes);
-	    	e2eReliabilityState = currentReliabilityRow.get(nNodesInFlow - 1);
-	    	//e2eReliabilityState = currentReliabilityRow[nNodesInFlow - 1];
-	    	updateReliabilityWindow(reliabilityWindow, currentReliabilityRow, timeSlot);
-	    	timeSlot++;
-	    }
+			e2eReliabilityState = currentReliabilityRow.get(nNodesInFlow - 1);
+			//e2eReliabilityState = currentReliabilityRow[nNodesInFlow - 1];
+			updateReliabilityWindow(reliabilityWindow, currentReliabilityRow, timeSlot);
+			timeSlot++;
+		}
 
-	    nPushes.set(nNodesInFlow,reliabilityWindow.size());
-	    // return new ArrayList<>(Arrays.asList(nPushes));
-	    return nPushes;
+		nPushes.set(nNodesInFlow,reliabilityWindow.size());
+		// return new ArrayList<>(Arrays.asList(nPushes));
+		return nPushes;
 	}
 	/**
 	 * Fills an ArrayList called nPushes with values of 0
