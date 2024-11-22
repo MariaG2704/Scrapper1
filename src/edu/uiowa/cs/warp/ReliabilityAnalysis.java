@@ -1,4 +1,5 @@
 package edu.uiowa.cs.warp;
+import java.util.Set;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,7 +51,7 @@ public class ReliabilityAnalysis {
 	
 	/**
 	 * The DEFAULT_TX_NUM variable specifies the default transmission number <br>
-	 */
+	 */   
 	private static final Integer DEFAULT_TX_NUM = 0;
 	/**
 	 * The DEFAULT_M variable specifies the default minimum packet reception rate <br>
@@ -382,5 +383,10 @@ public class ReliabilityAnalysis {
 	   // TODO implement this operation
 	   throw new UnsupportedOperationException("not implemented");
 	}
+	
+	protected Set<String> buildReliabilityTable() {
+	      // TODO implement this operation
+	      throw new UnsupportedOperationException("not implemented");
+	   }
 
 }

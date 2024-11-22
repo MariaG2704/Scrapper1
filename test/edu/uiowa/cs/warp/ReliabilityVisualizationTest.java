@@ -231,11 +231,16 @@ class ReliabilityVisualizationTest {
 	
 	
 	
-	
-	
+	/**
+	 * Test for the createVisualizationData method. Tests that the table produced by the method contains the appropriate number of rows and columns produced by 
+	 * 
+	 * Since implementation of the methods necessary to populate the table with appropriate values in ReliabilityAnalysis.java 
+	 * are outside the scope of Sprint2, the content of the table produced by createVisualizationData should contain values 0.0, with the exception of the first column, 
+	 * which should contain values 1.0 (as the probability of the packet having reached the first node in the first flow is guaranteed no matter the input).
+	 */
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	@Test
-	void testCreateVisualizationDataDummyTable() {
+	void testCreateVisualizationData_RowsAndColumnsWithExample1aDummyTable() {
 		
 		nChannels = 16;
 		workLoad = new WorkLoad(1, 0.9, 0.99, "Example1a.txt");

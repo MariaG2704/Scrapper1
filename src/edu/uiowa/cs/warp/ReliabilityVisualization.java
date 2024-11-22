@@ -20,7 +20,7 @@ import java.util.Arrays;
  *  *
  */
 public class ReliabilityVisualization  extends VisualizationObject {
-	
+
 	private static final String SOURCE_SUFFIX = ".ra"; //file type of warp file
 	private static final String OBJECT_NAME = "Reliability Analysis";
 	private WarpInterface warp; //the warp program
