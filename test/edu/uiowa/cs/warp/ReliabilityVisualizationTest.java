@@ -32,39 +32,76 @@ class ReliabilityVisualizationTest {
 		return new GuiVisualization(createTitle(), createColumnHeader(), createVisualizationData());
 	}
 	 */
+	private static final Double MIN_LQ = 0.9;
+	private static final Double E2E = 0.99;
+	private static final String INPUT_FILE = "StressTest4.txt";
+	private static final long TIMEOUT_IN_MILLISECONDS = 10000;
 	
-
-	 private static final long TIMEOUT_IN_MILLISECONDS = 10000;
-	 private WorkLoad workLoad;
-
+	private WorkLoad workLoad;
 
 	private Integer nChannels = 16;
-
 	private ScheduleChoices schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 	private WarpInterface warp;
-	 
 	
+	 
+	/**
+	 * Start each test with an unmodified WorkLoad created from the specified MIN_LQ, E2E, and INPUT_FILE parameters; also creates a WarpInterface using the previously 
+	 * created WorkLoad, specified nChannels, and ScheduleChoices.
+	 * m = 0.9 and e2e = 0.99 by default, as specified in Warp.java.
+	 */
 	@BeforeEach
-	void setUp() throws Exception {
+	void setUp() {
 	    //Initialize workload with default values given in WorkLoad.java comment
-		workLoad = new WorkLoad(0.9, 0.99, "StressTest4.txt");
-	    
+		workLoad = new WorkLoad(MIN_LQ, E2E, INPUT_FILE);
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
 	
 	 }
 	
+	/**
+	 * Test for the displayVisualization() method checking that output of method is not null.
+	 * Since the method just returns a GuiVisualization created with parameters provided by createTitle(), createColumnHeader(), and createVisualizationData() methods, 
+	 * testing these methods individually should be sufficient for guaranteeing the correctness of the output; 
+	 * testing the GuiVisualization constructor is outside of the scope of ReliabilityVisualization testing.
+	 */
 	@Test
-	void testDisplayVisualization() {
-		
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testDisplayVisualization_NotNull() {
 		// gVis = new GuiVisualization(String s, String[] a, String[][] b);
-		
-		//not done
+		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);
+		assertNotNull(reliabilityVisualization.displayVisualization());
 	}
 	
+	/**
+	 * Test for the displayVisualization() method checking that output of method is a GuiVisualization object.
+	 * Since the method just returns a GuiVisualization created with parameters provided by createTitle(), createColumnHeader(), and createVisualizationData() methods, 
+	 * testing these methods individually should be sufficient for guaranteeing the correctness of the output; 
+	 * testing the GuiVisualization constructor is outside of the scope of ReliabilityVisualization testing.
+	 */
 	@Test
-	void testCreateHeader() {	
-
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testDisplayVisualization_InstanceOfGuiVisualization() {
+		// gVis = new GuiVisualization(String s, String[] a, String[][] b);
+		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);
+		assertTrue(reliabilityVisualization.displayVisualization() instanceof GuiVisualization);
+	}
+	
+	/**
+	 * Test for the createHeader method. Verifies that the createHeader() method outputs a Description-type object.
+	 */
+	@Test
+	void testCreateHeader_IsDescription() {
+		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);
+		assertTrue(reliabilityVisualization.createHeader() instanceof Description);	
 		
+	}
+	
+	/**
+	 * Test for the createHeader method. Verifies that the header created from ReliabilityVisualization 
+	 * made from input warp contains the appropriate contents and formatting.
+	 */
+	@Test
+	void testCreateHeader_Contents() {	
+
 		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);
 		
 		//System.out.println(reliabilityVisualization.createHeader());
@@ -76,13 +113,14 @@ class ReliabilityVisualizationTest {
 		desc.add("E2E: 0.99\n");
 		desc.add("nChannels: 16\n");
 	
-		
-		assertEquals(desc, reliabilityVisualization.createHeader());	
-		
+		assertEquals(desc, reliabilityVisualization.createHeader());		
 	}
 	
+	/**
+	 * Test for the createHeader method. Basic test verifies that the method returns an object that is not Null.
+	 */
 	@Test
-	void testCreateHeaderNotNull() {
+	void testCreateHeader_IsNotNull() {
 		
 		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);
 		
