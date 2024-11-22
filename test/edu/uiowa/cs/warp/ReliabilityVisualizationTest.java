@@ -21,6 +21,8 @@ import org.junit.jupiter.api.Timeout;
 
 import edu.uiowa.cs.warp.SystemAttributes.ScheduleChoices;
 
+
+
 class ReliabilityVisualizationTest {
 	
 
@@ -56,6 +58,21 @@ class ReliabilityVisualizationTest {
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
 	
 	 }
+	
+	
+//	private void setUpExample1a() {
+//		
+//		workLoad = new WorkLoad(MIN_LQ, E2E, INPUT_FILE);
+//		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+//		
+//		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+//	    
+//		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+//		
+//	}
+	
+	
+	
 	
 	/**
 	 * Test for the displayVisualization() method checking that output of method is not null.
