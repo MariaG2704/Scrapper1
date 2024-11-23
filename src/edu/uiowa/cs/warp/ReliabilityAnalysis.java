@@ -84,7 +84,7 @@ public class ReliabilityAnalysis {
 	 */
 	private WorkLoad workLoad;
 	/**
-	 * The program variable specifies Program invoked on reliabilityAnalysis  <br>
+	 * The program variable specifies the priority schedule   <br>
 	 */
 	private Program program;
 	
@@ -117,7 +117,7 @@ public class ReliabilityAnalysis {
 	/**
 	 * Constructor for creating a ReliabilityAnalysis program 
   	 * 
-  	 * @param program defines the program you are using for the reliabilityAnalysis 
+  	 * @param program defines the priority schedule you are using for the reliabilityAnalysis 
 	 */
 	public ReliabilityAnalysis(Program program) {
 		this.program = program;
