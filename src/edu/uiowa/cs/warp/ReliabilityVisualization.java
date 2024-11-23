@@ -65,7 +65,7 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	   header.add(createTitle());
 	   header.add(String.format("Scheduler Name: %s\n", program.getSchedulerName()));
 	   /* The following parameters are output based on a special schedule or the fault model */
-	   if (program.getNumFaults() > 0) { // only specify when deterministic fault model is assumed
+	   if (program.getNumFaults() > 0) { // if deterministic fault model
 		   header.add(String.format("numFaults: %d\n", program.getNumFaults()));
 	   }
 	   header.add(String.format("M: %s\n", String.valueOf(program.getMinPacketReceptionRate())));
