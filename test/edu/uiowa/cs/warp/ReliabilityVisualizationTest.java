@@ -44,6 +44,7 @@ class ReliabilityVisualizationTest {
 	private Integer nChannels = 16;
 	private ScheduleChoices schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 	private WarpInterface warp;
+
 	
 	 
 	/**
@@ -56,22 +57,10 @@ class ReliabilityVisualizationTest {
 	    //Initialize workload with default values given in WorkLoad.java comment
 		workLoad = new WorkLoad(MIN_LQ, E2E, INPUT_FILE);
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		
 	
 	 }
-	
-	
-//	private void setUpExample1a() {
-//		
-//		workLoad = new WorkLoad(MIN_LQ, E2E, INPUT_FILE);
-//		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-//		
-//		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
-//	    
-//		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-//		
-//	}
-	
-	
+		
 	
 	
 	/**
@@ -87,6 +76,7 @@ class ReliabilityVisualizationTest {
 		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);
 		assertNotNull(reliabilityVisualization.displayVisualization());
 	}
+	
 	
 	/**
 	 * Test for the displayVisualization() method checking that output of method is a GuiVisualization object.
@@ -118,9 +108,10 @@ class ReliabilityVisualizationTest {
 	 */
 	@Test
 	void testCreateHeader_Contents() {	
+		
 
 		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);
-		
+	
 		//System.out.println(reliabilityVisualization.createHeader());
 		
 		Description desc = new Description();
@@ -143,21 +134,23 @@ class ReliabilityVisualizationTest {
 		
 		assertNotNull(reliabilityVisualization.createHeader());
 		
-		
+	
 	}
 	
 	
-	//do metrics change based on the fault model we use
-	
+	/**
+	 * Testing without numFaultmodel for input file Example1a.
+	 */
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	@Test
-	void testCreateHeader2() {
+	void testCreateHeader_Example1a() {
 		
 		nChannels = 16;
 		workLoad = new WorkLoad(0.9, 0.99, "Example1a.txt");
-		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
-	    
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;  
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);
+	
 		
 		Description desc = new Description();
 		desc.add("Reliability Analysis for graph Example1A\n");
@@ -166,24 +159,58 @@ class ReliabilityVisualizationTest {
 		desc.add("E2E: 0.99\n");
 		desc.add("nChannels: 16\n");
 		
-		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
 		
 		//System.out.println(reliabilityVisualization.createHeader());
 		
-		assertEquals(desc, reliabilityVisualization.createHeader());
+		assertEquals(desc, reliabilityVisualization.createHeader(), "Header was not created properly for Example1a.txt , no numFaults" );
 		
 		
 	}
 	
+
+	/**
+	 * Testing with a different M value for StressTest4
+	 */
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	@Test
-	void testCreateHeaderWithNumFaultModel() {
+	void testCreateHeader_StressTest4_M() {
+		
+		nChannels = 16;
+		workLoad = new WorkLoad(0.95, 0.99, "StressTest4.txt");
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;  
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);
+	
+		
+		Description desc = new Description();
+		desc.add("Reliability Analysis for graph StressTest4\n");
+		desc.add("Scheduler Name: Priority\n");
+		desc.add("M: 0.95\n");
+		desc.add("E2E: 0.99\n");
+		desc.add("nChannels: 16\n");
+		
+		
+		//System.out.println(reliabilityVisualization.createHeader());
+		
+		assertEquals(desc, reliabilityVisualization.createHeader(), 
+				"Header was not created properly for StressTest4, testing with a input file with a different M value (0.95)" );
+	
+		
+	}
+	
+	
+	/**
+	 * Testing creating header with num Fault model for Example1a
+	 */
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	@Test
+	void testCreateHeader_Example1a_NumFaultModel() {
 		
 		nChannels = 16;
 		workLoad = new WorkLoad(1, 0.9, 0.99, "Example1a.txt");
-		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
-	    
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
 		
 		Description desc = new Description();
 		desc.add("Reliability Analysis for graph Example1A\n");
@@ -193,32 +220,30 @@ class ReliabilityVisualizationTest {
 		desc.add("E2E: 0.99\n");
 		desc.add("nChannels: 16\n");
 		
-		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
-		
 		//System.out.println(reliabilityVisualization.createHeader());
 		
-		assertEquals(desc, reliabilityVisualization.createHeader());
+		assertEquals(desc, reliabilityVisualization.createHeader(), 
+				"Header was not created properly for Example1a.txt - numFault model is on");
 		
 		
 	}
 	
 	
 	
-	
+	/**
+	 * NumFault Model on
+	 */
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	@Test
-	void testCreateColumnHeader() {
+	void testCreateColumnHeader_Example1a() {
 		
 		nChannels = 16;
 		workLoad = new WorkLoad(1, 0.9, 0.99, "Example1a.txt");
-		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
-	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;   
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);		
 		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
-		
-		String singleDesc ="";
-		//Description desc = new Description();
+
+
 		ArrayList<String> desc = new ArrayList<String>();
 		
 		desc.add("F0:A");
@@ -232,34 +257,112 @@ class ReliabilityVisualizationTest {
 		String actualColumnHeaderString = Arrays.toString(reliabilityVisualization.createColumnHeader());
 		String expectedColumnHeaderString = desc.toString();
 		
-		System.out.println(desc.toString());
 		
-		System.out.println(Arrays.toString(reliabilityVisualization.createColumnHeader()));
+		assertEquals(expectedColumnHeaderString, actualColumnHeaderString, 
+				"ColumnHeader was not created properly for Example1a.txt - testing with NumFault model");
 		
-		assertEquals(expectedColumnHeaderString, actualColumnHeaderString);
-		
-		//IN PROGRESS
 		
 	}
 	
 	
+		
+	/**
+	 * Tests creating a column header for a different file
+	 * with a relatively large amount of columns
+	 */
+	void testCreateColumnHeader_StressTest() {
+			
+			ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		
+		
+			//Description desc = new Description();
+			ArrayList<String> desc = new ArrayList<String>();
+			
+			desc.add("F1:B");
+			desc.add("F1:C");
+			desc.add("F1:D");
+			desc.add("F2:C");
+			desc.add("F2:D");
+			desc.add("F2:E");
+			desc.add("F2:F");
+			desc.add("F2:G");
+			desc.add("F2:H");
+			desc.add("F2:I");
+			desc.add("F3:C");
+			desc.add("F3:D");
+			desc.add("F3:E");
+			desc.add("F3:J");
+			desc.add("F3:K");
+			desc.add("F3:L");
+			desc.add("F4:A");
+			desc.add("F4:B");
+			desc.add("F4:C");
+			desc.add("F4:D");
+			desc.add("F4:E");
+			desc.add("F4:J");
+			desc.add("F4:K");
+			desc.add("F4:L");
+			desc.add("F5:A");
+			desc.add("F5:B");
+			desc.add("F5:C");
+			desc.add("F5:D");
+			desc.add("F5:E");
+			desc.add("F6:B");
+			desc.add("F6:C");
+			desc.add("F6:D");
+			desc.add("F7:A");
+			desc.add("F7:B");
+			desc.add("F7:C");
+			desc.add("F7:D");
+			desc.add("F7:E");
+			desc.add("F8:C");
+			desc.add("F8:D");
+			desc.add("F8:E");
+			desc.add("F8:F");
+			desc.add("F8:G");
+			desc.add("F8:H");
+			desc.add("F8:I");
+			desc.add("F9:A");
+			desc.add("F9:B");
+			desc.add("F9:C");
+			desc.add("F9:D");
+			desc.add("F9:E");
+			desc.add("F9:J");
+			desc.add("F9:K");
+			desc.add("F9:L");
+			desc.add("F10:C");
+			desc.add("F10:D");
+			desc.add("F10:E");
+			desc.add("F10:J");
+			desc.add("F10:K");
+			desc.add("F10:L");
+
+			String actualColumnHeaderString = Arrays.toString(reliabilityVisualization.createColumnHeader());
+			String expectedColumnHeaderString = desc.toString();
+			
+			
+			assertEquals(expectedColumnHeaderString, actualColumnHeaderString, 
+					"ColumnHeader was not created properly for StressTest4.txt");
+			
+			
+		}
 	
 	
 	
 	
 	
 	
-	
+	/**
+	 * Testing a file without a numfault model
+	 */
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	@Test
-	void testCreateVisualizationDataDummyTable() {
+	void testCreateVisualizationDataDummyTable_Example1a() {
 		
 		nChannels = 16;
 		workLoad = new WorkLoad(1, 0.9, 0.99, "Example1a.txt");
-		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
-	    
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY; 
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		
 		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
 		
 		System.out.println("test");
@@ -273,23 +376,191 @@ class ReliabilityVisualizationTest {
 		
 		Program program = warp.toProgram();
 		
+		//String[][] expectedData = new String[numRows][numColumns];
+		
 		String[][] createdData = reliabilityVisualization.createVisualizationData();
 		
 		int actualNumRows = createdData.length;
 		int actualNumColumns = createdData[0].length;
-		
-		
-		assertEquals(numRows, actualNumRows);
-		assertEquals(numColumns, actualNumColumns);
+
+		for(int i = 0; i < numRows; i++) {
+			assertEquals("1.0", createdData[i][0], "First entry in each row should be 1.0");
+		}	
+		assertEquals(numRows, actualNumRows, "Number of rows not properly calculated for Example1a.txt");
+		assertEquals(numColumns, actualNumColumns, "Number of columns not properly calculated for Example1a.txt");
 	
 		
 			
 			
 	}
 	
+	/**
+	 * Tests making the dummy table for a larger input file
+	 */
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	@Test
+	void testCreateVisualizationDataDummyTable_StressTest4() {
+		
+		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		
+		
+		//System.out.println(Arrays.toString(reliabilityVisualization.createVisualizationData()));
+		
+		//Counted from output file, posted on ICON
+		int numRows = 300;
+		int numColumns = 59;
+		
+		
+		Program program = warp.toProgram();
+		
+		String[][] createdData = reliabilityVisualization.createVisualizationData();
+		
+		int actualNumRows = createdData.length;
+		int actualNumColumns = createdData[0].length;
+		
+		for(int i = 0; i < numRows; i++) {
+			assertEquals("1.0", createdData[i][0], "First entry in each row should be 1.0");
+		}	
+		assertEquals(numRows, actualNumRows, "Number of rows not properly calculated for StressTest4.txt");
+		assertEquals(numColumns, actualNumColumns, "Number of columns not properly calculated for StressTest4.txt");
+			
+			
+	}
+	
+	
+	/**
+	 * Makes sure that even with a NumFaultModel, the number of rows is 
+	 * properly counted - risk of a "off-by-one" situation is possible since
+	 * it takes an extra line to print the numFaults: 1
+	 */
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	@Test
+	void testCreateVisualizationDataDummyTable_Example1a_NumFault() {
+		
+		nChannels = 16;
+		workLoad = new WorkLoad(0.9, 0.99, "Example4.txt");
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		
+		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		
+		
+		//System.out.println(Arrays.toString(reliabilityVisualization.createVisualizationData()));
+		
+		//Counted from output file, posted on ICON
+		int numRows = 20;
+		int numColumns = 8;
+		
+		
+		Program program = warp.toProgram();
+		
+		String[][] createdData = reliabilityVisualization.createVisualizationData();
+		
+		int actualNumRows = createdData.length;
+		int actualNumColumns = createdData[0].length;
+		
+		for(int i = 0; i < numRows; i++) {
+			assertEquals("1.0", createdData[i][0], "First entry in each row should be 1.0");
+		}	
+		assertEquals(numRows, actualNumRows, "Number of rows not properly calculated for Example4.txt- inputFile is a NumFault model");
+		assertEquals(numColumns, actualNumColumns, "Number of columns not properly calculated for Example4.txt - inputFile is a NumFault model");
+			
+			
+	}
 	
 
-	/*
+
+	
+	/**
+	 * Not numfault model
+	 * 
+	 */
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	@Test
+	void testCreateTitle_Example1a(){
+		
+		nChannels = 16;
+		workLoad = new WorkLoad(0.9, 0.99, "Example1a.txt");
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		
+		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);	
+		
+		String actualTitle = reliabilityVisualization.createTitle();
+		
+		//Really not sure if this one is correct because this could result in extra spaces between lines
+		String expectedTitle = "Reliability Analysis for graph Example1A\n";
+		
+		
+		System.out.print(actualTitle);
+		System.out.print(expectedTitle);
+		
+		
+		assertEquals(expectedTitle, actualTitle, 
+				"Titles either don't match or there is a newline error for Example1a.txt - not a numFaultmodel");
+		
+	
+	}
+	
+	/**
+	 * Not a numfault model
+	 * Tests the create title for a different, much larger, input file
+	 */
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	@Test
+	void testCreateTitle_StressTest4(){
+		
+	
+		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);	
+		
+		String actualTitle = reliabilityVisualization.createTitle();
+		//Really not sure if this one is correct because this could result in extra spaces between lines
+		String expectedTitle = "Reliability Analysis for graph StressTest4\n";
+		
+		
+		System.out.print(actualTitle);
+		System.out.print(expectedTitle);
+		
+		
+		assertEquals(expectedTitle, actualTitle, 
+				"Titles either don't match or there is a newline error for StressTest4 - testing with a larger input");
+		
+	
+	}
+	
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	@Test
+	void testCreateTitle_(){
+		
+		nChannels = 16;
+		workLoad = new WorkLoad(1, 0.9, 0.99, "Example4.txt");
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		
+		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);	
+		
+		String actualTitle = reliabilityVisualization.createTitle();
+		
+		//Really not sure if this one is correct because this could result in extra spaces between lines
+		String expectedTitle = "Reliability Analysis for graph Example4\n";
+		
+		System.out.print(actualTitle);
+		System.out.print(expectedTitle);
+		
+		
+		assertEquals(expectedTitle, actualTitle, 
+				"Titles either don't match or there is a newline error for Example4.txt - testing with a NumFault model");
+		
+	
+	}
+	
+	
+	
+
+	/* Saving this test for when reliabilityAnalysis gets implemented
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	@Test
 	void testCreateVisualizationData() {
@@ -380,49 +651,5 @@ class ReliabilityVisualizationTest {
 	}
 	*/
 	
-	//REVIEW THIS ONE!!!!!!!!!
-	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	@Test
-	void testCreateTitle (){
-		
-		nChannels = 16;
-		workLoad = new WorkLoad(1, 0.9, 0.99, "Example1a.txt");
-		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
-	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		
-		ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);	
-		
-		String actualTitle = reliabilityVisualization.createTitle();
-		
-		//Really not sure if this one is correct because this could result in extra spaces between lines
-		String expectedTitle = "Reliability Analysis for graph Example1A\n";
-		
-		
-		System.out.print(actualTitle);
-		System.out.print(expectedTitle);
-		
-		
-		assertEquals(expectedTitle, actualTitle);
-		
-	
-	}
-	
-	
-	
-	
-	//can i create the table, the table of diffferent sizes
-	
-	//just test creating a ra file and see what an output likes
-	// same structure as WorkLoadTest.java
-	//
-	
-	/*
-	 * General test of running reliaibility analays
-	 * k-Fault model and -e and -m
-	 * What tings are for ReliabilityVisualization - does it have a title
-	 * does it remove
-	 * 
-	 */
 	
 }
