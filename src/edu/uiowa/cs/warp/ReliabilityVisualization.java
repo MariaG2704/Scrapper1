@@ -26,8 +26,9 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	private WarpInterface warp; //the warp program
 	private ReliabilityAnalysis ra; //reliability analysis object
 	private Program program;
-	private ReliabilityTable sourceCode;
+	private ReliabilityTable sourceTable;
 	private WorkLoad workLoad;
+	private ArrayList<String> flowNames; 
 	
 	/**
 	 * Constructor for ReliabilityVisualization that sets the 
@@ -40,7 +41,8 @@ public class ReliabilityVisualization  extends VisualizationObject {
    		this.workLoad = warp.toWorkload();
    		this.program = warp.toProgram();
    		this.ra = warp.toReliabilityAnalysis();
-   		this.sourceCode = ra.getReliabilities();	
+   		this.sourceTable = ra.getReliabilities();	
+   		this.flowNames = workLoad.getFlowNamesInPriorityOrder(); 
    	}
 	
 	/**
@@ -81,10 +83,8 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	 * @return columnNames An array of strings that represent the column header
 	 */
 	public String[] createColumnHeader() {
-		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder(); 
-		//need to access the flowNames in order from flow
 		
-		int totalNodes = sourceCode.getNumColumns();
+		int totalNodes = sourceTable.getNumColumns();
 		
 		String[] columnNames = new String[totalNodes];
 		
@@ -112,14 +112,14 @@ public class ReliabilityVisualization  extends VisualizationObject {
 	public String[][] createVisualizationData() {
 		String[][] visualizationData= null;
 		if (visualizationData == null) {
-			int numRows = sourceCode.getNumRows();
-			int numColumns = sourceCode.getNumColumns();
+			int numRows = sourceTable.getNumRows();
+			int numColumns = sourceTable.getNumColumns();
 			visualizationData = new String[numRows][numColumns + 1];
 			
 			for (int row = 0; row < numRows; row++) {
 				visualizationData[row][0] = String.format("1.0");
 		        for (int column = 0; column < numColumns; column++) {
-		        	visualizationData[row][column + 1] = Double.toString(sourceCode.get(row, column));
+		        	visualizationData[row][column + 1] = Double.toString(sourceTable.get(row, column));
 		        }
 			}
 		}
