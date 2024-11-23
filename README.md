@@ -53,7 +53,7 @@ WARP is interacted with via the command line interface (CLI). The primary comman
  - **tomlooi**:
  	<ul> 
  	<li> Wrote and Generated JavaDoc comments for ReliabilityVisualization, ReliabilityVisualizationTest 
- 	<li> Updated the UML Sequence diagram located in ARTIFACTS under Sprint2 called  
+ 	<li> Updated the UML Sequence diagram and diagram code located in ARTIFACTS under Sprint2 called "Sprint2 Sequence Diagram".txt/.png
  	<li> Updated UML class diagrams reliability and saved a picture of it located in ARTIFACTS under Sprint2 called Reliability Sprint2.umlcd.png
  	</ul>
 
