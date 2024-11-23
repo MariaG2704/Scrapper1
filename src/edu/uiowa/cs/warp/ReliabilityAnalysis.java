@@ -79,7 +79,13 @@ public class ReliabilityAnalysis {
 	 * The numFaults variable specifies the number of faults  <br>
 	 */
 	private Integer numFaults;
+	/**
+	 * The workLoad variable specifies WorkLoad invoked on reliabilityAnalysis  <br>
+	 */
 	private WorkLoad workLoad;
+	/**
+	 * The program variable specifies the priority schedule   <br>
+	 */
 	private Program program;
 	
 
@@ -108,8 +114,12 @@ public class ReliabilityAnalysis {
 		this.numFaults = numFaults;
 	}
 
+	/**
+	 * Constructor for creating a ReliabilityAnalysis program 
+  	 * 
+  	 * @param program defines the priority schedule you are using for the reliabilityAnalysis 
+	 */
 	public ReliabilityAnalysis(Program program) {
-		// TODO Auto-generated constructor stub
 		this.program = program;
 		this.workLoad = program.toWorkLoad();
 		this.numFaults = workLoad.getNumFaults();
@@ -357,7 +367,11 @@ public class ReliabilityAnalysis {
 		}
 		return totalNodes;
 	}
-	
+	/**
+	 * Supposed to create a table from the reliabilities but right now just creates a dummy table for implementing ReliabilityVisualization
+	 * 
+	 * @return ReliabilityTable a table made from all the reliabilities
+	 */
 	public ReliabilityTable getReliabilities() {
 		ReliabilityTable dummyReliability; 
 		var numColumns = getTotalNumberOfNodes(); 
