@@ -23,9 +23,9 @@ WARP is interacted with via the command line interface (CLI). The primary comman
 	
 ###Sprint 2
 - **Objective**: Implement ReliablityVisualization to work with ReliablityAnalysis and to create Junit tests the test that implementation. Also to identity the next high-level plans for Sprint3. 
--**Remember**: High level plans for next Sprint in pdf document located in the ARTIFACTS folder under Sprint2 called Project Plan for Sprint 3.pdf
+- **Remember**: High level plans for next Sprint in pdf document located in the ARTIFACTS folder under Sprint2 called Project Plan for Sprint 3.pdf
 - **Status**: Finished with ReliabilityVisualization, ready to implement ReliabilityAnalysis 
---**Credits**:
+- **Credits**:
 - **wplucas**: 
 	<ul> 
 	<li> Wrote methods creatHeader(),createColumnHeader(), and createTitle() in ReliabilityVisulatization 
