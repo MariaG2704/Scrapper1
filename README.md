@@ -22,7 +22,43 @@ WARP is interacted with via the command line interface (CLI). The primary comman
 	</ul>
 	
 ###Sprint 2
-- 
+- **Objective**: Implement ReliablityVisualization to work with ReliablityAnalysis and to create Junit tests the test that implementation. Also to identity the next high-level plans for Sprint3. 
+-**Remember**: High level plans for next Sprint in pdf document located in the ARTIFACTS folder under Sprint2 called Project Plan for Sprint 3.pdf
+- **Status**: Finished with ReliabilityVisualization, ready to implement ReliabilityAnalysis 
+--**Credits**:
+- **wplucas**: 
+	<ul> 
+	<li> Wrote methods creatHeader(),createColumnHeader(), and createTitle() in ReliabilityVisulatization 
+	<li> Wrote methods getTotalNumberOfNodes() and getReliabilties() in ReliabilityAnalysis 
+	</ul>
+ - **msgauna**:
+ 	<ul> 
+ 	<li> Wrote methods createVisualizationData() and displayVisualization() in ReliabiltyVisualization 
+ 	<li> Wrote README for Sprint2 and the Project Plan document located in ARTIFACTS under Sprint2 called Project Plan for Sprint 3.pdf
+ 	</ul>
+ - **nnahra**:
+ 	<ul> 
+ 	<li> Did all the JUnit tests for ReliabibilityVisualizationTest class including: 
+ 		<ul>
+ 		<li>setUp()
+ 		<li>testCreateColumnHeader()
+ 		<li>testCreateHeaderContents()
+ 		<li>testCreateHeaderIsDescription()
+ 		<li>testCreateHeaderIsNotNull()
+ 		<li>testCreateHeader2()
+ 		<li>testCreateHeaderWithNumFaultModel()
+ 		<li>testCreateTitle()
+ 		<li>testCreateVisualizationDataRowsAndColomnsWithExaple1aDummyTable()
+ 		<li>testDisplayVisualizationInstanceOfGuiVisualization()
+ 		<li>testDisplayVisualizationNotNull()
+ 		</ul>
+ 	</ul>
+ - **tomlooi**:
+ 	<ul> 
+ 	<li> Wrote and Generated JavaDoc comments for ReliabilityVisualization, ReliabilityVisualizationTest 
+ 	<li> Updated the UML Sequence diagram located in ARTIFACTS under Sprint2 called  
+ 	<li> Updated UML class diagrams reliability and saved a picture of it located in ARTIFACTS under Sprint2 called Reliability Sprint2.umlcd.png
+ 	</ul>
 
 ## Homework Assignments
 

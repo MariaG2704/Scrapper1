@@ -257,106 +257,35 @@ class ReliabilityVisualizationTest {
 		String actualColumnHeaderString = Arrays.toString(reliabilityVisualization.createColumnHeader());
 		String expectedColumnHeaderString = desc.toString();
 		
+		System.out.println(desc.toString());
 		
-		assertEquals(expectedColumnHeaderString, actualColumnHeaderString, 
-				"ColumnHeader was not created properly for Example1a.txt - testing with NumFault model");
+		System.out.println(Arrays.toString(reliabilityVisualization.createColumnHeader()));
 		
+		assertEquals(expectedColumnHeaderString, actualColumnHeaderString);
+		
+		//IN PROGRESS
 		
 	}
 	
 	
-		
+	
+	
+	
+	
+	
 	/**
-	 * Tests creating a column header for a different file
-	 * with a relatively large amount of columns
+	 * Test for the createVisualizationData method. Tests that the table produced by the method contains the appropriate number of rows and columns produced by 
+	 * 
+	 * Since implementation of the methods necessary to populate the table with appropriate values in ReliabilityAnalysis.java 
+	 * are outside the scope of Sprint2, the content of the table produced by createVisualizationData should contain values 0.0, with the exception of the first column, 
+	 * which should contain values 1.0 (as the probability of the packet having reached the first node in the first flow is guaranteed no matter the input).
 	 */
-	void testCreateColumnHeader_StressTest() {
-			
-			ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
-		
-		
-			//Description desc = new Description();
-			ArrayList<String> desc = new ArrayList<String>();
-			
-			desc.add("F1:B");
-			desc.add("F1:C");
-			desc.add("F1:D");
-			desc.add("F2:C");
-			desc.add("F2:D");
-			desc.add("F2:E");
-			desc.add("F2:F");
-			desc.add("F2:G");
-			desc.add("F2:H");
-			desc.add("F2:I");
-			desc.add("F3:C");
-			desc.add("F3:D");
-			desc.add("F3:E");
-			desc.add("F3:J");
-			desc.add("F3:K");
-			desc.add("F3:L");
-			desc.add("F4:A");
-			desc.add("F4:B");
-			desc.add("F4:C");
-			desc.add("F4:D");
-			desc.add("F4:E");
-			desc.add("F4:J");
-			desc.add("F4:K");
-			desc.add("F4:L");
-			desc.add("F5:A");
-			desc.add("F5:B");
-			desc.add("F5:C");
-			desc.add("F5:D");
-			desc.add("F5:E");
-			desc.add("F6:B");
-			desc.add("F6:C");
-			desc.add("F6:D");
-			desc.add("F7:A");
-			desc.add("F7:B");
-			desc.add("F7:C");
-			desc.add("F7:D");
-			desc.add("F7:E");
-			desc.add("F8:C");
-			desc.add("F8:D");
-			desc.add("F8:E");
-			desc.add("F8:F");
-			desc.add("F8:G");
-			desc.add("F8:H");
-			desc.add("F8:I");
-			desc.add("F9:A");
-			desc.add("F9:B");
-			desc.add("F9:C");
-			desc.add("F9:D");
-			desc.add("F9:E");
-			desc.add("F9:J");
-			desc.add("F9:K");
-			desc.add("F9:L");
-			desc.add("F10:C");
-			desc.add("F10:D");
-			desc.add("F10:E");
-			desc.add("F10:J");
-			desc.add("F10:K");
-			desc.add("F10:L");
-
-			String actualColumnHeaderString = Arrays.toString(reliabilityVisualization.createColumnHeader());
-			String expectedColumnHeaderString = desc.toString();
-			
-			
-			assertEquals(expectedColumnHeaderString, actualColumnHeaderString, 
-					"ColumnHeader was not created properly for StressTest4.txt");
-			
-			
-		}
-	
-	
-	
-	
-	
-	
 	/**
 	 * Testing a file without a numfault model
 	 */
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	@Test
+	void testCreateVisualizationData_RowsAndColumnsWithExample1aDummyTable() {
 	void testCreateVisualizationDataDummyTable_Example1a() {
 		
 		nChannels = 16;

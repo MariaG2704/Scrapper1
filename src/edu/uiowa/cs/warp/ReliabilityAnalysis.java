@@ -1,4 +1,5 @@
 package edu.uiowa.cs.warp;
+import java.util.Set;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,7 +51,7 @@ public class ReliabilityAnalysis {
 	
 	/**
 	 * The DEFAULT_TX_NUM variable specifies the default transmission number <br>
-	 */
+	 */   
 	private static final Integer DEFAULT_TX_NUM = 0;
 	/**
 	 * The DEFAULT_M variable specifies the default minimum packet reception rate <br>
@@ -188,33 +189,32 @@ public class ReliabilityAnalysis {
 																	   Double M, 
 																	   boolean optimizationRequested) {
 		int nNodesInFlow = flow.nodes.size();
-		
-	    /* ArrayList to track nPushes for each node in this flow (same as nTx per link) */
-	    ArrayList<Integer> nPushes = initalizePushArray(nNodesInFlow);
+		/* ArrayList to track nPushes for each node in this flow (same as nTx per link) */
+		ArrayList<Integer> nPushes = initalizePushArray(nNodesInFlow);
 	    
-	    Double minLinkReliabilityNeeded = calculateMinLinkReliability(e2e, nNodesInFlow -1);
+		Double minLinkReliabilityNeeded = calculateMinLinkReliability(e2e, nNodesInFlow -1);
 	            
 		ReliabilityTable reliabilityWindow = initializeReliabilityWindow(nNodesInFlow);
 		ArrayList<Double> currentReliabilityRow = initializeReliabilityRow(reliabilityWindow);
-	    //Double e2eReliabilityState = currentReliabilityRow[nNodesInFlow - 1];
+		//Double e2eReliabilityState = currentReliabilityRow[nNodesInFlow - 1];
 		Double e2eReliabilityState = currentReliabilityRow.get(nNodesInFlow - 1);
 	    
 	  
-	    var timeSlot = 0;
-	    while (e2eReliabilityState < e2e) {
-	    	currentReliabilityRow = computeReliabilityForNxtTmSlt(currentReliabilityRow,
+		var timeSlot = 0;
+		while (e2eReliabilityState < e2e) {
+			currentReliabilityRow = computeReliabilityForNxtTmSlt(currentReliabilityRow,
 	    															nNodesInFlow, M,
 	    															minLinkReliabilityNeeded,
 	    															nPushes);
-	    	e2eReliabilityState = currentReliabilityRow.get(nNodesInFlow - 1);
-	    	//e2eReliabilityState = currentReliabilityRow[nNodesInFlow - 1];
-	    	updateReliabilityWindow(reliabilityWindow, currentReliabilityRow, timeSlot);
-	    	timeSlot++;
-	    }
+			e2eReliabilityState = currentReliabilityRow.get(nNodesInFlow - 1);
+			//e2eReliabilityState = currentReliabilityRow[nNodesInFlow - 1];
+			updateReliabilityWindow(reliabilityWindow, currentReliabilityRow, timeSlot);
+			timeSlot++;
+		}
 
-	    nPushes.set(nNodesInFlow,reliabilityWindow.size());
-	    // return new ArrayList<>(Arrays.asList(nPushes));
-	    return nPushes;
+		nPushes.set(nNodesInFlow,reliabilityWindow.size());
+		// return new ArrayList<>(Arrays.asList(nPushes));
+		return nPushes;
 	}
 	/**
 	 * Fills an ArrayList called nPushes with values of 0
@@ -369,18 +369,23 @@ public class ReliabilityAnalysis {
 		// create a hashmap mapping so that I can index back into it
 
 	public Double findSrc(String instruction, Double prevSrcNodeState) {
-	   // TODO implement this operation
-	   throw new UnsupportedOperationException("not implemented");
+		// TODO implement this operation
+		throw new UnsupportedOperationException("not implemented");
 	}
 
 	public Double findSnk(String instruction, Double prevSnkNodeState) {
-	   // TODO implement this operation
-	   throw new UnsupportedOperationException("not implemented");
+		// TODO implement this operation
+		throw new UnsupportedOperationException("not implemented");
 	}
 
 	public Double findNewSnkNodeState(Double currentSnkNode, Double currentSrcNode, Double M) {
-	   // TODO implement this operation
-	   throw new UnsupportedOperationException("not implemented");
+		// TODO implement this operation
+		throw new UnsupportedOperationException("not implemented");
+	}
+	
+	protected Set<String> buildReliabilityTable() {
+		// TODO implement this operation
+		throw new UnsupportedOperationException("not implemented");
 	}
 
 }
