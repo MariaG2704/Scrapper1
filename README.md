@@ -8,7 +8,7 @@ This codebase is used for the University of Iowa CS:2820 Introduction to Softwar
 WARP is interacted with via the command line interface (CLI). The primary command is `warp`, followed by various argparser options that can be supplied to modify behavior. Users can specify the network workload and topology, which consists of real-time flows between sensors, controllers, and actuators.
 
 ---
-### Project 
+### Project:
 
 ###Sprint 1
 - **Objective**： Develop a UML Sequence Diagram; create high-level plans for future Sprints of the project.
