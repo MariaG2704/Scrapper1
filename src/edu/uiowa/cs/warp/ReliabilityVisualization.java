@@ -19,7 +19,7 @@ import java.util.Arrays;
  * @version 1.8 Fall 2024
  *  *
  */
-public class ReliabilityVisualization  extends VisualizationObject {
+public class ReliabilityVisualization extends VisualizationObject {
 
 	private static final String SOURCE_SUFFIX = ".ra"; //file type of warp file
 	private static final String OBJECT_NAME = "Reliability Analysis";
