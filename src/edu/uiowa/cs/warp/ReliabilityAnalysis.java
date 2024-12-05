@@ -373,31 +373,29 @@ public class ReliabilityAnalysis {
 	 * @return ReliabilityTable a table made from all the reliabilities
 	 */
 	public ReliabilityTable getReliabilities() {
-		ReliabilityTable dummyReliability; 
-		var numColumns = getTotalNumberOfNodes(); 
-		var numRows = program.getSchedule().getNumRows();
-		dummyReliability = new ReliabilityTable(numRows, numColumns);
-	 
-		return dummyReliability;
+		return buildReliabilityTable();
 	}
 		// create a hashmap mapping so that I can index back into it
 
 	public Double findSrc(String instruction, Double prevSrcNodeState) {
 		// TODO implement this operation
 		throw new UnsupportedOperationException("not implemented");
+		//  <- Src
 	}
 
 	public Double findSnk(String instruction, Double prevSnkNodeState) {
 		// TODO implement this operation
 		throw new UnsupportedOperationException("not implemented");
+		// ^ Sink
 	}
 
 	public Double findNewSnkNodeState(Double currentSnkNode, Double currentSrcNode, Double M) {
 		// TODO implement this operation
 		throw new UnsupportedOperationException("not implemented");
+		//Equation 
 	}
 	
-	protected Set<String> buildReliabilityTable() {
+	protected ReliabilityTable buildReliabilityTable() {
 		// TODO implement this operation
 		throw new UnsupportedOperationException("not implemented");
 	}
