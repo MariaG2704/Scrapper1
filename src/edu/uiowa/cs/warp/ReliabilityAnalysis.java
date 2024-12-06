@@ -4,7 +4,11 @@ import java.util.Set;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Vector;
+
+import edu.uiowa.cs.warp.WarpDSL.InstructionParameters;
+
 import java.util.Collection;
 
 /**
@@ -88,6 +92,8 @@ public class ReliabilityAnalysis {
 	 */
 	private Program program;
 	
+	private ArrayList<String> headerRow;
+	
 
 	/**
 	 * Constructor for predictive fault model.
@@ -123,9 +129,18 @@ public class ReliabilityAnalysis {
 		this.program = program;
 		this.workLoad = program.toWorkLoad();
 		this.numFaults = workLoad.getNumFaults();
-		
+		if( numFaults > 0) {
+			this.model = true;
+		}else {
+			this.model = false;
+		}
+			
 		this.minPacketReceptionRate = workLoad.getMinPacketReceptionRate();
 		this.e2e = workLoad.getE2e();
+		buildReliabilityTable();
+		// need program.getScheduler to make reliability table 
+		//read pass into warp get instrustions paraameters which parses it get the flow, source, and the sink, know if its a pull or push function, 
+		//tells us what index that needs to be change and then update it for the row your doing 
 		
 		
 	}
@@ -359,13 +374,35 @@ public class ReliabilityAnalysis {
 	 * @return totalNodes The total number of nodes in each workLoad flow
 	 */
 	public int getTotalNumberOfNodes() {
-		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder(); 
-
-		int totalNodes = 0;
-		for (String flowName : flowNames) {
-			totalNodes += workLoad.getFlows().get(flowName).getNodes().size();
+//		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder(); 
+//
+//		int totalNodes = 0;
+//		for (String flowName : flowNames) {
+//			totalNodes += workLoad.getFlows().get(flowName).getNodes().size();
+//		}
+//		return totalNodes;
+		return headerRow.size();
+	}
+	protected ArrayList<String> createHeaderRow() {
+		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder();
+		ArrayList<String> headerRow = new ArrayList<String>();
+ 		for(String flowName: flowNames) {
+ 			ArrayList<Node> flows = workLoad.getFlows().get(flowName).getNodes();
+ 			for(Node nodes:flows) {
+ 				headerRow.add(nodes.getName());
+ 			}
+		
 		}
-		return totalNodes;
+		return headerRow;
+	}
+	
+	protected HashMap<String, Integer> headerRowHashMap(ArrayList<String> headerRow){
+		HashMap<String,Integer> indexes = new HashMap<String,Integer>();
+		for(int i = 0 ;i<headerRow.size();i++) {
+			String flowName = headerRow.get(i);
+			indexes.put(flowName,i);
+		}
+		return indexes;
 	}
 	/**
 	 * Supposed to create a table from the reliabilities but right now just creates a dummy table for implementing ReliabilityVisualization
@@ -375,7 +412,6 @@ public class ReliabilityAnalysis {
 	public ReliabilityTable getReliabilities() {
 		return buildReliabilityTable();
 	}
-		// create a hashmap mapping so that I can index back into it
 
 	public Double findSrc(String instruction, Double prevSrcNodeState) {
 		// TODO implement this operation
@@ -396,8 +432,25 @@ public class ReliabilityAnalysis {
 	}
 	
 	protected ReliabilityTable buildReliabilityTable() {
-		// TODO implement this operation
-		throw new UnsupportedOperationException("not implemented");
+		headerRow = createHeaderRow();
+		Table<String,InstructionTimeSlot> scheduleTable = program.getSchedule();
+		WarpDSL dsl = new WarpDSL();
+		ArrayList<InstructionParameters> instructionsArray = new ArrayList<InstructionParameters>();
+		ReliabilityTable reliabilties = new ReliabilityTable();
+		for(int row = 0; row < scheduleTable.getNumRows();row++) {
+			for(int col =0; col < scheduleTable.getNumColumns(); col++) {
+					
+				instructionsArray = dsl.getInstructionParameters(scheduleTable.get(row).get(col));
+				
+				(InstructionParameters i: instructionsArray){
+					String flowName = i.getFlow();
+					if (!flowName.equals(i.unused())) {
+						
+					}
+				}
+			}
+		}
+		return reliabilties;
 	}
 
 }
