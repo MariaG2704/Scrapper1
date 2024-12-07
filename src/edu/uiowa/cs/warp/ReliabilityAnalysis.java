@@ -437,19 +437,21 @@ public class ReliabilityAnalysis {
 		WarpDSL dsl = new WarpDSL();
 		ArrayList<InstructionParameters> instructionsArray = new ArrayList<InstructionParameters>();
 		ReliabilityTable reliabilties = new ReliabilityTable();
+		InstructionParameters instructionObject;
 		for(int row = 0; row< scheduleTable.getNumRows();row++) {
 			
 			for(int col =0; col < scheduleTable.getNumColumns(); col++) {
 				instructionsArray = dsl.getInstructionParameters(scheduleTable.get(row).toString());	
+				instructionObject = instructionsArray.get(col);
 				
-				for(InstructionParameters i: instructionsArray){
-					String flowName = i.getFlow();
-					if (!flowName.equals(i.unused())) {
-						System.out.print(false);
-					}
+				String flowName = instructionObject.getFlow();
+				String snk = instructionObject.getSnk();
+				if (!flowName.equals(instructionObject.unused())) {
+						String coloumName = flowName +":"+snk;
 				}
 			}
 		}
+	}
 		return reliabilties;
 	}
 
