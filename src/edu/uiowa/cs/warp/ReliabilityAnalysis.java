@@ -439,20 +439,21 @@ public class ReliabilityAnalysis {
 		ReliabilityTable reliabilties = new ReliabilityTable();
 		InstructionParameters instructionObject;
 		for(int row = 0; row< scheduleTable.getNumRows();row++) {
-			
+			String instruction = scheduleTable.get(row).toString();
+			instructionsArray = dsl.getInstructionParameters(instruction);	
 			for(int col =0; col < scheduleTable.getNumColumns(); col++) {
-				instructionsArray = dsl.getInstructionParameters(scheduleTable.get(row).toString());	
+	
 				instructionObject = instructionsArray.get(col);
 				
 				String flowName = instructionObject.getFlow();
 				String snk = instructionObject.getSnk();
 				if (!flowName.equals(instructionObject.unused())) {
-						String coloumName = flowName +":"+snk;
+						String columnName = flowName +":"+snk;
 				}
 			}
 		}
-	}
+	
 		return reliabilties;
-	}
+}
 
 }
