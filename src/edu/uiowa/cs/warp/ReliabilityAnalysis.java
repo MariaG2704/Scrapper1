@@ -404,6 +404,45 @@ public class ReliabilityAnalysis {
 		}
 		return indexes;
 	}
+	
+	protected ArrayList<Double> buildDummyRow(int headerRowSize){
+		ArrayList<Double> dummyRow = new ArrayList<Double>();
+		dummyRow.add(1.0);
+		for (int i = 1;i<headerRowSize;i++) {
+			dummyRow.add(0.0);
+		}
+		return dummyRow;
+	}
+	
+	protected ReliabilityRow createFirstRow(Table<String,InstructionTimeSlot> scheduleTable, 
+												HashMap<String,Integer> headerRowHashMap){
+		ArrayList<Double> dummyRow = buildDummyRow(getTotalNumberOfNodes());
+		ReliabilityRow firstRow = new ReliabilityRow();
+		ArrayList<InstructionParameters> instructionsArray = new ArrayList<InstructionParameters>();
+		InstructionParameters instructionObject;
+		WarpDSL dsl = new WarpDSL();
+		
+		String instruction = scheduleTable.get(0).toString();
+		instructionsArray = dsl.getInstructionParameters(instruction);	
+		for(int col =0; col < scheduleTable.getNumColumns(); col++) {
+		
+			instructionObject = instructionsArray.get(col);
+				
+			String flowName = instructionObject.getFlow();
+			String snk = instructionObject.getSnk();
+			if (!flowName.equals(instructionObject.unused())) {
+				String columnName = flowName +":"+snk;
+				int indexOfSrc = headerRowHashMap.get(columnName);
+					Double nextSnkReliability = calculateNextSinkState(minPacketReceptionRate, dummyRow.get(col+1),
+							dummyRow.get(col), e2e);
+					firstRow.add(nextSnkReliability);
+				}
+			}
+		return firstRow;
+	
+	}
+	
+	
 	/**
 	 * Supposed to create a table from the reliabilities but right now just creates a dummy table for implementing ReliabilityVisualization
 	 * 
@@ -413,17 +452,6 @@ public class ReliabilityAnalysis {
 		return buildReliabilityTable();
 	}
 
-	public Double findSrc(String instruction, Double prevSrcNodeState) {
-		// TODO implement this operation
-		throw new UnsupportedOperationException("not implemented");
-		//  <- Src
-	}
-
-	public Double findSnk(String instruction, Double prevSnkNodeState) {
-		// TODO implement this operation
-		throw new UnsupportedOperationException("not implemented");
-		// ^ Sink
-	}
 
 	public Double findNewSnkNodeState(Double currentSnkNode, Double currentSrcNode, Double M) {
 		// TODO implement this operation
@@ -433,12 +461,17 @@ public class ReliabilityAnalysis {
 	
 	protected ReliabilityTable buildReliabilityTable() {
 		headerRow = createHeaderRow();
+		HashMap<String,Integer> headerRowHashMap = headerRowHashMap(headerRow);
 		Table<String,InstructionTimeSlot> scheduleTable = program.getSchedule();
 		WarpDSL dsl = new WarpDSL();
 		ArrayList<InstructionParameters> instructionsArray = new ArrayList<InstructionParameters>();
-		ReliabilityTable reliabilties = new ReliabilityTable();
+		ReliabilityTable reliabilities = new ReliabilityTable();
+		ReliabilityRow firstRow = createFirstRow(scheduleTable, headerRowHashMap);
+		reliabilities.add(firstRow);
+		
 		InstructionParameters instructionObject;
-		for(int row = 0; row< scheduleTable.getNumRows();row++) {
+		for(int row = 1; row< scheduleTable.getNumRows();row++) {
+			ReliabilityRow tempReliabilityRow = new ReliabilityRow();
 			String instruction = scheduleTable.get(row).toString();
 			instructionsArray = dsl.getInstructionParameters(instruction);	
 			for(int col =0; col < scheduleTable.getNumColumns(); col++) {
@@ -449,11 +482,17 @@ public class ReliabilityAnalysis {
 				String snk = instructionObject.getSnk();
 				if (!flowName.equals(instructionObject.unused())) {
 						String columnName = flowName +":"+snk;
+						int indexOfSrc = headerRowHashMap.get(columnName);
+						Double snkReliability = calculateNextSinkState(minPacketReceptionRate, 
+																		reliabilities.get(row).get(indexOfSrc+1),
+																		reliabilities.get(row).get(indexOfSrc), e2e);
+						tempReliabilityRow.add(snkReliability);
 				}
 			}
+			reliabilities.add(tempReliabilityRow);
 		}
 	
-		return reliabilties;
+		return reliabilities;
 }
 
 }
