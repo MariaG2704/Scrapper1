@@ -422,14 +422,15 @@ public class ReliabilityAnalysis {
 		InstructionParameters instructionObject;
 		WarpDSL dsl = new WarpDSL();
 		
-		// gets the arrayList of instructionParameters from the first row of the dsl
-		String instruction = scheduleTable.get(0).toString();
-		// get the first row, an ArrayList<InstructionParameters
-		instructionsArray = dsl.getInstructionParameters(instruction);
+		
 		// loop through each node from each flow to get each individual instructionsParameters
 		for(int col = 0; col < scheduleTable.getNumColumns()-1; col++) {
+			// gets the arrayList of instructionParameters from the first row of the dsl
+			String instruction = scheduleTable.get(0,col);
+			// get the first row, an ArrayList<InstructionParameters
+			instructionsArray = dsl.getInstructionParameters(instruction);
 			// get the instructionParameter object from the "node"(col)
-			instructionObject = instructionsArray.get(col);
+			instructionObject = instructionsArray.get(0);
 			// get flow should tell us whether it is UNUSED or not
 			String flowName = instructionObject.getFlow();
 			String snk = instructionObject.getSnk();

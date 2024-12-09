@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Timeout;
 import java.util.HashMap;
 
 import edu.uiowa.cs.warp.SystemAttributes.ScheduleChoices;
+import edu.uiowa.cs.warp.WarpDSL.InstructionParameters;
 
 
 class ReliabilityAnalysisTest {
@@ -35,6 +36,7 @@ class ReliabilityAnalysisTest {
 	private static final long TIMEOUT_IN_MILLISECONDS = 10000;
 	private WorkLoad workLoad;
 	private ReliabilityAnalysis ra;
+	private Program program;
 
 
 	/**
@@ -48,6 +50,7 @@ class ReliabilityAnalysisTest {
 		workLoad = new WorkLoad(MIN_LQ, E2E, INPUT_FILE);
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
 		ra = warp.toReliabilityAnalysis();
+		program = warp.toProgram();
 	 }
 //
 //
@@ -93,7 +96,6 @@ class ReliabilityAnalysisTest {
 		headerRow.add("F1:A");
 
 		HashMap<String, Integer> headerRowMap = ra.headerRowHashMap(headerRow);
-		System.out.println(headerRowMap);
 		
 		HashMap<String, Integer> expectedHeaderRowMap = new HashMap<>();
 		expectedHeaderRowMap.put("F0:A",0);
@@ -106,5 +108,63 @@ class ReliabilityAnalysisTest {
 		
 		assertEquals(expectedHeaderRowMap, headerRowMap);
 	}
+	
+	@Test
+	void testCreateDummyRow() {
+		int columnHeaderSize = workLoad.createHeader().size();
+	
+		ArrayList<Double> dummyRow = ra.buildDummyRow(columnHeaderSize);
+
+		ArrayList<Double> expectedDummyRow = new ArrayList<Double>();
+		expectedDummyRow.add(1.0);
+		
+		for (int i = 1; i < columnHeaderSize; i++) {
+			expectedDummyRow.add(0.0);
+		}
+		
+		assertEquals(expectedDummyRow, dummyRow);
+		
+
+	}
+	@Test
+	void testCreateFirstRow() {
+		Table<String,InstructionTimeSlot> scheduleTable = program.getSchedule();
+		//System.out.println(scheduleTable);
+		ReliabilityRow firstRow = new ReliabilityRow();
+
+		WarpDSL dsl = new WarpDSL();	
+		System.out.println(scheduleTable.getNumColumns());
+		
+		for(int col = 0; col < scheduleTable.getNumColumns(); col++) {
+			String instruction = scheduleTable.get(0,col);
+			
+			System.out.println(instruction);
+			InstructionParameters instructionObject;
+
+			ArrayList<InstructionParameters> instructionsArray = new ArrayList<InstructionParameters>();
+			instructionsArray = dsl.getInstructionParameters(instruction);
+			
+			//System.out.println(instructionsArray.get(0).getName());
+			instructionObject = instructionsArray.get(0);
+			// get flow should tell us whether it is UNUSED or not
+			String flowName = instructionObject.getFlow();
+			String snk = instructionObject.getSnk();
+			
+			// if it is a push or a pull, and not waiting or sleeping
+			if (!flowName.equals(instructionObject.unused())) {
+				// creates the HashMap value to get the current column index (the snk node)
+				firstRow.add(1.0);
+			}
+			else {
+				firstRow.add(0.0);
+			}
+		}
+		System.out.println(firstRow);
+		
+		ReliabilityRow expectedFirstRow = new ReliabilityRow();
+		
+		//in-progress
+	}
+	
 }
 	
