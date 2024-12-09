@@ -83,6 +83,25 @@ class ReliabilityAnalysisTest {
 //		assertEquals(6, actualNodes);
 //		
 	
+	@Test
+	void createHeaderRow() {
+		ArrayList<String> expectedHeaderRow = new ArrayList<>();
+		expectedHeaderRow.add("F0:A");
+		expectedHeaderRow.add("F0:B");
+		expectedHeaderRow.add("F0:C");
+		expectedHeaderRow.add("F0:D");
+		expectedHeaderRow.add("F1:C");
+		expectedHeaderRow.add("F1:B");
+		expectedHeaderRow.add("F1:A");
+		
+		ArrayList<String> actualHeaderRow = ra.createHeaderRow();
+		
+		
+		assertEquals(expectedHeaderRow, actualHeaderRow);
+	}
+	
+	
+	
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	@Test
 	void testHeaderRowHashMap() {
@@ -126,44 +145,91 @@ class ReliabilityAnalysisTest {
 		
 
 	}
-	@Test
-	void testCreateFirstRow() {
+	
+	// Do not make into a test, just a playground for exploring how INstructionParameters worked
+	void testing_for_creating_CreateFirstRow() {
+		System.out.println(workLoad.getFlowNamesInPriorityOrder());
+		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder();
+ 		for(String flowName: flowNames) {
+ 			System.out.println(workLoad.getFlows().get(flowName).getNodes());
+ 		}
+
+
+		
 		Table<String,InstructionTimeSlot> scheduleTable = program.getSchedule();
 		//System.out.println(scheduleTable);
 		ReliabilityRow firstRow = new ReliabilityRow();
 
 		WarpDSL dsl = new WarpDSL();	
 		System.out.println(scheduleTable.getNumColumns());
-		
-		for(int col = 0; col < scheduleTable.getNumColumns(); col++) {
-			String instruction = scheduleTable.get(0,col);
+		for(int row = 0; row < scheduleTable.getNumRows(); row++) {
 			
-			System.out.println(instruction);
-			InstructionParameters instructionObject;
-
-			ArrayList<InstructionParameters> instructionsArray = new ArrayList<InstructionParameters>();
-			instructionsArray = dsl.getInstructionParameters(instruction);
-			
-			//System.out.println(instructionsArray.get(0).getName());
-			instructionObject = instructionsArray.get(0);
-			// get flow should tell us whether it is UNUSED or not
-			String flowName = instructionObject.getFlow();
-			String snk = instructionObject.getSnk();
-			
-			// if it is a push or a pull, and not waiting or sleeping
-			if (!flowName.equals(instructionObject.unused())) {
-				// creates the HashMap value to get the current column index (the snk node)
-				firstRow.add(1.0);
+			for(int col = 0; col < scheduleTable.getNumColumns(); col++) {
+				String instruction = scheduleTable.get(row,col);
+				
+				System.out.println(instruction);
+				InstructionParameters instructionObject;
+	
+				ArrayList<InstructionParameters> instructionsArray = new ArrayList<InstructionParameters>();
+				instructionsArray = dsl.getInstructionParameters(instruction);
+				
+				//System.out.println(instructionsArray.get(0).getName());
+				instructionObject = instructionsArray.get(0);
+				// get flow should tell us whether it is UNUSED or not
+				String flowName = instructionObject.getFlow();
+				String snk = instructionObject.getSnk();
+				
+				// if it is a push or a pull, and not waiting or sleeping
+				if (!flowName.equals(instructionObject.unused())) {
+					// creates the HashMap value to get the current column index (the snk node)
+					firstRow.add(1.0);
+				}
+				else {
+					firstRow.add(0.0);
+				}
 			}
-			else {
-				firstRow.add(0.0);
-			}
+			System.out.println(firstRow);
+			firstRow.clear();
+			System.out.println();
 		}
-		System.out.println(firstRow);
+		
 		
 		ReliabilityRow expectedFirstRow = new ReliabilityRow();
 		
 		//in-progress
+	}
+	
+	@Test
+	void testCreateFirstRow() {
+		ArrayList<String> headerRow;
+		headerRow = ra.createHeaderRow();
+		System.out.println(headerRow);
+		
+		HashMap<String,Integer> headerRowHashMap = ra.headerRowHashMap(headerRow);
+		System.out.println(headerRowHashMap);
+
+		
+		Table<String,InstructionTimeSlot> scheduleTable = program.getSchedule();
+
+
+		ReliabilityRow expectedFirstRow = new ReliabilityRow();
+		expectedFirstRow.add(1.0);
+		expectedFirstRow.add(0.9);
+		expectedFirstRow.add(0.0);
+		expectedFirstRow.add(0.0);
+		expectedFirstRow.add(1.0);
+		expectedFirstRow.add(0.0);
+		expectedFirstRow.add(0.0);
+		System.out.println(expectedFirstRow);
+
+		
+
+		ReliabilityRow actualFirstRow = ra.createFirstRow(scheduleTable, headerRowHashMap);
+		System.out.println(actualFirstRow);
+
+		
+		assertEquals(expectedFirstRow, actualFirstRow);
+
 	}
 	
 }

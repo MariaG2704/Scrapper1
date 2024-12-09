@@ -382,13 +382,18 @@ public class ReliabilityAnalysis {
 //		return totalNodes;
 		return headerRow.size();
 	}
+	
+	
+
 	protected ArrayList<String> createHeaderRow() {
+		String headerRowName;
 		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder();
 		ArrayList<String> headerRow = new ArrayList<String>();
- 		for(String flowName: flowNames) {
+ 		for ( String flowName : flowNames) {
  			ArrayList<Node> flows = workLoad.getFlows().get(flowName).getNodes();
- 			for(Node nodes:flows) {
- 				headerRow.add(nodes.getName());
+ 			for ( Node nodes : flows) {
+ 				headerRowName = flowName + ":" + nodes.getName();
+ 				headerRow.add(headerRowName);
  			}
 		
 		}
@@ -415,18 +420,19 @@ public class ReliabilityAnalysis {
 	
 	protected ReliabilityRow createFirstRow(Table<String,InstructionTimeSlot> scheduleTable, 
 												HashMap<String,Integer> headerRowHashMap){
-		ArrayList<Double> dummyRow = buildDummyRow(getTotalNumberOfNodes());
+		ArrayList<Double> dummyRow = buildDummyRow(headerRowHashMap.size());
 		ReliabilityRow firstRow = new ReliabilityRow();
 		
 		ArrayList<InstructionParameters> instructionsArray = new ArrayList<InstructionParameters>();
 		InstructionParameters instructionObject;
+		String instruction;
 		WarpDSL dsl = new WarpDSL();
 		
 		
 		// loop through each node from each flow to get each individual instructionsParameters
-		for(int col = 0; col < scheduleTable.getNumColumns()-1; col++) {
+		for(int col = 1; col < scheduleTable.getNumColumns(); col++) {
 			// gets the arrayList of instructionParameters from the first row of the dsl
-			String instruction = scheduleTable.get(0,col);
+			instruction = scheduleTable.get(0,col);
 			// get the first row, an ArrayList<InstructionParameters
 			instructionsArray = dsl.getInstructionParameters(instruction);
 			// get the instructionParameter object from the "node"(col)
@@ -445,7 +451,10 @@ public class ReliabilityAnalysis {
 					// add reliability to the row 
 					firstRow.add(nextSnkReliability);
 				}
+			else {
+				firstRow.add(0.0);
 			}
+		}
 		return firstRow;
 	
 	}
