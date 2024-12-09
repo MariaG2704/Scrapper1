@@ -430,7 +430,7 @@ public class ReliabilityAnalysis {
 		
 		
 		// loop through each node from each flow to get each individual instructionsParameters
-		for(int col = 1; col < scheduleTable.getNumColumns(); col++) {
+		for(int col = 0; col < scheduleTable.getNumColumns(); col++) {
 			// gets the arrayList of instructionParameters from the first row of the dsl
 			instruction = scheduleTable.get(0,col);
 			// get the first row, an ArrayList<InstructionParameters
@@ -483,28 +483,31 @@ public class ReliabilityAnalysis {
 		// get the "dsl" file to read
 		Table<String,InstructionTimeSlot> scheduleTable = program.getSchedule();
 		WarpDSL dsl = new WarpDSL();
+		String instruction;
 		ArrayList<InstructionParameters> instructionsArray = new ArrayList<InstructionParameters>();
+		
+		InstructionParameters instructionObject;
 		
 		ReliabilityTable reliabilities = new ReliabilityTable();
 		// add the first row that is based off dummyRow and instructions
 		ReliabilityRow firstRow = createFirstRow(scheduleTable, headerRowHashMap);
 		reliabilities.add(firstRow);
-		
-		InstructionParameters instructionObject;
+
+
 		// for each "row" (timeslot) get an ArrayList<InstructionParameters> and parse for each node
 		// starts at row 1 bc we already added the "first row"
-		for(int row = 1; row< scheduleTable.getNumRows();row++) {
+		for(int row = 1; row < scheduleTable.getNumRows();row++) {
 			// temp row to add all of the reliabilities too before adding to ra table
 			ReliabilityRow tempReliabilityRow = new ReliabilityRow();
-			// get the string value of the current row index
-			String instruction = scheduleTable.get(row).toString();
-			// get the ArrayList<InstructionsParameters> for the specified row
-			instructionsArray = dsl.getInstructionParameters(instruction);
 			
 			// loop through each node from each flow to get each individual instructionsParameters
-			for(int col =0; col < scheduleTable.getNumColumns(); col++) {
-				// get the instructionParameter object from the "node"(col)
-				instructionObject = instructionsArray.get(col);
+			for(int col = 0; col < scheduleTable.getNumColumns(); col++) {
+				// get the string value of the current row index
+				instruction = scheduleTable.get(row, col);
+				// get the ArrayList<InstructionsParameters> for the specified row
+				instructionsArray = dsl.getInstructionParameters(instruction);
+				// get the instructionParameter object 
+				instructionObject = instructionsArray.get(0);
 				// get flow should tell us whether it is UNUSED or not
 				String flowName = instructionObject.getFlow();
 				String snk = instructionObject.getSnk();
