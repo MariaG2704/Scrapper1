@@ -49,6 +49,7 @@ public class ReliabilityVisualization extends VisualizationObject {
 	 * Function creates and returns a GuiVisualization object. <br>
 	 */
 	public GuiVisualization displayVisualization() {
+		System.out.println("9");
 		return new GuiVisualization(createTitle(), createColumnHeader(), createVisualizationData());
 	}
 	
@@ -60,6 +61,7 @@ public class ReliabilityVisualization extends VisualizationObject {
 	 * @return header A Description object that contains the header info
 	 */
 	public Description createHeader() {
+		System.out.println("8");
 	   Description header = new Description();
 	   
 	   header.add(createTitle());
@@ -83,6 +85,7 @@ public class ReliabilityVisualization extends VisualizationObject {
 	 * @return columnNames An array of strings that represent the column header
 	 */
 	public String[] createColumnHeader() {
+		System.out.println("7");
 		
 		int totalNodes = sourceTable.getNumColumns();
 		
@@ -110,6 +113,7 @@ public class ReliabilityVisualization extends VisualizationObject {
 	 * @return 2D array containing visualization data
 	 */
 	public String[][] createVisualizationData() {
+		System.out.println("6");
 		String[][] visualizationData= null;
 		if (visualizationData == null) {
 			int numRows = sourceTable.getNumRows();
@@ -132,6 +136,7 @@ public class ReliabilityVisualization extends VisualizationObject {
 	 * @return String that containing the graph title
 	 */
 	public String createTitle() {
+		System.out.println("10");
 	   // TODO implement this operation
 		return String.format("Reliability Analysis for graph %s\n",program.getName());
 	}
