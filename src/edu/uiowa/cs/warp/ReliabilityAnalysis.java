@@ -455,7 +455,7 @@ public class ReliabilityAnalysis {
 		for(int col = 0; col < scheduleTable.getNumColumns()-1; col++) {
 			// gets the arrayList of instructionParameters from the first row of the dsl
 			instruction = scheduleTable.get(0,col);
-			System.out.println("This is the instruction"+instruction);
+			
 			// get the first row, an ArrayList<InstructionParameters
 			instructionsArray = dsl.getInstructionParameters(instruction);
 			// get the instructionParameter object from the "node"(col)
@@ -510,6 +510,7 @@ public class ReliabilityAnalysis {
 	protected ReliabilityTable buildReliabilityTable() {
 		System.out.println("1");
 		headerRow = createHeaderRow();
+		System.out.println("header:"+headerRow);
 		// builds the hashmap to access the columns indexs. eg. "flow 0: A" == col_index = 0
 		HashMap<String,Integer> headerRowHashMap = headerRowHashMap(headerRow);
 		// get the "dsl" file to read
@@ -560,18 +561,19 @@ public class ReliabilityAnalysis {
 			
 					// if it is a push or a pull, and not waiting or sleeping
 					if (!flowName.equals(instructionObject.unused())) {
-						System.out.println("1j");
+		
 						// creates the HashMap value to get the current column index (the snk node)
 						String columnName = flowName + ":" + snk;
-						System.out.println("1k");
+		
 						// get the index of the src node, corresponding to the column index of the table
-						int indexOfSrc = headerRowHashMap.get(columnName);
+						int indexOfSrc = headerRowHashMap.get(columnName)-1;
 						System.out.println("This is the columName index:"+indexOfSrc);
-						System.out.println("1l");
+					
 		
 						// calculate the reliability, this is the needed parameters below
 						//  (Double M, Double prevSnkNodeState, Double prevSrcNodeState, Double minLinkReliabilityNeeded)
 						if(col!=size-1) {
+	
 							snkReliability = calculateNextSinkState(minPacketReceptionRate, 
 																		reliabilities.get(row-1).get(indexOfSrc+1),
 																		reliabilities.get(row-1).get(indexOfSrc), e2e);
