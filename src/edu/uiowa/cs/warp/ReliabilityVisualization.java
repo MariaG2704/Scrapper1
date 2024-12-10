@@ -118,12 +118,12 @@ public class ReliabilityVisualization extends VisualizationObject {
 		if (visualizationData == null) {
 			int numRows = sourceTable.getNumRows();
 			int numColumns = sourceTable.getNumColumns();
-			visualizationData = new String[numRows][numColumns + 1];
+			visualizationData = new String[numRows][numColumns];
 			
 			for (int row = 0; row < numRows; row++) {
-				visualizationData[row][0] = String.format("1.0");
+				//visualizationData[row][0] = String.format("1.0");
 		        for (int column = 0; column < numColumns; column++) {
-		        	visualizationData[row][column + 1] = Double.toString(sourceTable.get(row, column));
+		        	visualizationData[row][column] = Double.toString(sourceTable.get(row, column));
 		        }
 			}
 		}
