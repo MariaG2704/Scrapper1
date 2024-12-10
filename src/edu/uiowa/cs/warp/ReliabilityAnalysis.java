@@ -517,6 +517,7 @@ public class ReliabilityAnalysis {
 		WarpDSL dsl = new WarpDSL();
 		String instruction;
 		ArrayList<InstructionParameters> instructionsArray = new ArrayList<InstructionParameters>();
+		Double snkReliability = 0.0;
 		
 		InstructionParameters instructionObject;
 		
@@ -530,6 +531,7 @@ public class ReliabilityAnalysis {
 		// starts at row 1 bc we already added the "first row"
 	
 		for(int row = 1; row < scheduleTable.getNumRows();row++) {
+			System.out.println("row:"+row);
 			System.out.println("1b");
 			// temp row to add all of the reliabilities too before adding to ra table
 			ReliabilityRow tempReliabilityRow = reliabilities.get(row-1);
@@ -538,13 +540,16 @@ public class ReliabilityAnalysis {
 			// loop through each node from each flow to get each individual instructionsParameters
 			System.out.println("1c");
 			for(int f = 0;f<flowNames.size();f++) {
+				System.out.println("F:"+f);
 				int size = getFlowSize(flowNames,f);
 				
 				for(int col = 0; col < size; col++) {
+					System.out.println("col:"+col);
 					System.out.println("Reliabilities"+ reliabilities);
 					System.out.println("1d");
 					// get the string value of the current row index
 					instruction = scheduleTable.get(row, col);
+					System.out.println("Instruction:"+instruction);
 					// get the ArrayList<InstructionsParameters> for the specified row
 					instructionsArray = dsl.getInstructionParameters(instruction);
 					// get the instructionParameter object 
@@ -561,29 +566,36 @@ public class ReliabilityAnalysis {
 						System.out.println("1k");
 						// get the index of the src node, corresponding to the column index of the table
 						int indexOfSrc = headerRowHashMap.get(columnName);
-						System.out.println("This is the columName index"+indexOfSrc);
+						System.out.println("This is the columName index:"+indexOfSrc);
 						System.out.println("1l");
-						System.out.println("Row" +reliabilities.get(row-1));
-						System.out.println("1la");
+		
 						// calculate the reliability, this is the needed parameters below
 						//  (Double M, Double prevSnkNodeState, Double prevSrcNodeState, Double minLinkReliabilityNeeded)
-						Double snkReliability = calculateNextSinkState(minPacketReceptionRate, 
+						if(col!=size-1) {
+							snkReliability = calculateNextSinkState(minPacketReceptionRate, 
 																		reliabilities.get(row-1).get(indexOfSrc+1),
 																		reliabilities.get(row-1).get(indexOfSrc), e2e);
+						}else {
+							snkReliability = calculateNextSinkState(minPacketReceptionRate, 
+																			reliabilities.get(row).get(indexOfSrc),
+																			reliabilities.get(row).get(indexOfSrc-1), e2e);
+						}
 						System.out.println("1m");
 						// add reliability to tempRow before adding to ra table
+					
 						tempReliabilityRow.set(col, snkReliability);
 						System.out.println("1n");
 					}
-					
+					System.out.println("end:"+reliabilities);
 				}
+			}
 			System.out.println("this is temp:"+tempReliabilityRow);
 			ReliabilityRow temp = new ReliabilityRow();
 			reliabilities.add(tempReliabilityRow);
 			tempReliabilityRow = temp;
 			
 			System.out.println("1o");
-		}
+		
 	}
 	
 		return reliabilities;
