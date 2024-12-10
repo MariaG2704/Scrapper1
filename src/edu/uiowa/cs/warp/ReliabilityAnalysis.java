@@ -389,7 +389,7 @@ public class ReliabilityAnalysis {
 	protected double calculateNewSinkNodeState(Double M, Double prevSnkNodeState,
 			   							Double prevSrcNodeState, 
 			   							Double minLinkReliabilityNeeded) {
-			return (1.0 - M) * prevSnkNodeState + M * prevSrcNodeState;
+		return (1.0 - M) * prevSnkNodeState + M * prevSrcNodeState;
 	}
 
 	
@@ -555,6 +555,7 @@ public class ReliabilityAnalysis {
 			// loop through each node from each flow to get each individual instructionsParameters
 
 				for(int col = 0; col < scheduleTable.getNumColumns(); col++) {
+					System.out.println();
 					System.out.println("BeginTemp:"+tempReliabilityRow);
 					System.out.println("col:"+col);
 					System.out.println("Reliabilities"+ reliabilities);
@@ -579,16 +580,18 @@ public class ReliabilityAnalysis {
 		
 						// get the index of the src node, corresponding to the column index of the table
 						int indexOfSrc = headerRowHashMap.get(columnName)-1;
-						System.out.println("This is the columName index:"+indexOfSrc);
+						System.out.println("This is the indexOfSrc:"+indexOfSrc);
 					
 		
 						// calculate the reliability, this is the needed parameters below
 						//  (Double M, Double prevSnkNodeState, Double prevSrcNodeState, Double minLinkReliabilityNeeded)
 						if(col!=scheduleTable.getNumColumns()) {
-							System.out.println("Snk:"+ reliabilities.get(row-1).get(indexOfSrc+1)+ " Src:"+reliabilities.get(row-1).get(indexOfSrc));
+							Double prevSnkNodeState = reliabilities.get(row-1).get(indexOfSrc+1);
+							Double prevSrcNodeState = reliabilities.get(row-1).get(indexOfSrc);
+							System.out.println("prevSnkNodeState:"+ prevSnkNodeState + " prevSrcNodeState:"+ prevSrcNodeState);
 							nextSnkReliability = calculateNewSinkNodeState(minPacketReceptionRate, 
-																		reliabilities.get(row-1).get(indexOfSrc+1),
-																		reliabilities.get(row-1).get(indexOfSrc), e2e);
+																		prevSnkNodeState,
+																		prevSrcNodeState, e2e);
 							System.out.println("This is the newnextrelia:"+nextSnkReliability);
 							tempReliabilityRow.set(indexOfSrc+1, nextSnkReliability);
 						}
@@ -606,7 +609,8 @@ public class ReliabilityAnalysis {
 						tempReliabilityRow.set(indexOfSrc, currentSnkReliability);
 						System.out.println("1n");
 					}
-					System.out.println("end:"+reliabilities);
+					System.out.println("end:"+reliabilities.getLast());
+					System.out.println();
 				}
 			
 			System.out.println("this is temp:"+tempReliabilityRow);
