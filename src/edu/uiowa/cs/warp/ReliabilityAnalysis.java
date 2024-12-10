@@ -489,7 +489,14 @@ public class ReliabilityAnalysis {
 		
 	
 	}
+	protected ReliabilityRow rowCopy(ReliabilityRow copied) {
+		ReliabilityRow copy = new ReliabilityRow();
 	
+		for(int i =0;i<copied.size();i++) {
+			copy.add(copied.get(i));
+		}
+		return copy;
+	}
 	
 	/**
 	 * Supposed to create a table from the reliabilities but right now just creates a dummy table for implementing ReliabilityVisualization
@@ -518,7 +525,8 @@ public class ReliabilityAnalysis {
 		WarpDSL dsl = new WarpDSL();
 		String instruction;
 		ArrayList<InstructionParameters> instructionsArray = new ArrayList<InstructionParameters>();
-		Double snkReliability = 0.0;
+		Double nextSnkReliability = 0.0;
+		Double currentSnkReliability = 0.0;
 		
 		InstructionParameters instructionObject;
 		
@@ -535,7 +543,7 @@ public class ReliabilityAnalysis {
 			System.out.println("row:"+row);
 			System.out.println("1b");
 			// temp row to add all of the reliabilities too before adding to ra table
-			ReliabilityRow tempReliabilityRow = reliabilities.get(row-1);
+			ReliabilityRow tempReliabilityRow = rowCopy(reliabilities.get(row-1));
 			
 			
 			// loop through each node from each flow to get each individual instructionsParameters
@@ -545,6 +553,7 @@ public class ReliabilityAnalysis {
 				int size = getFlowSize(flowNames,f);
 				
 				for(int col = 0; col < size; col++) {
+					System.out.println("BeginTemp:"+tempReliabilityRow);
 					System.out.println("col:"+col);
 					System.out.println("Reliabilities"+ reliabilities);
 					System.out.println("1d");
@@ -573,19 +582,23 @@ public class ReliabilityAnalysis {
 						// calculate the reliability, this is the needed parameters below
 						//  (Double M, Double prevSnkNodeState, Double prevSrcNodeState, Double minLinkReliabilityNeeded)
 						if(col!=size-1) {
-	
-							snkReliability = calculateNextSinkState(minPacketReceptionRate, 
+							System.out.println("A");
+							nextSnkReliability = calculateNextSinkState(minPacketReceptionRate, 
 																		reliabilities.get(row-1).get(indexOfSrc+1),
 																		reliabilities.get(row-1).get(indexOfSrc), e2e);
-						}else {
-							snkReliability = calculateNextSinkState(minPacketReceptionRate, 
-																			reliabilities.get(row).get(indexOfSrc),
-																			reliabilities.get(row).get(indexOfSrc-1), e2e);
+							System.out.println("This is the newnextrelia:"+nextSnkReliability);
+							tempReliabilityRow.set(col+1, nextSnkReliability);
 						}
+						if(col>=1) {
+				
+							currentSnkReliability = calculateNextSinkState(minPacketReceptionRate, 
+																			reliabilities.get(row-1).get(indexOfSrc),
+																			reliabilities.get(row-1).get(indexOfSrc-1), e2e);
+						}
+						
 						System.out.println("1m");
 						// add reliability to tempRow before adding to ra table
-					
-						tempReliabilityRow.set(col, snkReliability);
+						tempReliabilityRow.set(col, currentSnkReliability);
 						System.out.println("1n");
 					}
 					System.out.println("end:"+reliabilities);
