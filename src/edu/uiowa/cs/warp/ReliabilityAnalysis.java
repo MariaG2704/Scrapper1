@@ -389,7 +389,7 @@ public class ReliabilityAnalysis {
 	protected double calculateNewSinkNodeState(Double M, Double prevSnkNodeState,
 			   							Double prevSrcNodeState, 
 			   							Double minLinkReliabilityNeeded) {
-			return (1.0 - M) * prevSnkNodeState + M * prevSrcNodeState;
+		return (1.0 - M) * prevSnkNodeState + M * prevSrcNodeState;
 	}
 
 	
@@ -556,7 +556,7 @@ public class ReliabilityAnalysis {
 			
 			// loop through each node from each flow to get each individual instructionsParameters
 			for(int col = 0; col < size; col++) {
-				System.out.println("size:"+size);
+				System.out.println();
 				System.out.println("BeginTemp:"+tempReliabilityRow);
 				System.out.println("col:"+col);
 				System.out.println("Reliabilities"+ reliabilities);
@@ -573,8 +573,8 @@ public class ReliabilityAnalysis {
 				
 				String snk = instructionObject.getSnk();
 				String src = instructionObject.getSrc();
+
 			
-		
 				System.out.println("FlowName:"+flowName);
 				// if it is a push or a pull, and not waiting or sleeping
 				if (!flowName.equals(instructionObject.unused())) {
@@ -606,6 +606,7 @@ public class ReliabilityAnalysis {
 						System.out.println("This is the newnextrelia:"+nextSnkReliability);
 						tempReliabilityRow.set(indexOfSnk, nextSnkReliability);
 					if(indexOfSrc!=-1) {
+
 						System.out.println("1m");
 						System.out.println("Snk2:"+ reliabilities.get(row-1).get(indexOfSrc)+ " Src2:"+reliabilities.get(row-1).get(indexOfSrc-1));
 						
@@ -615,11 +616,12 @@ public class ReliabilityAnalysis {
 						System.out.println("This is the newprevrelia:"+currentSnkReliability);
 						// add reliability to tempRow before adding to ra table
 						tempReliabilityRow.set(indexOfSrc, currentSnkReliability);
-					}
-				
-					
+					}		
 				
 					System.out.println("1n");
+					System.out.println("end:"+reliabilities.getLast());
+					System.out.println();
+
 				}
 				System.out.println("end:"+reliabilities);
 				indexOfSrc = -1;
