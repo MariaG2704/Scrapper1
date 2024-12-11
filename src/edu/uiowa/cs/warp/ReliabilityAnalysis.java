@@ -395,7 +395,6 @@ public class ReliabilityAnalysis {
 	}
 
 	
-
 	protected ArrayList<String> createHeaderRow() {
 		String headerRowName;
 		
@@ -406,12 +405,8 @@ public class ReliabilityAnalysis {
  				headerRowName = flowName + ":" + nodes.getName();
  				headerRow.add(headerRowName);
  			}
-		
 		}
- 		
 		return headerRow;
-		
-		
 	}
 	
 	protected HashMap<String, Integer> headerRowHashMap(ArrayList<String> headerRow){
@@ -433,16 +428,15 @@ public class ReliabilityAnalysis {
 				dummyRow.add(0.0);
 			}
 		}
-		System.out.println("DUmmyRow:"+dummyRow);
+		//System.out.println("DUmmyRow:"+dummyRow);
 		return dummyRow;
-		
-		
 	}
 	
+	
 	protected int getFlowSize(ArrayList<String> flowNames, int index) {
-		
 		return workLoad.getNodesInFlow(flowNames.get(index)).length;
 	}
+	
 	
 	protected ReliabilityRow createFirstRow(Table<String,InstructionTimeSlot> scheduleTable, 
 												HashMap<String,Integer> headerRowHashMap){
@@ -455,9 +449,8 @@ public class ReliabilityAnalysis {
 		WarpDSL dsl = new WarpDSL();
 		firstRow.add(1.0);
 	
-		
 		// loop through each node from each flow to get each individual instructionsParameters
-		for(int col = 0; col < scheduleTable.getNumColumns()-1; col++) {
+		for(int col = 0; col < flowNames.get(0).length(); col++) {
 			// gets the arrayList of instructionParameters from the first row of the dsl
 			instruction = scheduleTable.get(0,col);
 			
@@ -473,27 +466,32 @@ public class ReliabilityAnalysis {
 			if (!flowName.equals(instructionObject.unused())) {
 				// creates the HashMap value to get the current column index (the snk node)
 				String columnName = flowName + ":" + snk;
-					// calculate the snk node reliability to put in the ra table
-					Double nextSnkReliability = calculateNextSinkState(minPacketReceptionRate, dummyRow.get(col+1),
-							dummyRow.get(col), e2e);
-					// add reliability to the row 
-					firstRow.add(nextSnkReliability);
-				}
+				// calculate the snk node reliability to put in the ra table
+				Double nextSnkReliability = calculateNextSinkState(minPacketReceptionRate, 
+																	dummyRow.get(col+1),
+																	 dummyRow.get(col), e2e);
+				// add reliability to the row 
+				firstRow.add(nextSnkReliability);
+			}
 			else {
 				firstRow.add(0.0);
 			}
 		}
-		if(firstRow.size()<dummyRow.size()) {
-			int addIndex = dummyRow.size()-firstRow.size();
-			for(int i =addIndex+1;i<dummyRow.size();i++) {
+		
+		//System.out.println("firstRowBefore" + firstRow);
+		if(firstRow.size() < dummyRow.size()) {
+			//int addIndex = dummyRow.size()-firstRow.size();
+			int addIndex = firstRow.size();
+
+			for(int i = addIndex; i < dummyRow.size(); i++) {
 				firstRow.add(dummyRow.get(i));
 			}
 		}
-	
+		//System.out.println("firstRowAfter" + firstRow);
+
 		return firstRow;
-		
-	
 	}
+	
 	protected ReliabilityRow rowCopy(ReliabilityRow copied) {
 		ReliabilityRow copy = new ReliabilityRow();
 	
@@ -511,7 +509,6 @@ public class ReliabilityAnalysis {
 	public ReliabilityTable getReliabilities() {
 		return buildReliabilityTable();
 	}
-	
 	
 	
 	protected void checkRowForPeriod(int row, ReliabilityRow tempReliabilityRow, Double M) {
@@ -536,8 +533,6 @@ public class ReliabilityAnalysis {
 				//after ten
 			count+=length;
 		}
-		
-		
 	}
 	
 	
@@ -620,14 +615,11 @@ public class ReliabilityAnalysis {
 			}
 
 			checkRowForPeriod(row, tempReliabilityRow, minPacketReceptionRate);
-			
 			ReliabilityRow temp = new ReliabilityRow();
 			reliabilities.add(tempReliabilityRow);
 			tempReliabilityRow = temp;
-		
-	}
-	
+		}
 		return reliabilities;
-}
+	}
 
 }
