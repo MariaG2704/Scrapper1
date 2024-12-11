@@ -304,7 +304,7 @@ class ReliabilityAnalysisTest {
 		
 		System.out.println(actualNewSinkNodeState);
 		
-		//assertEquals(expectedNewSinkNodeState, actualNewSinkNodeState);
+		assertEquals(expectedNewSinkNodeState, actualNewSinkNodeState);
 		
 	}
 	
@@ -413,7 +413,7 @@ class ReliabilityAnalysisTest {
 	}
 	
 	
-	
+
 	
 	
 		

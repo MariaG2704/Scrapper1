@@ -512,7 +512,7 @@ public class ReliabilityAnalysis {
 	
 	
 	
-	protected void checkRowForPeriod(int row, ReliabilityRow tempReliabilityRow ) {
+	protected void checkRowForPeriod(int row, ReliabilityRow tempReliabilityRow, Double M) {
 		//ReliabilityRow tempReliabilityRow = rowCopy(reliabilities.get(row-1));
 		
 		int count=0;	
@@ -525,7 +525,7 @@ public class ReliabilityAnalysis {
 			if (period ==row) {
 				tempReliabilityRow.set(count, 1.0);
 				if(length>1) {
-					tempReliabilityRow.set(count+1, 0.9);
+					tempReliabilityRow.set(count+1, M);
 				}
 				for(int i = count+2;i<(count+length);i++) {
 					tempReliabilityRow.set(i, 0.0);
@@ -616,27 +616,8 @@ public class ReliabilityAnalysis {
 				}
 				indexOfSrc = -1;
 			}
-//			int count=0;	
-//			
-//			for(int f = 0;f<flowNames.size();f++) {
-//				String flow = flowNames.get(f);
-//				int period = workLoad.getFlowPeriod(flow);
-//				int length = workLoad.getNodesInFlow(flow).length;
-//				
-//				if (period ==row) {
-//					tempReliabilityRow.set(count, 1.0);
-//					if(length>1) {
-//						tempReliabilityRow.set(count+1, 0.9);
-//					}
-//					for(int i = count+2;i<(count+length);i++) {
-//						tempReliabilityRow.set(i, 0.0);
-//					}
-//				}
-//					//after ten
-//				count+=length;
-//			}
-//			
-			checkRowForPeriod(row, tempReliabilityRow);
+
+			checkRowForPeriod(row, tempReliabilityRow, minPacketReceptionRate);
 			
 			ReliabilityRow temp = new ReliabilityRow();
 			reliabilities.add(tempReliabilityRow);
