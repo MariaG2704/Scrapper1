@@ -365,7 +365,9 @@ public class ReliabilityAnalysis {
 	 
 	public Boolean verifyReliablities() {
 		// TODO Auto-generated method stub
-		return true;
+		
+		
+		
 	}
 	
 	/**
