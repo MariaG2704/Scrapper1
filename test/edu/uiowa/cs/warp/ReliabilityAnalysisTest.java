@@ -274,6 +274,40 @@ class ReliabilityAnalysisTest {
 		
 	}
 	
+	/**
+	 *  F0:C in row 11
+	 */
+	@Test
+	void testCalculateNewSinkNodeStatePeriod() {
+		
+		//1.0	0.9	0.0	0.0	1.0	0.0	0.0
+		ReliabilityTable reliabilities = new ReliabilityTable();
+		
+		double expectedNewSinkNodeState = 0.0;
+		double actualNewSinkNodeState = ra.calculateNewSinkNodeState(MIN_LQ,0.99873,0.999, E2E);
+		
+		System.out.println(actualNewSinkNodeState);
+		
+		//assertEquals(expectedNewSinkNodeState, actualNewSinkNodeState);
+		
+	}
+	
+	
+	@Test
+	void testCalculateNewSinkNodeStateLastEntry() {
+		
+		//1.0	0.9	0.0	0.0	1.0	0.0	0.0
+		ReliabilityTable reliabilities = new ReliabilityTable();
+		
+		double expectedNewSinkNodeState = 0.9963;
+		double actualNewSinkNodeState = ra.calculateNewSinkNodeState(MIN_LQ,0.9963,0.999, E2E);
+		
+		System.out.println(actualNewSinkNodeState);
+		
+		//assertEquals(expectedNewSinkNodeState, actualNewSinkNodeState);
+		
+	}
+	
 	
 	@Test
 	void getFlowSize() {
@@ -309,8 +343,6 @@ class ReliabilityAnalysisTest {
 		expectedFirstRow.add(0.0);
 		expectedFirstRow.add(0.0);
 		
-
-		
 		
 		ReliabilityRow actualLastRow = actualReliabilityTable.getLast();
 		
@@ -327,15 +359,41 @@ class ReliabilityAnalysisTest {
 		expectedLastRow.add(0.9963);
 		
 
-		
-		
-		
 		assertEquals(expectedFirstRow, actualFirstRow);
 		assertEquals(expectedLastRow, actualLastRow);
 		
 		
 		
 	}
+	
+	
+	@Test
+	void testBuildReliabilityTablePeriodCheck() {
+	//1.0	0.9	0.0	0.0	1.0	0.999	0.9963
+		
+		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
+		
+
+		ReliabilityRow actualPeriodRow = actualReliabilityTable.get(10);
+		ReliabilityRow expectedPeriodRow = new ReliabilityRow();
+		
+		
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.9);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.999);
+		expectedPeriodRow.add(0.9963);
+		
+		
+		assertEquals(expectedPeriodRow, actualPeriodRow);
+	
+	
+	}
+	
+	
+	
 	
 	
 		
