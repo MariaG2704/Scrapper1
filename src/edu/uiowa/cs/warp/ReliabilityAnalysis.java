@@ -511,6 +511,34 @@ public class ReliabilityAnalysis {
 	}
 	
 	
+	
+	protected void checkRowForPeriod(int row, ReliabilityRow tempReliabilityRow ) {
+		//ReliabilityRow tempReliabilityRow = rowCopy(reliabilities.get(row-1));
+		
+		int count=0;	
+		
+		for(int f = 0;f<flowNames.size();f++) {
+			String flow = flowNames.get(f);
+			int period = workLoad.getFlowPeriod(flow);
+			int length = workLoad.getNodesInFlow(flow).length;
+			
+			if (period ==row) {
+				tempReliabilityRow.set(count, 1.0);
+				if(length>1) {
+					tempReliabilityRow.set(count+1, 0.9);
+				}
+				for(int i = count+2;i<(count+length);i++) {
+					tempReliabilityRow.set(i, 0.0);
+				}
+			}
+				//after ten
+			count+=length;
+		}
+		
+		
+	}
+	
+	
 	protected ReliabilityTable buildReliabilityTable() {
 		headerRow = createHeaderRow();
 		// builds the hashmap to access the columns indexs. eg. "flow 0: A" == col_index = 0
@@ -588,25 +616,28 @@ public class ReliabilityAnalysis {
 				}
 				indexOfSrc = -1;
 			}
-			int count=0;	
+//			int count=0;	
+//			
+//			for(int f = 0;f<flowNames.size();f++) {
+//				String flow = flowNames.get(f);
+//				int period = workLoad.getFlowPeriod(flow);
+//				int length = workLoad.getNodesInFlow(flow).length;
+//				
+//				if (period ==row) {
+//					tempReliabilityRow.set(count, 1.0);
+//					if(length>1) {
+//						tempReliabilityRow.set(count+1, 0.9);
+//					}
+//					for(int i = count+2;i<(count+length);i++) {
+//						tempReliabilityRow.set(i, 0.0);
+//					}
+//				}
+//					//after ten
+//				count+=length;
+//			}
+//			
+			checkRowForPeriod(row, tempReliabilityRow);
 			
-			for(int f = 0;f<flowNames.size();f++) {
-				String flow = flowNames.get(f);
-				int period = workLoad.getFlowPeriod(flow);
-				int length = workLoad.getNodesInFlow(flow).length;
-				
-				if (period ==row) {
-					tempReliabilityRow.set(count, 1.0);
-					if(length>1) {
-						tempReliabilityRow.set(count+1, 0.9);
-					}
-					for(int i = count+2;i<(count+length);i++) {
-						tempReliabilityRow.set(i, 0.0);
-					}
-				}
-					//after ten
-				count+=length;
-			}
 			ReliabilityRow temp = new ReliabilityRow();
 			reliabilities.add(tempReliabilityRow);
 			tempReliabilityRow = temp;
