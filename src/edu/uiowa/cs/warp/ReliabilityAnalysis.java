@@ -426,7 +426,7 @@ public class ReliabilityAnalysis {
 				dummyRow.add(0.0);
 			}
 		}
-		System.out.println("DUmmyRow:"+dummyRow);
+		//System.out.println("DUmmyRow:"+dummyRow);
 		return dummyRow;
 	}
 	
@@ -448,7 +448,7 @@ public class ReliabilityAnalysis {
 		firstRow.add(1.0);
 	
 		// loop through each node from each flow to get each individual instructionsParameters
-		for(int col = 0; col < scheduleTable.getNumColumns()-1; col++) {
+		for(int col = 0; col < flowNames.get(0).length(); col++) {
 			// gets the arrayList of instructionParameters from the first row of the dsl
 			instruction = scheduleTable.get(0,col);
 			
@@ -476,6 +476,7 @@ public class ReliabilityAnalysis {
 			}
 		}
 		
+		//System.out.println("firstRowBefore" + firstRow);
 		if(firstRow.size() < dummyRow.size()) {
 			//int addIndex = dummyRow.size()-firstRow.size();
 			int addIndex = firstRow.size();
@@ -484,6 +485,8 @@ public class ReliabilityAnalysis {
 				firstRow.add(dummyRow.get(i));
 			}
 		}
+		//System.out.println("firstRowAfter" + firstRow);
+
 		return firstRow;
 	}
 	
