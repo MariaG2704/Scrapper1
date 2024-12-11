@@ -86,7 +86,8 @@ class ReliabilityAnalysisTest {
 //		
 	
 	@Test
-	void createHeaderRow() {
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testCreateHeaderRowExample4() {
 		ArrayList<String> expectedHeaderRow = new ArrayList<>();
 		expectedHeaderRow.add("F0:A");
 		expectedHeaderRow.add("F0:B");
@@ -102,11 +103,20 @@ class ReliabilityAnalysisTest {
 		assertEquals(expectedHeaderRow, actualHeaderRow);
 	}
 	
-	
-	
-	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	@Test
-	void testHeaderRowHashMap() {
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testCreateHeaderRowStressTest() {
+		ArrayList<String> expectedHeaderRow = new ArrayList<>();
+		//just realized the test case will be massive..
+		ArrayList<String> actualHeaderRow = ra.createHeaderRow();
+		
+		
+		assertEquals(expectedHeaderRow, actualHeaderRow);
+	}
+	
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testHeaderRowHashMapExample4() {
 		ArrayList<String> headerRow = new ArrayList<>();
 		headerRow.add("F0:A");
 		headerRow.add("F0:B");
@@ -131,6 +141,7 @@ class ReliabilityAnalysisTest {
 	}
 	
 	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testCreateDummyRow() {
 		int columnHeaderSize = workLoad.createHeader().size();
 	
@@ -202,7 +213,8 @@ class ReliabilityAnalysisTest {
 	}
 	
 	@Test
-	void testCreateFirstRow() {
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testCreateFirstRowExample4() {
 		ArrayList<String> headerRow;
 		headerRow = ra.createHeaderRow();
 		System.out.println(headerRow);
@@ -235,6 +247,7 @@ class ReliabilityAnalysisTest {
 	}
 
 	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testNumTxPerLinkAndTotalTxCost() {
 		
 	
@@ -245,6 +258,7 @@ class ReliabilityAnalysisTest {
 	}
 	
 	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testGetFixedTxPerLinkAndTotalTxCost() {
 		
 //		Flow flow = ;
@@ -261,6 +275,7 @@ class ReliabilityAnalysisTest {
 	 * F0:3, third time slot
 	 */
 	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testCalculateNewSinkNodeState() {
 		
 		//1.0	0.9	0.0	0.0	1.0	0.0	0.0
@@ -278,6 +293,7 @@ class ReliabilityAnalysisTest {
 	 *  F0:C in row 11
 	 */
 	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testCalculateNewSinkNodeStatePeriod() {
 		
 		//1.0	0.9	0.0	0.0	1.0	0.0	0.0
@@ -294,6 +310,7 @@ class ReliabilityAnalysisTest {
 	
 	
 	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testCalculateNewSinkNodeStateLastEntry() {
 		
 		//1.0	0.9	0.0	0.0	1.0	0.0	0.0
@@ -310,7 +327,8 @@ class ReliabilityAnalysisTest {
 	
 	
 	@Test
-	void getFlowSize() {
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void getFlowSizeExample4() {
 		
 		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder();
 		int expectedGetFlowSize = 4;
@@ -323,6 +341,7 @@ class ReliabilityAnalysisTest {
 	
 	
 	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testBuildReliabilityTable() {
 		
 
@@ -368,7 +387,8 @@ class ReliabilityAnalysisTest {
 	
 	
 	@Test
-	void testBuildReliabilityTablePeriodCheck() {
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testBuildReliabilityTablePeriodCheckExample4() {
 	//1.0	0.9	0.0	0.0	1.0	0.999	0.9963
 		
 		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
