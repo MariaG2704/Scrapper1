@@ -378,7 +378,7 @@ class ReliabilityAnalysisTest {
 	
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void getFlowSizeStressTest4() {
+	void getFlowSizeStressTest4FirstFlow() {
 		
 		
 		nChannels = 16;
@@ -391,15 +391,36 @@ class ReliabilityAnalysisTest {
 
 		
 		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder();
-		int expectedGetFlowSize = 6;
-		int actualGetFlowSize = ra.getFlowSize(flowNames,9);
+		int expectedGetFlowSize = 3;
+		int actualGetFlowSize = ra.getFlowSize(flowNames,0);
 		
 		assertEquals(expectedGetFlowSize, actualGetFlowSize);
 		
 		
 	}
 	
-	
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void getFlowSizeStressTest4LastFlow() {
+		
+		
+		nChannels = 16;
+		workLoad = new WorkLoad(1, 0.9, 0.99, "Example1a.txt");
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		ra = warp.toReliabilityAnalysis();
+
+		
+		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder();
+		int expectedGetFlowSize = 9;
+		int actualGetFlowSize = ra.getFlowSize(flowNames,0);
+		
+		assertEquals(expectedGetFlowSize, actualGetFlowSize);
+		
+		
+	}
 	
 	
 	
