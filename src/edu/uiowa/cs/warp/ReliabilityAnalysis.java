@@ -371,21 +371,28 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
-	 * Helper method to calculate the nodes in all flows of workLoad.
+	 * Helper method to calculate the unique nodes in all flows of workLoad.
 	 * 
 	 * @param flowNames The flow names that are in workLoad
 	 * @param workLoad The Warp programs workLoad object
 	 * @return totalNodes The total number of nodes in each workLoad flow
 	 */
 	public int getTotalNumberOfNodes() {
-//		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder(); 
-//
-//		int totalNodes = 0;
-//		for (String flowName : flowNames) {
-//			totalNodes += workLoad.getFlows().get(flowName).getNodes().size();
-//		}
-//		return totalNodes;
-		return headerRow.size();
+		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder();
+		ArrayList<String> nodeNames = new ArrayList<String>();
+		ArrayList<Node> currentNodes;
+		String nodeName;
+		
+		for (String flowName : flowNames) {
+			currentNodes = workLoad.getFlows().get(flowName).getNodes();
+			for (int node = 0; node < currentNodes.size(); node++) {
+				nodeName = currentNodes.get(node).getName();
+				if (!nodeNames.contains(nodeName)) {
+					nodeNames.add(nodeName);
+				}
+			}
+		}
+		return nodeNames.size();
 	}
 	
 	protected double calculateNewSinkNodeState(Double M, Double prevSnkNodeState,
@@ -399,9 +406,9 @@ public class ReliabilityAnalysis {
 		String headerRowName;
 		
 		ArrayList<String> headerRow = new ArrayList<String>();
- 		for ( String flowName : flowNames) {
+ 		for (String flowName : flowNames) {
  			ArrayList<Node> flows = workLoad.getFlows().get(flowName).getNodes();
- 			for ( Node nodes : flows) {
+ 			for (Node nodes : flows) {
  				headerRowName = flowName + ":" + nodes.getName();
  				headerRow.add(headerRowName);
  			}
@@ -494,7 +501,7 @@ public class ReliabilityAnalysis {
 			
 		
 		
-		//System.out.println("firstRowBefore" + firstRow);
+		System.out.println("firstRowBefore" + firstRow);
 		if(firstRow.size() < dummyRow.size()) {
 			//int addIndex = dummyRow.size()-firstRow.size();
 			int addIndex = firstRow.size();
@@ -503,9 +510,11 @@ public class ReliabilityAnalysis {
 				firstRow.add(dummyRow.get(i));
 			}
 		}
+
 		//System.out.println("firstRowAfter" + firstRow);
 		System.out.println("This is the firstRow;"+firstRow);
 		System.out.println("This is the firstRowsize;"+firstRow.size());
+		System.out.println("firstRowAfter" + firstRow);
 		return firstRow;
 	}
 	
@@ -567,8 +576,8 @@ public class ReliabilityAnalysis {
 		ArrayList<InstructionParameters> instructionsArray = new ArrayList<InstructionParameters>();
 		Double nextSnkReliability = 0.0;
 		Double currentSnkReliability = 0.0;
-		String first = flowNames.get(0);
-		int size = workLoad.getNodesInFlow(first).length;
+		//String first = flowNames.get(0); // this is assuming that the first row contains all of the nodes
+		int size = getTotalNumberOfNodes(); //workLoad.getNodesInFlow(first).length;
 		int indexOfSrc = -1;
 		String columnNameForSrc = null;
 		System.out.println("size:"+size);
@@ -589,7 +598,6 @@ public class ReliabilityAnalysis {
 			// temp row to add all of the reliabilities too before adding to ra table
 			ReliabilityRow tempReliabilityRow = rowCopy(reliabilities.get(row-1));
 				
-			
 			// loop through each node from each flow to get each individual instructionsParameters
 			for(int col = 0; col < scheduleTable.getNumColumns(); col++) {
 				System.out.println();

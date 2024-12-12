@@ -405,7 +405,7 @@ class ReliabilityAnalysisTest {
 		
 		
 		nChannels = 16;
-		workLoad = new WorkLoad(1, 0.9, 0.99, "Example1a.txt");
+		workLoad = new WorkLoad(1, 0.9, 0.99, "StressTest4.txt");
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
@@ -414,8 +414,8 @@ class ReliabilityAnalysisTest {
 
 		
 		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder();
-		int expectedGetFlowSize = 9;
-		int actualGetFlowSize = ra.getFlowSize(flowNames,0);
+		int expectedGetFlowSize = 6;
+		int actualGetFlowSize = ra.getFlowSize(flowNames,9);
 		
 		assertEquals(expectedGetFlowSize, actualGetFlowSize);
 		
