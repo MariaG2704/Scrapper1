@@ -160,7 +160,7 @@ class ReliabilityAnalysisTest {
 	void testCreateHeaderRowPushAndPull_ExampleCustomInput2() {
 		/*Initialization block for custom input.*/
 		nChannels = 16;
-		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput1.txt");
+		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput2.txt");
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
 		ra = warp.toReliabilityAnalysis();
@@ -189,7 +189,7 @@ class ReliabilityAnalysisTest {
 	void testCreateHeaderRowOtherKeywords_ExampleCustomInput3() {
 		/*Initialization block for custom input.*/
 		nChannels = 16;
-		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput1.txt");
+		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput3.txt");
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
 		ra = warp.toReliabilityAnalysis();
@@ -587,7 +587,35 @@ class ReliabilityAnalysisTest {
 	void testBuildReliabilityTableCheckNodeNamesWithPush_ExampleCustomInput1() {
 		/*Initialization block for custom input.*/
 		nChannels = 16;
-		workLoad = new WorkLoad(1, 0.9, 0.99, "ExampleCustomInput1.txt");
+		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput1.txt");
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		ra = warp.toReliabilityAnalysis();
+		program = warp.toProgram();
+		
+		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
+		ReliabilityRow actualRow = actualReliabilityTable.get(9);
+		
+		ReliabilityRow expectedRow = new ReliabilityRow();
+		expectedRow.add(1.0);
+		expectedRow.add(0.999);
+		expectedRow.add(0.99873);
+		expectedRow.add(0.993627);
+		
+		assertEquals(expectedRow, actualRow);
+	}
+	
+	/**
+	 * Test that takes as input a custom file "ExampleCustomInput3.txt", where the names of nodes in F0 contain instruction keywords ("sleep"/"unused"/"push"/"wait").
+	 * This assesses the edgecase in which the table may contain incorrect values due to node names containing words that overlap with keywords used by instructions. 
+	 * We check to ensure the final rows of values within the ReliabilityTable are as they should be.
+	 */
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testBuildReliabilityTableCheckNodeNamesWithPush_ExampleCustomInput3() {
+		/*Initialization block for custom input.*/
+		nChannels = 16;
+		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput3.txt");
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
 		ra = warp.toReliabilityAnalysis();
