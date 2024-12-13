@@ -1,0 +1,4 @@
+ExampleCustomInput2 {
+F0 (0, 10, 10, 0) : A -> B -> pushC -> D
+F1 (1, 20, 20, 0) : pullC -> pushC -> A
+}
