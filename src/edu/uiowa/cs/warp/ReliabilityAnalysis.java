@@ -615,6 +615,8 @@ public class ReliabilityAnalysis {
 				
 				String snk = instructionObject.getSnk();
 				String src = instructionObject.getSrc();
+				
+			
 
 				// if it is a push or a pull, and not waiting or sleeping
 				if (!flowName.equals(instructionObject.unused())) {
