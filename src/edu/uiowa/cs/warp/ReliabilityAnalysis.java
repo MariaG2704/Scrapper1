@@ -537,17 +537,18 @@ public class ReliabilityAnalysis {
 	}
 	
 	
-	protected void checkRowForPeriod(int row, ReliabilityRow tempReliabilityRow, Double M) {
+	protected String checkRowForPeriod(int row, ReliabilityRow tempReliabilityRow, Double M) {
 		//ReliabilityRow tempReliabilityRow = rowCopy(reliabilities.get(row-1));
 		
 		int count=0;	
-		
+		String changed= null;
 		for(int f = 0;f<flowNames.size();f++) {
 			String flow = flowNames.get(f);
 			int period = workLoad.getFlowPeriod(flow);
 			int length = workLoad.getNodesInFlow(flow).length;
 			
 			if (row%period ==0) {
+				changed = flow;
 				tempReliabilityRow.set(count, 1.0);
 				for(int i = count+1;i<(count+length);i++) {
 					tempReliabilityRow.set(i, 0.0);
@@ -556,6 +557,7 @@ public class ReliabilityAnalysis {
 				//after ten
 			count+=length;
 		}
+		return changed;
 	}
 	
 	
@@ -594,7 +596,7 @@ public class ReliabilityAnalysis {
 
 			// temp row to add all of the reliabilities too before adding to ra table
 			ReliabilityRow tempReliabilityRow = rowCopy(reliabilities.get(row-1));
-			checkRowForPeriod(row, tempReliabilityRow, minPacketReceptionRate);
+			String changed = checkRowForPeriod(row, tempReliabilityRow, minPacketReceptionRate);
 			
 			// loop through each node from each flow to get each individual instructionsParameters
 			for(int col = 0; col < scheduleTable.getNumColumns(); col++) {
@@ -624,7 +626,7 @@ public class ReliabilityAnalysis {
 				// if it is a push or a pull, and not waiting or sleeping
 				if (!flowName.equals(instructionObject.unused())) {
 					if(row>=240)
-						System.out.println("Src:"+src);
+						System.out.println("Src:"+src); 
 					// creates the HashMap value to get the current column index (the snk node)
 					String columnNameForSnk = flowName + ":" + snk;
 					size = workLoad.getNodesInFlow(flowName).length;
@@ -645,14 +647,16 @@ public class ReliabilityAnalysis {
 						System.out.println("This is the columNameforSnk index:"+indexOfSnk);
 						System.out.println("This is the columNameforSrc index:"+indexOfSrc);
 					}
-
-					
-					// calculate the reliability, this is the needed parameters below
-					//  (Double M, Double prevSnkNodeState, Double prevSrcNodeState, Double minLinkReliabilityNeeded)
-					System.out.println("Snk:"+ reliabilities.get(row-1).get(indexOfSnk)+ " Src:"+reliabilities.get(row-1).get(indexOfSnk-1));
-					nextSnkReliability = calculateNewSinkNodeState(minPacketReceptionRate, 
-																reliabilities.get(row-1).get(indexOfSnk),
-																reliabilities.get(row-1).get(indexOfSnk-1), e2e);
+					if(!changed.equals("null") && changed.equals(columnNameForSnk)){
+						nextSnkReliability = calculateNewSinkNodeState(minPacketReceptionRate, 0.0, 1.0, e2e);
+					}else {				
+						// calculate the reliability, this is the needed parameters below
+						//  (Double M, Double prevSnkNodeState, Double prevSrcNodeState, Double minLinkReliabilityNeeded)
+						System.out.println("Snk:"+ reliabilities.get(row-1).get(indexOfSnk)+ " Src:"+reliabilities.get(row-1).get(indexOfSnk-1));
+						nextSnkReliability = calculateNewSinkNodeState(minPacketReceptionRate, 
+																	reliabilities.get(row-1).get(indexOfSnk),
+																	reliabilities.get(row-1).get(indexOfSnk-1), e2e);
+					}
 						if(row>=240) {
 							System.out.println("This is the newnextrelia:"+nextSnkReliability);
 						}
