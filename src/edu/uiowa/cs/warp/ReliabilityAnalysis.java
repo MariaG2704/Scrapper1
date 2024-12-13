@@ -592,7 +592,6 @@ public class ReliabilityAnalysis {
 		// starts at row 1 bc we already added the "first row"
 		
 		for(int row = 1; row < scheduleTable.getNumRows();row++) {
-			System.out.println("row:"+row);
 
 			// temp row to add all of the reliabilities too before adding to ra table
 			ReliabilityRow tempReliabilityRow = rowCopy(reliabilities.get(row-1));
@@ -600,17 +599,9 @@ public class ReliabilityAnalysis {
 			
 			// loop through each node from each flow to get each individual instructionsParameters
 			for(int col = 0; col < scheduleTable.getNumColumns(); col++) {
-				System.out.println();
-				if(row>=240) {
-					System.out.println("BeginTemp:"+tempReliabilityRow);
-					System.out.println("col:"+col);
-					System.out.println("Reliabilities"+ reliabilities);
-				}
 
 				// get the string value of the current row index
 				instruction = scheduleTable.get(row, col);
-				if(row>=240) 
-					System.out.println("Instruction:"+instruction);
 				
 				// get the ArrayList<InstructionsParameters> for the specified row
 				instructionsArray = dsl.getInstructionParameters(instruction);
@@ -621,71 +612,43 @@ public class ReliabilityAnalysis {
 				
 				String snk = instructionObject.getSnk();
 				String src = instructionObject.getSrc();
-				if(row>=240)
-					System.out.println("FlowName:"+flowName);
+
 				// if it is a push or a pull, and not waiting or sleeping
 				if (!flowName.equals(instructionObject.unused())) {
-					if(row>=240)
-						System.out.println("Src:"+src); 
 					// creates the HashMap value to get the current column index (the snk node)
 					String columnNameForSnk = flowName + ":" + snk;
+					String changedNameForSnk = changed + ":" + snk;
 					size = workLoad.getNodesInFlow(flowName).length;
 					if(instruction.indexOf("pull")!=-1){
 						columnNameForSrc = flowName + ":" + src;
 						indexOfSrc = headerRowHashMap.get(columnNameForSrc);
 					}
-					if(row>=240) {
-						System.out.println("Size:"+size);
-						System.out.println("columnNameforSrc:"+columnNameForSrc);
-						System.out.println("columnNameforSnk:"+columnNameForSnk);
-					}
-
 					
 					// get the index of the src node, corresponding to the column index of the table
 					int indexOfSnk = headerRowHashMap.get(columnNameForSnk);
-					if(row>=240) {
-						System.out.println("This is the columNameforSnk index:"+indexOfSnk);
-						System.out.println("This is the columNameforSrc index:"+indexOfSrc);
-					}
-					if(!changed.equals("null") && changed.equals(columnNameForSnk)){
+
+					if(changed != null && changedNameForSnk.equals(columnNameForSnk)){
 						nextSnkReliability = calculateNewSinkNodeState(minPacketReceptionRate, 0.0, 1.0, e2e);
-					}else {				
+					}
+					else {				
 						// calculate the reliability, this is the needed parameters below
 						//  (Double M, Double prevSnkNodeState, Double prevSrcNodeState, Double minLinkReliabilityNeeded)
-						System.out.println("Snk:"+ reliabilities.get(row-1).get(indexOfSnk)+ " Src:"+reliabilities.get(row-1).get(indexOfSnk-1));
 						nextSnkReliability = calculateNewSinkNodeState(minPacketReceptionRate, 
 																	reliabilities.get(row-1).get(indexOfSnk),
 																	reliabilities.get(row-1).get(indexOfSnk-1), e2e);
-					}
-						if(row>=240) {
-							System.out.println("This is the newnextrelia:"+nextSnkReliability);
-						}
-						if(row>=240) {
-							System.out.println("placing it at ro:w"+row+" and col:"+ indexOfSnk+" with variable"+ nextSnkReliability);
-						}
-						tempReliabilityRow.set(indexOfSnk, nextSnkReliability);
-						System.out.println("1m");
-						
-					if(indexOfSrc!=-1) {
-						if(row>=240)
-							System.out.println("Snk2:"+ reliabilities.get(row-1).get(indexOfSrc)+ " Src2:"+reliabilities.get(row-1).get(indexOfSrc-1));
-						currentSnkReliability = calculateNewSinkNodeState(minPacketReceptionRate, 
+						if(indexOfSrc!=-1) {
+							currentSnkReliability = calculateNewSinkNodeState(minPacketReceptionRate, 
 																		reliabilities.get(row-1).get(indexOfSrc),
 																		reliabilities.get(row-1).get(indexOfSrc-1), e2e);
-						if(row>=240)
-							System.out.println("This is the newprevrelia:"+currentSnkReliability);
-							System.out.println("placing it at ro:w"+row+" and col:"+ indexOfSrc+" with variable"+ currentSnkReliability);
-						
-						// add reliability to tempRow before adding to ra table
-						tempReliabilityRow.set(indexOfSrc, currentSnkReliability);
-						
-						System.out.println();
-
+							// add reliability to tempRow before adding to ra table
+							tempReliabilityRow.set(indexOfSrc, currentSnkReliability);
 					}
-					System.out.println("1n");
-					System.out.println("end:"+reliabilities.getLast());
+						tempReliabilityRow.set(indexOfSnk, nextSnkReliability);
+						
+					
+						
+					}
 				}
-				System.out.println("end:"+reliabilities);
 				indexOfSrc = -1;
 			}
 
