@@ -645,14 +645,13 @@ public class ReliabilityAnalysis {
 							System.out.println("nextSnkReliability: " + nextSnkReliability);
 							
 						}else {	
-							//System.out.println("snk1: " + reliabilities.get(row-1).get(indexOfSnk) + 
-							//					"src1: " + reliabilities.get(row-1).get(indexOfSnk-1));
 							// calculate the reliability, this is the needed parameters below
 							//  (Double M, Double prevSnkNodeState, Double prevSrcNodeState, Double minLinkReliabilityNeeded)
 							Double prevSnkNodeState1 = reliabilities.get(row-1).get(indexOfSnk);
 							Double prevSrcNodeState1 = reliabilities.get(row-1).get(indexOfSnk-1);
 							System.out.println("prevSnkNodeState1: " + prevSnkNodeState1);
 							System.out.println("prevSrcNodeState1: " + prevSrcNodeState1);
+							
 							nextSnkReliability = calculateNewSinkNodeState(minPacketReceptionRate, 
 																			prevSnkNodeState1,
 																			prevSrcNodeState1, e2e);

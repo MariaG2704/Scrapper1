@@ -160,7 +160,7 @@ class ReliabilityAnalysisTest {
 	void testCreateHeaderRowPushAndPull_ExampleCustomInput2() {
 		/*Initialization block for custom input.*/
 		nChannels = 16;
-		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput1.txt");
+		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput2.txt");
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
 		ra = warp.toReliabilityAnalysis();
@@ -189,7 +189,7 @@ class ReliabilityAnalysisTest {
 	void testCreateHeaderRowOtherKeywords_ExampleCustomInput3() {
 		/*Initialization block for custom input.*/
 		nChannels = 16;
-		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput1.txt");
+		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput3.txt");
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
 		ra = warp.toReliabilityAnalysis();
@@ -382,17 +382,22 @@ class ReliabilityAnalysisTest {
 	}
 	
 	/**
+	 * Tests calculating a sink node 
+	 * 1 row after the first period recycle
+	 *
+	 * 	Example4
 	 *  F0:C in row 11
+	 *  
 	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testCalculateNewSinkNodeStatePeriod() {
+	void testCalculateNewSinkNodeStateAfterPeriod() {
 		
 		//1.0	0.9	0.0	0.0	1.0	0.0	0.0
 		ReliabilityTable reliabilities = new ReliabilityTable();
 		
-		double expectedNewSinkNodeState = 0.0;
-		double actualNewSinkNodeState = ra.calculateNewSinkNodeState(MIN_LQ,0.99873,0.999, E2E);
+		double expectedNewSinkNodeState = 0.81;
+		double actualNewSinkNodeState = ra.calculateNewSinkNodeState(MIN_LQ,0.0,0.9, E2E);
 		
 		System.out.println(actualNewSinkNodeState);
 		
@@ -438,7 +443,7 @@ class ReliabilityAnalysisTest {
 		
 		
 		nChannels = 16;
-		workLoad = new WorkLoad(1, 0.9, 0.99, "Example1a.txt");
+		workLoad = new WorkLoad(0.9, 0.99, "Example1a.txt");
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
@@ -463,7 +468,7 @@ class ReliabilityAnalysisTest {
 		
 		
 		nChannels = 16;
-		workLoad = new WorkLoad(1, 0.9, 0.99, "Example1a.txt");
+		workLoad = new WorkLoad(0.9, 0.99, "StressTest4.txt");
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
@@ -486,7 +491,7 @@ class ReliabilityAnalysisTest {
 		
 		
 		nChannels = 16;
-		workLoad = new WorkLoad(1, 0.9, 0.99, "StressTest4.txt");
+		workLoad = new WorkLoad(0.9, 0.99, "StressTest4.txt");
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
@@ -587,7 +592,35 @@ class ReliabilityAnalysisTest {
 	void testBuildReliabilityTableCheckNodeNamesWithPush_ExampleCustomInput1() {
 		/*Initialization block for custom input.*/
 		nChannels = 16;
-		workLoad = new WorkLoad(1, 0.9, 0.99, "ExampleCustomInput1.txt");
+		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput1.txt");
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		ra = warp.toReliabilityAnalysis();
+		program = warp.toProgram();
+		
+		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
+		ReliabilityRow actualRow = actualReliabilityTable.get(9);
+		
+		ReliabilityRow expectedRow = new ReliabilityRow();
+		expectedRow.add(1.0);
+		expectedRow.add(0.999);
+		expectedRow.add(0.99873);
+		expectedRow.add(0.993627);
+		
+		assertEquals(expectedRow, actualRow);
+	}
+	
+	/**
+	 * Test that takes as input a custom file "ExampleCustomInput3.txt", where the names of nodes in F0 contain instruction keywords ("sleep"/"unused"/"push"/"wait").
+	 * This assesses the edgecase in which the table may contain incorrect values due to node names containing words that overlap with keywords used by instructions. 
+	 * We check to ensure the final rows of values within the ReliabilityTable are as they should be.
+	 */
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testBuildReliabilityTableCheckNodeNamesWithPush_ExampleCustomInput3() {
+		/*Initialization block for custom input.*/
+		nChannels = 16;
+		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput3.txt");
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
 		ra = warp.toReliabilityAnalysis();
@@ -607,7 +640,112 @@ class ReliabilityAnalysisTest {
 	
 	
 
+	/**
+	 * Instruction in row 163
+	 * in StressTest4.dsl has a unique
+	 * case: 
+	 * if has(F1) push(F1: C -> D, #12) else pull(F5: B -> C, #12)
+	 * 
+	 * This test checks if the corresponding entry
+	 * in the ra value is still computing the correct
+	 * value after having different flows for the instruction
+	 * (F1 vs. F5) 
+	 * 
+	 * Correct value for the 163rd time slot
+	 * of F1:C should be 0.999
+	 * 
+	 */
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testPullFlowNameDiffForPushName() {
+		
+		
+		nChannels = 16;
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+		workLoad = new WorkLoad(MIN_LQ, E2E, "StressTest4.txt");
+		
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		ra = warp.toReliabilityAnalysis();
+		program = warp.toProgram();
+
+		
+		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
+		
+			//In the correct ra file, row 163 corresponds with 170
+			
+
+			ReliabilityRow actualPeriodRow = actualReliabilityTable.get(163);
+			
+			// 1.0	0.999	0.9963	1.0	0.999	0.99873	0.9986571	0.9984529799999999	0.9980461979999999	0.9944323991999999	1.0	0.999	0.998001	0.9710279999999999	0.7282710000000001	0.0	1.0	0.999	0.9989001	0.0	0.0	0.0	0.0	0.0	1.0	0.999	0.8991	0.0	0.0	1.0	0.0	0.0	1.0	0.999	0.9989001	0.99880020999	0.998440605954	1.0	0.999	0.99873	0.9986571	0.9984529799999999	0.9980461979999999	0.9944323991999999	1.0	0.999	0.9989001	0.9988901109989999	0.9988891121088889	0.9988837181022895	0.9988667269815014	0.9985965681609708	1.0	0.999	0.99873	0.998001	0.99786249	0.995507091
+			ReliabilityRow expectedPeriodRow = new ReliabilityRow();
+			
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.999);
+			expectedPeriodRow.add(0.9963);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.999);
+			expectedPeriodRow.add(0.99873);
+			expectedPeriodRow.add(0.9986571);
+			expectedPeriodRow.add(0.9984529799999999);
+			expectedPeriodRow.add(0.9980461979999999);
+			expectedPeriodRow.add(0.9944323991999999);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.999);
+			expectedPeriodRow.add(0.998001);
+			expectedPeriodRow.add(0.9710279999999999);
+			expectedPeriodRow.add(0.7282710000000001);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.999);
+			expectedPeriodRow.add(0.9989001);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.999);
+			expectedPeriodRow.add(0.8991);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.999);
+			expectedPeriodRow.add(0.9989001);
+			expectedPeriodRow.add(0.99880020999);
+			expectedPeriodRow.add(0.998440605954);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.999);
+			expectedPeriodRow.add(0.99873);
+			expectedPeriodRow.add(0.9986571);
+			expectedPeriodRow.add(0.9984529799999999);
+			expectedPeriodRow.add(0.9980461979999999);
+			expectedPeriodRow.add(0.9944323991999999);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.999);
+			expectedPeriodRow.add(0.9989001);
+			expectedPeriodRow.add(0.9988901109989999);
+			expectedPeriodRow.add(0.9988891121088889);
+			expectedPeriodRow.add(0.9988837181022895);
+			expectedPeriodRow.add(0.9988667269815014);
+			expectedPeriodRow.add(0.9985965681609708);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.999);
+			expectedPeriodRow.add(0.99873);
+			expectedPeriodRow.add(0.998001);
+			expectedPeriodRow.add(0.99786249);
+			expectedPeriodRow.add(0.995507091);
+
+			
+			assertEquals(expectedPeriodRow.get(1), actualPeriodRow.get(1));
+			assertEquals(expectedPeriodRow, actualPeriodRow);
+
 	
+	}
 	
 		
 	
