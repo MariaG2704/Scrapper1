@@ -435,7 +435,6 @@ public class ReliabilityAnalysis {
 				dummyRow.add(0.0);
 			}
 		}
-		//System.out.println("DUmmyRow:"+dummyRow);
 		return dummyRow;
 	}
 	
@@ -456,7 +455,6 @@ public class ReliabilityAnalysis {
 		String instruction;
 		WarpDSL dsl = new WarpDSL();
 		//firstRow.add(1.0);
-		System.out.println("dummyrow;"+dummyRow);
 		boolean before = false;
 	
 		// loop through each node from each flow to get each individual instructionsParameters
@@ -475,46 +473,26 @@ public class ReliabilityAnalysis {
 			
 			// if it is a push or a pull, and not waiting or sleeping
 			if (!flowName.equals(instructionObject.unused())) {
-				System.out.println("A");
 				before = true;
 				// creates the HashMap value to get the current column index (the snk node)
-				System.out.println("AA");
 				String columnName = flowName + ":" + snk;
 				int index = headerRowHashMap.get(columnName);
-				System.out.println("AAA");
 				// calculate the snk node reliability to put in the ra table
-				System.out.println("Snk:"+dummyRow.get(col+1)+ "Src:"+ dummyRow.get(col));
-				System.out.println("B");
 				
 				Double nextSnkReliability = calculateNextSinkState(minPacketReceptionRate, 
 																	dummyRow.get(index),
 																	 dummyRow.get(index-1), e2e);
-				System.out.println("C");
-				System.out.println("CFR"+nextSnkReliability);
-				// add reliability to the row 
 				firstRow.set(index,nextSnkReliability);
-			}
-				
-			
-				
+			}	
 		}
-			
 		
-		
-		System.out.println("firstRowBefore" + firstRow);
 		if(firstRow.size() < dummyRow.size()) {
-			//int addIndex = dummyRow.size()-firstRow.size();
 			int addIndex = firstRow.size();
 
 			for(int i = addIndex; i < dummyRow.size(); i++) {
 				firstRow.add(dummyRow.get(i));
 			}
 		}
-
-		//System.out.println("firstRowAfter" + firstRow);
-		System.out.println("This is the firstRow;"+firstRow);
-		System.out.println("This is the firstRowsize;"+firstRow.size());
-		System.out.println("firstRowAfter" + firstRow);
 		return firstRow;
 	}
 	
@@ -557,7 +535,6 @@ public class ReliabilityAnalysis {
 				//after ten
 			currRaTableIndex+=length;
 		} 
-		System.out.println("changed: " + changed);
 		return changed;
 	}
 	
@@ -601,11 +578,10 @@ public class ReliabilityAnalysis {
 					 */
 					String flowName = instructParam.getFlow();
 					
+					/* If flowName is not set to "unused" 
+					 * then we need to calculate the newSinkNodeState
+					 */
 					if (!flowName.equals(instructParam.unused())) {
-						/* If flowName is not set to "unused" 
-						 * then we need to calculate the newSinkNodeState
-						 */
-						System.out.println("instruction " + instruction);
 						
 						/* Get the required attributes from the instructionParameter
 						 * in order to calculate newSinkNodeState.
@@ -616,22 +592,12 @@ public class ReliabilityAnalysis {
 						String columnNameForSrc = flowName + ":" + src;
 						int indexOfSnk = headerRowHashMap.get(columnNameForSnk);
 						int indexOfSrc = headerRowHashMap.get(columnNameForSrc);
-						
-						System.out.println("columnNameForSnk: " + columnNameForSnk);
-						System.out.println("columnNameForSrc: " + columnNameForSrc);
-						System.out.println("indexOfSrc " + indexOfSrc);
-						System.out.println("indexOfSnk " + indexOfSnk);
-						
-						/* Get the previous values of snk and src from the last row in reliabilities */
+
+						/* Get the previous values of snk and src from the last added row in reliabilities */
 						Double prevSnkNodeState = reliabilities.get(row-1).get(indexOfSnk);
 						Double prevSrcNodeState = reliabilities.get(row-1).get(indexOfSnk-1);
-						System.out.println("prevSnkNodeState: " + prevSnkNodeState);
-						System.out.println("prevSrcNodeState: " + prevSrcNodeState);
-						
-						// get the index of the src node, corresponding to the column index of the table
-						System.out.println("flowNameBefore if statement: " + flowName + " " + changed.indexOf(flowName));
-						
-						/* if the currnet flow of instructionParameter is a period reset
+				
+						/* if the current flow of instructionParameter is a period reset
 						 * we calculate the newSinkNodeState automatically with prevSinkNodeState
 						 * and should have values prevSrcNode = 1.0 and prevSinkNodeState = 0.0
 						 */
@@ -639,36 +605,26 @@ public class ReliabilityAnalysis {
 							nextSnkReliability = calculateNewSinkNodeState(minPacketReceptionRate, 
 																			prevReliabilityRow.get(indexOfSnk), 
 																			prevReliabilityRow.get(indexOfSrc), 
-																			e2e);
-							
-							System.out.println("prevReliabilityRow" + prevReliabilityRow);
-							System.out.println("nextSnkReliability: " + nextSnkReliability);
-							
+																			e2e);							
 						}else {	
-							// calculate the reliability, this is the needed parameters below
-							//  (Double M, Double prevSnkNodeState, Double prevSrcNodeState, Double minLinkReliabilityNeeded)
-							Double prevSnkNodeState1 = reliabilities.get(row-1).get(indexOfSnk);
-							Double prevSrcNodeState1 = reliabilities.get(row-1).get(indexOfSnk-1);
-							System.out.println("prevSnkNodeState1: " + prevSnkNodeState1);
-							System.out.println("prevSrcNodeState1: " + prevSrcNodeState1);
-							
+							/* if the current flow has not reached the end of its period, 
+							 * we calculate the newSnkNodeState with the prevSnkNodeState and
+							 * prevSrcNodeState from the values in the previous row of reliabilities
+							 */							
 							nextSnkReliability = calculateNewSinkNodeState(minPacketReceptionRate, 
-																			prevSnkNodeState1,
-																			prevSrcNodeState1, e2e);
-							
+																			prevSnkNodeState,
+																			prevSrcNodeState, e2e);
 						}
 						prevReliabilityRow.set(indexOfSnk, nextSnkReliability);
-						System.out.println("Current snk1: " + nextSnkReliability);
 					}
 				}
 			}
-			
-			System.out.println("this is prevReliabilityRow: " + prevReliabilityRow);
+			/* Add the newly created row to the reliabilityTable
+			 * Then reset the previous reliabilityRow for next times-lot
+			 */
 			ReliabilityRow resetRow = new ReliabilityRow();
 			reliabilities.add(prevReliabilityRow);
 			prevReliabilityRow = resetRow;
-			
-			
 		}
 		return reliabilities;
 	}
