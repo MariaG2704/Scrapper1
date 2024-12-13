@@ -549,10 +549,7 @@ public class ReliabilityAnalysis {
 			
 			if (row%period ==0) {
 				tempReliabilityRow.set(count, 1.0);
-				if(length>1) {
-					tempReliabilityRow.set(count+1, M);
-				}
-				for(int i = count+2;i<(count+length);i++) {
+				for(int i = count+1;i<(count+length);i++) {
 					tempReliabilityRow.set(i, 0.0);
 				}
 			}
@@ -597,7 +594,8 @@ public class ReliabilityAnalysis {
 
 			// temp row to add all of the reliabilities too before adding to ra table
 			ReliabilityRow tempReliabilityRow = rowCopy(reliabilities.get(row-1));
-				
+			checkRowForPeriod(row, tempReliabilityRow, minPacketReceptionRate);
+			
 			// loop through each node from each flow to get each individual instructionsParameters
 			for(int col = 0; col < scheduleTable.getNumColumns(); col++) {
 				System.out.println();
@@ -687,7 +685,6 @@ public class ReliabilityAnalysis {
 				indexOfSrc = -1;
 			}
 
-			checkRowForPeriod(row, tempReliabilityRow, minPacketReceptionRate);
 			System.out.println("this is temp:"+tempReliabilityRow);
 			ReliabilityRow temp = new ReliabilityRow();
 			reliabilities.add(tempReliabilityRow);
