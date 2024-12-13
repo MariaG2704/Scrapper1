@@ -125,6 +125,87 @@ class ReliabilityAnalysisTest {
 		//assertEquals(expectedHeaderRow, actualHeaderRow);
 	}
 	
+	/**
+	 * Test for the createHeaderRow method that takes as input a custom file "ExampleCustomInput1.txt", where the name of the third node in flow F0 contains the keyword "push".
+	 * This assesses the edgecase in which the header may be created incorrectly due to node names containing words that overlap with keywords used by instructions.
+	 */
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testCreateHeaderRowPush_ExampleCustomInput1() {
+		/*Initialization block for custom input.*/
+		nChannels = 16;
+		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput1.txt");
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		ra = warp.toReliabilityAnalysis();
+		program = warp.toProgram();
+		
+		ArrayList<String> expectedHeaderRow = new ArrayList<>();
+		expectedHeaderRow.add("F0:A");
+		expectedHeaderRow.add("F0:B");
+		expectedHeaderRow.add("F0:pushC");
+		expectedHeaderRow.add("F0:D");
+		
+		ArrayList<String> actualHeaderRow = ra.createHeaderRow();
+		
+		assertEquals(expectedHeaderRow, actualHeaderRow);
+	}
+	
+	/**
+	 * Test for the createHeaderRow method that takes as input a custom file "ExampleCustomInput2.txt"; this input adds a second flow, and more potential problem nodes containing "push" and "pull".
+	 * This assesses the edgecase in which the header may be created incorrectly due to node names containing words that overlap with keywords used by instructions.
+	 */
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testCreateHeaderRowPushAndPull_ExampleCustomInput2() {
+		/*Initialization block for custom input.*/
+		nChannels = 16;
+		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput1.txt");
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		ra = warp.toReliabilityAnalysis();
+		program = warp.toProgram();
+		
+		ArrayList<String> expectedHeaderRow = new ArrayList<>();
+		expectedHeaderRow.add("F0:A");
+		expectedHeaderRow.add("F0:B");
+		expectedHeaderRow.add("F0:pushC");
+		expectedHeaderRow.add("F0:D");
+		expectedHeaderRow.add("F1:pullC");
+		expectedHeaderRow.add("F1:pushC");
+		expectedHeaderRow.add("F1:A");
+		
+		ArrayList<String> actualHeaderRow = ra.createHeaderRow();
+		
+		assertEquals(expectedHeaderRow, actualHeaderRow);
+	}
+	
+	/**
+	 * Test for the createHeaderRow method that takes as input a custom file "ExampleCustomInput3.txt"; this input has a flow with nodes containing other potential problem keywords ("sleep"/"unused"/"wait").
+	 * This assesses the edgecase in which the header may be created incorrectly due to node names containing words that overlap with keywords used by instructions.
+	 */
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testCreateHeaderRowOtherKeywords_ExampleCustomInput3() {
+		/*Initialization block for custom input.*/
+		nChannels = 16;
+		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput1.txt");
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		ra = warp.toReliabilityAnalysis();
+		program = warp.toProgram();
+		
+		ArrayList<String> expectedHeaderRow = new ArrayList<>();
+		expectedHeaderRow.add("F0:sleepA");
+		expectedHeaderRow.add("F0:unusedB");
+		expectedHeaderRow.add("F0:pushC");
+		expectedHeaderRow.add("F0:waitD");
+		
+		ArrayList<String> actualHeaderRow = ra.createHeaderRow();
+		
+		assertEquals(expectedHeaderRow, actualHeaderRow);
+	}
+	
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testHeaderRowHashMapExample4() {
@@ -494,7 +575,34 @@ class ReliabilityAnalysisTest {
 		
 		assertEquals(expectedPeriodRow, actualPeriodRow);
 	
+	}
 	
+	/**
+	 * Test that takes as input a custom file "ExampleCustomInput1.txt", where the name of the third node in flow F0 contains the keyword "push".
+	 * This assesses the edgecase in which the buildReliabilityTable method may incorrectly retrieve information from the instruction string due to node names
+	 * containing certain words, e.g.: "push"/"pull". We check to ensure the final rows of values within the ReliabilityTable are as they should be.
+	 */
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testBuildReliabilityTableCheckNodeNamesWithPush_ExampleCustomInput1() {
+		/*Initialization block for custom input.*/
+		nChannels = 16;
+		workLoad = new WorkLoad(1, 0.9, 0.99, "ExampleCustomInput1.txt");
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		ra = warp.toReliabilityAnalysis();
+		program = warp.toProgram();
+		
+		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
+		ReliabilityRow actualRow = actualReliabilityTable.get(9);
+		
+		ReliabilityRow expectedRow = new ReliabilityRow();
+		expectedRow.add(1.0);
+		expectedRow.add(0.999);
+		expectedRow.add(0.99873);
+		expectedRow.add(0.993627);
+		
+		assertEquals(expectedRow, actualRow);
 	}
 	
 	
