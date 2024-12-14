@@ -1129,7 +1129,12 @@ class ReliabilityAnalysisTest {
 		
 	}
 	
-	
+	/**
+	 * Test for the buildReliabilityTable method. Samples from table rows diagonally and
+	 * verifies that they contain the appropriate reliability values. This test is meant
+	 * to be a rigorous assessment of values in the table overall, as opposed to specific
+	 * individual values, hence the diagonal sampling pattern. 
+	 */
 	@Test
     @Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
     void testBuildReliabilitiyTableExample4DiagonalRow() {
