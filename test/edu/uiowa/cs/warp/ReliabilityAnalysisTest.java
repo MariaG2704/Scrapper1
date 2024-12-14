@@ -256,7 +256,7 @@ class ReliabilityAnalysisTest {
 		headerRow.add("F1:B");
 		headerRow.add("F1:A");
 
-		HashMap<String, Integer> headerRowMap = ra.headerRowHashMap(headerRow);
+		HashMap<String, Integer> headerRowMap = ra.createHeaderRowHashMap(headerRow);
 		
 		HashMap<String, Integer> expectedHeaderRowMap = new HashMap<>();
 		expectedHeaderRowMap.put("F0:A",0);
@@ -349,7 +349,7 @@ class ReliabilityAnalysisTest {
 		headerRow = ra.createHeaderRow();
 		System.out.println(headerRow);
 		
-		HashMap<String,Integer> headerRowHashMap = ra.headerRowHashMap(headerRow);
+		HashMap<String,Integer> headerRowHashMap = ra.createHeaderRowHashMap(headerRow);
 		System.out.println(headerRowHashMap);
 
 		

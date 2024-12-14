@@ -92,10 +92,19 @@ public class ReliabilityAnalysis {
 	 */
 	private Program program;
 	
+	/**
+	 * 
+	 */
 	private ArrayList<String> headerRow;
 	
+	/**
+	 * 
+	 */
 	private ArrayList<String> flowNames;
 	
+	/**
+	 * 
+	 */
 	private ReliabilityTable reliabilities;
 	
 
@@ -172,23 +181,14 @@ public class ReliabilityAnalysis {
 		}
 		return nodeNames.size();
 	}
-
+	
 	/**
-	 * Compute number of Transmissions based on model type.
- 	 * Given a fixed number of faults results in run of getFixedTxPerLinkAndTotalCost
-	 * If not given a fixed number we use predictive model numTxAttemptsPerLinkAndTotalTxAttempts.
- 	 * 
- 	 * @param flow Flow to compute the number of transmissions.
- 	 * @return ArrayList<Integer> containing number of transmissions per link and total cost.
+	 * Supposed to create a table from the reliabilities but right now just creates a dummy table for implementing ReliabilityVisualization
+	 * 
+	 * @return ReliabilityTable a table made from all the reliabilities
 	 */
-	public ArrayList<Integer> numTxPerLinkAndTotalTxCost(Flow flow) {
-		if (this.model) {
-			/* Case 1: If there is fixed numFaults */
-			return getFixedTxPerLinkAndTotalTxCost(flow);
-		} else {
-			/* Case 2: If there is not fixed numFaults */
-			return numTxAttemptsPerLinkAndTotalTxAttempts(flow, this.e2e, 
-					this.minPacketReceptionRate, false); }
+	public ReliabilityTable getReliabilities() {
+		return reliabilities;
 	}
 	
 	/**
@@ -221,30 +221,21 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
-	 * Supposed to create a table from the reliabilities but right now just creates a dummy table for implementing ReliabilityVisualization
-	 * 
-	 * @return ReliabilityTable a table made from all the reliabilities
+	 * Compute number of Transmissions based on model type.
+ 	 * Given a fixed number of faults results in run of getFixedTxPerLinkAndTotalCost
+	 * If not given a fixed number we use predictive model numTxAttemptsPerLinkAndTotalTxAttempts.
+ 	 * 
+ 	 * @param flow Flow to compute the number of transmissions.
+ 	 * @return ArrayList<Integer> containing number of transmissions per link and total cost.
 	 */
-	public ReliabilityTable getReliabilities() {
-		return reliabilities;
-	}
-	
-	/**
-	 * Initializes the TxArrayList with defaultTx values
-	 *   
-	 * @param nNodesInFlow an int representing the number of nodes in the flow 
-	 * @param defaultTx a int represents the default number of transmissions 
-	 * @return an arrayList initialized with all default values
-	 */
-	private ArrayList<Integer> initializeTxArrayList(int nNodesInFlow, int defaultTx) {
-		/* Compute the maximum # of TX, assuming at most numFaults occur on an edge per period, and
-	     * each edge requires at least one successful TX. */
-		ArrayList<Integer> txArrayList = new ArrayList<>();
-		
-		for (int i = 0; i < nNodesInFlow; i++) {
-		      txArrayList.add(defaultTx);
-		}
-		return txArrayList;
+	public ArrayList<Integer> numTxPerLinkAndTotalTxCost(Flow flow) {
+		if (this.model) {
+			/* Case 1: If there is fixed numFaults */
+			return getFixedTxPerLinkAndTotalTxCost(flow);
+		} else {
+			/* Case 2: If there is not fixed numFaults */
+			return numTxAttemptsPerLinkAndTotalTxAttempts(flow, this.e2e, 
+					this.minPacketReceptionRate, false); }
 	}
 	
 	/**
@@ -288,6 +279,25 @@ public class ReliabilityAnalysis {
 		// return new ArrayList<>(Arrays.asList(nPushes));
 		return nPushes;
 	}
+	
+	/**
+	 * Initializes the TxArrayList with defaultTx values
+	 *   
+	 * @param nNodesInFlow an int representing the number of nodes in the flow 
+	 * @param defaultTx a int represents the default number of transmissions 
+	 * @return an arrayList initialized with all default values
+	 */
+	private ArrayList<Integer> initializeTxArrayList(int nNodesInFlow, int defaultTx) {
+		/* Compute the maximum # of TX, assuming at most numFaults occur on an edge per period, and
+	     * each edge requires at least one successful TX. */
+		ArrayList<Integer> txArrayList = new ArrayList<>();
+		
+		for (int i = 0; i < nNodesInFlow; i++) {
+		      txArrayList.add(defaultTx);
+		}
+		return txArrayList;
+	}
+	
 	/**
 	 * Fills an ArrayList called nPushes with values of 0
 	 *   
@@ -371,7 +381,6 @@ public class ReliabilityAnalysis {
 		return Math.max(e2e, Math.pow(e2e, (1.0 / (double) nHops)));
 	}
 	
-	
 	/**
 	 * Calculates the new reliability state for a sink node based on M,prevSnkNodeState,
 	 * prevSrcNodeState, minLinkReliabilityNeeded
@@ -408,27 +417,6 @@ public class ReliabilityAnalysis {
 			reliabilityWindow.add(newRow);
 		}
 	}
-	 
-	public Boolean verifyReliablities() {
-		// TODO Auto-generated method stub
-		boolean metE2E = true;
-		
-		ReliabilityTable rTable = this.buildReliabilityTable();
-								
-				for(int k = 0; k < rTable.getLast().size(); k++) {
-					
-					
-					if(rTable.getLast().get(k) < workLoad.getE2e()) {
-						
-						metE2E = false;
-						
-					}
-				}
-					
-		return metE2E;
-
-		
-	}
 	
 	/**
 	 * 
@@ -462,6 +450,11 @@ public class ReliabilityAnalysis {
 		return headerRow;
 	}
 	
+	/**
+	 * 
+	 * @param copied
+	 * @return
+	 */
 	protected ReliabilityRow createRowCopy(ReliabilityRow copied) {
 		ReliabilityRow copy = new ReliabilityRow();
 	
@@ -485,7 +478,6 @@ public class ReliabilityAnalysis {
 		}
 		return indexes;
 	}
-	
 
 	/**
 	 * 
@@ -497,7 +489,7 @@ public class ReliabilityAnalysis {
 												HashMap<String,Integer> headerRowHashMap){
 		ReliabilityRow dummyRow = buildDummyRow(headerRowHashMap.size());
 		
-		ReliabilityRow firstRow = rowCopy(dummyRow);
+		ReliabilityRow firstRow = createRowCopy(dummyRow);
 		
 		ArrayList<InstructionParameters> instructionsArray = new ArrayList<InstructionParameters>();
 		InstructionParameters instructionObject;
@@ -544,24 +536,30 @@ public class ReliabilityAnalysis {
 		return firstRow;
 	}
 
-	
 	/**
 	 * 
-	 * @param headerRowSize
 	 * @return
 	 */
-	protected ReliabilityRow buildDummyRow(int headerRowSize){
-		ReliabilityRow dummyRow = new ReliabilityRow();
-		for(int i=0;i < flowNames.size();i++) {
-			dummyRow.add(1.0);
-			int flowsize = getFlowSize(flowNames,i);
-			for(int j=1;j<flowsize;j++) {
-				dummyRow.add(0.0);
-			}
-		}
-		return dummyRow;
+	public Boolean verifyReliablities() {
+		// TODO Auto-generated method stub
+		boolean metE2E = true;
+		
+		ReliabilityTable rTable = reliabilities;
+								
+				for(int k = 0; k < rTable.getLast().size(); k++) {
+					
+					
+					if(rTable.getLast().get(k) < workLoad.getE2e()) {
+						
+						metE2E = false;
+						
+					}
+				}
+					
+		return metE2E;
+
+		
 	}
-	
 	
 	/**
 	 * 
@@ -594,6 +592,23 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
+	 * 
+	 * @param headerRowSize
+	 * @return
+	 */
+	protected ReliabilityRow buildDummyRow(int headerRowSize){
+		ReliabilityRow dummyRow = new ReliabilityRow();
+		for(int i=0;i < flowNames.size();i++) {
+			dummyRow.add(1.0);
+			int flowsize = getFlowSize(flowNames,i);
+			for(int j=1;j<flowsize;j++) {
+				dummyRow.add(0.0);
+			}
+		}
+		return dummyRow;
+	}
+	
+	/**
 	 * Builds a reliabolityTable 
 	 * @return
 	 */
@@ -601,7 +616,7 @@ public class ReliabilityAnalysis {
 		headerRow = createHeaderRow();
 		System.out.println("header: " + headerRow);
 		// builds the hashmap to access the columns indexs. eg. "flow 0: A" == col_index = 0
-		HashMap<String,Integer> headerRowHashMap = headerRowHashMap(headerRow);
+		HashMap<String,Integer> headerRowHashMap = createHeaderRowHashMap(headerRow);
 		Table<String,InstructionTimeSlot> scheduleTable = program.getSchedule();
 		WarpDSL dsl = new WarpDSL();
 		String instruction;
@@ -616,7 +631,7 @@ public class ReliabilityAnalysis {
 			/* Iterate through each time slot of the schedule table */
 			System.out.println("row: " + row);
 			/* Copy the previous row added to reliabilityTable */
-			ReliabilityRow prevReliabilityRow = rowCopy(reliabilities.get(row-1));
+			ReliabilityRow prevReliabilityRow = createRowCopy(reliabilities.get(row-1));
 			/* Get a list of all flowNames that have reach the end of their period */
 			ArrayList<String> resetPeriodFlowNames = checkRowForPeriod(row, prevReliabilityRow, minPacketReceptionRate);
 			System.out.println("prevReliabilityRow: " + prevReliabilityRow);
