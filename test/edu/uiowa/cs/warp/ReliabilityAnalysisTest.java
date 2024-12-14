@@ -503,6 +503,11 @@ class ReliabilityAnalysisTest {
 		
 	}
 	
+	/**
+	 * Tests to ensure that
+	 * the subsequent row after a period recycle
+	 * returns the correct "met" flow
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testCheckRowForPeriodExample4() {
@@ -553,6 +558,11 @@ class ReliabilityAnalysisTest {
 		
 	}
 	
+	/**
+	 * Tests to ensure that
+	 * the subsequent row after a period recycle
+	 * returns the correct "met" flow
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testCheckRowForPeriodStressTest4_Period1() {
@@ -616,7 +626,9 @@ class ReliabilityAnalysisTest {
 	
 	
 	
-	
+	/**
+	 * Tests if the first and last row of Example 4 is correctly outputting the right values 
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testBuildReliabilityTableExample4() {
@@ -654,7 +666,7 @@ class ReliabilityAnalysisTest {
 	
 	/**
 	 * 
-	 * 
+	 * Tests if row 10 printed out for Example4 when there is a period reset is correctly outputting the right values 
 	 * 
 	 */
 	@Test
@@ -709,7 +721,10 @@ class ReliabilityAnalysisTest {
 		assertEquals(expectedRow, actualRow);
 	}
 	
-	
+	/**
+	 * Tests whether the StressTest4's first row is correctly made because StressTest starts with a unused node, 
+	 * which is an edge case
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testBuildReliabilitiyTableStressTest4FirstRow() {
@@ -786,20 +801,9 @@ class ReliabilityAnalysisTest {
 	
 	
 
-	/**
-	 * Instruction in row 163
-	 * in StressTest4.dsl has a unique
-	 * case: 
-	 * if has(F1) push(F1: C -> D, #12) else pull(F5: B -> C, #12)
-	 * 
-	 * This test checks if the corresponding entry
-	 * in the ra value is still computing the correct
-	 * value after having different flows for the instruction
-	 * (F1 vs. F5) 
-	 * 
-	 * Correct value for the 163rd time slot
-	 * of F1:C should be 0.999
-	 * 
+	/** 
+	 * Tests whether the code correctly outputs the right calculations 
+	 * for row 163 if the push flown name is not the same as the pull flow name
 	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
@@ -882,7 +886,10 @@ class ReliabilityAnalysisTest {
 	
 	}
 
-	
+	/** 
+	 * Tests whether the Example4 for the numFault model still works 
+	 * and prints out the right ReliabilityRow for the row 0 of the reliability table
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testBuildReliabilityExample4NumFaultsRow0() {
@@ -911,7 +918,10 @@ class ReliabilityAnalysisTest {
 		
 	}
 	
-	
+	/** 
+	 * Tests whether the Example4 for the numFault model still works 
+	 * and prints out the right ReliabilityRow for the row 19 of the reliability table
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testBuildReliabilityExample4NumFaultsLast() {
