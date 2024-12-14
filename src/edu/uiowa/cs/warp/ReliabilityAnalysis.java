@@ -411,8 +411,22 @@ public class ReliabilityAnalysis {
 	 
 	public Boolean verifyReliablities() {
 		// TODO Auto-generated method stub
-		return true;
+		boolean metE2E = true;
 		
+		ReliabilityTable rTable = this.buildReliabilityTable();
+								
+				for(int k = 0; k < rTable.getLast().size(); k++) {
+					
+					
+					if(rTable.getLast().get(k) < workLoad.getE2e()) {
+						
+						metE2E = false;
+						
+					}
+				}
+					
+		return metE2E;
+
 		
 	}
 	

@@ -574,6 +574,22 @@ class ReliabilityAnalysisTest {
 		
 	}
 	
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testCheckRowForPeriod() {
+		
+	ArrayList<String> expectedResetPeriodFlowNames = new ArrayList<String>();
+	ArrayList<String> actualResetPeriodFlowNames = checkRowForPeriod();
+		
+		
+		
+	
+		
+		
+	
+	}
+	
+	
 	
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
@@ -676,6 +692,81 @@ class ReliabilityAnalysisTest {
 	}
 	
 	
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testBuildReliabilitiyTableStressTest4FirstRow() {
+		
+		
+		nChannels = 16;
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+		workLoad = new WorkLoad(MIN_LQ, E2E, "StressTest4.txt");
+		
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		ra = warp.toReliabilityAnalysis();
+		program = warp.toProgram();
+
+		
+		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
+		
+			//In the correct ra file, row 163 corresponds with 170
+			
+
+			ReliabilityRow actualPeriodRow = actualReliabilityTable.get(0);
+		
+			ReliabilityRow expectedPeriodRow = new ReliabilityRow();
+			
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.9);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+
+	}
+	
+	
 
 	/**
 	 * Instruction in row 163
@@ -694,7 +785,7 @@ class ReliabilityAnalysisTest {
 	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testPullFlowNameDiffForPushName() {
+	void testBuildReliabilitiyTablePullFlowNameDiffForPushName() {
 		
 		
 		nChannels = 16;
