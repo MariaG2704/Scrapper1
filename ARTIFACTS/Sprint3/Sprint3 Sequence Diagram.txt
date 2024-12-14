@@ -1,0 +1,366 @@
+title Warp Sequence Diagram\n
+
+
+actor User
+entryspacing 1.3
+participant Warp
+participant VisualizationFactory
+participant VisualizationImplementation
+participant WorkLoadDescription
+participant VisualizationObject
+
+participant ReliabilityVisualization
+
+participant WarpSystem
+participant ReliabilityAnalysis
+participant Program
+participant WarpDSL
+participant WorkLoad
+
+participant ReliabilityRow
+participant ReliabilityTable
+participant Description
+participant FileManager
+participant GuiVisualization
+
+Warp<-User:main() with -ra flag
+activate Warp
+
+box right of Warp:creates a WARP from\n WarpSystem using \nworkLoad,\n nChannels,\nSchedulerSelected\n\n
+
+Warp->Warp:visualize(warp, Systemchoices.RELIABILITIES)\n\n
+
+Warp->VisualizationFactory:createVisualization(warp, outputSubDirectory, choice)
+
+activate VisualizationFactory
+VisualizationFactory-->VisualizationImplementation:VisualizationImplementation(warp, outputDirectory, choice)
+
+
+activate VisualizationImplementation
+VisualizationImplementation-->FileManager:new FileManager()
+
+activate FileManager
+VisualizationImplementation<<--FileManager:returns FileManager
+deactivate FileManager
+VisualizationImplementation->WorkLoadDescription:getInputFileName() invoked on a WARP
+
+activate WorkLoadDescription
+VisualizationImplementation<<--WorkLoadDescription:Returns string of the filename of our Warp
+deactivate WorkLoadDescription
+
+
+
+VisualizationImplementation->VisualizationImplementation:createVisualization(choice)
+
+VisualizationImplementation-->ReliabilityVisualization:ReliabilityVisualization(warp)
+activate ReliabilityVisualization
+
+
+
+ReliabilityVisualization->WarpSystem:toReliabilityAnalysis()
+
+activate WarpSystem
+WarpSystem-->ReliabilityAnalysis:ReliabilityAnalysis(program)
+activate ReliabilityAnalysis
+ReliabilityAnalysis->Program:getSchedule()
+activate Program
+ReliabilityAnalysis<<--Program:return schedule
+deactivate Program
+ReliabilityAnalysis-->WarpDSL:new WarpDSL()
+activate WarpDSL
+ReliabilityAnalysis<<--WarpDSL:return WarpDSL
+deactivate WarpDSL
+ReliabilityAnalysis-->ReliabilityTable:new ReliabilityTable()
+activate ReliabilityTable
+ReliabilityAnalysis<<--ReliabilityTable:return ReliabilityTable
+deactivate ReliabilityTable
+
+
+ReliabilityAnalysis-->WarpDSL:new WarpDSL()
+activate WarpDSL
+ReliabilityAnalysis<<--WarpDSL:return WarpDSL
+deactivate WarpDSL
+
+loop int col=0; col<flowNames.get(0).length(); col++
+ReliabilityAnalysis->WarpDSL: getInstructionParameters(instruction)
+activate WarpDSL
+note right of WarpDSL:getInstructionParameters makes calls \nto other classes from here
+ReliabilityAnalysis<<--WarpDSL:return ArrayList<InstructionParameters> instructionParametersArrayList
+deactivate WarpDSL
+ReliabilityAnalysis->WarpDSL:getFlow()
+activate WarpDSL
+ReliabilityAnalysis<<--WarpDSL:return String flow
+deactivate WarpDSL
+ReliabilityAnalysis->WarpDSL:getSnk()
+activate WarpDSL
+ReliabilityAnalysis<<--WarpDSL:return String snk
+deactivate WarpDSL
+ReliabilityAnalysis->WarpDSL:unused()
+activate WarpDSL
+ReliabilityAnalysis<<--WarpDSL:return String UNUSED
+deactivate WarpDSL
+end
+
+loop int row=1; row<scheduleTable.getNumRows(); row++
+ReliabilityAnalysis-->ReliabilityRow:new ReliabilityRow()
+activate ReliabilityRow
+ReliabilityAnalysis<<--ReliabilityRow:return ReliabilityRow copy
+deactivate ReliabilityRow
+loop int f=0; f<flowNames.size(); f++
+ReliabilityAnalysis->WorkLoad:getFlowPeriod(flow)
+activate WorkLoad
+ReliabilityAnalysis<<--WorkLoad:return int period
+deactivate WorkLoad
+ReliabilityAnalysis->WorkLoad:getNodesInFlow(flow)
+activate WorkLoad
+ReliabilityAnalysis<<--WorkLoad:return int length
+deactivate WorkLoad
+end
+loop for int col=0; col<scheduletable.getNumColumns(); col++
+
+ 
+ReliabilityAnalysis->WarpDSL:getInstructionParameters(instruction)
+activate WarpDSL
+ReliabilityAnalysis<<--WarpDSL:return ArrayList<InstructionParameters> instructionParametersArrayList
+deactivate WarpDSL
+loop InstructionParameters instructParam in instructionsArray
+
+ReliabilityAnalysis->WarpDSL:getFlow()
+activate WarpDSL
+ReliabilityAnalysis<<--WarpDSL:return String flow
+deactivate WarpDSL
+ReliabilityAnalysis->WarpDSL:unused()
+activate WarpDSL
+ReliabilityAnalysis<<--WarpDSL:return String UNUSED
+deactivate WarpDSL
+alt !flowName.equals(instructParam.unused()
+ReliabilityAnalysis->WarpDSL:getSnk()
+activate WarpDSL
+ReliabilityAnalysis<<--WarpDSL:return String snk
+deactivate WarpDSL
+ReliabilityAnalysis->WarpDSL:getSrc()
+activate WarpDSL
+ReliabilityAnalysis<<--WarpDSL:return String src
+deactivate WarpDSL
+end
+end
+end
+ReliabilityAnalysis-->ReliabilityRow:new ReliabilityRow()
+activate ReliabilityRow
+ReliabilityAnalysis<<--ReliabilityRow:return ReliabilityRow resetRow
+deactivate ReliabilityRow
+end
+WarpSystem<<--ReliabilityAnalysis:return reliabilityAnalysis ra
+deactivate ReliabilityAnalysis
+ReliabilityVisualization<<--WarpSystem:return reliabilityAnalysis ra
+deactivate WarpSystem
+
+ReliabilityVisualization->ReliabilityAnalysis:getReliabilities()
+activate ReliabilityAnalysis
+
+
+ReliabilityVisualization<<--ReliabilityAnalysis:return ReliabilityTable reliabilities
+deactivate ReliabilityAnalysis
+
+VisualizationImplementation<<--ReliabilityVisualization:return ReliabilityVisualization
+deactivate ReliabilityVisualization
+
+
+VisualizationImplementation->VisualizationObject:visualization()
+
+
+activate VisualizationObject
+VisualizationObject-->Description:Description() object created
+activate Description
+
+
+VisualizationObject<<--Description:returns Description object
+deactivate Description
+VisualizationObject->ReliabilityVisualization:createVisualizationData()
+activate ReliabilityVisualization
+ReliabilityVisualization->ReliabilityTable:getNumRows()
+activate ReliabilityTable
+ReliabilityVisualization<<--ReliabilityTable:return int numRows
+deactivate ReliabilityTable
+ReliabilityVisualization->ReliabilityTable:getNumColumns
+activate ReliabilityTable
+ReliabilityVisualization<<--ReliabilityTable:return int numColumns
+deactivate ReliabilityTable
+VisualizationObject<<--ReliabilityVisualization:return String[][] visualizationData
+deactivate ReliabilityVisualization
+box right of VisualizationObject:if data != null \nwe will call createColumnHeader()
+VisualizationObject->ReliabilityVisualization:createColumnHeader()
+activate ReliabilityVisualization
+ReliabilityVisualization->WorkLoad:getFlowNamesInPriorityOrder()
+activate WorkLoad
+ReliabilityVisualization<<--WorkLoad:return ArrayList<String> flowNamesInPriorityOrder
+deactivate WorkLoad
+ReliabilityVisualization->ReliabilityTable:getNumColumns()
+activate ReliabilityTable
+ReliabilityVisualization<<--ReliabilityTable:return int numColumns
+deactivate ReliabilityTable
+VisualizationObject<-ReliabilityVisualization:return String[] columnNames
+deactivate ReliabilityVisualization
+VisualizationImplementation<<--VisualizationObject:returns VisualizationObject content
+deactivate VisualizationObject
+
+VisualizationImplementation->VisualizationObject:fileVisualization()
+activate VisualizationObject
+
+
+VisualizationObject->ReliabilityVisualization:createHeader()
+activate ReliabilityVisualization
+ReliabilityVisualization-->Description:Description() object created
+activate Description
+ReliabilityVisualization<<--Description:return Description object
+deactivate Description
+ReliabilityVisualization->Program:getName()
+activate Program
+Program->WorkLoad:getName()
+activate WorkLoad
+Program<<--WorkLoad:return name
+deactivate WorkLoad
+ReliabilityVisualization<<--Program:return String name
+deactivate Program
+ReliabilityVisualization->Program:getSchedulerName()
+activate Program
+ReliabilityVisualization<<--Program:return String schedulerName
+deactivate Program
+box right of ReliabilityVisualization:if using the numFaults model,\nwe will call program.getNumFaults()
+ReliabilityVisualization->Program:getNumFaults()
+activate Program
+Program->WorkLoad:getNumFaults()
+activate WorkLoad
+Program<<--WorkLoad:return numFaults
+deactivate WorkLoad
+ReliabilityVisualization<<--Program:return Integer numFaults
+deactivate Program
+ReliabilityVisualization->Program:getMinPacketReceptionRate()
+activate Program
+Program->WorkLoad:getMinPacketReceptionRate()
+activate WorkLoad
+Program<<--WorkLoad:return minPacketReceptionRate
+deactivate WorkLoad
+ReliabilityVisualization<<--Program:return Double minPacketReceptionRate
+deactivate Program
+ReliabilityVisualization->Program:getE2e()
+activate Program
+Program->WorkLoad:getE2e()
+activate WorkLoad
+Program<<--WorkLoad:return e2e
+deactivate WorkLoad
+ReliabilityVisualization<<--Program:return Double e2e
+deactivate Program
+ReliabilityVisualization->Program:getNumChannels()
+activate Program
+ReliabilityVisualization<<--Program:return Integer nChannels
+deactivate Program
+VisualizationObject<<--ReliabilityVisualization:return header
+deactivate ReliabilityVisualization
+VisualizationObject-->Description:Description() object created
+activate Description
+
+VisualizationObject<<--Description:returns Description object
+deactivate Description
+VisualizationObject->ReliabilityVisualization:createVisualizationData()
+activate ReliabilityVisualization
+ReliabilityVisualization->ReliabilityTable:getNumRows()
+activate ReliabilityTable
+ReliabilityVisualization<<--ReliabilityTable:return int numRows
+deactivate ReliabilityTable
+ReliabilityVisualization->ReliabilityTable:getNumColumns()
+activate ReliabilityTable
+ReliabilityVisualization<<--ReliabilityTable:return int numColumns
+deactivate ReliabilityTable
+VisualizationObject<<--ReliabilityVisualization:return String[][] visualizationData
+deactivate ReliabilityVisualization
+box right of VisualizationObject:if data != null \nwe will call createColumnHeader()
+VisualizationObject->ReliabilityVisualization:createColumnHeader()
+activate ReliabilityVisualization
+ReliabilityVisualization->WorkLoad:getFlowNamesInPriorityOrder()
+activate WorkLoad
+ReliabilityVisualization<<--WorkLoad:return ArrayList<String> flowNamesInPriorityOrder
+deactivate WorkLoad
+ReliabilityVisualization->ReliabilityTable:getNumColumns()
+activate ReliabilityTable
+ReliabilityVisualization<<--ReliabilityTable:return int numColumns
+deactivate ReliabilityTable
+VisualizationObject<<--ReliabilityVisualization:return String[] columnNames
+deactivate ReliabilityVisualization
+VisualizationObject-->Description:Description() object created
+activate Description
+
+VisualizationObject<<--Description:returns Description footer
+deactivate Description
+VisualizationImplementation<<--VisualizationObject:returns Description fileContent
+deactivate VisualizationObject
+
+
+VisualizationImplementation->VisualizationObject:createFile(fileNameTemplate)
+activate VisualizationObject
+
+
+VisualizationObject->FileManager:createFile(fileNameTemplate, nameExtension, suffix)
+activate FileManager
+
+VisualizationObject<<--FileManager:returns fileName string
+deactivate FileManager
+VisualizationImplementation<<--VisualizationObject:returns fileName string
+deactivate VisualizationObject
+
+VisualizationFactory<<--VisualizationImplementation:return vizualizationImplentation object
+deactivate VisualizationImplementation
+Warp<<--VisualizationFactory:return vizualizationImplentation object
+deactivate VisualizationFactory
+
+box right of Warp:if viz != null \nwe will call viz.toFile()
+Warp->VisualizationImplementation:toFile()
+activate VisualizationImplementation
+
+VisualizationImplementation->FileManager:writeFile(fileName, fileContent.toString());
+activate FileManager
+VisualizationImplementation<<--FileManager:return
+deactivate FileManager
+Warp<<--VisualizationImplementation:return
+deactivate VisualizationImplementation
+
+box right of Warp:if (guiRequested && schedularRequested)\nwe will call viz.toDisplay()
+Warp->VisualizationImplementation:toDisplay()
+activate VisualizationImplementation
+
+VisualizationImplementation->ReliabilityVisualization:displayVisualization()
+activate ReliabilityVisualization
+ReliabilityVisualization->Program:getName()
+activate Program
+Program->WorkLoad:getName()
+activate WorkLoad
+Program<<--WorkLoad:return String name
+deactivate WorkLoad
+ReliabilityVisualization<<--Program:return String name
+deactivate Program
+
+ReliabilityVisualization->WorkLoad:getFlowNamesInPriorityOrder()
+activate WorkLoad
+ReliabilityVisualization<<--WorkLoad:return ArrayList<String> flowNamesInPriorityOrder
+deactivate WorkLoad
+ReliabilityVisualization->ReliabilityTable:getNumColumns()
+activate ReliabilityTable
+ReliabilityVisualization<<--ReliabilityTable:return int numColumns
+deactivate ReliabilityTable
+ReliabilityVisualization->ReliabilityTable:getNumRows()
+activate ReliabilityTable
+ReliabilityVisualization<<--ReliabilityTable:return int numRows
+deactivate ReliabilityTable
+ReliabilityVisualization->ReliabilityTable:getNumColumns()
+activate ReliabilityTable
+ReliabilityVisualization<<--ReliabilityTable:return int numColumns
+deactivate ReliabilityTable
+VisualizationImplementation<<--ReliabilityVisualization:returns GUIVisualization
+deactivate ReliabilityVisualization
+VisualizationImplementation->GuiVisualization:setVisible()
+activate GuiVisualization
+VisualizationImplementation<<--GuiVisualization:return
+deactivate GuiVisualization
+Warp<<--VisualizationImplementation:return
+deactivate VisualizationImplementation
+deactivate Warp
