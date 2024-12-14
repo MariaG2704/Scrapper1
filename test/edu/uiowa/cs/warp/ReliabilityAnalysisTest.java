@@ -1129,6 +1129,30 @@ class ReliabilityAnalysisTest {
 		
 	}
 	
+	
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testBuildReliabilityStressTest4_E2E() {
+
+		nChannels = 16;
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+		workLoad = new WorkLoad(0.95, E2E, "StressTest4.txt");
+		
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		ra = warp.toReliabilityAnalysis();
+		program = warp.toProgram();
+			
+		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
+		
+
+		ReliabilityRow actualLastRow = actualReliabilityTable.get(299);
+		ReliabilityRow expectedLastRow = new ReliabilityRow();
+		
+		
+	}
+	
 	/**
      * Test for the buildReliabilityTable method. Samples from table rows diagonally and
      * verifies that they contain the appropriate reliability values. This test is meant
