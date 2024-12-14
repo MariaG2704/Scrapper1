@@ -660,7 +660,6 @@ class ReliabilityAnalysisTest {
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testBuildReliabilityTablePeriodCheckExample4() {
-	//1.0	0.9	0.0	0.0	1.0	0.999	0.9963
 		
 		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
 		
@@ -804,102 +803,85 @@ class ReliabilityAnalysisTest {
 	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testBuildReliabilitiyTablePullFlowNameDiffForPushName() {
-		
+	void testBuildReliabilitiyTablePullFlowNameDiffForPushNameStressTest4() {
 		
 		nChannels = 16;
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 		workLoad = new WorkLoad(MIN_LQ, E2E, "StressTest4.txt");
-		
 	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);	
 		ra = warp.toReliabilityAnalysis();
 		program = warp.toProgram();
-
 		
 		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
-		
-			//In the correct ra file, row 163 corresponds with 170
-			
 
-			ReliabilityRow actualPeriodRow = actualReliabilityTable.get(163);
+		ReliabilityRow actualPeriodRow = actualReliabilityTable.get(163);
+		ReliabilityRow expectedPeriodRow = new ReliabilityRow();
 			
-			// 1.0	0.999	0.9963	1.0	0.999	0.99873	0.9986571	0.9984529799999999	0.9980461979999999	0.9944323991999999	1.0	0.999	0.998001	0.9710279999999999	0.7282710000000001	0.0	1.0	0.999	0.9989001	0.0	0.0	0.0	0.0	0.0	1.0	0.999	0.8991	0.0	0.0	1.0	0.0	0.0	1.0	0.999	0.9989001	0.99880020999	0.998440605954	1.0	0.999	0.99873	0.9986571	0.9984529799999999	0.9980461979999999	0.9944323991999999	1.0	0.999	0.9989001	0.9988901109989999	0.9988891121088889	0.9988837181022895	0.9988667269815014	0.9985965681609708	1.0	0.999	0.99873	0.998001	0.99786249	0.995507091
-			ReliabilityRow expectedPeriodRow = new ReliabilityRow();
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.999);
+		expectedPeriodRow.add(0.9963);
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.999);
+		expectedPeriodRow.add(0.99873);
+		expectedPeriodRow.add(0.9986571);
+		expectedPeriodRow.add(0.9984529799999999);
+		expectedPeriodRow.add(0.9980461979999999);
+		expectedPeriodRow.add(0.9944323991999999);
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.999);
+		expectedPeriodRow.add(0.998001);
+		expectedPeriodRow.add(0.9710279999999999);
+		expectedPeriodRow.add(0.7282710000000001);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.999);
+		expectedPeriodRow.add(0.9989001);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.999);
+		expectedPeriodRow.add(0.8991);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.999);
+		expectedPeriodRow.add(0.9989001);
+		expectedPeriodRow.add(0.99880020999);
+		expectedPeriodRow.add(0.998440605954);
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.999);
+		expectedPeriodRow.add(0.99873);
+		expectedPeriodRow.add(0.9986571);
+		expectedPeriodRow.add(0.9984529799999999);
+		expectedPeriodRow.add(0.9980461979999999);
+		expectedPeriodRow.add(0.9944323991999999);
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.999);
+		expectedPeriodRow.add(0.9989001);
+		expectedPeriodRow.add(0.9988901109989999);
+		expectedPeriodRow.add(0.9988891121088889);
+		expectedPeriodRow.add(0.9988837181022895);
+		expectedPeriodRow.add(0.9988667269815014);
+		expectedPeriodRow.add(0.9985965681609708);
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.999);
+		expectedPeriodRow.add(0.99873);
+		expectedPeriodRow.add(0.998001);
+		expectedPeriodRow.add(0.99786249);
+		expectedPeriodRow.add(0.995507091);
 			
-			expectedPeriodRow.add(1.0);
-			expectedPeriodRow.add(0.999);
-			expectedPeriodRow.add(0.9963);
-			expectedPeriodRow.add(1.0);
-			expectedPeriodRow.add(0.999);
-			expectedPeriodRow.add(0.99873);
-			expectedPeriodRow.add(0.9986571);
-			expectedPeriodRow.add(0.9984529799999999);
-			expectedPeriodRow.add(0.9980461979999999);
-			expectedPeriodRow.add(0.9944323991999999);
-			expectedPeriodRow.add(1.0);
-			expectedPeriodRow.add(0.999);
-			expectedPeriodRow.add(0.998001);
-			expectedPeriodRow.add(0.9710279999999999);
-			expectedPeriodRow.add(0.7282710000000001);
-			expectedPeriodRow.add(0.0);
-			expectedPeriodRow.add(1.0);
-			expectedPeriodRow.add(0.999);
-			expectedPeriodRow.add(0.9989001);
-			expectedPeriodRow.add(0.0);
-			expectedPeriodRow.add(0.0);
-			expectedPeriodRow.add(0.0);
-			expectedPeriodRow.add(0.0);
-			expectedPeriodRow.add(0.0);
-			expectedPeriodRow.add(1.0);
-			expectedPeriodRow.add(0.999);
-			expectedPeriodRow.add(0.8991);
-			expectedPeriodRow.add(0.0);
-			expectedPeriodRow.add(0.0);
-			expectedPeriodRow.add(1.0);
-			expectedPeriodRow.add(0.0);
-			expectedPeriodRow.add(0.0);
-			expectedPeriodRow.add(1.0);
-			expectedPeriodRow.add(0.999);
-			expectedPeriodRow.add(0.9989001);
-			expectedPeriodRow.add(0.99880020999);
-			expectedPeriodRow.add(0.998440605954);
-			expectedPeriodRow.add(1.0);
-			expectedPeriodRow.add(0.999);
-			expectedPeriodRow.add(0.99873);
-			expectedPeriodRow.add(0.9986571);
-			expectedPeriodRow.add(0.9984529799999999);
-			expectedPeriodRow.add(0.9980461979999999);
-			expectedPeriodRow.add(0.9944323991999999);
-			expectedPeriodRow.add(1.0);
-			expectedPeriodRow.add(0.999);
-			expectedPeriodRow.add(0.9989001);
-			expectedPeriodRow.add(0.9988901109989999);
-			expectedPeriodRow.add(0.9988891121088889);
-			expectedPeriodRow.add(0.9988837181022895);
-			expectedPeriodRow.add(0.9988667269815014);
-			expectedPeriodRow.add(0.9985965681609708);
-			expectedPeriodRow.add(1.0);
-			expectedPeriodRow.add(0.999);
-			expectedPeriodRow.add(0.99873);
-			expectedPeriodRow.add(0.998001);
-			expectedPeriodRow.add(0.99786249);
-			expectedPeriodRow.add(0.995507091);
-
-			
-			assertEquals(expectedPeriodRow.get(1), actualPeriodRow.get(1));
-			assertEquals(expectedPeriodRow, actualPeriodRow);
-
+		assertEquals(expectedPeriodRow.get(1), actualPeriodRow.get(1));
+		assertEquals(expectedPeriodRow, actualPeriodRow);
 	
 	}
 
-	
-	
-	
-	
-	
-	
 	
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
@@ -908,22 +890,15 @@ class ReliabilityAnalysisTest {
 		nChannels = 16;
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 		workLoad = new WorkLoad(1, MIN_LQ, E2E, "Example4.txt");
-		
 	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
 		ra = warp.toReliabilityAnalysis();
 		program = warp.toProgram();
 		
-		
 		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
-		
-	
-		
 
 		ReliabilityRow actualFirstRow = actualReliabilityTable.get(0);
 		ReliabilityRow expectedFirstRow = new ReliabilityRow();
-		//1.0	0.9	0.0	0.0	1.0	0.0	0.0
 		expectedFirstRow.add(1.0);
 		expectedFirstRow.add(0.9);
 		expectedFirstRow.add(0.0);
@@ -931,12 +906,8 @@ class ReliabilityAnalysisTest {
 		expectedFirstRow.add(1.0);
 		expectedFirstRow.add(0.0);
 		expectedFirstRow.add(0.0);
-		
 
-		
 		assertEquals(expectedFirstRow, actualFirstRow);
-		
-		
 		
 	}
 	
@@ -949,21 +920,14 @@ class ReliabilityAnalysisTest {
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 		workLoad = new WorkLoad(1, MIN_LQ, E2E, "Example4.txt");
 		
-	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);	
 		ra = warp.toReliabilityAnalysis();
 		program = warp.toProgram();
 		
-		
 		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
-		
-	
-		
 
 		ReliabilityRow actualLastRow = actualReliabilityTable.get(19);
 		ReliabilityRow expectedLastRow = new ReliabilityRow();
-		//1.0	0.99	0.972	0.9477	1.0	0.99	0.972
 		expectedLastRow.add(1.0);
 		expectedLastRow.add(0.99);
 		expectedLastRow.add(0.972);
@@ -971,12 +935,8 @@ class ReliabilityAnalysisTest {
 		expectedLastRow.add(1.0);
 		expectedLastRow.add(0.99);
 		expectedLastRow.add(0.972);
-
-
 		
 		assertEquals(expectedLastRow, actualLastRow);
-		
-		
 		
 	}
 	
@@ -990,8 +950,7 @@ class ReliabilityAnalysisTest {
 		workLoad = new WorkLoad(0.95, E2E, "StressTest4.txt");
 		
 	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);	
 		ra = warp.toReliabilityAnalysis();
 		program = warp.toProgram();
 			
@@ -1001,9 +960,6 @@ class ReliabilityAnalysisTest {
 		ReliabilityRow actualLastRow = actualReliabilityTable.get(299);
 		ReliabilityRow expectedLastRow = new ReliabilityRow();
 		
-
-		//1.0	0.9975	0.9927500000000001	1.0	0.999875	0.9995187499999999	0.9988418749999999	0.9987882890625	0.9986610224609375	0.9965089442285155	1.0	0.999875	0.9995187499999999	0.9988418749999999	0.9987882890625	0.997210183203125	1.0	0.999875	0.9995187499999999	0.9988418749999999	0.9987882890625	0.9986610224609375	0.9984385604414062	0.995654399905664	1.0	0.9975	0.9974994062500001	0.997493171878711	0.9971318900625098	1.0	0.9975	0.9927500000000001	1.0	0.9975	0.9974996882812501	0.9974934539081983	0.997132171989849	1.0	0.999875	0.9995187499999999	0.9988418749999999	0.9987882890625	0.9986610224609375	0.9965089442285155	1.0	0.999875	0.999750015625	0.9996250468730469	0.9996072388258936	0.9995725576540625	0.9995493989138763	0.9985455781541018	1.0	0.999875	0.9995187499999999	0.9993938101562498	0.9993760062285155	0.9986825432432617
-
 		expectedLastRow.add(1.0);
 		expectedLastRow.add(0.9975);
 		expectedLastRow.add(0.9927500000000001);
@@ -1062,11 +1018,8 @@ class ReliabilityAnalysisTest {
 		expectedLastRow.add(0.9993938101562498);
 		expectedLastRow.add(0.9993760062285155);
 		expectedLastRow.add(0.9986825432432617);
-
-		
 		
 		assertEquals(expectedLastRow, actualLastRow);
-		
 		
 	}
 	
