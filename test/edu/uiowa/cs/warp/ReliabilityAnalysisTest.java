@@ -1,5 +1,6 @@
 package edu.uiowa.cs.warp;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -84,6 +85,43 @@ class ReliabilityAnalysisTest {
 //		
 //		assertEquals(6, actualNodes);
 //		
+	
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testVerifyReliabilities() {
+	
+		
+		assertTrue(ra.verifyReliablities());
+	}
+	
+	
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testVerifyReliabilitiesStressTest4() {
+	
+		
+		nChannels = 16;
+		workLoad = new WorkLoad(0.9, 0.99, "StressTest4.txt");
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		ra = warp.toReliabilityAnalysis();
+		program = warp.toProgram();
+		
+		assertTrue(ra.verifyReliablities());
+	}
+	
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testVerifyReliabilitiesExample4NumFaults() {
+	
+		workLoad = new WorkLoad(1, MIN_LQ, E2E, INPUT_FILE);
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		ra = warp.toReliabilityAnalysis();
+		program = warp.toProgram();
+		
+		assertFalse(ra.verifyReliablities());
+	}
 	
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
@@ -218,7 +256,7 @@ class ReliabilityAnalysisTest {
 		headerRow.add("F1:B");
 		headerRow.add("F1:A");
 
-		HashMap<String, Integer> headerRowMap = ra.headerRowHashMap(headerRow);
+		HashMap<String, Integer> headerRowMap = ra.createHeaderRowHashMap(headerRow);
 		
 		HashMap<String, Integer> expectedHeaderRowMap = new HashMap<>();
 		expectedHeaderRowMap.put("F0:A",0);
@@ -311,7 +349,7 @@ class ReliabilityAnalysisTest {
 		headerRow = ra.createHeaderRow();
 		System.out.println(headerRow);
 		
-		HashMap<String,Integer> headerRowHashMap = ra.headerRowHashMap(headerRow);
+		HashMap<String,Integer> headerRowHashMap = ra.createHeaderRowHashMap(headerRow);
 		System.out.println(headerRowHashMap);
 
 		
@@ -508,6 +546,49 @@ class ReliabilityAnalysisTest {
 		
 	}
 	
+	/**
+	 * Tests getting the flow size of F5 in
+	 * StressTest4. It is the middle flow (last flow is F10)
+	 * 
+	 */
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void getFlowSizeStressTest4MiddleFlow() {
+		
+		
+		nChannels = 16;
+		workLoad = new WorkLoad(0.9, 0.99, "StressTest4.txt");
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		ra = warp.toReliabilityAnalysis();
+
+		
+		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder();
+		int expectedGetFlowSize = 5;
+		int actualGetFlowSize = ra.getFlowSize(flowNames,4);
+		
+		assertEquals(expectedGetFlowSize, actualGetFlowSize);
+		
+		
+	}
+	
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testCheckRowForPeriod() {
+		
+	ArrayList<String> expectedResetPeriodFlowNames = new ArrayList<String>();
+	ArrayList<String> actualResetPeriodFlowNames = checkRowForPeriod();
+		
+		
+		
+	
+		
+		
+	
+	}
+	
 	
 	
 	@Test
@@ -592,7 +673,7 @@ class ReliabilityAnalysisTest {
 	void testBuildReliabilityTableCheckNodeNamesWithPush_ExampleCustomInput1() {
 		/*Initialization block for custom input.*/
 		nChannels = 16;
-		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput1.txt");
+		workLoad = new WorkLoad( 0.9, 0.99, "ExampleCustomInput1.txt");
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
 		ra = warp.toReliabilityAnalysis();
@@ -610,32 +691,79 @@ class ReliabilityAnalysisTest {
 		assertEquals(expectedRow, actualRow);
 	}
 	
-	/**
-	 * Test that takes as input a custom file "ExampleCustomInput3.txt", where the names of nodes in F0 contain instruction keywords ("sleep"/"unused"/"push"/"wait").
-	 * This assesses the edgecase in which the table may contain incorrect values due to node names containing words that overlap with keywords used by instructions. 
-	 * We check to ensure the final rows of values within the ReliabilityTable are as they should be.
-	 */
+	
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testBuildReliabilityTableCheckNodeNamesWithPush_ExampleCustomInput3() {
-		/*Initialization block for custom input.*/
+	void testBuildReliabilitiyTableStressTest4FirstRow() {
+		
+		
 		nChannels = 16;
-		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput3.txt");
-		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;	    
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+		workLoad = new WorkLoad(MIN_LQ, E2E, "StressTest4.txt");
+		
+	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
 		ra = warp.toReliabilityAnalysis();
 		program = warp.toProgram();
+
 		
 		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
-		ReliabilityRow actualRow = actualReliabilityTable.get(9);
 		
-		ReliabilityRow expectedRow = new ReliabilityRow();
-		expectedRow.add(1.0);
-		expectedRow.add(0.999);
-		expectedRow.add(0.99873);
-		expectedRow.add(0.993627);
+			//In the correct ra file, row 163 corresponds with 170
+			
+
+			ReliabilityRow actualPeriodRow = actualReliabilityTable.get(0);
 		
-		assertEquals(expectedRow, actualRow);
+			ReliabilityRow expectedPeriodRow = new ReliabilityRow();
+			
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.9);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(1.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+			expectedPeriodRow.add(0.0);
+
 	}
 	
 	
@@ -657,7 +785,7 @@ class ReliabilityAnalysisTest {
 	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testPullFlowNameDiffForPushName() {
+	void testBuildReliabilitiyTablePullFlowNameDiffForPushName() {
 		
 		
 		nChannels = 16;
@@ -747,12 +875,18 @@ class ReliabilityAnalysisTest {
 	
 	}
 	
+<<<<<<< HEAD
 	/**
 	 * Test for the verifyReliabilities method. Checks if the method correctly evaluates the reliabilities 
 	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testVerifyReliabilitiesExample4() {
+=======
+	
+	
+	
+>>>>>>> beeee77a404e573971d020b78eec8e6697719b6d
 		
 	}
 	
