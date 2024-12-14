@@ -28,7 +28,7 @@ WARP is interacted with via the command line interface (CLI). The primary comman
 - **Credits**:
 - **wplucas**: 
 	<ul> 
-	<li> Wrote methods creatHeader(),createColumnHeader(), and createTitle() in ReliabilityVisulatization 
+	<li> Wrote methods createHeader(),createColumnHeader(), and createTitle() in ReliabilityVisualization 
 	<li> Wrote methods getTotalNumberOfNodes() and getReliabilties() in ReliabilityAnalysis 
 	</ul>
  - **msgauna**:
@@ -59,6 +59,48 @@ WARP is interacted with via the command line interface (CLI). The primary comman
  	<li> Updated the UML Sequence diagram located in ARTIFACTS under Sprint2 called  
  	<li> Updated UML class diagrams reliability and saved a picture of it located in ARTIFACTS under Sprint2 called Reliability Sprint2.umlcd.png
  	</ul>
+
+###Sprint 3
+- **Objective**： Implement methods within ReliabilityAnalysis pertaining to the construction of a ReliabilityTable and create Junit tests to test that implementation. Also update UML sequence and class diagrams.
+- **Remember**: High level plans for the 
+- **Status**: Project is completed and working.
+- **Credits**:
+- **wplucas**, **msgauna**, **nnahra**, **tomlooi**:
+	<ul>
+	<li> The team worked closely during this phase of the project, frequently falling back on a pair- or group-programming arrangement to discuss code issues and overcome hurdles that arose during the implementation of buildReliabilityTable.
+	<li> Much of the work of this project was done in a group setting with most or all members present and contributing via discussion.
+	<li> wplucas and msgauna focused on implementing the majority of methods within ReliabilityAnalysis.java; methods implemented were:
+		<ul>
+ 		<li>buildReliabilityTable()
+ 		<li>buildDummyRow()
+ 		<li>checkRowForPeriod()
+ 		<li>verifyReliabilities()
+ 		<li>createFirstRow()
+ 		<li>createRowCopy()
+ 		<li>createHeaderRowHashMap()
+ 		<li>createHeaderRow()
+ 		<li>calculateNewSnkNodeState()
+ 		<li>getFlowSize()
+ 		<li>getReliabilities()
+		<li>ReliabilityAnalysis constructor that takes Program as input.
+ 		</ul>
+ 	<li> nnahra and tomlooi focused on testwriting and artifact updates; tests implemented were:
+		<ul>
+ 		<li>
+ 		<li>
+ 		<li>
+ 		<li>
+ 		<li>
+ 		<li>
+ 		<li>
+ 		<li>
+ 		<li>
+ 		<li>
+ 		<li>
+		<li>
+ 		</ul>
+	<li> 
+	</ul>
 
 ## Homework Assignments
 
