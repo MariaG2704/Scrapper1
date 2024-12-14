@@ -88,7 +88,7 @@ class ReliabilityAnalysisTest {
 	
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testVerifyReliabilities() {
+	void testVerifyReliabilitiesExample4() {
 	
 		
 		assertTrue(ra.verifyReliablities());
@@ -99,7 +99,6 @@ class ReliabilityAnalysisTest {
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testVerifyReliabilitiesStressTest4() {
 	
-		
 		nChannels = 16;
 		workLoad = new WorkLoad(0.9, 0.99, "StressTest4.txt");
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
@@ -137,30 +136,7 @@ class ReliabilityAnalysisTest {
 		
 		ArrayList<String> actualHeaderRow = ra.createHeaderRow();
 		
-		
 		assertEquals(expectedHeaderRow, actualHeaderRow);
-	}
-	
-	@Test
-	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testCreateHeaderRowStressTest() {
-		
-		
-		nChannels = 16;
-		workLoad = new WorkLoad(1, 0.9, 0.99, "StressTest4.txt");
-		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
-	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		ra = warp.toReliabilityAnalysis();
-		program = warp.toProgram();
-		
-		ArrayList<String> expectedHeaderRow = new ArrayList<>();
-		//just realized the test case will be massive..
-		ArrayList<String> actualHeaderRow = ra.createHeaderRow();
-		
-		
-		
-		//assertEquals(expectedHeaderRow, actualHeaderRow);
 	}
 	
 	/**
@@ -272,7 +248,7 @@ class ReliabilityAnalysisTest {
 	
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testCreateDummyRow() {
+	void testCreateDummyRowExample4() {
 		int columnHeaderSize = workLoad.createHeader().size();
 	
 		ArrayList<Double> dummyRow = ra.buildDummyRow(columnHeaderSize);
@@ -285,7 +261,6 @@ class ReliabilityAnalysisTest {
 		}
 		
 		//assertEquals(expectedDummyRow, dummyRow);
-		
 
 	}
 	
@@ -347,14 +322,10 @@ class ReliabilityAnalysisTest {
 	void testCreateFirstRowExample4() {
 		ArrayList<String> headerRow;
 		headerRow = ra.createHeaderRow();
-		System.out.println(headerRow);
 		
 		HashMap<String,Integer> headerRowHashMap = ra.createHeaderRowHashMap(headerRow);
-		System.out.println(headerRowHashMap);
-
 		
 		Table<String,InstructionTimeSlot> scheduleTable = program.getSchedule();
-
 
 		ReliabilityRow expectedFirstRow = new ReliabilityRow();
 		expectedFirstRow.add(1.0);
@@ -364,39 +335,11 @@ class ReliabilityAnalysisTest {
 		expectedFirstRow.add(1.0);
 		expectedFirstRow.add(0.0);
 		expectedFirstRow.add(0.0);
-		System.out.println(expectedFirstRow);
-
-		
 
 		ReliabilityRow actualFirstRow = ra.createFirstRow(scheduleTable, headerRowHashMap);
-		System.out.println(actualFirstRow);
 
-		
 		assertEquals(expectedFirstRow, actualFirstRow);
 
-	}
-
-	@Test
-	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testNumTxPerLinkAndTotalTxCost() {
-		
-	
-		//ArrayList<String> actualTxPerLinkAndTotalCost = 
-		
-		
-		
-	}
-	
-	@Test
-	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testGetFixedTxPerLinkAndTotalTxCost() {
-		
-//		Flow flow = ;
-//		int nNodesInFlowExpected = 
-//		ArrayList<String> expectedTxPerLinkAndTotalCost = new ArrayList<String>();
-//		
-		
-		
 	}
 	
 	
@@ -406,14 +349,12 @@ class ReliabilityAnalysisTest {
 	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testCalculateNewSinkNodeState() {
-		
-		//1.0	0.9	0.0	0.0	1.0	0.0	0.0
+	void testCalculateNewSinkNodeStateExample4() {
+
 		ReliabilityTable reliabilities = new ReliabilityTable();
 		
 		double expectedNewSinkNodeState = 0.81;
 		double actualNewSinkNodeState = ra.calculateNewSinkNodeState(MIN_LQ,0.0,0.9, E2E);
-		
 		
 		assertEquals(expectedNewSinkNodeState, actualNewSinkNodeState);
 		
@@ -429,15 +370,12 @@ class ReliabilityAnalysisTest {
 	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testCalculateNewSinkNodeStateAfterPeriod() {
+	void testCalculateNewSinkNodeStateAfterPeriodExample4() {
 		
-		//1.0	0.9	0.0	0.0	1.0	0.0	0.0
 		ReliabilityTable reliabilities = new ReliabilityTable();
 		
 		double expectedNewSinkNodeState = 0.81;
 		double actualNewSinkNodeState = ra.calculateNewSinkNodeState(MIN_LQ,0.0,0.9, E2E);
-		
-		System.out.println(actualNewSinkNodeState);
 		
 		assertEquals(expectedNewSinkNodeState, actualNewSinkNodeState);
 		
@@ -446,15 +384,12 @@ class ReliabilityAnalysisTest {
 	
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testCalculateNewSinkNodeStateLastEntry() {
+	void testCalculateNewSinkNodeStateLastEntryExample4() {
 		
-		//1.0	0.9	0.0	0.0	1.0	0.0	0.0
 		ReliabilityTable reliabilities = new ReliabilityTable();
 		
 		double expectedNewSinkNodeState = 0.9963;
 		double actualNewSinkNodeState = ra.calculateNewSinkNodeState(MIN_LQ,0.9963,0.999, E2E);
-		
-		System.out.println(actualNewSinkNodeState);
 		
 		//assertEquals(expectedNewSinkNodeState, actualNewSinkNodeState);
 		
@@ -471,7 +406,6 @@ class ReliabilityAnalysisTest {
 		
 		assertEquals(expectedGetFlowSize, actualGetFlowSize);
 		
-		
 	}
 	
 	
@@ -484,8 +418,7 @@ class ReliabilityAnalysisTest {
 		workLoad = new WorkLoad(0.9, 0.99, "Example1a.txt");
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);	
 		
 		ra = warp.toReliabilityAnalysis();
 		program = warp.toProgram();
@@ -495,7 +428,6 @@ class ReliabilityAnalysisTest {
 		int actualGetFlowSize = ra.getFlowSize(flowNames,0);
 		
 		assertEquals(expectedGetFlowSize, actualGetFlowSize);
-		
 		
 	}
 	
@@ -510,7 +442,6 @@ class ReliabilityAnalysisTest {
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
 		ra = warp.toReliabilityAnalysis();
 
 		
@@ -519,7 +450,6 @@ class ReliabilityAnalysisTest {
 		int actualGetFlowSize = ra.getFlowSize(flowNames,0);
 		
 		assertEquals(expectedGetFlowSize, actualGetFlowSize);
-		
 		
 	}
 	
@@ -533,7 +463,6 @@ class ReliabilityAnalysisTest {
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
 		ra = warp.toReliabilityAnalysis();
 
 		
@@ -555,15 +484,12 @@ class ReliabilityAnalysisTest {
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void getFlowSizeStressTest4MiddleFlow() {
 		
-		
 		nChannels = 16;
 		workLoad = new WorkLoad(0.9, 0.99, "StressTest4.txt");
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);	
 		ra = warp.toReliabilityAnalysis();
-
 		
 		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder();
 		int expectedGetFlowSize = 5;
@@ -576,7 +502,7 @@ class ReliabilityAnalysisTest {
 	
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testCheckRowForPeriod() {
+	void testCheckRowForPeriodExample4() {
 		
 		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
 		
@@ -584,9 +510,7 @@ class ReliabilityAnalysisTest {
 		
 		expectedResetPeriodFlowNames.add("F0");
 		
-		
 		ArrayList<String> actualResetPeriodFlowNames = ra.checkRowForPeriod(10,actualReliabilityTable.get(9), 0.99);
-		
 		
 		assertEquals(expectedResetPeriodFlowNames, actualResetPeriodFlowNames);
 	
@@ -597,14 +521,11 @@ class ReliabilityAnalysisTest {
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testCheckRowForPeriodStressTest4_Period1() {
 		
-		
 		nChannels = 16;
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 		workLoad = new WorkLoad(MIN_LQ, E2E, "StressTest4.txt");
-		
 	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);	
 		ra = warp.toReliabilityAnalysis();
 		program = warp.toProgram();
 
@@ -614,9 +535,7 @@ class ReliabilityAnalysisTest {
 		
 		expectedResetPeriodFlowNames.add("F1");
 		
-		
 		ArrayList<String> actualResetPeriodFlowNames = ra.checkRowForPeriod(20,actualReliabilityTable.get(19), 0.99);
-		
 		
 		assertEquals(expectedResetPeriodFlowNames, actualResetPeriodFlowNames);
 	
@@ -633,14 +552,11 @@ class ReliabilityAnalysisTest {
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testCheckRowForPeriodStressTest4_PeriodForMultipleFlows() {
 		
-		
 		nChannels = 16;
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 		workLoad = new WorkLoad(MIN_LQ, E2E, "StressTest4.txt");
-		
 	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);		
 		ra = warp.toReliabilityAnalysis();
 		program = warp.toProgram();
 
@@ -656,9 +572,7 @@ class ReliabilityAnalysisTest {
 		expectedResetPeriodFlowNames.add("F9");
 		expectedResetPeriodFlowNames.add("F10");
 		
-		
 		ArrayList<String> actualResetPeriodFlowNames = ra.checkRowForPeriod(100,actualReliabilityTable.get(99), 0.99);
-		
 		
 		assertEquals(expectedResetPeriodFlowNames, actualResetPeriodFlowNames);
 	
@@ -669,17 +583,13 @@ class ReliabilityAnalysisTest {
 	
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testBuildReliabilityTable() {
-		
+	void testBuildReliabilityTableExample4() {
 
 		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
 		
 		ReliabilityRow actualFirstRow = actualReliabilityTable.getFirst();
 		
-		
 		ReliabilityRow expectedFirstRow = new ReliabilityRow();
-		
-		//1.0	0.9	0.0	0.0	1.0	0.0	0.0
 		
 		expectedFirstRow.add(1.0);
 		expectedFirstRow.add(0.9);
@@ -689,12 +599,9 @@ class ReliabilityAnalysisTest {
 		expectedFirstRow.add(0.0);
 		expectedFirstRow.add(0.0);
 		
-		
 		ReliabilityRow actualLastRow = actualReliabilityTable.getLast();
 		
 		ReliabilityRow expectedLastRow = new ReliabilityRow();
-		
-		//1.0	0.999	0.99873	0.993627	1.0	0.999	0.9963
 		
 		expectedLastRow.add(1.0);
 		expectedLastRow.add(0.999);
@@ -703,12 +610,9 @@ class ReliabilityAnalysisTest {
 		expectedLastRow.add(1.0);
 		expectedLastRow.add(0.999);
 		expectedLastRow.add(0.9963);
-		
 
 		assertEquals(expectedFirstRow, actualFirstRow);
 		assertEquals(expectedLastRow, actualLastRow);
-		
-		
 		
 	}
 	
