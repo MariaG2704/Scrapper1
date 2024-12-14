@@ -1,5 +1,6 @@
 package edu.uiowa.cs.warp;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -87,6 +88,43 @@ class ReliabilityAnalysisTest {
 	
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testVerifyReliabilities() {
+	
+		
+		assertTrue(ra.verifyReliablities());
+	}
+	
+	
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testVerifyReliabilitiesStressTest4() {
+	
+		
+		nChannels = 16;
+		workLoad = new WorkLoad(0.9, 0.99, "StressTest4.txt");
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		ra = warp.toReliabilityAnalysis();
+		program = warp.toProgram();
+		
+		assertTrue(ra.verifyReliablities());
+	}
+	
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testVerifyReliabilitiesExample4NumFaults() {
+	
+		workLoad = new WorkLoad(1, MIN_LQ, E2E, INPUT_FILE);
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		ra = warp.toReliabilityAnalysis();
+		program = warp.toProgram();
+		
+		assertFalse(ra.verifyReliablities());
+	}
+	
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testCreateHeaderRowExample4() {
 		ArrayList<String> expectedHeaderRow = new ArrayList<>();
 		expectedHeaderRow.add("F0:A");
@@ -160,7 +198,7 @@ class ReliabilityAnalysisTest {
 	void testCreateHeaderRowPushAndPull_ExampleCustomInput2() {
 		/*Initialization block for custom input.*/
 		nChannels = 16;
-		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput1.txt");
+		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput2.txt");
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
 		ra = warp.toReliabilityAnalysis();
@@ -189,7 +227,7 @@ class ReliabilityAnalysisTest {
 	void testCreateHeaderRowOtherKeywords_ExampleCustomInput3() {
 		/*Initialization block for custom input.*/
 		nChannels = 16;
-		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput1.txt");
+		workLoad = new WorkLoad(0.9, 0.99, "ExampleCustomInput3.txt");
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
 		ra = warp.toReliabilityAnalysis();
@@ -508,6 +546,33 @@ class ReliabilityAnalysisTest {
 		
 	}
 	
+	/**
+	 * Tests getting the flow size of F5 in
+	 * StressTest4. It is the middle flow (last flow is F10)
+	 * 
+	 */
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void getFlowSizeStressTest4MiddleFlow() {
+		
+		
+		nChannels = 16;
+		workLoad = new WorkLoad(0.9, 0.99, "StressTest4.txt");
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		ra = warp.toReliabilityAnalysis();
+
+		
+		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder();
+		int expectedGetFlowSize = 5;
+		int actualGetFlowSize = ra.getFlowSize(flowNames,4);
+		
+		assertEquals(expectedGetFlowSize, actualGetFlowSize);
+		
+		
+	}
 	
 	
 	@Test
@@ -592,7 +657,7 @@ class ReliabilityAnalysisTest {
 	void testBuildReliabilityTableCheckNodeNamesWithPush_ExampleCustomInput1() {
 		/*Initialization block for custom input.*/
 		nChannels = 16;
-		workLoad = new WorkLoad(1, 0.9, 0.99, "ExampleCustomInput1.txt");
+		workLoad = new WorkLoad( 0.9, 0.99, "ExampleCustomInput1.txt");
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
 		ra = warp.toReliabilityAnalysis();
