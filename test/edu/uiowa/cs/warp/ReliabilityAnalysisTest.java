@@ -582,22 +582,82 @@ class ReliabilityAnalysisTest {
 		
 		ArrayList<String> expectedResetPeriodFlowNames = new ArrayList<String>();
 		
-		expectedResetPeriodFlowNames.add("F1");
+		expectedResetPeriodFlowNames.add("F0");
 		
 		
-		ArrayList<String> actualResetPeriodFlowNames = ra.checkRowForPeriod(11,actualReliabilityTable.get(10), 0.99);
+		ArrayList<String> actualResetPeriodFlowNames = ra.checkRowForPeriod(10,actualReliabilityTable.get(9), 0.99);
 		
 		
 		assertEquals(expectedResetPeriodFlowNames, actualResetPeriodFlowNames);
-		
-		
-		
-		
-	
-		
-		
 	
 	}
+	
+	
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testCheckRowForPeriodStressTest4_Period1() {
+		
+		
+		nChannels = 16;
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+		workLoad = new WorkLoad(MIN_LQ, E2E, "StressTest4.txt");
+		
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		ra = warp.toReliabilityAnalysis();
+		program = warp.toProgram();
+
+		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
+		
+		ArrayList<String> expectedResetPeriodFlowNames = new ArrayList<String>();
+		
+		expectedResetPeriodFlowNames.add("F1");
+		
+		
+		ArrayList<String> actualResetPeriodFlowNames = ra.checkRowForPeriod(20,actualReliabilityTable.get(19), 0.99);
+		
+		
+		assertEquals(expectedResetPeriodFlowNames, actualResetPeriodFlowNames);
+	
+	}
+	
+	
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testCheckRowForPeriodStressTest4_PeriodForMultipleFlows() {
+		
+		
+		nChannels = 16;
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+		workLoad = new WorkLoad(MIN_LQ, E2E, "StressTest4.txt");
+		
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		ra = warp.toReliabilityAnalysis();
+		program = warp.toProgram();
+
+		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
+		
+		ArrayList<String> expectedResetPeriodFlowNames = new ArrayList<String>();
+		
+		expectedResetPeriodFlowNames.add("F1");
+		expectedResetPeriodFlowNames.add("F2");
+		expectedResetPeriodFlowNames.add("F3");
+		expectedResetPeriodFlowNames.add("F7");
+		expectedResetPeriodFlowNames.add("F8");
+		expectedResetPeriodFlowNames.add("F9");
+		expectedResetPeriodFlowNames.add("F10");
+		
+		
+		ArrayList<String> actualResetPeriodFlowNames = ra.checkRowForPeriod(100,actualReliabilityTable.get(99), 0.99);
+		
+		
+		assertEquals(expectedResetPeriodFlowNames, actualResetPeriodFlowNames);
+	
+	}
+	
 	
 	
 	
