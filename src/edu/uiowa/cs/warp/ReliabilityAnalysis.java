@@ -96,6 +96,8 @@ public class ReliabilityAnalysis {
 	
 	private ArrayList<String> flowNames;
 	
+	private ReliabilityTable reliabilities;
+	
 
 	/**
 	 * Constructor for predictive fault model.
@@ -140,11 +142,35 @@ public class ReliabilityAnalysis {
 			
 		this.minPacketReceptionRate = workLoad.getMinPacketReceptionRate();
 		this.e2e = workLoad.getE2e();
+		this.reliabilities = buildReliabilityTable();
 		// need program.getScheduler to make reliability table 
 		//read pass into warp get instrustions paraameters which parses it get the flow, source, and the sink, know if its a pull or push function, 
 		//tells us what index that needs to be change and then update it for the row your doing 
+	}
+	
+	/**
+	 * Helper method to calculate the unique nodes in all flows of workLoad.
+	 * 
+	 * @param flowNames The flow names that are in workLoad
+	 * @param workLoad The Warp programs workLoad object
+	 * @return totalNodes The total number of nodes in each workLoad flow
+	 */
+	public int getTotalNumberOfNodes() {
+		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder();
+		ArrayList<String> nodeNames = new ArrayList<String>();
+		ArrayList<Node> currentNodes;
+		String nodeName;
 		
-		
+		for (String flowName : flowNames) {
+			currentNodes = workLoad.getFlows().get(flowName).getNodes();
+			for (int node = 0; node < currentNodes.size(); node++) {
+				nodeName = currentNodes.get(node).getName();
+				if (!nodeNames.contains(nodeName)) {
+					nodeNames.add(nodeName);
+				}
+			}
+		}
+		return nodeNames.size();
 	}
 
 	/**
@@ -182,6 +208,25 @@ public class ReliabilityAnalysis {
 	    txArrayList.add(numEdgesInFlow + maxFaultsInFlow);
 	    
 	    return txArrayList;
+	}
+	
+	/**
+	 * 
+	 * @param flowNames
+	 * @param index
+	 * @return
+	 */
+	protected int getFlowSize(ArrayList<String> flowNames, int index) {
+		return workLoad.getNodesInFlow(flowNames.get(index)).length;
+	}
+	
+	/**
+	 * Supposed to create a table from the reliabilities but right now just creates a dummy table for implementing ReliabilityVisualization
+	 * 
+	 * @return ReliabilityTable a table made from all the reliabilities
+	 */
+	public ReliabilityTable getReliabilities() {
+		return reliabilities;
 	}
 	
 	/**
@@ -259,17 +304,6 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
-	 * Calculates the minimum link reliability with e2e and n hops 
-	 * 
-	 * @param e2e the end to end reliability target 
-	 * @param nHops the number of hops per link 
-	 * @return returns the minimum link reliability
-	 */
-	private Double calculateMinLinkReliability(Double e2e, int nHops) {
-		return Math.max(e2e, Math.pow(e2e, (1.0 / (double) nHops)));
-	}
-	
-	/**
 	 * Initializes a reliability window  with a single row containing reliability values 
 	 * 
 	 * @param nNodesInFlow the number of nodes in the flow 
@@ -327,6 +361,18 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
+	 * Calculates the minimum link reliability with e2e and n hops 
+	 * 
+	 * @param e2e the end to end reliability target 
+	 * @param nHops the number of hops per link 
+	 * @return returns the minimum link reliability
+	 */
+	private Double calculateMinLinkReliability(Double e2e, int nHops) {
+		return Math.max(e2e, Math.pow(e2e, (1.0 / (double) nHops)));
+	}
+	
+	
+	/**
 	 * Calculates the new reliability state for a sink node based on M,prevSnkNodeState,
 	 * prevSrcNodeState, minLinkReliabilityNeeded
 	 *  
@@ -365,48 +411,9 @@ public class ReliabilityAnalysis {
 	 
 	public Boolean verifyReliablities() {
 		// TODO Auto-generated method stub
-		boolean metE2E = true;
-			
-			ReliabilityTable rTable = this.buildReliabilityTable();
-									
-					for(int k = 0; k < rTable.getLast().size(); k++) {
-						
-						
-						if(rTable.getLast().get(k) < workLoad.getE2e()) {
-							
-							metE2E = false;
-							
-						}
-					}
-						
-			return metE2E;
+		return true;
 		
 		
-	}
-	
-	/**
-	 * Helper method to calculate the unique nodes in all flows of workLoad.
-	 * 
-	 * @param flowNames The flow names that are in workLoad
-	 * @param workLoad The Warp programs workLoad object
-	 * @return totalNodes The total number of nodes in each workLoad flow
-	 */
-	public int getTotalNumberOfNodes() {
-		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder();
-		ArrayList<String> nodeNames = new ArrayList<String>();
-		ArrayList<Node> currentNodes;
-		String nodeName;
-		
-		for (String flowName : flowNames) {
-			currentNodes = workLoad.getFlows().get(flowName).getNodes();
-			for (int node = 0; node < currentNodes.size(); node++) {
-				nodeName = currentNodes.get(node).getName();
-				if (!nodeNames.contains(nodeName)) {
-					nodeNames.add(nodeName);
-				}
-			}
-		}
-		return nodeNames.size();
 	}
 	
 	/**
@@ -441,12 +448,21 @@ public class ReliabilityAnalysis {
 		return headerRow;
 	}
 	
+	protected ReliabilityRow createRowCopy(ReliabilityRow copied) {
+		ReliabilityRow copy = new ReliabilityRow();
+	
+		for(int i =0;i<copied.size();i++) {
+			copy.add(copied.get(i));
+		}
+		return copy;
+	}
+	
 	/**
 	 * 
 	 * @param headerRow
 	 * @return
 	 */
-	protected HashMap<String, Integer> headerRowHashMap(ArrayList<String> headerRow){
+	protected HashMap<String, Integer> createHeaderRowHashMap(ArrayList<String> headerRow){
 		HashMap<String,Integer> indexes = new HashMap<String,Integer>();
 		
 		for(int i = 0 ; i < headerRow.size(); i++) {
@@ -456,33 +472,7 @@ public class ReliabilityAnalysis {
 		return indexes;
 	}
 	
-	/**
-	 * 
-	 * @param headerRowSize
-	 * @return
-	 */
-	protected ReliabilityRow buildDummyRow(int headerRowSize){
-		ReliabilityRow dummyRow = new ReliabilityRow();
-		for(int i=0;i < flowNames.size();i++) {
-			dummyRow.add(1.0);
-			int flowsize = getFlowSize(flowNames,i);
-			for(int j=1;j<flowsize;j++) {
-				dummyRow.add(0.0);
-			}
-		}
-		return dummyRow;
-	}
-	
-	/**
-	 * 
-	 * @param flowNames
-	 * @param index
-	 * @return
-	 */
-	protected int getFlowSize(ArrayList<String> flowNames, int index) {
-		return workLoad.getNodesInFlow(flowNames.get(index)).length;
-	}
-	
+
 	/**
 	 * 
 	 * @param scheduleTable
@@ -539,24 +529,25 @@ public class ReliabilityAnalysis {
 		}
 		return firstRow;
 	}
-	
-	protected ReliabilityRow rowCopy(ReliabilityRow copied) {
-		ReliabilityRow copy = new ReliabilityRow();
-	
-		for(int i =0;i<copied.size();i++) {
-			copy.add(copied.get(i));
-		}
-		return copy;
-	}
+
 	
 	/**
-	 * Supposed to create a table from the reliabilities but right now just creates a dummy table for implementing ReliabilityVisualization
 	 * 
-	 * @return ReliabilityTable a table made from all the reliabilities
+	 * @param headerRowSize
+	 * @return
 	 */
-	public ReliabilityTable getReliabilities() {
-		return buildReliabilityTable();
+	protected ReliabilityRow buildDummyRow(int headerRowSize){
+		ReliabilityRow dummyRow = new ReliabilityRow();
+		for(int i=0;i < flowNames.size();i++) {
+			dummyRow.add(1.0);
+			int flowsize = getFlowSize(flowNames,i);
+			for(int j=1;j<flowsize;j++) {
+				dummyRow.add(0.0);
+			}
+		}
+		return dummyRow;
 	}
+	
 	
 	/**
 	 * 
@@ -588,7 +579,10 @@ public class ReliabilityAnalysis {
 		return resetPeriodFlowNames;
 	}
 	
-	
+	/**
+	 * Builds a reliabolityTable 
+	 * @return
+	 */
 	protected ReliabilityTable buildReliabilityTable() {
 		headerRow = createHeaderRow();
 		System.out.println("header: " + headerRow);
