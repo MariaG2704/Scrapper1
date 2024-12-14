@@ -156,7 +156,7 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
-	 *	Gets our reliabilities variable
+	 *Gets our reliabilities variable
 	 * 
 	 * @return ReliabilityTable a table made from all the reliabilities
 	 */
@@ -185,6 +185,7 @@ public class ReliabilityAnalysis {
 	
 	/**
 	 * Gets the size of a flow at a certain index in flowNames
+	 * Note:This method should be private but for testing purposes is protected 
 	 * 
 	 * @param flowNames an ArrayList of all the flowNames
 	 * @param index the index of the flow we want
@@ -378,6 +379,7 @@ public class ReliabilityAnalysis {
 	/**
 	 * Calculates the new reliability state for a sink node based on M,prevSnkNodeState,
 	 * prevSrcNodeState, minLinkReliabilityNeeded
+	 * Note:This method should be private but for testing purposes is protected 
 	 * 
 	 * @param M the minimum packet reception rate
 	 * @param prevSnkNodeState a double that represents the previous sink node state
@@ -412,7 +414,8 @@ public class ReliabilityAnalysis {
 
 	/**
 	 * Creates a headerRow  that is an ArrayList for each node in a flows at each index 
-	 * For example, "F0:A" would be one index of the ArrayList where F0 is the flow with its node A 
+	 * For example, "F0:A" would be one index of the ArrayList where F0 is the flow with its node A
+	 * Note:This method should be private but for testing purposes is protected  
 	 * 
 	 * @return the headerRow we created
 	 */
@@ -432,6 +435,7 @@ public class ReliabilityAnalysis {
 	
 	/**
 	 * Creates a copy of a ReliabilityRow
+	 * Note:This method should be private but for testing purposes is protected 
 	 * 
 	 * @param copied the method we are going to copy
 	 * @return the copy of the ReliabilityRow
@@ -448,6 +452,7 @@ public class ReliabilityAnalysis {
 	/**
 	 * Creates a HashMap for the headerRow. 
 	 * The key is the name of the flow and node and the value is what index it is in the headerRow
+	 * Note:This method should be private but for testing purposes is protected 
 	 * 
 	 * @param headerRow an ArrayList of the headerRow
 	 * @return the created HashMap
@@ -463,7 +468,8 @@ public class ReliabilityAnalysis {
 	}
 
 	/**
-	 * Creates the first row of the schedule table based on a dummy   
+	 * Creates the first row of the schedule table based on a dummy  
+	 * Note:This method should be private but for testing purposes is protected 
 	 * 
 	 * @param scheduleTable the flow schedule table
 	 * @param headerRowHashMap the HashMap of our headerRow 
@@ -547,6 +553,7 @@ public class ReliabilityAnalysis {
 	/**
 	 * Checks if the row is equal to any of the flow periods.  
 	 * Sets the col and row of the first node equal to 1.0 and every other nodes in that flow to 0.0
+	 * Note:This method should be private but for testing purposes is protected 
 	 * 
 	 * @param row The current row you are at in the table
 	 * @param tempReliabilityRow the row that we are creating to add to the table
@@ -578,6 +585,7 @@ public class ReliabilityAnalysis {
 	
 	/**
 	 * Builds a dummyRow that sets the first index to 1.0 and all the other indexes to 0.0
+	 * Note:This method should be private but for testing purposes is protected 
 	 * 
 	 * @param headerRowSize the size of the headerRow of our reliability table 
 	 * @return
@@ -596,6 +604,7 @@ public class ReliabilityAnalysis {
 	
 	/**
 	 * Builds a reliabilityTable for the the reliabilities of a flow schedule
+	 * Note:This method should be private but for testing purposes is protected 
 	 * 
 	 * @return ReliabilityTable table of all reliabilities for the nodes in each flow
 	 */
