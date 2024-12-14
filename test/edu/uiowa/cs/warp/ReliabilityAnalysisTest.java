@@ -940,7 +940,10 @@ class ReliabilityAnalysisTest {
 		
 	}
 	
-	
+	/**
+	 * Tests whether, when you check StressTest reliabilities with a minPacketReceptionRate of value of .95,
+	 * if the last row's values are correctly calculated and outputed 
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testBuildReliabilityStressTest4_M_95() {
