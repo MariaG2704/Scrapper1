@@ -85,7 +85,9 @@ class ReliabilityAnalysisTest {
 //		
 //		assertEquals(6, actualNodes);
 //		
-	
+	/**
+	 * Test for the verifyReliabilities method. Checks that the method returns true for Example4.txt's reliability table, since every node meets the e2e.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testVerifyReliabilitiesExample4() {
@@ -94,7 +96,9 @@ class ReliabilityAnalysisTest {
 		assertTrue(ra.verifyReliablities());
 	}
 	
-	
+	/**
+	 * Test for the verifyReliabilities method. Checks that the method returns true for StressTest4.txt's reliability table, since every node meets the e2e.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testVerifyReliabilitiesStressTest4() {
@@ -110,6 +114,10 @@ class ReliabilityAnalysisTest {
 		assertTrue(ra.verifyReliablities());
 	}
 	
+	/**
+	 * Test for the verifyReliabilities method. Checks that the method returns false for Example4.txt's reliability table computed using 
+	 * the numFaults model, since not every node meets the e2e.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testVerifyReliabilitiesExample4NumFaults() {
@@ -122,6 +130,9 @@ class ReliabilityAnalysisTest {
 		assertFalse(ra.verifyReliablities());
 	}
 	
+	/**
+	 * Test for the createHeaderRow method that ensures the method creates the appropriate header row for Example4.txt.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testCreateHeaderRowExample4() {
@@ -220,9 +231,12 @@ class ReliabilityAnalysisTest {
 		assertEquals(expectedHeaderRow, actualHeaderRow);
 	}
 	
+	/**
+	 * Test for the createHeaderRowHashMap method. Checks that the hash map created for indexing the header row of Example4.txt contains the correct values. 
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testHeaderRowHashMapExample4() {
+	void testCreateHeaderRowHashMapExample4() {
 		ArrayList<String> headerRow = new ArrayList<>();
 		headerRow.add("F0:A");
 		headerRow.add("F0:B");
@@ -246,6 +260,9 @@ class ReliabilityAnalysisTest {
 		assertEquals(expectedHeaderRowMap, headerRowMap);
 	}
 	
+	/**
+	 * Test for the createDummyRow method. Checks that the dummy row created by the method for Example4.txt contains the correct values.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testCreateDummyRowExample4() {
@@ -256,12 +273,12 @@ class ReliabilityAnalysisTest {
 		ArrayList<Double> expectedDummyRow = new ArrayList<Double>();
 		expectedDummyRow.add(1.0);
 		
-			expectedDummyRow.add(0.0);
-			expectedDummyRow.add(0.0);
-			expectedDummyRow.add(0.0);
-			expectedDummyRow.add(1.0);
-			expectedDummyRow.add(0.0);
-			expectedDummyRow.add(0.0);	
+		expectedDummyRow.add(0.0);
+		expectedDummyRow.add(0.0);
+		expectedDummyRow.add(0.0);
+		expectedDummyRow.add(1.0);
+		expectedDummyRow.add(0.0);
+		expectedDummyRow.add(0.0);	
 		
 		assertEquals(expectedDummyRow, dummyRow);
 
@@ -320,6 +337,9 @@ class ReliabilityAnalysisTest {
 		//in-progress
 	}
 	
+	/**
+	 * Test for the createFirstRow method. Checks that the first row of the table of Example4.txt contains the correct values.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testCreateFirstRowExample4() {
@@ -375,8 +395,6 @@ class ReliabilityAnalysisTest {
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testCalculateNewSinkNodeStateAfterPeriodExample4() {
 		
-		ReliabilityTable reliabilities = new ReliabilityTable();
-		
 		double expectedNewSinkNodeState = 0.81;
 		double actualNewSinkNodeState = ra.calculateNewSinkNodeState(MIN_LQ,0.0,0.9, E2E);
 		
@@ -384,12 +402,12 @@ class ReliabilityAnalysisTest {
 		
 	}
 	
-	
+	/**
+	 * Test for the calculateNewSinkNodeState method. Checks that the method computes the correct value from the given parameters.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testCalculateNewSinkNodeStateLastEntryExample4() {
-		
-		ReliabilityTable reliabilities = new ReliabilityTable();
 		
 		double expectedNewSinkNodeState = 0.9963;
 		double actualNewSinkNodeState = ra.calculateNewSinkNodeState(MIN_LQ,0.9963,0.999, E2E);
@@ -398,7 +416,9 @@ class ReliabilityAnalysisTest {
 		
 	}
 	
-	
+	/**
+	 * Test for the getFlowSize method. Checks that the method returns the correct flow size for Example4.txt.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void getFlowSizeExample4() {
@@ -411,7 +431,9 @@ class ReliabilityAnalysisTest {
 		
 	}
 	
-	
+	/**
+	 * Test for the getFlowSize method. Checks that the method returns the correct flow size for Example1a.txt.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void getFlowSizeExample1a() {
@@ -434,7 +456,9 @@ class ReliabilityAnalysisTest {
 		
 	}
 	
-	
+	/**
+	 * Test for the getFlowSize method. Checks that the method returns the correct flow size when called on the first flow in StressTest4.txt.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void getFlowSizeStressTest4FirstFlow() {
@@ -455,7 +479,9 @@ class ReliabilityAnalysisTest {
 		assertEquals(expectedGetFlowSize, actualGetFlowSize);
 		
 	}
-	
+	/**
+	 * Test for the getFlowSize method. Checks that the method returns the correct flow size when called on the last flow in StressTest4.txt.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void getFlowSizeStressTest4LastFlow() {
@@ -474,7 +500,6 @@ class ReliabilityAnalysisTest {
 		int actualGetFlowSize = ra.getFlowSize(flowNames,9);
 		
 		assertEquals(expectedGetFlowSize, actualGetFlowSize);
-		
 		
 	}
 	
