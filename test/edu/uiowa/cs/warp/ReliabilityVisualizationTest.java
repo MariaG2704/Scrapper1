@@ -273,7 +273,7 @@ class ReliabilityVisualizationTest {
 		
 		
 		int numRows = 20;
-		int numColumns = 7;
+		int numColumns = 6;
 		
 		
 		Program program = warp.toProgram();

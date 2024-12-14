@@ -21,13 +21,21 @@ import java.util.Arrays;
  */
 public class ReliabilityVisualization extends VisualizationObject {
 
-	private static final String SOURCE_SUFFIX = ".ra"; //file type of warp file
+	/** Type of suffix of warp file to be created*/
+	private static final String SOURCE_SUFFIX = ".ra"; 
+	/** Name of object hardcoded as Reliability Analysis */
 	private static final String OBJECT_NAME = "Reliability Analysis";
-	private WarpInterface warp; //the warp program
-	private ReliabilityAnalysis ra; //reliability analysis object
+	/** warp object of type WarpInterface to be made from workLoad and into ReliabilityAnalysis */
+	private WarpInterface warp; 
+	/** ReliabilityAnalysis object that warp will be converted into */
+	private ReliabilityAnalysis ra; 
+	/** Program object to be made from the warp object*/
 	private Program program;
+	/**sourceTable to be givent ra attributes and reliabilities */
 	private ReliabilityTable sourceTable;
+	/** WorkLoad object for warp to be converted into*/
 	private WorkLoad workLoad;
+	/** Name of flows from a given workLoad, in order of each flow's priority number*/
 	private ArrayList<String> flowNames; 
 	
 	/**
