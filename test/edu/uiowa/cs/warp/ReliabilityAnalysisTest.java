@@ -256,11 +256,14 @@ class ReliabilityAnalysisTest {
 		ArrayList<Double> expectedDummyRow = new ArrayList<Double>();
 		expectedDummyRow.add(1.0);
 		
-		for (int i = 1; i < columnHeaderSize; i++) {
 			expectedDummyRow.add(0.0);
-		}
+			expectedDummyRow.add(0.0);
+			expectedDummyRow.add(0.0);
+			expectedDummyRow.add(1.0);
+			expectedDummyRow.add(0.0);
+			expectedDummyRow.add(0.0);	
 		
-		//assertEquals(expectedDummyRow, dummyRow);
+		assertEquals(expectedDummyRow, dummyRow);
 
 	}
 	
@@ -390,8 +393,8 @@ class ReliabilityAnalysisTest {
 		
 		double expectedNewSinkNodeState = 0.9963;
 		double actualNewSinkNodeState = ra.calculateNewSinkNodeState(MIN_LQ,0.9963,0.999, E2E);
-		
-		//assertEquals(expectedNewSinkNodeState, actualNewSinkNodeState);
+
+		assertEquals(expectedNewSinkNodeState, actualNewSinkNodeState);
 		
 	}
 	
@@ -516,6 +519,39 @@ class ReliabilityAnalysisTest {
 	
 	}
 	
+	
+	/**
+	 * Tests to ensure that
+	 * the subsequent row after a period recycle
+	 * returns the correct "met" flow
+	 * with the numFault Model in place
+	 */
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testCheckRowForPeriodExample4NumFaults() {
+		nChannels = 16;
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+		workLoad = new WorkLoad(1, MIN_LQ, E2E, "Example4.txt");
+		
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		ra = warp.toReliabilityAnalysis();
+		program = warp.toProgram();
+		
+		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
+		
+		ArrayList<String> expectedResetPeriodFlowNames = new ArrayList<String>();
+		
+		expectedResetPeriodFlowNames.add("F0");
+		
+		ArrayList<String> actualResetPeriodFlowNames = ra.checkRowForPeriod(10,actualReliabilityTable.get(9), 0.99);
+		
+		
+		assertEquals(expectedResetPeriodFlowNames, actualResetPeriodFlowNames);
+	
+		
+	}
 	
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
@@ -862,6 +898,9 @@ class ReliabilityAnalysisTest {
 	
 	
 	
+	
+	
+	
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testBuildReliabilityExample4NumFaultsRow0() {
@@ -1029,33 +1068,10 @@ class ReliabilityAnalysisTest {
 		assertEquals(expectedLastRow, actualLastRow);
 		
 		
-		
-		
 	}
 	
 	
-	@Test
-	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testBuildReliabilityStressTest4_E2E() {
-
-		nChannels = 16;
-		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
-		workLoad = new WorkLoad(0.95, E2E, "StressTest4.txt");
-		
-	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
-		ra = warp.toReliabilityAnalysis();
-		program = warp.toProgram();
-			
-		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
-		
-
-		ReliabilityRow actualLastRow = actualReliabilityTable.get(299);
-		ReliabilityRow expectedLastRow = new ReliabilityRow();
-		
-		
-	}
+	
 	
 	/**
      * Test for the buildReliabilityTable method. Samples from table rows diagonally and
