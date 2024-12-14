@@ -1036,6 +1036,152 @@ class ReliabilityAnalysisTest {
 		
 		
 	}
+	
+	
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testBuildReliabilityStressTest4_M_95() {
+
+		nChannels = 16;
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+		workLoad = new WorkLoad(0.95, E2E, "StressTest4.txt");
+		
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		ra = warp.toReliabilityAnalysis();
+		program = warp.toProgram();
+			
+		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
+		
+
+		ReliabilityRow actualLastRow = actualReliabilityTable.get(299);
+		ReliabilityRow expectedLastRow = new ReliabilityRow();
+		
+
+		//1.0	0.9975	0.9927500000000001	1.0	0.999875	0.9995187499999999	0.9988418749999999	0.9987882890625	0.9986610224609375	0.9965089442285155	1.0	0.999875	0.9995187499999999	0.9988418749999999	0.9987882890625	0.997210183203125	1.0	0.999875	0.9995187499999999	0.9988418749999999	0.9987882890625	0.9986610224609375	0.9984385604414062	0.995654399905664	1.0	0.9975	0.9974994062500001	0.997493171878711	0.9971318900625098	1.0	0.9975	0.9927500000000001	1.0	0.9975	0.9974996882812501	0.9974934539081983	0.997132171989849	1.0	0.999875	0.9995187499999999	0.9988418749999999	0.9987882890625	0.9986610224609375	0.9965089442285155	1.0	0.999875	0.999750015625	0.9996250468730469	0.9996072388258936	0.9995725576540625	0.9995493989138763	0.9985455781541018	1.0	0.999875	0.9995187499999999	0.9993938101562498	0.9993760062285155	0.9986825432432617
+
+		expectedLastRow.add(1.0);
+		expectedLastRow.add(0.9975);
+		expectedLastRow.add(0.9927500000000001);
+		expectedLastRow.add(1.0);
+		expectedLastRow.add(0.999875);
+		expectedLastRow.add(0.9995187499999999);
+		expectedLastRow.add(0.9988418749999999);
+		expectedLastRow.add(0.9987882890625);
+		expectedLastRow.add(0.9986610224609375);
+		expectedLastRow.add(0.9965089442285155);
+		expectedLastRow.add(1.0);
+		expectedLastRow.add(0.999875);
+		expectedLastRow.add(0.9995187499999999);
+		expectedLastRow.add(0.9988418749999999);
+		expectedLastRow.add(0.9987882890625);
+		expectedLastRow.add(0.997210183203125);
+		expectedLastRow.add(1.0);
+		expectedLastRow.add(0.999875);
+		expectedLastRow.add(0.9995187499999999);
+		expectedLastRow.add(0.9988418749999999);
+		expectedLastRow.add(0.9987882890625);
+		expectedLastRow.add(0.9986610224609375);
+		expectedLastRow.add(0.9984385604414062);
+		expectedLastRow.add(0.995654399905664);
+		expectedLastRow.add(1.0);
+		expectedLastRow.add(0.9975);
+		expectedLastRow.add(0.9974994062500001);
+		expectedLastRow.add(0.997493171878711);
+		expectedLastRow.add(0.9971318900625098);
+		expectedLastRow.add(1.0);
+		expectedLastRow.add(0.9975);
+		expectedLastRow.add(0.9927500000000001);
+		expectedLastRow.add(1.0);
+		expectedLastRow.add(0.9975);
+		expectedLastRow.add(0.9974996882812501);
+		expectedLastRow.add(0.9974934539081983);
+		expectedLastRow.add(0.997132171989849);
+		expectedLastRow.add(1.0);
+		expectedLastRow.add(0.999875);
+		expectedLastRow.add(0.9995187499999999);
+		expectedLastRow.add(0.9988418749999999);
+		expectedLastRow.add(0.9987882890625);
+		expectedLastRow.add(0.9986610224609375);
+		expectedLastRow.add(0.9965089442285155);
+		expectedLastRow.add(1.0);
+		expectedLastRow.add(0.999875);
+		expectedLastRow.add(0.999750015625);
+		expectedLastRow.add(0.9996250468730469);
+		expectedLastRow.add(0.9996072388258936);
+		expectedLastRow.add(0.9995725576540625);
+		expectedLastRow.add(0.9995493989138763);
+		expectedLastRow.add(0.9985455781541018);
+		expectedLastRow.add(1.0);
+		expectedLastRow.add(0.999875);
+		expectedLastRow.add(0.9995187499999999);
+		expectedLastRow.add(0.9993938101562498);
+		expectedLastRow.add(0.9993760062285155);
+		expectedLastRow.add(0.9986825432432617);
+
+		
+		
+		assertEquals(expectedLastRow, actualLastRow);
+		
+		
+		
+		
+	}
+	
+	
+	@Test
+    @Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+    void testBuildReliabilitiyTableExample4DiagonalRow() {
+        ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
+
+        ReliabilityRow actualDiagonalRow = new ReliabilityRow();
+        actualDiagonalRow.add(actualReliabilityTable.get(0).get(0));
+        actualDiagonalRow.add(actualReliabilityTable.get(1).get(1));
+        actualDiagonalRow.add(actualReliabilityTable.get(2).get(2));
+        actualDiagonalRow.add(actualReliabilityTable.get(3).get(3));
+        actualDiagonalRow.add(actualReliabilityTable.get(4).get(4));
+        actualDiagonalRow.add(actualReliabilityTable.get(5).get(5));
+        actualDiagonalRow.add(actualReliabilityTable.get(6).get(6));
+        actualDiagonalRow.add(actualReliabilityTable.get(7).get(0));
+        actualDiagonalRow.add(actualReliabilityTable.get(8).get(1));
+        actualDiagonalRow.add(actualReliabilityTable.get(9).get(2));
+        actualDiagonalRow.add(actualReliabilityTable.get(10).get(3));
+        actualDiagonalRow.add(actualReliabilityTable.get(11).get(4));
+        actualDiagonalRow.add(actualReliabilityTable.get(12).get(5));
+        actualDiagonalRow.add(actualReliabilityTable.get(13).get(6));
+        actualDiagonalRow.add(actualReliabilityTable.get(14).get(0));
+        actualDiagonalRow.add(actualReliabilityTable.get(15).get(1));
+        actualDiagonalRow.add(actualReliabilityTable.get(16).get(2));
+        actualDiagonalRow.add(actualReliabilityTable.get(17).get(3));
+        actualDiagonalRow.add(actualReliabilityTable.get(18).get(4));
+        actualDiagonalRow.add(actualReliabilityTable.get(19).get(5));
+
+        ReliabilityRow expectedDiagonalRow = new ReliabilityRow();
+        expectedDiagonalRow.add(1.0);
+        expectedDiagonalRow.add(0.99);
+        expectedDiagonalRow.add(0.972);
+        expectedDiagonalRow.add(0.9477);
+        expectedDiagonalRow.add(1.0);
+        expectedDiagonalRow.add(0.0);
+        expectedDiagonalRow.add(0.0);
+        expectedDiagonalRow.add(1.0);
+        expectedDiagonalRow.add(0.999);
+        expectedDiagonalRow.add(0.99873);
+        expectedDiagonalRow.add(0.0);
+        expectedDiagonalRow.add(1.0);
+        expectedDiagonalRow.add(0.999);
+        expectedDiagonalRow.add(0.9963);
+        expectedDiagonalRow.add(1.0);
+        expectedDiagonalRow.add(0.999);
+        expectedDiagonalRow.add(0.99873);
+        expectedDiagonalRow.add(0.993627);
+        expectedDiagonalRow.add(1.0);
+        expectedDiagonalRow.add(0.999);
+
+        assertEquals(expectedDiagonalRow, actualDiagonalRow);
+
+    }
 		
 	
 	
