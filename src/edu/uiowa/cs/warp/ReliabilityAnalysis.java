@@ -610,6 +610,12 @@ public class ReliabilityAnalysis {
 	 * For each instruction in instruction array, it then iterates through that, 
 	 * getting the flowName, checking if its a push/pull, 
 	 * and then doing calculations based on if its a period change or not. 
+	 * If the current flow of instructionParameter is a period reset,
+	 * we calculate the newSinkNodeState automatically with prevSinkNodeState
+	 * and should have values prevSrcNode = 1.0 and prevSinkNodeState = 0.0	. 
+	 * If the current flow has not reached the end of its period, 
+	 * we calculate the newSnkNodeState with the prevSnkNodeState and
+	 * prevSrcNodeState from the values in the previous row of reliabilities.	
 	 * Adds that row to the reliability Table and moves on to the next row.
 	 * 
 	 * Note:This method should be private but for testing purposes is protected 
@@ -664,20 +670,12 @@ public class ReliabilityAnalysis {
 						Double prevSnkNodeState = reliabilities.get(row-1).get(indexOfSnk);
 						Double prevSrcNodeState = reliabilities.get(row-1).get(indexOfSnk-1);
 				
-						/* if the current flow of instructionParameter is a period reset
-						 * we calculate the newSinkNodeState automatically with prevSinkNodeState
-						 * and should have values prevSrcNode = 1.0 and prevSinkNodeState = 0.0
-						 */
 						if( resetPeriodFlowNames.indexOf(flowName) != -1){
 							nextSnkReliability = calculateNewSinkNodeState(minPacketReceptionRate, 
 																			prevReliabilityRow.get(indexOfSnk), 
 																			prevReliabilityRow.get(indexOfSrc), 
 																			e2e);							
-						}else {	
-							/* if the current flow has not reached the end of its period, 
-							 * we calculate the newSnkNodeState with the prevSnkNodeState and
-							 * prevSrcNodeState from the values in the previous row of reliabilities
-							 */							
+						}else {							
 							nextSnkReliability = calculateNewSinkNodeState(minPacketReceptionRate, 
 																			prevSnkNodeState,
 																			prevSrcNodeState, e2e);
@@ -686,7 +684,7 @@ public class ReliabilityAnalysis {
 					}
 				}
 			}
-			/**Then reset the previous reliabilityRow for next times-lot */
+			/**Then reset the previous reliabilityRow for next times-slot */
 			ReliabilityRow resetRow = new ReliabilityRow();
 			reliabilities.add(prevReliabilityRow);
 			prevReliabilityRow = resetRow;
