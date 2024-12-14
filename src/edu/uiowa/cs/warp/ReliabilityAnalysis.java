@@ -577,7 +577,6 @@ public class ReliabilityAnalysis {
 	
 	protected ReliabilityTable buildReliabilityTable() {
 		headerRow = createHeaderRow();
-		System.out.println("header: " + headerRow);
 		// builds the hashmap to access the columns indexs. eg. "flow 0: A" == col_index = 0
 		HashMap<String,Integer> headerRowHashMap = headerRowHashMap(headerRow);
 		Table<String,InstructionTimeSlot> scheduleTable = program.getSchedule();
@@ -592,12 +591,10 @@ public class ReliabilityAnalysis {
 		
 		for(int row = 1; row < scheduleTable.getNumRows();row++) {
 			/* Iterate through each time slot of the schedule table */
-			System.out.println("row: " + row);
 			/* Copy the previous row added to reliabilityTable */
 			ReliabilityRow prevReliabilityRow = rowCopy(reliabilities.get(row-1));
 			/* Get a list of all flowNames that have reach the end of their period */
 			ArrayList<String> resetPeriodFlowNames = checkRowForPeriod(row, prevReliabilityRow, minPacketReceptionRate);
-			System.out.println("prevReliabilityRow: " + prevReliabilityRow);
 			
 			for(int col = 0; col < scheduleTable.getNumColumns(); col++) {
 				/* Iterate through each column of schedule table to retrieve instructions */

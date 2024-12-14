@@ -747,7 +747,14 @@ class ReliabilityAnalysisTest {
 	
 	}
 	
+	/**
+	 * Test for the verifyReliabilities method. Checks if the method correctly evaluates the reliabilities 
+	 */
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testVerifyReliabilitiesExample4() {
 		
+	}
 	
 	
 	
