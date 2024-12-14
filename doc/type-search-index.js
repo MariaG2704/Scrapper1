@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"edu.uiowa.cs.warp","l":"ReliabilityAnalysisTest"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"edu.uiowa.cs.warp","l":"ReliabilityAnalysis"}];updateSearchResults();
