@@ -91,19 +91,17 @@ public class ReliabilityAnalysis {
 	 * The program variable specifies the priority schedule   <br>
 	 */
 	private Program program;
-	
 	/**
-	 * 
+	 *  The headerRow variable specifies a list for each node in a flows at each index, 
+	 *  placed above our reliabilityTable when its visualized <br> 
 	 */
 	private ArrayList<String> headerRow;
-	
 	/**
-	 * 
+	 * The flowName variable specifies a list of all the flow names in the program schedule <br>
 	 */
 	private ArrayList<String> flowNames;
-	
 	/**
-	 * 
+	 * The reliabilities variable specifies a table of all the reliabilities of each flow  
 	 */
 	private ReliabilityTable reliabilities;
 	
@@ -158,32 +156,7 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
-	 * Helper method to calculate the unique nodes in all flows of workLoad.
-	 * 
-	 * @param flowNames The flow names that are in workLoad
-	 * @param workLoad The Warp programs workLoad object
-	 * @return totalNodes The total number of nodes in each workLoad flow
-	 */
-	public int getTotalNumberOfNodes() {
-		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder();
-		ArrayList<String> nodeNames = new ArrayList<String>();
-		ArrayList<Node> currentNodes;
-		String nodeName;
-		
-		for (String flowName : flowNames) {
-			currentNodes = workLoad.getFlows().get(flowName).getNodes();
-			for (int node = 0; node < currentNodes.size(); node++) {
-				nodeName = currentNodes.get(node).getName();
-				if (!nodeNames.contains(nodeName)) {
-					nodeNames.add(nodeName);
-				}
-			}
-		}
-		return nodeNames.size();
-	}
-	
-	/**
-	 * Supposed to create a table from the reliabilities but right now just creates a dummy table for implementing ReliabilityVisualization
+	 *	Gets our reliabilities variable
 	 * 
 	 * @return ReliabilityTable a table made from all the reliabilities
 	 */
@@ -211,10 +184,11 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
+	 * Gets the size of a flow at a certain index in flowNames
 	 * 
-	 * @param flowNames
-	 * @param index
-	 * @return
+	 * @param flowNames an ArrayList of all the flowNames
+	 * @param index the index of the flow we want
+	 * @return the number of nodes in the flow 
 	 */
 	protected int getFlowSize(ArrayList<String> flowNames, int index) {
 		return workLoad.getNodesInFlow(flowNames.get(index)).length;
@@ -383,7 +357,8 @@ public class ReliabilityAnalysis {
 	
 	/**
 	 * Calculates the new reliability state for a sink node based on M,prevSnkNodeState,
-	 * prevSrcNodeState, minLinkReliabilityNeeded
+	 * prevSrcNodeState, minLinkReliabilityNeeded, where it will just return the prevSnkNodeState if, 
+	 * the prevSnkNodeState is greater than 0 and if the prevSnkNodeState is less than minLinkReliabilityNeeded.
 	 *  
 	 * @param M the minimum packet reception rate
 	 * @param prevSnkNodeState a double that represents the previous sink node state 
@@ -398,6 +373,22 @@ public class ReliabilityAnalysis {
 			return (1.0 - M) * prevSnkNodeState + M * prevSrcNodeState;
 		}
 		return prevSnkNodeState;
+	}
+	
+	/**
+	 * Calculates the new reliability state for a sink node based on M,prevSnkNodeState,
+	 * prevSrcNodeState, minLinkReliabilityNeeded
+	 * 
+	 * @param M the minimum packet reception rate
+	 * @param prevSnkNodeState a double that represents the previous sink node state
+	 * @param prevSrcNodeState a double that represents the previous source node state 
+	 * @param minLinkReliabilityNeeded a double that is the minimum reliability needed per link in a flow to hit E2E
+	 * @return returns the next reliability state 
+	 */
+	protected double calculateNewSinkNodeState(Double M, Double prevSnkNodeState,
+			   							Double prevSrcNodeState, 
+			   							Double minLinkReliabilityNeeded) {
+		return (1.0 - M) * prevSnkNodeState + M * prevSrcNodeState;
 	}
 	
 	/**
@@ -418,23 +409,12 @@ public class ReliabilityAnalysis {
 		}
 	}
 	
-	/**
-	 * 
-	 * @param M
-	 * @param prevSnkNodeState
-	 * @param prevSrcNodeState
-	 * @param minLinkReliabilityNeeded
-	 * @return
-	 */
-	protected double calculateNewSinkNodeState(Double M, Double prevSnkNodeState,
-			   							Double prevSrcNodeState, 
-			   							Double minLinkReliabilityNeeded) {
-		return (1.0 - M) * prevSnkNodeState + M * prevSrcNodeState;
-	}
 
 	/**
+	 * Creates a headerRow  that is an ArrayList for each node in a flows at each index 
+	 * For example, "F0:A" would be one index of the ArrayList where F0 is the flow with its node A 
 	 * 
-	 * @return
+	 * @return the headerRow we created
 	 */
 	protected ArrayList<String> createHeaderRow() {
 		String headerRowName;
@@ -451,9 +431,10 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
+	 * Creates a copy of a ReliabilityRow
 	 * 
-	 * @param copied
-	 * @return
+	 * @param copied the method we are going to copy
+	 * @return the copy of the ReliabilityRow
 	 */
 	protected ReliabilityRow createRowCopy(ReliabilityRow copied) {
 		ReliabilityRow copy = new ReliabilityRow();
@@ -465,9 +446,11 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
+	 * Creates a HashMap for the headerRow. 
+	 * The key is the name of the flow and node and the value is what index it is in the headerRow
 	 * 
-	 * @param headerRow
-	 * @return
+	 * @param headerRow an ArrayList of the headerRow
+	 * @return the created HashMap
 	 */
 	protected HashMap<String, Integer> createHeaderRowHashMap(ArrayList<String> headerRow){
 		HashMap<String,Integer> indexes = new HashMap<String,Integer>();
@@ -480,10 +463,11 @@ public class ReliabilityAnalysis {
 	}
 
 	/**
+	 * Creates the first row of the schedule table based on a dummy   
 	 * 
-	 * @param scheduleTable
-	 * @param headerRowHashMap
-	 * @return
+	 * @param scheduleTable the flow schedule table
+	 * @param headerRowHashMap the HashMap of our headerRow 
+	 * @return the first row that we created 
 	 */
 	protected ReliabilityRow createFirstRow(Table<String,InstructionTimeSlot> scheduleTable, 
 												HashMap<String,Integer> headerRowHashMap){
@@ -495,29 +479,28 @@ public class ReliabilityAnalysis {
 		InstructionParameters instructionObject;
 		String instruction;
 		WarpDSL dsl = new WarpDSL();
-		boolean before = false;
+
 	
-		// loop through each node from each flow to get each individual instructionsParameters
+		/** loop through each node from each flow to get each individual instructionsParameters */
 		for(int col = 0; col < flowNames.get(0).length(); col++) {
-			// gets the arrayList of instructionParameters from the first row of the dsl
+			/** gets the arrayList of instructionParameters from the first row of the dsl */
 			instruction = scheduleTable.get(0,col);
 			
-			// get the first row, an ArrayList<InstructionParameters
+			/** get the first row, an ArrayList<InstructionParameters */
 			instructionsArray = dsl.getInstructionParameters(instruction);
 			// get the instructionParameter object from the "node"(col)
 			instructionObject = instructionsArray.get(0);
-			// get flow should tell us whether it is UNUSED or not
+			/** get flow should tell us whether it is UNUSED or not */
 			String flowName = instructionObject.getFlow();
 			String snk = instructionObject.getSnk();
 			
 			
-			// if it is a push or a pull, and not waiting or sleeping
+			/** if it is a push or a pull, and not waiting or sleeping */
 			if (!flowName.equals(instructionObject.unused())) {
-				before = true;
-				// creates the HashMap value to get the current column index (the snk node)
+				/** creates the HashMap value to get the current column index (the snk node) */
 				String columnName = flowName + ":" + snk;
 				int index = headerRowHashMap.get(columnName);
-				// calculate the snk node reliability to put in the ra table
+				/** calculate the snk node reliability to put in the ra table */
 				
 				Double nextSnkReliability = calculateNextSinkState(minPacketReceptionRate, 
 																	dummyRow.get(index),
@@ -537,11 +520,11 @@ public class ReliabilityAnalysis {
 	}
 
 	/**
+	 * verifies if the e2e is met for the end of every node 
 	 * 
-	 * @return
+	 * @return true if its met, false else 
 	 */
 	public Boolean verifyReliablities() {
-		// TODO Auto-generated method stub
 		boolean metE2E = true;
 		
 		ReliabilityTable rTable = reliabilities;
@@ -562,11 +545,13 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
+	 * Checks if the row is equal to any of the flow periods.  
+	 * Sets the col and row of the first node equal to 1.0 and every other nodes in that flow to 0.0
 	 * 
-	 * @param row
-	 * @param tempReliabilityRow
-	 * @param M
-	 * @return resetPeriodFlowNames
+	 * @param row The current row you are at in the table
+	 * @param tempReliabilityRow the row that we are creating to add to the table
+	 * @param M the minimum packet reception rate
+	 * @return resetPeriodFlowNames returns an ArrayList of the updated tempReliabilityRow if the period is hit for a flow
 	 */
 	protected ArrayList<String> checkRowForPeriod(int row, ReliabilityRow tempReliabilityRow, Double M) {
 		//ReliabilityRow tempReliabilityRow = rowCopy(reliabilities.get(row-1));
@@ -592,8 +577,9 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
+	 * Builds a dummyRow that sets the first index to 1.0 and all the other indexes to 0.0
 	 * 
-	 * @param headerRowSize
+	 * @param headerRowSize the size of the headerRow of our reliability table 
 	 * @return
 	 */
 	protected ReliabilityRow buildDummyRow(int headerRowSize){
@@ -609,12 +595,14 @@ public class ReliabilityAnalysis {
 	}
 	
 	/**
-	 * Builds a reliabolityTable 
-	 * @return
+	 * Builds a reliabilityTable for the the reliabilities of a flow schedule
+	 * 
+	 * @return ReliabilityTable table of all reliabilities for the nodes in each flow
 	 */
 	protected ReliabilityTable buildReliabilityTable() {
 		headerRow = createHeaderRow();
-		// builds the hashmap to access the columns indexs. eg. "flow 0: A" == col_index = 0
+		System.out.println("header: " + headerRow);
+		/** builds the hashmap to access the columns indexs. eg. "flow 0: A" == col_index = 0 */
 		HashMap<String,Integer> headerRowHashMap = createHeaderRowHashMap(headerRow);
 		Table<String,InstructionTimeSlot> scheduleTable = program.getSchedule();
 		WarpDSL dsl = new WarpDSL();
@@ -627,29 +615,30 @@ public class ReliabilityAnalysis {
 		
 		
 		for(int row = 1; row < scheduleTable.getNumRows();row++) {
-			/* Iterate through each time slot of the schedule table */
+			/** Iterate through each time slot of the schedule table */
+			System.out.println("row: " + row);
 			/* Copy the previous row added to reliabilityTable */
 			ReliabilityRow prevReliabilityRow = createRowCopy(reliabilities.get(row-1));
-			/* Get a list of all flowNames that have reach the end of their period */
+			/** Get a list of all flowNames that have reach the end of their period */
 			ArrayList<String> resetPeriodFlowNames = checkRowForPeriod(row, prevReliabilityRow, minPacketReceptionRate);
 			
 			for(int col = 0; col < scheduleTable.getNumColumns(); col++) {
-				/* Iterate through each column of schedule table to retrieve instructions */
+				/** Iterate through each column of schedule table to retrieve instructions */
 				instruction = scheduleTable.get(row, col);
 				instructionsArray = dsl.getInstructionParameters(instruction);
 				
 				for ( InstructionParameters instructParam : instructionsArray ) {
-					/* Get the name for the current flow instruction parameter.
+					/** Get the name for the current flow instruction parameter.
 					 * Each isntructionParameter can have a different Flow name and src & snk nodes
 					 */
 					String flowName = instructParam.getFlow();
 					
-					/* If flowName is not set to "unused" 
+					/** If flowName is not set to "unused" 
 					 * then we need to calculate the newSinkNodeState
 					 */
 					if (!flowName.equals(instructParam.unused())) {
 						
-						/* Get the required attributes from the instructionParameter
+						/** Get the required attributes from the instructionParameter
 						 * in order to calculate newSinkNodeState.
 						 */
 						String snk = instructParam.getSnk();
@@ -659,11 +648,11 @@ public class ReliabilityAnalysis {
 						int indexOfSnk = headerRowHashMap.get(columnNameForSnk);
 						int indexOfSrc = headerRowHashMap.get(columnNameForSrc);
 
-						/* Get the previous values of snk and src from the last added row in reliabilities */
+						/** Get the previous values of snk and src from the last added row in reliabilities */
 						Double prevSnkNodeState = reliabilities.get(row-1).get(indexOfSnk);
 						Double prevSrcNodeState = reliabilities.get(row-1).get(indexOfSnk-1);
 				
-						/* if the current flow of instructionParameter is a period reset
+						/** if the current flow of instructionParameter is a period reset
 						 * we calculate the newSinkNodeState automatically with prevSinkNodeState
 						 * and should have values prevSrcNode = 1.0 and prevSinkNodeState = 0.0
 						 */
@@ -673,7 +662,7 @@ public class ReliabilityAnalysis {
 																			prevReliabilityRow.get(indexOfSrc), 
 																			e2e);							
 						}else {	
-							/* if the current flow has not reached the end of its period, 
+							/** if the current flow has not reached the end of its period, 
 							 * we calculate the newSnkNodeState with the prevSnkNodeState and
 							 * prevSrcNodeState from the values in the previous row of reliabilities
 							 */							
@@ -685,7 +674,7 @@ public class ReliabilityAnalysis {
 					}
 				}
 			}
-			/* Add the newly created row to the reliabilityTable
+			/** Add the newly created row to the reliabilityTable
 			 * Then reset the previous reliabilityRow for next times-lot
 			 */
 			ReliabilityRow resetRow = new ReliabilityRow();
