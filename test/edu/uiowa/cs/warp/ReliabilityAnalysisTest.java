@@ -623,6 +623,12 @@ class ReliabilityAnalysisTest {
 	}
 	
 	
+	/**
+	 * Tests if checkRowForPeriod
+	 * works for when the multiples of
+	 * several flow periods occur - should
+	 * return all the flows that repeat their cycle
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testCheckRowForPeriodStressTest4_PeriodForMultipleFlows() {
@@ -706,7 +712,11 @@ class ReliabilityAnalysisTest {
 		
 	}
 	
-	
+	/**
+	 * 
+	 * 
+	 * 
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testBuildReliabilityTablePeriodCheckExample4() {
@@ -717,7 +727,6 @@ class ReliabilityAnalysisTest {
 
 		ReliabilityRow actualPeriodRow = actualReliabilityTable.get(10);
 		ReliabilityRow expectedPeriodRow = new ReliabilityRow();
-		
 		
 		
 		expectedPeriodRow.add(1.0);
@@ -948,6 +957,84 @@ class ReliabilityAnalysisTest {
 	
 	
 	
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testBuildReliabilityExample4NumFaultsRow0() {
+
+		nChannels = 16;
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+		workLoad = new WorkLoad(1, MIN_LQ, E2E, "Example4.txt");
+		
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		ra = warp.toReliabilityAnalysis();
+		program = warp.toProgram();
+		
+		
+		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
+		
+	
+		
+
+		ReliabilityRow actualFirstRow = actualReliabilityTable.get(0);
+		ReliabilityRow expectedFirstRow = new ReliabilityRow();
+		//1.0	0.9	0.0	0.0	1.0	0.0	0.0
+		expectedFirstRow.add(1.0);
+		expectedFirstRow.add(0.9);
+		expectedFirstRow.add(0.0);
+		expectedFirstRow.add(0.0);
+		expectedFirstRow.add(1.0);
+		expectedFirstRow.add(0.0);
+		expectedFirstRow.add(0.0);
+		
+
+		
+		assertEquals(expectedFirstRow, actualFirstRow);
+		
+		
+		
+	}
+	
+	
+	@Test
+	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
+	void testBuildReliabilityExample4NumFaultsLast() {
+
+		nChannels = 16;
+		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
+		workLoad = new WorkLoad(1, MIN_LQ, E2E, "Example4.txt");
+		
+	    
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
+		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		ra = warp.toReliabilityAnalysis();
+		program = warp.toProgram();
+		
+		
+		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
+		
+	
+		
+
+		ReliabilityRow actualLastRow = actualReliabilityTable.get(19);
+		ReliabilityRow expectedLastRow = new ReliabilityRow();
+		//1.0	0.99	0.972	0.9477	1.0	0.99	0.972
+		expectedLastRow.add(1.0);
+		expectedLastRow.add(0.99);
+		expectedLastRow.add(0.972);
+		expectedLastRow.add(0.9477);
+		expectedLastRow.add(1.0);
+		expectedLastRow.add(0.99);
+		expectedLastRow.add(0.972);
+
+
+		
+		assertEquals(expectedLastRow, actualLastRow);
+		
+		
+		
+	}
 		
 	
 	
