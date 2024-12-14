@@ -578,8 +578,18 @@ class ReliabilityAnalysisTest {
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testCheckRowForPeriod() {
 		
-	ArrayList<String> expectedResetPeriodFlowNames = new ArrayList<String>();
-	ArrayList<String> actualResetPeriodFlowNames = checkRowForPeriod();
+		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
+		
+		ArrayList<String> expectedResetPeriodFlowNames = new ArrayList<String>();
+		
+		expectedResetPeriodFlowNames.add("F1");
+		
+		
+		ArrayList<String> actualResetPeriodFlowNames = ra.checkRowForPeriod(11,actualReliabilityTable.get(10), 0.99);
+		
+		
+		assertEquals(expectedResetPeriodFlowNames, actualResetPeriodFlowNames);
+		
 		
 		
 		
