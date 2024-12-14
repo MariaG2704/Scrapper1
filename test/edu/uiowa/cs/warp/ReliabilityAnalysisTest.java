@@ -85,21 +85,24 @@ class ReliabilityAnalysisTest {
 //		
 //		assertEquals(6, actualNodes);
 //		
-	
+	/**
+	 * Test for the verifyReliabilities method. Checks that the method returns true for Example4.txt's reliability table, since every node meets the e2e.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testVerifyReliabilities() {
+	void testVerifyReliabilitiesExample4() {
 	
 		
 		assertTrue(ra.verifyReliablities());
 	}
 	
-	
+	/**
+	 * Test for the verifyReliabilities method. Checks that the method returns true for StressTest4.txt's reliability table, since every node meets the e2e.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testVerifyReliabilitiesStressTest4() {
 	
-		
 		nChannels = 16;
 		workLoad = new WorkLoad(0.9, 0.99, "StressTest4.txt");
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
@@ -111,6 +114,10 @@ class ReliabilityAnalysisTest {
 		assertTrue(ra.verifyReliablities());
 	}
 	
+	/**
+	 * Test for the verifyReliabilities method. Checks that the method returns false for Example4.txt's reliability table computed using 
+	 * the numFaults model, since not every node meets the e2e.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testVerifyReliabilitiesExample4NumFaults() {
@@ -123,6 +130,9 @@ class ReliabilityAnalysisTest {
 		assertFalse(ra.verifyReliablities());
 	}
 	
+	/**
+	 * Test for the createHeaderRow method that ensures the method creates the appropriate header row for Example4.txt.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testCreateHeaderRowExample4() {
@@ -137,30 +147,7 @@ class ReliabilityAnalysisTest {
 		
 		ArrayList<String> actualHeaderRow = ra.createHeaderRow();
 		
-		
 		assertEquals(expectedHeaderRow, actualHeaderRow);
-	}
-	
-	@Test
-	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testCreateHeaderRowStressTest() {
-		
-		
-		nChannels = 16;
-		workLoad = new WorkLoad(1, 0.9, 0.99, "StressTest4.txt");
-		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
-	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		ra = warp.toReliabilityAnalysis();
-		program = warp.toProgram();
-		
-		ArrayList<String> expectedHeaderRow = new ArrayList<>();
-		//just realized the test case will be massive..
-		ArrayList<String> actualHeaderRow = ra.createHeaderRow();
-		
-		
-		
-		//assertEquals(expectedHeaderRow, actualHeaderRow);
 	}
 	
 	/**
@@ -244,9 +231,12 @@ class ReliabilityAnalysisTest {
 		assertEquals(expectedHeaderRow, actualHeaderRow);
 	}
 	
+	/**
+	 * Test for the createHeaderRowHashMap method. Checks that the hash map created for indexing the header row of Example4.txt contains the correct values. 
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testHeaderRowHashMapExample4() {
+	void testCreateHeaderRowHashMapExample4() {
 		ArrayList<String> headerRow = new ArrayList<>();
 		headerRow.add("F0:A");
 		headerRow.add("F0:B");
@@ -270,9 +260,12 @@ class ReliabilityAnalysisTest {
 		assertEquals(expectedHeaderRowMap, headerRowMap);
 	}
 	
+	/**
+	 * Test for the createDummyRow method. Checks that the dummy row created by the method for Example4.txt contains the correct values.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testCreateDummyRow() {
+	void testCreateDummyRowExample4() {
 		int columnHeaderSize = workLoad.createHeader().size();
 	
 		ArrayList<Double> dummyRow = ra.buildDummyRow(columnHeaderSize);
@@ -280,16 +273,14 @@ class ReliabilityAnalysisTest {
 		ArrayList<Double> expectedDummyRow = new ArrayList<Double>();
 		expectedDummyRow.add(1.0);
 		
-		
-			expectedDummyRow.add(0.0);
-			expectedDummyRow.add(0.0);
-			expectedDummyRow.add(0.0);
-			expectedDummyRow.add(1.0);
-			expectedDummyRow.add(0.0);
-			expectedDummyRow.add(0.0);	
+		expectedDummyRow.add(0.0);
+		expectedDummyRow.add(0.0);
+		expectedDummyRow.add(0.0);
+		expectedDummyRow.add(1.0);
+		expectedDummyRow.add(0.0);
+		expectedDummyRow.add(0.0);	
 		
 		assertEquals(expectedDummyRow, dummyRow);
-		
 
 	}
 	
@@ -346,19 +337,18 @@ class ReliabilityAnalysisTest {
 		//in-progress
 	}
 	
+	/**
+	 * Test for the createFirstRow method. Checks that the first row of the table of Example4.txt contains the correct values.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testCreateFirstRowExample4() {
 		ArrayList<String> headerRow;
 		headerRow = ra.createHeaderRow();
-		System.out.println(headerRow);
 		
 		HashMap<String,Integer> headerRowHashMap = ra.createHeaderRowHashMap(headerRow);
-		System.out.println(headerRowHashMap);
-
 		
 		Table<String,InstructionTimeSlot> scheduleTable = program.getSchedule();
-
 
 		ReliabilityRow expectedFirstRow = new ReliabilityRow();
 		expectedFirstRow.add(1.0);
@@ -368,39 +358,11 @@ class ReliabilityAnalysisTest {
 		expectedFirstRow.add(1.0);
 		expectedFirstRow.add(0.0);
 		expectedFirstRow.add(0.0);
-		System.out.println(expectedFirstRow);
-
-		
 
 		ReliabilityRow actualFirstRow = ra.createFirstRow(scheduleTable, headerRowHashMap);
-		System.out.println(actualFirstRow);
 
-		
 		assertEquals(expectedFirstRow, actualFirstRow);
 
-	}
-
-	@Test
-	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testNumTxPerLinkAndTotalTxCost() {
-		
-	
-		//ArrayList<String> actualTxPerLinkAndTotalCost = 
-		
-		
-		
-	}
-	
-	@Test
-	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testGetFixedTxPerLinkAndTotalTxCost() {
-		
-//		Flow flow = ;
-//		int nNodesInFlowExpected = 
-//		ArrayList<String> expectedTxPerLinkAndTotalCost = new ArrayList<String>();
-//		
-		
-		
 	}
 	
 	
@@ -410,14 +372,12 @@ class ReliabilityAnalysisTest {
 	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testCalculateNewSinkNodeState() {
-		
-		//1.0	0.9	0.0	0.0	1.0	0.0	0.0
+	void testCalculateNewSinkNodeStateExample4() {
+
 		ReliabilityTable reliabilities = new ReliabilityTable();
 		
 		double expectedNewSinkNodeState = 0.81;
 		double actualNewSinkNodeState = ra.calculateNewSinkNodeState(MIN_LQ,0.0,0.9, E2E);
-		
 		
 		assertEquals(expectedNewSinkNodeState, actualNewSinkNodeState);
 		
@@ -433,38 +393,32 @@ class ReliabilityAnalysisTest {
 	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testCalculateNewSinkNodeStateAfterPeriod() {
-		
-		//1.0	0.9	0.0	0.0	1.0	0.0	0.0
-		ReliabilityTable reliabilities = new ReliabilityTable();
+	void testCalculateNewSinkNodeStateAfterPeriodExample4() {
 		
 		double expectedNewSinkNodeState = 0.81;
 		double actualNewSinkNodeState = ra.calculateNewSinkNodeState(MIN_LQ,0.0,0.9, E2E);
 		
-		System.out.println(actualNewSinkNodeState);
-		
 		assertEquals(expectedNewSinkNodeState, actualNewSinkNodeState);
 		
 	}
 	
-	
+	/**
+	 * Test for the calculateNewSinkNodeState method. Checks that the method computes the correct value from the given parameters.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testCalculateNewSinkNodeStateLastEntry() {
-		
-		//1.0	0.9	0.0	0.0	1.0	0.0	0.0
-		ReliabilityTable reliabilities = new ReliabilityTable();
+	void testCalculateNewSinkNodeStateLastEntryExample4() {
 		
 		double expectedNewSinkNodeState = 0.99873;
 		double actualNewSinkNodeState = ra.calculateNewSinkNodeState(MIN_LQ,0.9963,0.999, E2E);
-		
-		System.out.println(actualNewSinkNodeState);
-		
+
 		assertEquals(expectedNewSinkNodeState, actualNewSinkNodeState);
 		
 	}
 	
-
+	/**
+	 * Test for the getFlowSize method. Checks that the method returns the correct flow size for Example4.txt.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void getFlowSizeExample4() {
@@ -475,10 +429,11 @@ class ReliabilityAnalysisTest {
 		
 		assertEquals(expectedGetFlowSize, actualGetFlowSize);
 		
-		
 	}
 	
-	
+	/**
+	 * Test for the getFlowSize method. Checks that the method returns the correct flow size for Example1a.txt.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void getFlowSizeExample1a() {
@@ -488,8 +443,7 @@ class ReliabilityAnalysisTest {
 		workLoad = new WorkLoad(0.9, 0.99, "Example1a.txt");
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);	
 		
 		ra = warp.toReliabilityAnalysis();
 		program = warp.toProgram();
@@ -500,10 +454,11 @@ class ReliabilityAnalysisTest {
 		
 		assertEquals(expectedGetFlowSize, actualGetFlowSize);
 		
-		
 	}
 	
-	
+	/**
+	 * Test for the getFlowSize method. Checks that the method returns the correct flow size when called on the first flow in StressTest4.txt.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void getFlowSizeStressTest4FirstFlow() {
@@ -514,7 +469,6 @@ class ReliabilityAnalysisTest {
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
 		ra = warp.toReliabilityAnalysis();
 
 		
@@ -524,10 +478,11 @@ class ReliabilityAnalysisTest {
 		
 		assertEquals(expectedGetFlowSize, actualGetFlowSize);
 		
-		
 	}
-	
-	
+
+	/**
+	 * Test for the getFlowSize method. Checks that the method returns the correct flow size when called on the last flow in StressTest4.txt.
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void getFlowSizeStressTest4LastFlow() {
@@ -538,7 +493,6 @@ class ReliabilityAnalysisTest {
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
 		ra = warp.toReliabilityAnalysis();
 
 		
@@ -547,7 +501,6 @@ class ReliabilityAnalysisTest {
 		int actualGetFlowSize = ra.getFlowSize(flowNames,9);
 		
 		assertEquals(expectedGetFlowSize, actualGetFlowSize);
-		
 		
 	}
 	
@@ -560,15 +513,12 @@ class ReliabilityAnalysisTest {
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void getFlowSizeStressTest4MiddleFlow() {
 		
-		
 		nChannels = 16;
 		workLoad = new WorkLoad(0.9, 0.99, "StressTest4.txt");
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);	
 		ra = warp.toReliabilityAnalysis();
-
 		
 		ArrayList<String> flowNames = workLoad.getFlowNamesInPriorityOrder();
 		int expectedGetFlowSize = 5;
@@ -579,9 +529,14 @@ class ReliabilityAnalysisTest {
 		
 	}
 	
+	/**
+	 * Tests to ensure that
+	 * the subsequent row after a period recycle
+	 * returns the correct "met" flow
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testCheckRowForPeriod() {
+	void testCheckRowForPeriodExample4() {
 		
 		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
 		
@@ -589,9 +544,7 @@ class ReliabilityAnalysisTest {
 		
 		expectedResetPeriodFlowNames.add("F0");
 		
-		
 		ArrayList<String> actualResetPeriodFlowNames = ra.checkRowForPeriod(10,actualReliabilityTable.get(9), 0.99);
-		
 		
 		assertEquals(expectedResetPeriodFlowNames, actualResetPeriodFlowNames);
 	
@@ -631,18 +584,20 @@ class ReliabilityAnalysisTest {
 		
 	}
 	
+	/**
+	 * Tests to ensure that
+	 * the subsequent row after a period recycle
+	 * returns the correct "met" flow
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testCheckRowForPeriodStressTest4_Period1() {
 		
-		
 		nChannels = 16;
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 		workLoad = new WorkLoad(MIN_LQ, E2E, "StressTest4.txt");
-		
 	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);	
 		ra = warp.toReliabilityAnalysis();
 		program = warp.toProgram();
 
@@ -652,9 +607,7 @@ class ReliabilityAnalysisTest {
 		
 		expectedResetPeriodFlowNames.add("F1");
 		
-		
 		ArrayList<String> actualResetPeriodFlowNames = ra.checkRowForPeriod(20,actualReliabilityTable.get(19), 0.99);
-		
 		
 		assertEquals(expectedResetPeriodFlowNames, actualResetPeriodFlowNames);
 	
@@ -671,14 +624,11 @@ class ReliabilityAnalysisTest {
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testCheckRowForPeriodStressTest4_PeriodForMultipleFlows() {
 		
-		
 		nChannels = 16;
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 		workLoad = new WorkLoad(MIN_LQ, E2E, "StressTest4.txt");
-		
 	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);		
 		ra = warp.toReliabilityAnalysis();
 		program = warp.toProgram();
 
@@ -694,9 +644,7 @@ class ReliabilityAnalysisTest {
 		expectedResetPeriodFlowNames.add("F9");
 		expectedResetPeriodFlowNames.add("F10");
 		
-		
 		ArrayList<String> actualResetPeriodFlowNames = ra.checkRowForPeriod(100,actualReliabilityTable.get(99), 0.99);
-		
 		
 		assertEquals(expectedResetPeriodFlowNames, actualResetPeriodFlowNames);
 	
@@ -704,20 +652,18 @@ class ReliabilityAnalysisTest {
 	
 	
 	
-	
+	/**
+	 * Tests if the first and last row of Example 4 is correctly outputting the right values 
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testBuildReliabilityTable() {
-		
+	void testBuildReliabilityTableExample4() {
 
 		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
 		
 		ReliabilityRow actualFirstRow = actualReliabilityTable.getFirst();
 		
-		
 		ReliabilityRow expectedFirstRow = new ReliabilityRow();
-		
-		//1.0	0.9	0.0	0.0	1.0	0.0	0.0
 		
 		expectedFirstRow.add(1.0);
 		expectedFirstRow.add(0.9);
@@ -727,12 +673,9 @@ class ReliabilityAnalysisTest {
 		expectedFirstRow.add(0.0);
 		expectedFirstRow.add(0.0);
 		
-		
 		ReliabilityRow actualLastRow = actualReliabilityTable.getLast();
 		
 		ReliabilityRow expectedLastRow = new ReliabilityRow();
-		
-		//1.0	0.999	0.99873	0.993627	1.0	0.999	0.9963
 		
 		expectedLastRow.add(1.0);
 		expectedLastRow.add(0.999);
@@ -741,24 +684,20 @@ class ReliabilityAnalysisTest {
 		expectedLastRow.add(1.0);
 		expectedLastRow.add(0.999);
 		expectedLastRow.add(0.9963);
-		
 
 		assertEquals(expectedFirstRow, actualFirstRow);
 		assertEquals(expectedLastRow, actualLastRow);
-		
-		
 		
 	}
 	
 	/**
 	 * 
-	 * 
+	 * Tests if row 10 printed out for Example4 when there is a period reset is correctly outputting the right values 
 	 * 
 	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testBuildReliabilityTablePeriodCheckExample4() {
-	//1.0	0.9	0.0	0.0	1.0	0.999	0.9963
 		
 		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
 		
@@ -808,7 +747,10 @@ class ReliabilityAnalysisTest {
 		assertEquals(expectedRow, actualRow);
 	}
 	
-	
+	/**
+	 * Tests whether the StressTest4's first row is correctly made because StressTest starts with a unused node, 
+	 * which is an edge case
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testBuildReliabilitiyTableStressTest4FirstRow() {
@@ -893,120 +835,95 @@ class ReliabilityAnalysisTest {
 	
 	
 
-	/**
-	 * Instruction in row 163
-	 * in StressTest4.dsl has a unique
-	 * case: 
-	 * if has(F1) push(F1: C -> D, #12) else pull(F5: B -> C, #12)
-	 * 
-	 * This test checks if the corresponding entry
-	 * in the ra value is still computing the correct
-	 * value after having different flows for the instruction
-	 * (F1 vs. F5) 
-	 * 
-	 * Correct value for the 163rd time slot
-	 * of F1:C should be 0.999
-	 * 
+	/** 
+	 * Tests whether the code correctly outputs the right calculations 
+	 * for row 163 if the push flown name is not the same as the pull flow name
 	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
-	void testBuildReliabilitiyTablePullFlowNameDiffForPushName() {
-		
+	void testBuildReliabilitiyTablePullFlowNameDiffForPushNameStressTest4() {
 		
 		nChannels = 16;
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 		workLoad = new WorkLoad(MIN_LQ, E2E, "StressTest4.txt");
-		
 	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);	
 		ra = warp.toReliabilityAnalysis();
 		program = warp.toProgram();
-
 		
 		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
-		
-			//In the correct ra file, row 163 corresponds with 170
-			
 
-			ReliabilityRow actualPeriodRow = actualReliabilityTable.get(163);
+		ReliabilityRow actualPeriodRow = actualReliabilityTable.get(163);
+		ReliabilityRow expectedPeriodRow = new ReliabilityRow();
 			
-			// 1.0	0.999	0.9963	1.0	0.999	0.99873	0.9986571	0.9984529799999999	0.9980461979999999	0.9944323991999999	1.0	0.999	0.998001	0.9710279999999999	0.7282710000000001	0.0	1.0	0.999	0.9989001	0.0	0.0	0.0	0.0	0.0	1.0	0.999	0.8991	0.0	0.0	1.0	0.0	0.0	1.0	0.999	0.9989001	0.99880020999	0.998440605954	1.0	0.999	0.99873	0.9986571	0.9984529799999999	0.9980461979999999	0.9944323991999999	1.0	0.999	0.9989001	0.9988901109989999	0.9988891121088889	0.9988837181022895	0.9988667269815014	0.9985965681609708	1.0	0.999	0.99873	0.998001	0.99786249	0.995507091
-			ReliabilityRow expectedPeriodRow = new ReliabilityRow();
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.999);
+		expectedPeriodRow.add(0.9963);
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.999);
+		expectedPeriodRow.add(0.99873);
+		expectedPeriodRow.add(0.9986571);
+		expectedPeriodRow.add(0.9984529799999999);
+		expectedPeriodRow.add(0.9980461979999999);
+		expectedPeriodRow.add(0.9944323991999999);
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.999);
+		expectedPeriodRow.add(0.998001);
+		expectedPeriodRow.add(0.9710279999999999);
+		expectedPeriodRow.add(0.7282710000000001);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.999);
+		expectedPeriodRow.add(0.9989001);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.999);
+		expectedPeriodRow.add(0.8991);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(0.0);
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.999);
+		expectedPeriodRow.add(0.9989001);
+		expectedPeriodRow.add(0.99880020999);
+		expectedPeriodRow.add(0.998440605954);
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.999);
+		expectedPeriodRow.add(0.99873);
+		expectedPeriodRow.add(0.9986571);
+		expectedPeriodRow.add(0.9984529799999999);
+		expectedPeriodRow.add(0.9980461979999999);
+		expectedPeriodRow.add(0.9944323991999999);
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.999);
+		expectedPeriodRow.add(0.9989001);
+		expectedPeriodRow.add(0.9988901109989999);
+		expectedPeriodRow.add(0.9988891121088889);
+		expectedPeriodRow.add(0.9988837181022895);
+		expectedPeriodRow.add(0.9988667269815014);
+		expectedPeriodRow.add(0.9985965681609708);
+		expectedPeriodRow.add(1.0);
+		expectedPeriodRow.add(0.999);
+		expectedPeriodRow.add(0.99873);
+		expectedPeriodRow.add(0.998001);
+		expectedPeriodRow.add(0.99786249);
+		expectedPeriodRow.add(0.995507091);
 			
-			expectedPeriodRow.add(1.0);
-			expectedPeriodRow.add(0.999);
-			expectedPeriodRow.add(0.9963);
-			expectedPeriodRow.add(1.0);
-			expectedPeriodRow.add(0.999);
-			expectedPeriodRow.add(0.99873);
-			expectedPeriodRow.add(0.9986571);
-			expectedPeriodRow.add(0.9984529799999999);
-			expectedPeriodRow.add(0.9980461979999999);
-			expectedPeriodRow.add(0.9944323991999999);
-			expectedPeriodRow.add(1.0);
-			expectedPeriodRow.add(0.999);
-			expectedPeriodRow.add(0.998001);
-			expectedPeriodRow.add(0.9710279999999999);
-			expectedPeriodRow.add(0.7282710000000001);
-			expectedPeriodRow.add(0.0);
-			expectedPeriodRow.add(1.0);
-			expectedPeriodRow.add(0.999);
-			expectedPeriodRow.add(0.9989001);
-			expectedPeriodRow.add(0.0);
-			expectedPeriodRow.add(0.0);
-			expectedPeriodRow.add(0.0);
-			expectedPeriodRow.add(0.0);
-			expectedPeriodRow.add(0.0);
-			expectedPeriodRow.add(1.0);
-			expectedPeriodRow.add(0.999);
-			expectedPeriodRow.add(0.8991);
-			expectedPeriodRow.add(0.0);
-			expectedPeriodRow.add(0.0);
-			expectedPeriodRow.add(1.0);
-			expectedPeriodRow.add(0.0);
-			expectedPeriodRow.add(0.0);
-			expectedPeriodRow.add(1.0);
-			expectedPeriodRow.add(0.999);
-			expectedPeriodRow.add(0.9989001);
-			expectedPeriodRow.add(0.99880020999);
-			expectedPeriodRow.add(0.998440605954);
-			expectedPeriodRow.add(1.0);
-			expectedPeriodRow.add(0.999);
-			expectedPeriodRow.add(0.99873);
-			expectedPeriodRow.add(0.9986571);
-			expectedPeriodRow.add(0.9984529799999999);
-			expectedPeriodRow.add(0.9980461979999999);
-			expectedPeriodRow.add(0.9944323991999999);
-			expectedPeriodRow.add(1.0);
-			expectedPeriodRow.add(0.999);
-			expectedPeriodRow.add(0.9989001);
-			expectedPeriodRow.add(0.9988901109989999);
-			expectedPeriodRow.add(0.9988891121088889);
-			expectedPeriodRow.add(0.9988837181022895);
-			expectedPeriodRow.add(0.9988667269815014);
-			expectedPeriodRow.add(0.9985965681609708);
-			expectedPeriodRow.add(1.0);
-			expectedPeriodRow.add(0.999);
-			expectedPeriodRow.add(0.99873);
-			expectedPeriodRow.add(0.998001);
-			expectedPeriodRow.add(0.99786249);
-			expectedPeriodRow.add(0.995507091);
-
-			
-			assertEquals(expectedPeriodRow.get(1), actualPeriodRow.get(1));
-			assertEquals(expectedPeriodRow, actualPeriodRow);
-
+		assertEquals(expectedPeriodRow.get(1), actualPeriodRow.get(1));
+		assertEquals(expectedPeriodRow, actualPeriodRow);
 	
 	}
 
-	
-	
-	
-	
-	
-	
-	
+	/** 
+	 * Tests whether the Example4 for the numFault model still works 
+	 * and prints out the right ReliabilityRow for the row 0 of the reliability table
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testBuildReliabilityExample4NumFaultsRow0() {
@@ -1014,22 +931,15 @@ class ReliabilityAnalysisTest {
 		nChannels = 16;
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 		workLoad = new WorkLoad(1, MIN_LQ, E2E, "Example4.txt");
-		
 	    
 		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
 		ra = warp.toReliabilityAnalysis();
 		program = warp.toProgram();
 		
-		
 		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
-		
-	
-		
 
 		ReliabilityRow actualFirstRow = actualReliabilityTable.get(0);
 		ReliabilityRow expectedFirstRow = new ReliabilityRow();
-		//1.0	0.9	0.0	0.0	1.0	0.0	0.0
 		expectedFirstRow.add(1.0);
 		expectedFirstRow.add(0.9);
 		expectedFirstRow.add(0.0);
@@ -1037,16 +947,15 @@ class ReliabilityAnalysisTest {
 		expectedFirstRow.add(1.0);
 		expectedFirstRow.add(0.0);
 		expectedFirstRow.add(0.0);
-		
 
-		
 		assertEquals(expectedFirstRow, actualFirstRow);
-		
-		
 		
 	}
 	
-	
+	/** 
+	 * Tests whether the Example4 for the numFault model still works 
+	 * and prints out the right ReliabilityRow for the row 19 of the reliability table
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testBuildReliabilityExample4NumFaultsLast() {
@@ -1055,21 +964,14 @@ class ReliabilityAnalysisTest {
 		schedulerSelected = SystemAttributes.ScheduleChoices.PRIORITY;
 		workLoad = new WorkLoad(1, MIN_LQ, E2E, "Example4.txt");
 		
-	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);	
 		ra = warp.toReliabilityAnalysis();
 		program = warp.toProgram();
 		
-		
 		ReliabilityTable actualReliabilityTable = ra.buildReliabilityTable();
-		
-	
-		
 
 		ReliabilityRow actualLastRow = actualReliabilityTable.get(19);
 		ReliabilityRow expectedLastRow = new ReliabilityRow();
-		//1.0	0.99	0.972	0.9477	1.0	0.99	0.972
 		expectedLastRow.add(1.0);
 		expectedLastRow.add(0.99);
 		expectedLastRow.add(0.972);
@@ -1077,16 +979,15 @@ class ReliabilityAnalysisTest {
 		expectedLastRow.add(1.0);
 		expectedLastRow.add(0.99);
 		expectedLastRow.add(0.972);
-
-
 		
 		assertEquals(expectedLastRow, actualLastRow);
 		
-		
-		
 	}
 	
-	
+	/**
+	 * Tests whether, when you check StressTest reliabilities with a minPacketReceptionRate of value of .95,
+	 * if the last row's values are correctly calculated and outputed 
+	 */
 	@Test
 	@Timeout(value = TIMEOUT_IN_MILLISECONDS, unit = TimeUnit.MILLISECONDS)
 	void testBuildReliabilityStressTest4_M_95() {
@@ -1096,8 +997,7 @@ class ReliabilityAnalysisTest {
 		workLoad = new WorkLoad(0.95, E2E, "StressTest4.txt");
 		
 	    
-		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);
-		//ReliabilityVisualization reliabilityVisualization = new ReliabilityVisualization(warp);		
+		warp = SystemFactory.create(workLoad, nChannels, schedulerSelected);	
 		ra = warp.toReliabilityAnalysis();
 		program = warp.toProgram();
 			
@@ -1107,9 +1007,6 @@ class ReliabilityAnalysisTest {
 		ReliabilityRow actualLastRow = actualReliabilityTable.get(299);
 		ReliabilityRow expectedLastRow = new ReliabilityRow();
 		
-
-		//1.0	0.9975	0.9927500000000001	1.0	0.999875	0.9995187499999999	0.9988418749999999	0.9987882890625	0.9986610224609375	0.9965089442285155	1.0	0.999875	0.9995187499999999	0.9988418749999999	0.9987882890625	0.997210183203125	1.0	0.999875	0.9995187499999999	0.9988418749999999	0.9987882890625	0.9986610224609375	0.9984385604414062	0.995654399905664	1.0	0.9975	0.9974994062500001	0.997493171878711	0.9971318900625098	1.0	0.9975	0.9927500000000001	1.0	0.9975	0.9974996882812501	0.9974934539081983	0.997132171989849	1.0	0.999875	0.9995187499999999	0.9988418749999999	0.9987882890625	0.9986610224609375	0.9965089442285155	1.0	0.999875	0.999750015625	0.9996250468730469	0.9996072388258936	0.9995725576540625	0.9995493989138763	0.9985455781541018	1.0	0.999875	0.9995187499999999	0.9993938101562498	0.9993760062285155	0.9986825432432617
-
 		expectedLastRow.add(1.0);
 		expectedLastRow.add(0.9975);
 		expectedLastRow.add(0.9927500000000001);
@@ -1168,11 +1065,8 @@ class ReliabilityAnalysisTest {
 		expectedLastRow.add(0.9993938101562498);
 		expectedLastRow.add(0.9993760062285155);
 		expectedLastRow.add(0.9986825432432617);
-
-		
 		
 		assertEquals(expectedLastRow, actualLastRow);
-		
 		
 	}
 	
