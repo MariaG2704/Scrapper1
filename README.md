@@ -62,14 +62,19 @@ WARP is interacted with via the command line interface (CLI). The primary comman
 
 ###Sprint 3
 - **Objective**： Implement methods within ReliabilityAnalysis pertaining to the construction of a ReliabilityTable and create Junit tests to test that implementation. Also update UML sequence and class diagrams.
-- **Remember**: High level plans for the 
+- **Remember**: High level plans, explanations, and though process for the project is located in the Sprint 3 Final Project Doc.pdf in the ARTIFACTS fold
 - **Status**: Project is completed and working.
+- **Documentation**: 
+<ul>
+<li>The location of the final Sequence Diagram text is in the ARTIFACTS folder under the name Sprint3 sequence Diagram.txt and the picture is under Sprint3 sequence Diagram.png. in the ARTIFACTS folder
+<li> The location of the UML Diagram picture is from Reliability Sprint3 umlcd.png in the ARTIFACTS folder
+</ul>
 - **Credits**:
 - **wplucas**, **msgauna**, **nnahra**, **tomlooi**:
 	<ul>
 	<li> The team worked closely during this phase of the project, frequently falling back on a pair- or group-programming arrangement to discuss code issues and overcome hurdles that arose during the implementation of buildReliabilityTable.
 	<li> Much of the work of this project was done in a group setting with most or all members present and contributing via discussion.
-	<li> wplucas and msgauna focused on implementing the majority of methods within ReliabilityAnalysis.java; methods implemented were:
+	<li> wplucas and msgauna worked together on implementing the majority of methods within ReliabilityAnalysis.java; methods implemented were:
 		<ul>
  		<li>buildReliabilityTable()
  		<li>buildDummyRow()
@@ -84,7 +89,7 @@ WARP is interacted with via the command line interface (CLI). The primary comman
  		<li>getReliabilities()
 		<li>ReliabilityAnalysis constructor that takes Program as input.
  		</ul>
- 	<li> nnahra and tomlooi focused on testwriting and artifact updates; tests implemented were:
+ 	<li> nnahra and tomlooi worked together on testwriting and artifact updates; tests implemented were:
 		<ul>
  		<li>
  		<li>
