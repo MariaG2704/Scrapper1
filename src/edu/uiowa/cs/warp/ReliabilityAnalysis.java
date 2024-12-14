@@ -604,13 +604,20 @@ public class ReliabilityAnalysis {
 	
 	/**
 	 * Builds a reliabilityTable for the the reliabilities of a flow schedule
+	 * Iterates through each time slot of the schedule table.
+	 * As, this method iterates through every row, it creates a new row, that update with the following iterations
+	 * Then, it iterates through each column of schedule table to retrieve the instructions array. 
+	 * For each instruction in instruction array, it then iterates through that, 
+	 * getting the flowName, checking if its a push/pull, 
+	 * and then doing calculations based on if its a period change or not. 
+	 * Adds that row to the reliability Table and moves on to the next row.
+	 * 
 	 * Note:This method should be private but for testing purposes is protected 
 	 * 
 	 * @return ReliabilityTable table of all reliabilities for the nodes in each flow
 	 */
 	protected ReliabilityTable buildReliabilityTable() {
 		headerRow = createHeaderRow();
-		System.out.println("header: " + headerRow);
 		/** builds the hashmap to access the columns indexs. eg. "flow 0: A" == col_index = 0 */
 		HashMap<String,Integer> headerRowHashMap = createHeaderRowHashMap(headerRow);
 		Table<String,InstructionTimeSlot> scheduleTable = program.getSchedule();
@@ -624,32 +631,28 @@ public class ReliabilityAnalysis {
 		
 		
 		for(int row = 1; row < scheduleTable.getNumRows();row++) {
-			/** Iterate through each time slot of the schedule table */
-			System.out.println("row: " + row);
+
 			/* Copy the previous row added to reliabilityTable */
 			ReliabilityRow prevReliabilityRow = createRowCopy(reliabilities.get(row-1));
+			
 			/** Get a list of all flowNames that have reach the end of their period */
 			ArrayList<String> resetPeriodFlowNames = checkRowForPeriod(row, prevReliabilityRow, minPacketReceptionRate);
 			
+			
 			for(int col = 0; col < scheduleTable.getNumColumns(); col++) {
-				/** Iterate through each column of schedule table to retrieve instructions */
+				
 				instruction = scheduleTable.get(row, col);
 				instructionsArray = dsl.getInstructionParameters(instruction);
 				
 				for ( InstructionParameters instructParam : instructionsArray ) {
-					/** Get the name for the current flow instruction parameter.
-					 * Each isntructionParameter can have a different Flow name and src & snk nodes
-					 */
+					/** Get the name for the current flow instruction parameter.*/
+					/*Each isntructionParameter can have a different Flow name and src & snk nodes */
 					String flowName = instructParam.getFlow();
 					
-					/** If flowName is not set to "unused" 
-					 * then we need to calculate the newSinkNodeState
-					 */
+					/** If flowName is not set to "unused" then we need to calculate the newSinkNodeState */
 					if (!flowName.equals(instructParam.unused())) {
 						
-						/** Get the required attributes from the instructionParameter
-						 * in order to calculate newSinkNodeState.
-						 */
+						/** Get the required attributes from the instructionParameter to calculate newSinkNodeState.*/
 						String snk = instructParam.getSnk();
 						String src = instructParam.getSrc();
 						String columnNameForSnk = flowName + ":" + snk;
@@ -661,7 +664,7 @@ public class ReliabilityAnalysis {
 						Double prevSnkNodeState = reliabilities.get(row-1).get(indexOfSnk);
 						Double prevSrcNodeState = reliabilities.get(row-1).get(indexOfSnk-1);
 				
-						/** if the current flow of instructionParameter is a period reset
+						/* if the current flow of instructionParameter is a period reset
 						 * we calculate the newSinkNodeState automatically with prevSinkNodeState
 						 * and should have values prevSrcNode = 1.0 and prevSinkNodeState = 0.0
 						 */
@@ -671,7 +674,7 @@ public class ReliabilityAnalysis {
 																			prevReliabilityRow.get(indexOfSrc), 
 																			e2e);							
 						}else {	
-							/** if the current flow has not reached the end of its period, 
+							/* if the current flow has not reached the end of its period, 
 							 * we calculate the newSnkNodeState with the prevSnkNodeState and
 							 * prevSrcNodeState from the values in the previous row of reliabilities
 							 */							
@@ -683,9 +686,7 @@ public class ReliabilityAnalysis {
 					}
 				}
 			}
-			/** Add the newly created row to the reliabilityTable
-			 * Then reset the previous reliabilityRow for next times-lot
-			 */
+			/**Then reset the previous reliabilityRow for next times-lot */
 			ReliabilityRow resetRow = new ReliabilityRow();
 			reliabilities.add(prevReliabilityRow);
 			prevReliabilityRow = resetRow;
